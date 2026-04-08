@@ -1,0 +1,32 @@
+:root {
+  /* Brand colors */
+  --color-primary: #1d4ed8;
+  --color-primary-soft: #3b82f6;
+  --color-secondary: #14b8a6;
+  --color-accent: #f97316;
+  --color-accent-soft: #fb923c;
+  --color-nav-highlight: #f45328;
+
+  /* Neutrals */
+  --color-background: #ffffff;
+  --color-surface: #f8fafc;
+  --color-surface-alt: #eef6ff;
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg, #eff6ff 0%, #ffffff 55%, #fff7ed 100%);
+  --gradient-banner: linear-gradient(90deg, #1d4ed8 0%, #14b8a6 100%);
+  --gradient-accent: linear-gradient(90deg, #f97316 0%, #fb923c 100%);
+
+  /* Typography */
+  --font-sans: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  --font-heading: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+
+  /* Shared tokens */
+  --radius-card: 1.5rem;
+  --radius-pill: 9999px;
+  --shadow-card: 0 20px 45px rgba(15, 23, 42, 0.08);
+  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
