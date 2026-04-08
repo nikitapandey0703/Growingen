@@ -1,4 +1,3 @@
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 
 const serviceLinks = [
@@ -20,10 +19,10 @@ function FooterLogo({ logoSrc }) {
     <img
       src={logoSrc}
       alt="GrowGen Solutions"
-      className="h-[72px] w-auto object-contain sm:h-[82px]"
+      className="h-[82px] w-auto object-contain sm:h-[92px] lg:h-[98px]"
     />
   ) : (
-    <div className="flex h-[72px] w-[204px] items-center justify-center rounded-xl border border-border bg-white px-3 sm:h-[82px] sm:w-[224px]">
+    <div className="flex h-[82px] w-[220px] items-center justify-center rounded-xl border border-border bg-white px-3 sm:h-[92px] sm:w-[244px] lg:h-[98px] lg:w-[256px]">
       <span className="text-xs font-semibold uppercase tracking-[0.16em] text-text-muted">
         Logo Placeholder
       </span>
@@ -36,10 +35,10 @@ function FooterIllustration({ imageSrc }) {
     <img
       src={imageSrc}
       alt="Footer illustration"
-      className="h-[180px] w-auto object-contain sm:h-[210px]"
+      className="h-[200px] w-auto object-contain sm:h-[230px] lg:h-[250px]"
     />
   ) : (
-    <div className="flex h-[180px] w-[150px] items-center justify-center rounded-[28px] border border-dashed border-border bg-surface text-center sm:h-[210px] sm:w-[176px]">
+    <div className="flex h-[200px] w-[165px] items-center justify-center rounded-[28px] border border-dashed border-border bg-surface text-center sm:h-[230px] sm:w-[188px] lg:h-[250px] lg:w-[205px]">
       <span className="px-4 text-xs font-medium uppercase tracking-[0.16em] text-text-muted">
         Character Image
       </span>
@@ -52,12 +51,14 @@ export default function Footer({
   illustrationSrc = '/images/banners/footer-character.png',
 }) {
   return (
-    <footer className="mt-16 w-full">
-      <div className="w-full overflow-hidden border border-[#f5d9d2] bg-[#fff8f6]">
-        <div className="grid gap-8 px-5 py-8 sm:px-8 lg:grid-cols-[270px_minmax(0,1fr)] lg:gap-9 lg:px-10 lg:py-10 xl:grid-cols-[290px_minmax(0,1fr)] xl:pr-14">
-          <div className="flex flex-col items-start justify-between gap-6 lg:border-r lg:border-[#7f706b] lg:pr-9">
-            <FooterLogo logoSrc={logoSrc} />
-            <div className="w-full">
+    <footer className="mt-20 w-full lg:mt-24">
+      <div className="w-full overflow-hidden rounded-[2rem] border border-white/50 bg-white/28 backdrop-blur-sm">
+        <div className="grid gap-8 px-5 py-8 sm:px-8 md:gap-10 md:px-10 lg:grid-cols-[290px_minmax(0,1fr)] lg:px-10 lg:py-10 xl:grid-cols-[320px_minmax(0,1fr)] xl:gap-10 xl:pr-14">
+          <div className="grid grid-cols-2 items-center gap-5 sm:gap-6 lg:flex lg:flex-col lg:items-start lg:border-r lg:border-[#7f706b] lg:pr-9">
+            <div className="flex justify-start sm:justify-center lg:justify-start">
+              <FooterLogo logoSrc={logoSrc} />
+            </div>
+            <div className="flex w-full justify-end sm:justify-center lg:justify-start">
               <FooterIllustration imageSrc={illustrationSrc} />
             </div>
           </div>
@@ -98,7 +99,7 @@ export default function Footer({
               </div>
             </div>
 
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_190px] lg:gap-10 lg:pr-6 lg:pb-2">
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_210px] lg:gap-10 lg:pr-6 lg:pb-2">
               <div>
                 <h3 className="text-[18px] font-semibold text-text">Services</h3>
                 <ul className="mt-4 space-y-2 text-sm text-text-muted">
@@ -115,38 +116,51 @@ export default function Footer({
                     <li key={item.label}>
                       <Link
                         to={item.href}
-                        className="transition-colors duration-200 hover:text-[var(--color-nav-highlight)]"
+                        className="footer-link inline-flex items-center"
                       >
-                        {item.label}
+                        <span className="footer-link__text">{item.label}</span>
+                        <span aria-hidden="true" className="footer-link__line" />
                       </Link>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div>
+              <div className="sm:col-span-2 lg:col-span-1">
                 <h3 className="text-[18px] font-semibold text-text">Let&apos;s Connect</h3>
                 <div className="mt-4 flex items-center gap-2.5 lg:justify-start">
                   <a
                     href="https://linkedin.com"
                     aria-label="LinkedIn"
-                    className="inline-flex items-center justify-center text-[#0a66c2] transition-transform duration-200 hover:-translate-y-0.5"
+                    className="inline-flex items-center justify-center transition-transform duration-200 hover:-translate-y-0.5"
                   >
-                    <FaLinkedinIn size={15} />
+                    <img
+                      src="/icons/linkedin.png"
+                      alt=""
+                      className="h-[18px] w-[18px] object-contain sm:h-5 sm:w-5"
+                    />
                   </a>
                   <a
                     href="https://facebook.com"
                     aria-label="Facebook"
-                    className="inline-flex items-center justify-center text-[#1877f2] transition-transform duration-200 hover:-translate-y-0.5"
+                    className="inline-flex items-center justify-center transition-transform duration-200 hover:-translate-y-0.5"
                   >
-                    <FaFacebookF size={15} />
+                    <img
+                      src="/icons/facebook.png"
+                      alt=""
+                      className="h-[18px] w-[18px] object-contain sm:h-5 sm:w-5"
+                    />
                   </a>
                   <a
                     href="https://instagram.com"
                     aria-label="Instagram"
-                    className="inline-flex items-center justify-center text-[#e4405f] transition-transform duration-200 hover:-translate-y-0.5"
+                    className="inline-flex items-center justify-center transition-transform duration-200 hover:-translate-y-0.5"
                   >
-                    <FaInstagram size={15} />
+                    <img
+                      src="/icons/social.png"
+                      alt=""
+                      className="h-[18px] w-[18px] object-contain sm:h-5 sm:w-5"
+                    />
                   </a>
                 </div>
               </div>

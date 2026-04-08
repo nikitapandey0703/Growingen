@@ -20,14 +20,24 @@
 /* Base document styles */
 html {
   scroll-behavior: smooth;
+  min-height: 100%;
 }
 
 body {
   margin: 0;
+  min-height: 100vh;
   min-width: 320px;
   font-family: var(--font-sans);
   color: var(--color-text);
-  background: var(--color-background);
+  background-color: #fffdfb;
+  background-image:
+    radial-gradient(circle at 38% 430px, rgba(255, 166, 132, 0.62) 0%, rgba(255, 166, 132, 0.34) 18%, rgba(255, 166, 132, 0.12) 28%, rgba(255, 166, 132, 0) 44%),
+    radial-gradient(circle at 78% calc(100% - 180px), rgba(72, 139, 255, 0.46) 0%, rgba(72, 139, 255, 0.24) 16%, rgba(72, 139, 255, 0.08) 26%, rgba(72, 139, 255, 0) 36%),
+    radial-gradient(circle at 18% calc(100% - 120px), rgba(255, 193, 170, 0.28) 0%, rgba(255, 193, 170, 0.14) 16%, rgba(255, 193, 170, 0) 34%),
+    linear-gradient(180deg, #fffdfb 0%, #fffaf7 52%, #fff8f5 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -65,6 +75,182 @@ select {
 
 #root {
   min-height: 100vh;
+}
+
+.hero-highlight {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.12em;
+}
+
+.hero-highlight__line {
+  position: absolute;
+  left: 0.01em;
+  bottom: -0.005em;
+  height: 0.16em;
+  width: calc(100% - 0.02em);
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #f7b500 0%, #ffd04f 48%, #f59e0b 100%);
+  box-shadow: 0 2px 12px rgba(245, 158, 11, 0.18);
+  transform: scaleX(0) translateY(2px);
+  transform-origin: left center;
+  animation: hero-line-fill 0.95s cubic-bezier(0.19, 1, 0.22, 1) 0.12s forwards;
+  clip-path: path("M 0 17 C 26 11, 58 7, 96 7 C 136 7, 178 13, 220 15 C 252 17, 282 15, 312 11 L 312 28 C 284 26, 252 25, 220 24 C 176 23, 134 21, 94 22 C 58 23, 27 24, 0 27 Z");
+}
+
+@keyframes hero-line-fill {
+  0% {
+    transform: scaleX(0.04) translateY(3px);
+    opacity: 0.2;
+  }
+
+  55% {
+    transform: scaleX(0.72) translateY(0);
+    opacity: 0.85;
+  }
+
+  100% {
+    transform: scaleX(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.featured-highlight {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.14em;
+}
+
+.featured-highlight__line {
+  position: absolute;
+  left: -0.02em;
+  bottom: -0.01em;
+  height: 0.18em;
+  width: calc(100% + 0.22em);
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #f7b500 0%, #ffd04f 50%, #f59e0b 100%);
+  box-shadow: 0 3px 14px rgba(245, 158, 11, 0.2);
+  transform: scaleX(0.02) translateY(3px);
+  transform-origin: left center;
+  animation: featured-line-fill 1s cubic-bezier(0.19, 1, 0.22, 1) 0.1s forwards;
+  clip-path: path("M 0 18 C 32 11, 70 7, 112 7 C 156 7, 202 13, 248 16 C 284 18, 320 17, 352 12 L 352 31 C 322 29, 286 28, 248 27 C 200 26, 154 24, 112 24 C 72 25, 34 27, 0 30 Z");
+}
+
+@keyframes featured-line-fill {
+  0% {
+    transform: scaleX(0.02) translateY(3px);
+    opacity: 0.18;
+  }
+
+  55% {
+    transform: scaleX(0.78) translateY(0);
+    opacity: 0.88;
+  }
+
+  100% {
+    transform: scaleX(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.featured-card-badge-active {
+  box-shadow:
+    0 8px 16px rgba(15, 23, 42, 0.1),
+    0 0 0 3px rgba(255, 106, 61, 0.12);
+}
+
+.featured-indicator {
+  position: relative;
+  height: 0.65rem;
+  width: 0.65rem;
+  border: 1px solid #111827;
+  border-radius: 9999px;
+  background: transparent;
+  overflow: hidden;
+  transition:
+    transform 200ms ease,
+    border-color 180ms ease;
+}
+
+.featured-indicator::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: #06ba9d;
+  transform: scale(0.2);
+  opacity: 0;
+  transition:
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 180ms ease;
+}
+
+.featured-indicator:hover {
+  transform: scale(1.08);
+}
+
+.featured-indicator-active {
+  border-color: #06ba9d;
+}
+
+.featured-indicator-active::after {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.featured-ticker {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #3435d9 0%, #4a43dc 20%, #226bff 48%, #12b0c6 74%, #13c39c 100%);
+}
+
+.featured-ticker__viewport {
+  overflow: hidden;
+  padding: 0.15rem 0;
+}
+
+.featured-ticker__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: featured-ticker-marquee 12s linear infinite;
+}
+
+.featured-ticker__group {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.featured-ticker__item {
+  position: relative;
+  flex: 0 0 auto;
+  padding: 0.82rem 2rem;
+  color: white;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.featured-ticker__item::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  height: 0.9rem;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.45);
+  transform: translateY(-50%);
+}
+
+@keyframes featured-ticker-marquee {
+  0% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 /* Thin gradient outline treatment for header actions */
@@ -179,4 +365,50 @@ select {
 .nav-link-active .nav-link__glow {
   opacity: 1;
   transform: translateY(0) scaleX(1);
+}
+
+/* Footer link motion is lighter than header navigation */
+.footer-link {
+  position: relative;
+  color: var(--color-text-muted);
+  transition: color 220ms ease;
+}
+
+.footer-link__text {
+  position: relative;
+  display: inline-block;
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-link__line {
+  position: absolute;
+  left: 0;
+  bottom: -0.2rem;
+  height: 1.5px;
+  width: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    rgba(244, 83, 40, 0.2) 0%,
+    var(--color-nav-highlight) 35%,
+    var(--color-nav-highlight) 100%
+  );
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-link:hover,
+.footer-link:focus-visible {
+  color: var(--color-nav-highlight);
+}
+
+.footer-link:hover .footer-link__text,
+.footer-link:focus-visible .footer-link__text {
+  transform: translateX(3px);
+}
+
+.footer-link:hover .footer-link__line,
+.footer-link:focus-visible .footer-link__line {
+  transform: scaleX(1);
 }

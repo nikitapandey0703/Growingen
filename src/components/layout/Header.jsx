@@ -86,7 +86,7 @@ export default function Header({ logoSrc }) {
   const closeMenu = () => setIsMenuOpen(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md">
+    <header className="sticky top-0 z-50 bg-white/45 backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <LogoBlock logoSrc={logoSrc} />
 
@@ -104,7 +104,7 @@ export default function Header({ logoSrc }) {
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-white text-text transition-colors hover:border-primary hover:text-primary lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/60 bg-white/70 text-text transition-colors hover:border-primary hover:text-primary lg:hidden"
           aria-expanded={isMenuOpen}
           aria-controls="mobile-navigation"
           aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
@@ -117,7 +117,7 @@ export default function Header({ logoSrc }) {
       {isMenuOpen ? (
         <div
           id="mobile-navigation"
-          className="border-t border-border/70 bg-background lg:hidden"
+          className="border-t border-white/50 bg-white/60 backdrop-blur-md lg:hidden"
         >
           <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-4 px-4 py-4 sm:px-6">
             <NavLinks mobile onNavigate={closeMenu} />
