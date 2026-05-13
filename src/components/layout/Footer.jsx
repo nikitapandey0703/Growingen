@@ -1,167 +1,174 @@
-import { Link } from 'react-router-dom'
+import React from 'react';
 
-const serviceLinks = [
-  'MERN Development',
-  'UI/UX Design',
-  'Growth Marketing',
-  'Custom Web Experiences',
-]
+const footerMedia = {
+  emailIcon: '/icons/email-main.png',
+  whatsappIcon: '/icons/whatsapp-main.png',
+  linkedinIcon: '/icons/linkedin-1.png',
+  instagramIcon: '/icons/instagram.png',
+  facebookIcon: '/icons/facebook.png',
+  pinterestIcon: '/icons/pinterest.png',
+  connectUnderline: '/icons/Isolation_Mode.svg',
+};
 
-const quickLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Services', href: '/services' },
-  { label: 'About', href: '/about' },
-  { label: 'Portfolio', href: '/portfolio' },
-]
+const socialIcons = [
+  { href: '#', src: footerMedia.linkedinIcon, alt: 'LinkedIn' },
+  { href: '#', src: footerMedia.instagramIcon, alt: 'Instagram' },
+  { href: '#', src: footerMedia.facebookIcon, alt: 'Facebook' },
+  { href: '#', src: footerMedia.pinterestIcon, alt: 'Pinterest' },
+];
 
-function FooterLogo({ logoSrc }) {
-  return logoSrc ? (
-    <img
-      src={logoSrc}
-      alt="GrowGen Solutions"
-      className="h-[82px] w-auto object-contain sm:h-[92px] lg:h-[98px]"
-    />
-  ) : (
-    <div className="flex h-[82px] w-[220px] items-center justify-center rounded-xl border border-border bg-white px-3 sm:h-[92px] sm:w-[244px] lg:h-[98px] lg:w-[256px]">
-      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-text-muted">
-        Logo Placeholder
-      </span>
-    </div>
-  )
-}
-
-function FooterIllustration({ imageSrc }) {
-  return imageSrc ? (
-    <img
-      src={imageSrc}
-      alt="Footer illustration"
-      className="h-[200px] w-auto object-contain sm:h-[230px] lg:h-[250px]"
-    />
-  ) : (
-    <div className="flex h-[200px] w-[165px] items-center justify-center rounded-[28px] border border-dashed border-border bg-surface text-center sm:h-[230px] sm:w-[188px] lg:h-[250px] lg:w-[205px]">
-      <span className="px-4 text-xs font-medium uppercase tracking-[0.16em] text-text-muted">
-        Character Image
-      </span>
-    </div>
-  )
-}
-
-export default function Footer({
+const Footer = ({
   logoSrc = '/images/hero/logo.png',
   illustrationSrc = '/images/banners/footer-character.png',
-}) {
+  width = '100%',
+  maxWidth = '100%',
+  minHeight = '490px',
+}) => {
   return (
-    <footer className="mt-20 w-full lg:mt-24">
-      <div className="w-full overflow-hidden rounded-[2rem] border border-white/50 bg-white/28 backdrop-blur-sm">
-        <div className="grid gap-8 px-5 py-8 sm:px-8 md:gap-10 md:px-10 lg:grid-cols-[290px_minmax(0,1fr)] lg:px-10 lg:py-10 xl:grid-cols-[320px_minmax(0,1fr)] xl:gap-10 xl:pr-14">
-          <div className="grid grid-cols-2 items-center gap-5 sm:gap-6 lg:flex lg:flex-col lg:items-start lg:border-r lg:border-[#7f706b] lg:pr-9">
-            <div className="flex justify-start sm:justify-center lg:justify-start">
-              <FooterLogo logoSrc={logoSrc} />
+    <footer
+      className="relative flex justify-center overflow-hidden bg-[#FFF1F0] text-black font-['Visby',_sans-serif]"
+      style={{ width, maxWidth, minHeight }}
+    >
+      <div className="flex w-full max-w-[1350px] flex-col items-center justify-between px-[60px] py-12 lg:flex-row lg:px-[80px]">
+        <div className="flex w-full flex-col justify-center self-start lg:w-auto lg:self-center">
+          <div className="mb-8">
+            <img
+              src={logoSrc}
+              alt="GrowinGen Solutions"
+              className="h-[60px] w-auto object-contain"
+              onError={(e) => {
+                e.target.src = 'https://via.placeholder.com/200x50?text=Logo+Placeholder';
+              }}
+            />
+          </div>
+
+          <div className="flex flex-row items-center gap-[40px]">
+            <div className="flex w-[170px] flex-shrink-0 items-center justify-center lg:w-[180px]">
+              <img
+                src={illustrationSrc}
+                alt="3D Avatar Character"
+                className="h-auto w-full origin-bottom scale-110 object-contain drop-shadow-2xl"
+                onError={(e) => {
+                  e.target.src = 'https://via.placeholder.com/200x300?text=Avatar';
+                }}
+              />
             </div>
-            <div className="flex w-full justify-end sm:justify-center lg:justify-start">
-              <FooterIllustration imageSrc={illustrationSrc} />
+
+            <div className="relative flex flex-col justify-center">
+              <h2 className="text-[46px] font-[800] leading-[1.05] tracking-tight text-[#0f172a] lg:text-[56px]">
+                Let's
+                <br />
+                Connect
+              </h2>
+
+              <div className="pointer-events-none absolute -bottom-[24px] left-[40px] h-[26px] w-[180px] overflow-visible lg:left-[22px] lg:w-[188px]">
+                <img
+                  src={footerMedia.connectUnderline}
+                  alt=""
+                  aria-hidden="true"
+                  className="h-full w-full object-contain object-left"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mx-[45px] hidden h-[320px] w-[1.5px] bg-black/25 shadow-[0_0_0_1px_rgba(15,23,42,0.03)] lg:mx-[55px] lg:block"></div>
+
+        <div className="mt-12 flex w-full flex-1 flex-col justify-center lg:mt-0">
+          <div className="flex w-full flex-col gap-[20px] border-b border-black/15 pb-8">
+            <div className="group flex cursor-pointer items-center gap-[16px]">
+              <div className="h-[42px] w-[42px] flex-shrink-0 transition-transform group-hover:-translate-y-1 lg:h-[48px] lg:w-[48px]">
+                <img
+                  src={footerMedia.emailIcon}
+                  alt="Email icon"
+                  className="h-full w-full object-contain drop-shadow-md"
+                />
+              </div>
+              <span className="text-[24px] font-[700] leading-none tracking-tight transition-colors group-hover:text-blue-600 lg:text-[34px]">
+                connect@growingen.com
+              </span>
+            </div>
+
+            <div className="group flex cursor-pointer items-center gap-[16px]">
+              <div className="h-[42px] w-[42px] flex-shrink-0 transition-transform group-hover:-translate-y-1 lg:h-[48px] lg:w-[48px]">
+                <img
+                  src={footerMedia.whatsappIcon}
+                  alt="WhatsApp icon"
+                  className="h-full w-full object-contain drop-shadow-md"
+                />
+              </div>
+              <span className="text-[24px] font-[700] leading-none tracking-tight transition-colors group-hover:text-green-600 lg:text-[34px]">
+                +91 86 2591 2593
+              </span>
             </div>
           </div>
 
-          <div className="flex flex-col gap-8 lg:pb-4">
-            <div className="pb-6 lg:border-b lg:border-[#7f706b]">
-              <h2 className="text-2xl font-semibold tracking-[-0.03em] text-text">
-                We are Global Digital Brand.
-              </h2>
-
-              <div className="mt-5 flex flex-col gap-4 text-sm text-text-muted">
-                <div className="flex items-start gap-3">
-                  <img
-                    src="/icons/gmail.png"
-                    alt=""
-                    className="mt-0.5 h-5 w-5 shrink-0 object-contain"
-                  />
-                  <div className="flex flex-col gap-0.5">
-                    <span className="text-[13px] font-medium leading-none text-[#4b4b4b]">
-                      Send Us Mail
-                    </span>
-                    <span className="text-[13px] leading-none text-text">
-                      connect@growingen.com
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <img
-                    src="/icons/whatsapp.png"
-                    alt=""
-                    className="mt-0.5 h-5 w-5 shrink-0 object-contain"
-                  />
-                  <span className="text-[13px] leading-none text-text">
-                    +91 86 2591 2593
-                  </span>
-                </div>
-              </div>
+          <div className="flex w-full flex-wrap items-start justify-between gap-y-8 pt-8 lg:flex-nowrap">
+            <div className="flex min-w-0 flex-[0_1_470px] flex-wrap items-start gap-x-[52px] gap-y-6">
+              <div className="min-w-[188px]">
+                <h4 className="mb-[36px] pb-4 text-[17px] font-[700] leading-none text-[#0f172a]">Services</h4>
+                <ul className="flex flex-col gap-[4px]">
+                {['Website Optimization', 'Business Growth', 'Social Media Managment', 'SEO Development'].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="footer-link relative inline-flex w-fit pr-5">
+                      <span className="footer-link__text text-[14px] font-[500] leading-[1.35] tracking-normal text-[#6B7280]">
+                        {item}
+                      </span>
+                      <span className="footer-link__line w-[118%]"></span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_210px] lg:gap-10 lg:pr-6 lg:pb-2">
-              <div>
-                <h3 className="text-[18px] font-semibold text-text">Services</h3>
-                <ul className="mt-4 space-y-2 text-sm text-text-muted">
-                  {serviceLinks.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+              <div className="min-w-[172px]">
+                <h4 className="mb-[36px] pb-4 text-[17px] font-[700] leading-none text-[#0f172a]">Quick Links</h4>
+                <ul className="flex flex-col gap-[4px]">
+                {['Terms & Conditions', 'Privacy Policy', 'Sitemap'].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="footer-link relative inline-flex w-fit pr-5">
+                      <span className="footer-link__text text-[14px] font-[500] leading-[1.35] tracking-normal text-[#6B7280]">
+                        {item}
+                      </span>
+                      <span className="footer-link__line w-[118%]"></span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            </div>
+
+            <div className="ml-auto flex flex-col items-center gap-[18px] self-start lg:pt-[4px]">
+              <div className="flex items-center justify-center gap-[12px]">
+                {socialIcons.map((icon) => (
+                  <a
+                    key={icon.alt}
+                    href={icon.href}
+                    className="flex h-[32px] w-[32px] items-center justify-center transition-transform hover:-translate-y-1"
+                  >
+                    <img
+                      src={icon.src}
+                      alt={icon.alt}
+                      className="h-full w-full object-contain drop-shadow-sm"
+                    />
+                  </a>
+                ))}
               </div>
 
-              <div>
-                <h3 className="text-[18px] font-semibold text-text">Quick Links</h3>
-                <ul className="mt-4 space-y-2 text-sm text-text-muted">
-                  {quickLinks.map((item) => (
-                    <li key={item.label}>
-                      <Link
-                        to={item.href}
-                        className="footer-link inline-flex items-center"
-                      >
-                        <span className="footer-link__text">{item.label}</span>
-                        <span aria-hidden="true" className="footer-link__line" />
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="sm:col-span-2 lg:col-span-1">
-                <h3 className="text-[18px] font-semibold text-text">Let&apos;s Connect</h3>
-                <div className="mt-4 flex items-center gap-2.5 lg:justify-start">
-                  <a
-                    href="https://linkedin.com"
-                    aria-label="LinkedIn"
-                    className="inline-flex items-center justify-center transition-transform duration-200 hover:-translate-y-0.5"
-                  >
+              <div className="relative mt-1 flex justify-center self-center">
+                <div className="group relative h-[76px] w-[76px] cursor-pointer p-[6px]">
+                  <div className="absolute top-0 left-0 h-[14px] w-[14px] rounded-tl-[3px] border-t-[2px] border-l-[2px] border-gray-500 transition-all group-hover:border-[#F45328]"></div>
+                  <div className="absolute top-0 right-0 h-[14px] w-[14px] rounded-tr-[3px] border-t-[2px] border-r-[2px] border-gray-500 transition-all group-hover:border-[#F45328]"></div>
+                  <div className="absolute bottom-0 left-0 h-[14px] w-[14px] rounded-bl-[3px] border-b-[2px] border-l-[2px] border-gray-500 transition-all group-hover:border-[#F45328]"></div>
+                  <div className="absolute right-0 bottom-0 h-[14px] w-[14px] rounded-br-[3px] border-r-[2px] border-b-[2px] border-gray-500 transition-all group-hover:border-[#F45328]"></div>
+                  <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-[2px] bg-white">
                     <img
-                      src="/icons/linkedin.png"
-                      alt=""
-                      className="h-[18px] w-[18px] object-contain sm:h-5 sm:w-5"
+                      src="/icons/qr.png"
+                      alt="QR Code"
+                      className="h-full w-full object-contain"
                     />
-                  </a>
-                  <a
-                    href="https://facebook.com"
-                    aria-label="Facebook"
-                    className="inline-flex items-center justify-center transition-transform duration-200 hover:-translate-y-0.5"
-                  >
-                    <img
-                      src="/icons/facebook.png"
-                      alt=""
-                      className="h-[18px] w-[18px] object-contain sm:h-5 sm:w-5"
-                    />
-                  </a>
-                  <a
-                    href="https://instagram.com"
-                    aria-label="Instagram"
-                    className="inline-flex items-center justify-center transition-transform duration-200 hover:-translate-y-0.5"
-                  >
-                    <img
-                      src="/icons/social.png"
-                      alt=""
-                      className="h-[18px] w-[18px] object-contain sm:h-5 sm:w-5"
-                    />
-                  </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -169,5 +176,7 @@ export default function Footer({
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
+
+export default Footer;

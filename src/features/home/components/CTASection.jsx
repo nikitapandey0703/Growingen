@@ -1,154 +1,335 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
 
-const plans = [
+const planCards = [
   {
-    id: 'basic',
-    name: 'Basic Small Package',
+    id: 1,
+    name: 'Complete Digital Marketing Solution',
+    description:
+      'Perfect for businesses looking to build visibility, generate leads, and grow consistently online.',
+    features: [
+      'Social Media Management (Instagram, Facebook & LinkedIn)',
+      'SEO Optimization for Better Search Visibility',
+      'Paid Ads Management (Meta/Google Ads)',
+      'Monthly Content & Creative Support',
+      'Lead Generation & Performance Reporting',
+    ],
+    startingLabel: 'Starting from',
+    startingValue: '₹50,000',
     theme: 'dark',
-    price: '\u20B920000',
-    originalPrice: '\u20B935000',
-    description:
-      'Digital Marketing Often Proves To Be More Cost-Effective Than Traditional Marketing Methods.',
-    features: [
-      'Social Media Management 12 Platforms',
-      'Website Design and Development (Up To 10 pages)',
-    ],
   },
   {
-    id: 'professional',
-    name: 'Professional Package',
-    theme: 'light',
-    price: '\u20B920000',
-    originalPrice: '\u20B935000',
+    id: 2,
+    name: 'Website Development',
     description:
-      'Digital Marketing Often Proves To Be More Cost-Effective Than Traditional Marketing Methods.',
+      'Custom-built websites designed to establish a strong digital presence and improve conversions.',
     features: [
-      'Social Media Management 12 Platforms',
-      'Website Design and Development (Up To 10 Pages)',
+      'Custom Business Website Design',
+      'Mobile Responsive Development',
+      'Basic SEO Setup',
+      'Contact Forms & Lead Capture Integration',
+      'Speed & Performance Optimization',
     ],
+    startingLabel: 'Starting from',
+    startingValue: '₹25,000',
+    theme: 'light',
   },
   {
-    id: 'growth',
-    name: 'Growth Plus Package',
-    theme: 'light',
-    price: '\u20B932000',
-    originalPrice: '\u20B948000',
+    id: 3,
+    name: 'Application Development',
     description:
-      'Digital Marketing Often Proves To Be More Cost-Effective Than Traditional Marketing Methods.',
+      'Scalable web and mobile applications tailored to streamline business operations and user experience.',
     features: [
-      'Social Media Management 20 Platforms',
-      'Website Design and Development (Up To 20 Pages)',
+      'Custom UI/UX Design',
+      'Web or Mobile App Development',
+      'Admin Panel Integration',
+      'API & Database Setup',
+      'Testing & Deployment Support',
     ],
+    startingLabel: 'Starting from',
+    startingValue: '₹60,000',
+    theme: 'light',
   },
 ]
 
-function PlanCard({ plan, onClick }) {
-  const isDark = plan.theme === 'dark'
+function renderHeadingWithLastWordOnNextLine(title) {
+  const words = title.trim().split(/\s+/)
+
+  if (words.length < 2) {
+    return title
+  }
+
+  // Keep long plan names inside the frame by balancing them into two lines.
+  const splitIndex = words.length >= 4 ? Math.ceil(words.length / 2) : words.length - 1
+  const firstLine = words.slice(0, splitIndex).join(' ')
+  const secondLine = words.slice(splitIndex).join(' ')
 
   return (
-    <button
-      type="button"
-      onClick={onClick}
+    <>
+      {firstLine}
+      <br />
+      {secondLine}
+    </>
+  )
+}
+
+function FeatureBullet() {
+  return (
+    <span className="mt-[6px] inline-flex h-3.5 w-3.5 flex-none items-center justify-center rounded-full bg-[linear-gradient(180deg,#e63e83_0%,#d4376b_100%)] shadow-[0_4px_10px_rgba(212,55,107,0.2)] sm:h-4 sm:w-4">
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        className="h-[8px] w-[8px] text-[#FFB45E] sm:h-[9px] sm:w-[9px]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M5 12.5L9.2 16.7L18.5 7.5" />
+      </svg>
+    </span>
+  )
+}
+
+function PlanCard({ card, onAdvance, isActive }) {
+  return (
+    <article
+      role="button"
+      tabIndex={0}
+      onClick={onAdvance}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault()
+          onAdvance()
+        }
+      }}
       className={[
-        'group relative h-[432px] w-full overflow-hidden rounded-[18px] border px-5 pb-6 pt-9 text-left transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)]',
-        isDark
-          ? 'border-black bg-black text-white shadow-[0_22px_40px_rgba(15,23,42,0.16)] hover:bg-[#0c0c0c]'
-          : 'border-[#cfd6df] bg-white/76 text-[#111827] shadow-[0_16px_34px_rgba(15,23,42,0.08)] hover:bg-[#fff8f4]',
+        'group relative min-w-0 flex-none snap-center sm:snap-start cursor-pointer outline-none',
+        'w-full sm:w-[min(58vw,455px)] lg:w-[calc(50%+52px)]', // Adjusted width to strictly full-width on mobile
+        'mr-0 sm:-mr-6 lg:-mr-[58px]', // Reset negative margins on small screens
+        'text-[#121212]',
+        'transition-transform duration-300 ease-out hover:-translate-y-1 focus-visible:-translate-y-1',
       ].join(' ')}
     >
-      <span
-        aria-hidden="true"
-        className={[
-          'absolute right-[-1px] top-[-1px] h-[58px] w-[140px] rounded-bl-[16px] border-b border-l',
-          isDark
-            ? 'border-black bg-[var(--color-background)]'
-            : 'border-[#cfd6df] bg-[var(--color-background)]',
-        ].join(' ')}
-      />
+      <div className="relative h-[518px] w-full drop-shadow-[0_16px_28px_rgba(15,23,42,0.14)] sm:h-[628px] lg:h-[668px]">
+        <img
+          src="/icons/Subtract-outline.svg"
+          alt=""
+          aria-hidden="true"
+          className={[
+            'pointer-events-none absolute inset-y-0 left-[-4%] h-full w-[108%] max-w-none object-fill transition-opacity duration-300 ease-out',
+            isActive ? 'opacity-0 sm:opacity-100 sm:group-hover:opacity-0' : 'opacity-100 group-hover:opacity-0',
+          ].join(' ')}
+        />
+        <img
+          src="/icons/Subtract-C.svg"
+          alt=""
+          aria-hidden="true"
+          className={[
+            'pointer-events-none absolute inset-y-0 left-[-4%] h-full w-[108%] max-w-none object-fill transition-opacity duration-300 ease-out',
+            isActive ? 'opacity-100 sm:opacity-0 sm:group-hover:opacity-100' : 'opacity-0 group-hover:opacity-100',
+          ].join(' ')}
+        />
 
-      <div className="relative z-10 flex h-full flex-col">
-        <div>
-          <h3 className="max-w-[11ch] text-[22px] font-semibold leading-[1.12] tracking-[-0.03em]">
-            {plan.name}
-          </h3>
+        <div
+          className={[
+            'cta-card-copy absolute inset-0 z-10 flex flex-col',
+            'pl-[16%] pr-[9.5%] pb-[7%] pt-[13%] sm:pl-[18%] sm:pr-[10%] sm:pb-[8%] sm:pt-[14.5%]',
+            'min-w-0 overflow-hidden transition-colors duration-300 ease-out',
+            isActive ? 'text-white sm:text-[#121212] sm:group-hover:text-white' : 'text-[#121212] group-hover:text-white',
+          ].join(' ')}
+        >
+          <div className="max-w-[92%] sm:max-w-[90%]">
+            {/* Added explicit text colors and group-hover states to h3 for guaranteed rendering fix */}
+            <h3 className="max-w-full break-words text-[28px] font-semibold leading-[1.08] tracking-[-0.045em] transition-colors duration-300 ease-out sm:text-[30px] lg:text-[32px]">
+              {renderHeadingWithLastWordOnNextLine(card.name)}
+            </h3>
 
-          <p
-            className={[
-              'mt-4 max-w-[26ch] text-[10px] leading-[1.45]',
-              isDark ? 'text-white/72' : 'text-[#6d7481]',
-            ].join(' ')}
-          >
-            {plan.description}
-          </p>
+            <p
+              className={[
+                'mt-6 pt-1 max-w-[98%] break-words text-[14px] leading-[1.45] transition-colors duration-300 ease-out sm:mt-7 sm:max-w-[95%] sm:text-[15px]',
+                isActive ? 'text-white/80 sm:text-[#404040] sm:group-hover:text-white/76' : 'text-[#404040] group-hover:text-white/76',
+              ].join(' ')}
+            >
+              {card.description}
+            </p>
 
-          <ul className="mt-5 space-y-3">
-            {plan.features.map((feature) => (
-              <li
-                key={feature}
-                className={[
-                  'flex items-start gap-2 text-[10px] leading-[1.4]',
-                  isDark ? 'text-white/82' : 'text-[#2d3642]',
-                ].join(' ')}
-              >
-                <span className="mt-[0.28rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff5480]" />
-                <span className="max-w-[22ch]">{feature}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+            <div
+              className={[
+                'mt-3 h-px w-[96%] transition-colors duration-300 ease-out sm:mt-4 sm:w-[94%]',
+                isActive ? 'bg-white/20 sm:bg-[#121212]/12 sm:group-hover:bg-white/20' : 'bg-[#121212]/12 group-hover:bg-white/20',
+              ].join(' ')}
+            />
 
-        <div className="mt-auto">
-          <p className={['text-[10px]', isDark ? 'text-white/68' : 'text-[#626b79]'].join(' ')}>
-            Starting Price
-          </p>
-          <p className={['mt-2 text-[10px] line-through', isDark ? 'text-white/38' : 'text-[#9ca3af]'].join(' ')}>
-            {plan.originalPrice}
-          </p>
-          <p className="mt-1 text-[44px] font-semibold leading-none tracking-[-0.04em]">
-            {plan.price}
-          </p>
+            <ul className="mt-3 space-y-2 sm:mt-4 sm:space-y-2.5">
+              {card.features.map((feature) => (
+                <li key={feature} className="flex max-w-[98%] items-start gap-2.5 pt-1">
+                  <FeatureBullet />
+                  <span
+                    className={[
+                      'min-w-0 max-w-full pt-0.5 break-words text-[14px] leading-[1.35] transition-colors duration-300 ease-out sm:pt-1 sm:text-[15px]',
+                      isActive ? 'text-white/84 sm:text-[#222222] sm:group-hover:text-white/84' : 'text-[#222222] group-hover:text-white/84',
+                    ].join(' ')}
+                  >
+                    {feature}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          <span className="mt-7 inline-flex w-full items-center justify-center rounded-[4px] bg-[#ff5a2f] px-4 py-2.5 text-[11px] font-medium text-white transition-colors duration-300 group-hover:bg-[#ff6a43]">
-            Get Started
-          </span>
+          <div className="mt-auto max-w-[98%] pt-4 sm:max-w-[95%] sm:pt-5">
+            <p
+              className={[
+                'text-[13px] tracking-[0] transition-colors duration-300 ease-out sm:text-[15px]',
+                isActive ? 'text-white/60 sm:text-[#5f5f5f] sm:group-hover:text-white/60' : 'text-[#5f5f5f] group-hover:text-white/60',
+              ].join(' ')}
+            >
+              {card.startingLabel}
+            </p>
+            <p
+              className={[
+                'mt-1 text-[13px] font-medium tracking-[-0.03em] transition-colors duration-300 ease-out line-through sm:mt-2 sm:text-[15px]',
+                isActive ? 'text-white/65 sm:text-[#121212]/70 sm:group-hover:text-white/65' : 'text-[#121212]/70 group-hover:text-white/65',
+              ].join(' ')}
+            >
+              {'\u20B935000'}
+            </p>
+            {/* Added explicit text colors and group-hover states for the starting value */}
+            <p className="mt-1 text-[34px] font-semibold leading-[0.94] tracking-[-0.05em] transition-colors duration-300 ease-out sm:text-[42px] lg:text-[46px]">
+              {card.startingValue}
+            </p>
+
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation()
+              }}
+              className="mt-6 inline-flex h-[40px] w-[96%] items-center justify-center self-start rounded-full bg-[linear-gradient(180deg,#ff6a33_0%,#F45328_100%)] px-8 text-[13px] font-medium tracking-[-0.01em] text-white shadow-[0_12px_24px_rgba(244,83,40,0.24),inset_0_1px_0_rgba(255,255,255,0.18)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:brightness-[1.03] hover:shadow-[0_16px_30px_rgba(244,83,40,0.3)] active:translate-y-0 sm:mt-7 sm:h-[45px] sm:w-[96%] sm:text-[14px]"
+            >
+              Get Started
+            </button>
+          </div>
         </div>
       </div>
-    </button>
+    </article>
   )
 }
 
 export default function CTASection() {
+  const scrollRef = useRef(null)
   const [activeIndex, setActiveIndex] = useState(0)
 
+  useEffect(() => {
+    const node = scrollRef.current
+
+    if (!node) {
+      return undefined
+    }
+
+    const handleScroll = () => {
+      const cards = Array.from(node.children)
+
+      if (!cards.length) {
+        return
+      }
+
+      const containerLeft = node.getBoundingClientRect().left
+      let closestIndex = 0
+      let closestOffset = Number.POSITIVE_INFINITY
+
+      cards.forEach((card, index) => {
+        const offset = Math.abs(card.getBoundingClientRect().left - containerLeft)
+
+        if (offset < closestOffset) {
+          closestOffset = offset
+          closestIndex = index
+        }
+      })
+
+      setActiveIndex(closestIndex)
+    }
+
+    handleScroll()
+    node.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll)
+
+    return () => {
+      node.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [])
+
+  const scrollToCard = (index) => {
+    const node = scrollRef.current
+    const target = node?.children?.[index]
+
+    if (!node || !target) {
+      return
+    }
+
+    node.scrollTo({
+      left: target.offsetLeft,
+      behavior: 'smooth',
+    })
+  }
+
+  const goToNextCard = (index) => {
+    const nextIndex = (index + 1) % planCards.length
+    scrollToCard(nextIndex)
+  }
+
   return (
-    <section className="relative overflow-hidden bg-transparent pb-18 pt-12 lg:pb-24">
-      <div className="relative mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-10 xl:px-12">
-        <div className="mx-auto mt-2 max-w-[1048px] overflow-hidden">
-          <div
-            className="flex gap-6 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-            style={{ transform: `translateX(calc(-${activeIndex} * (50% + 12px)))` }}
-          >
-            {plans.map((plan, index) => (
-              <div key={plan.id} className="shrink-0" style={{ width: 'calc(50% - 12px)' }}>
-                <PlanCard plan={plan} onClick={() => setActiveIndex(index)} />
-              </div>
-            ))}
-          </div>
+    <section className="relative overflow-hidden bg-transparent px-4 pb-16 pt-8 sm:px-6 sm:pb-20 lg:px-8">
+      <div className="pointer-events-none absolute left-[10%] top-[30%] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(255,151,113,0.24)_0%,rgba(255,151,113,0.09)_42%,rgba(255,151,113,0)_74%)] blur-3xl" />
+      <div className="pointer-events-none absolute right-[8%] bottom-[8%] h-[240px] w-[240px] rounded-full bg-[radial-gradient(circle,rgba(104,141,255,0.22)_0%,rgba(104,141,255,0.08)_42%,rgba(104,141,255,0)_74%)] blur-3xl" />
+
+      <div className="relative mx-auto max-w-[1120px]">
+        <div className="mx-auto max-w-[520px] text-center">
+          <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.05em] text-[#111827] sm:text-[40px] lg:text-[50px]">
+            <span className="block sm:whitespace-nowrap">
+              Select A Suitable Plan
+            </span>
+            <span className="block sm:whitespace-nowrap">
+              For Your Next{' '}
+              <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]">
+                Projects
+              </CurvedUnderlineText>
+            </span>
+          </h2>
         </div>
 
-        <div className="mt-7 flex items-center justify-center gap-1.5">
-          {plans.map((plan, index) => (
-            <button
-              key={plan.id}
-              type="button"
-              aria-label={`Show ${plan.name}`}
-              onClick={() => setActiveIndex(index)}
-              className={[
-                'featured-indicator',
-                activeIndex === index ? 'featured-indicator-active' : '',
-              ].join(' ')}
-            />
-          ))}
+        <div className="relative mt-6 sm:mt-8 lg:mt-10">
+          <div
+            ref={scrollRef}
+            // Added `gap-4 sm:gap-0` to push the 2nd card out of view specifically on mobile
+            className="flex snap-x snap-mandatory gap-4 sm:gap-0 overflow-x-auto px-0.5 pb-4 pt-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {planCards.map((card, index) => (
+              <PlanCard
+                key={card.id}
+                card={card}
+                onAdvance={() => goToNextCard(index)}
+                isActive={activeIndex === index}
+              />
+            ))}
+          </div>
+
+          <div className="mt-3 flex items-center justify-center gap-2">
+            {planCards.map((card, index) => (
+              <button
+                key={card.id}
+                type="button"
+                aria-label={`Scroll to ${card.name}`}
+                onClick={() => scrollToCard(index)}
+                className={[
+                  'featured-indicator',
+                  activeIndex === index ? 'featured-indicator-active' : '',
+                ].join(' ')}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

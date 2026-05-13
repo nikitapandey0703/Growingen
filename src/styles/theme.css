@@ -21,8 +21,8 @@
   --gradient-accent: linear-gradient(90deg, #f97316 0%, #fb923c 100%);
 
   /* Typography */
-  --font-sans: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
-  --font-heading: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  --font-sans: "Visby", "Avenir Next", "Segoe UI", sans-serif;
+  --font-heading: "Visby", "Avenir Next", "Segoe UI", sans-serif;
 
   /* Shared tokens */
   --radius-card: 1.5rem;

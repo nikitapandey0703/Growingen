@@ -1,22 +1,64 @@
-import { ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import Button from '../../../components/common/Button'
+
+const heroDashboards = [
+  // Top Left (Behind Girl - pushed deeply backward)
+  {
+    src: '/images/hero/frame-1.webp',
+    className:
+      'absolute z-15 left-[12%] top-[20%] w-[clamp(110px,24vw,170px)] sm:left-[10%] sm:top-[15%] lg:left-[6%] lg:top-[12%]',
+    floatClassName: 'hero-float',
+  },
+  // Bottom Left (In Front of Girl - near to her)
+  {
+    src: '/images/hero/frame-2.webp',
+    className:
+      'absolute z-30 bottom-[12%] left-[0%] w-[clamp(160px,40vw,280px)] sm:bottom-[8%] sm:left-[-5%] lg:bottom-[6%] lg:left-[-8%]',
+    floatClassName: 'hero-float hero-float-delay-1',
+  },
+  // Top Right (Behind Girl - pushed deeply backward)
+  {
+    src: '/images/hero/frame-4.webp',
+    className:
+      'absolute z-15 right-[10%] top-[16%] w-[clamp(120px,26vw,190px)] sm:right-[8%] sm:top-[12%] lg:right-[4%] lg:top-[10%]',
+    floatClassName: 'hero-float hero-float-delay-2',
+  },
+  // Bottom Right (In Front of Girl - near to her)
+  {
+    src: '/images/hero/Frame-5.webp',
+    className:
+      'absolute z-30 bottom-[14%] right-[2%] w-[clamp(170px,42vw,300px)] sm:bottom-[10%] sm:right-[-2%] lg:bottom-[-8%] lg:right-[-2%]',
+    floatClassName: 'hero-float hero-float-delay-3',
+  },
+]
 
 function HeroVisual() {
   return (
-    <div className="relative ml-auto flex w-full max-w-[640px] items-center justify-center lg:justify-end lg:pr-0">
-      <div className="relative flex h-[320px] w-full max-w-[530px] items-center justify-center lg:h-[395px] lg:max-w-[575px]">
+    <div className="hero-visual-reveal relative mx-auto mt-8 flex w-full max-w-[640px] items-center justify-center sm:mt-10 lg:-mt-6 lg:ml-auto lg:max-w-[680px] lg:justify-end xl:-mt-8">
+      {/* The hero media uses a capped stage so the floating dashboards stay visible without overflowing on short screens. */}
+      <div className="hero-stage relative flex aspect-[1/1.02] w-full max-w-[340px] items-center justify-center sm:aspect-[1.02/1] sm:max-w-[460px] lg:aspect-[4/3] lg:max-w-[620px]">
+        <div className="hero-stage__glow" aria-hidden="true" />
+        <div className="hero-stage__sheen" aria-hidden="true" />
+        <div className="hero-ambient-orb hero-ambient-orb--primary" aria-hidden="true" />
+        <div className="hero-ambient-orb hero-ambient-orb--secondary" aria-hidden="true" />
+
         <img
-          src="/images/hero/hero-main.png"
-          alt="Growingen digital services hero"
-          className="relative z-10 h-[300px] w-auto max-w-[105%] object-contain drop-shadow-[0_22px_38px_rgba(15,23,42,0.12)] sm:h-[350px] lg:h-[382px] lg:max-w-none"
+          src="/images/hero/girl.webp"
+          alt="Growingen hero illustration"
+          className="pointer-events-none absolute z-20 h-full w-auto max-w-none object-contain scale-[0.95] sm:scale-[1.0] lg:scale-[1.05]"
         />
 
-        <div className="absolute left-[56.6%] top-[50.5%] z-20 w-[20%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[0.3rem] border border-[#1b1b1b] bg-black shadow-[0_8px_18px_rgba(15,23,42,0.24)] lg:w-[17.5%]">
-          <img
-            src="/images/hero/hero-secondary.png"
-            alt="Laptop screen analytics visual"
-            className="h-auto w-full object-cover"
-          />
-        </div>
+        {/* Dashboard cards scale with viewport width so the composition stays balanced from phones to large desktops. */}
+        {heroDashboards.map((dashboard) => (
+          <div key={dashboard.src} className={dashboard.className}>
+            <img
+              src={dashboard.src}
+              alt=""
+              aria-hidden="true"
+              className={`${dashboard.floatClassName} dashboard-hover block w-full`}
+            />
+          </div>
+        ))}
       </div>
     </div>
   )
@@ -24,48 +66,48 @@ function HeroVisual() {
 
 export default function HeroSection() {
   return (
-    <section id="home" className="relative overflow-hidden bg-transparent">
-      <div className="pointer-events-none absolute left-[22%] top-[56%] h-[240px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,171,144,0.24)_0%,rgba(255,171,144,0.1)_36%,rgba(255,171,144,0)_74%)] blur-3xl" />
+    <section id="home" className="hero-section relative overflow-hidden bg-transparent">
+      <div className="hero-section__ambient hero-section__ambient--left" aria-hidden="true" />
+      <div className="hero-section__ambient hero-section__ambient--right" aria-hidden="true" />
 
-      <div className="relative mx-auto max-w-[1360px] px-4 pb-10 pt-10 sm:px-6 lg:px-10 xl:px-12 lg:pb-12">
-        <div className="grid items-center gap-10 lg:min-h-[calc(100vh-185px)] lg:grid-cols-[470px_minmax(400px,1fr)] lg:gap-12 lg:pt-0">
-          <div className="max-w-[470px] pt-2 lg:pt-0">
-            <p className="text-[11px] font-medium uppercase tracking-[0.05em] text-[#2f2f2f] sm:text-[12px]">
+      <div className="relative mx-auto max-w-[1360px] px-4 pb-12 pt-8 sm:px-6 sm:pb-14 sm:pt-10 lg:px-10 lg:pb-16 lg:pt-12 xl:px-12">
+        <div className="grid items-center gap-10 lg:min-h-[calc(100vh-140px)] lg:grid-cols-[minmax(0,560px)_minmax(360px,1fr)] lg:gap-8 xl:grid-cols-[minmax(0,600px)_minmax(420px,1fr)]">
+          {/* Copy stays centered on compact screens, then locks to the left once the two-column layout has enough breathing room. */}
+          <div className="relative z-40 mx-auto flex w-full max-w-[580px] flex-col items-center pt-2 text-center font-sans text-black lg:mx-0 lg:max-w-[600px] lg:items-start lg:pt-0 lg:text-left">
+            <p className="hero-copy-reveal hero-copy-reveal--1 text-[clamp(11px,2.2vw,16px)] font-medium uppercase tracking-[0.14em] text-gray-800 sm:tracking-[0.16em]">
               Welcome to Growingen Solutions
             </p>
 
-            <h1 className="mt-3 w-full text-[2.55rem] font-semibold leading-[1.08] tracking-[-0.055em] text-[#101010] sm:text-[3.15rem] lg:text-[60px]">
+            <h1 className="hero-copy-reveal hero-copy-reveal--2 mt-4 w-full max-w-[15ch] text-[clamp(2.15rem,8vw,3.6rem)] font-bold leading-[1.02] tracking-[-0.05em] text-black sm:max-w-[16ch] lg:max-w-[16.5ch]">
               <span className="block whitespace-nowrap">Elevate Your Digital</span>
-              <span className="block whitespace-nowrap">
+              <span className="mt-2 block whitespace-nowrap sm:mt-1">
                 Footprint with{' '}
-                <span className="hero-highlight">
+                <span className="hero-highlight relative inline-block pb-1 moving-gradient">
                   Growingen
-                  <span aria-hidden="true" className="hero-highlight__line" />
+                  <span
+                    aria-hidden="true"
+                    className="hero-highlight__line absolute -bottom-1 left-0 h-1.5 w-full rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 opacity-80"
+                  />
                 </span>
               </span>
             </h1>
 
-            <p className="mt-4 max-w-[49ch] text-[13px] font-normal leading-[1.7] tracking-normal text-[#4f4f4f] sm:text-[14px]">
-              Powering brands through strategic SEO-driven digital marketing,
-              bespoke web development, and innovative application design.
+            <p className="hero-copy-reveal hero-copy-reveal--3 mx-auto mt-5 max-w-[34ch] text-[clamp(14px,2.5vw,17px)] font-medium leading-[1.68] tracking-normal text-gray-800 sm:max-w-[46ch] lg:mx-0 lg:max-w-[58ch]">
+              <span className="block sm:inline">
+              At Growingen Solutions, we help brands grow through SEO-driven marketing, paid ads, lead generation, custom websites, and innovative app solutions. 
+              </span>
             </p>
 
-            <div className="mt-5 flex flex-wrap items-center gap-4">
-              <button
-                type="button"
-                className="inline-flex items-center gap-3 rounded-full bg-[linear-gradient(90deg,#3b2fd3_0%,#2d5cf6_58%,#18c5ac_100%)] px-6 py-2.5 text-[13px] font-medium text-white shadow-[0_18px_35px_rgba(38,74,177,0.18)] transition-transform duration-200 hover:-translate-y-0.5"
-              >
-                <span>Start the Journey</span>
-                <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/18">
-                  <ArrowRight size={14} />
-                </span>
-              </button>
+            {/* The CTA keeps a centered position on touch devices, then aligns with the copy column on larger layouts. */}
+            <div className="hero-copy-reveal hero-copy-reveal--4 mt-8 flex w-full flex-wrap items-center justify-center gap-2 lg:justify-start text-[17px] sm:text-[18px]">
+              <Link to="/contact" className="inline-flex">
+                <Button size="hero">Start the Journey</Button>
+              </Link>
             </div>
           </div>
 
           <HeroVisual />
         </div>
-
       </div>
     </section>
   )
