@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
 
+const businessWhatsappLink = 'https://wa.me/918625912593'
+
 const planCards = [
   {
     id: 1,
@@ -106,13 +108,13 @@ function PlanCard({ card, onAdvance, isActive }) {
       }}
       className={[
         'group relative min-w-0 flex-none snap-center sm:snap-start cursor-pointer outline-none',
-        'w-full sm:w-[min(58vw,455px)] lg:w-[calc(50%+52px)]', // Adjusted width to strictly full-width on mobile
+        'w-full sm:w-[min(56vw,435px)] lg:w-[calc(50%+38px)]',
         'mr-0 sm:-mr-6 lg:-mr-[58px]', // Reset negative margins on small screens
         'text-[#121212]',
         'transition-transform duration-300 ease-out hover:-translate-y-1 focus-visible:-translate-y-1',
       ].join(' ')}
     >
-      <div className="relative h-[518px] w-full drop-shadow-[0_16px_28px_rgba(15,23,42,0.14)] sm:h-[628px] lg:h-[668px]">
+      <div className="relative h-[500px] w-full drop-shadow-[0_16px_28px_rgba(15,23,42,0.14)] sm:h-[608px] lg:h-[644px]">
         <img
           src="/icons/Subtract-outline.svg"
           alt=""
@@ -188,28 +190,21 @@ function PlanCard({ card, onAdvance, isActive }) {
             >
               {card.startingLabel}
             </p>
-            <p
-              className={[
-                'mt-1 text-[13px] font-medium tracking-[-0.03em] transition-colors duration-300 ease-out line-through sm:mt-2 sm:text-[15px]',
-                isActive ? 'text-white/65 sm:text-[#121212]/70 sm:group-hover:text-white/65' : 'text-[#121212]/70 group-hover:text-white/65',
-              ].join(' ')}
-            >
-              {'\u20B935000'}
-            </p>
-            {/* Added explicit text colors and group-hover states for the starting value */}
             <p className="mt-1 text-[34px] font-semibold leading-[0.94] tracking-[-0.05em] transition-colors duration-300 ease-out sm:text-[42px] lg:text-[46px]">
               {card.startingValue}
             </p>
 
-            <button
-              type="button"
+            <a
+              href={businessWhatsappLink}
+              target="_blank"
+              rel="noreferrer"
               onClick={(event) => {
                 event.stopPropagation()
               }}
-              className="mt-6 inline-flex h-[40px] w-[96%] items-center justify-center self-start rounded-full bg-[linear-gradient(180deg,#ff6a33_0%,#F45328_100%)] px-8 text-[13px] font-medium tracking-[-0.01em] text-white shadow-[0_12px_24px_rgba(244,83,40,0.24),inset_0_1px_0_rgba(255,255,255,0.18)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:brightness-[1.03] hover:shadow-[0_16px_30px_rgba(244,83,40,0.3)] active:translate-y-0 sm:mt-7 sm:h-[45px] sm:w-[96%] sm:text-[14px]"
+              className="mt-6 inline-flex h-[40px] w-[96%] items-center justify-center self-start rounded-full bg-[linear-gradient(180deg,#ff6a33_0%,#F45328_100%)] px-8 text-[13px] font-medium tracking-[-0.01em] text-white shadow-[0_12px_24px_rgba(244,83,40,0.24),inset_0_1px_0_rgba(255,255,255,0.18)] transition-all duration-300 ease-out sm:mt-7 sm:h-[45px] sm:w-[96%] sm:text-[14px]"
             >
               Get Started
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -281,54 +276,55 @@ export default function CTASection() {
   }
 
   return (
-    <section className="relative overflow-hidden bg-transparent px-4 pb-16 pt-8 sm:px-6 sm:pb-20 lg:px-8">
+    <section className="relative overflow-hidden bg-transparent px-4 pb-16 pt-8 sm:px-6 sm:pb-20 lg:px-0">
       <div className="pointer-events-none absolute left-[10%] top-[30%] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(255,151,113,0.24)_0%,rgba(255,151,113,0.09)_42%,rgba(255,151,113,0)_74%)] blur-3xl" />
       <div className="pointer-events-none absolute right-[8%] bottom-[8%] h-[240px] w-[240px] rounded-full bg-[radial-gradient(circle,rgba(104,141,255,0.22)_0%,rgba(104,141,255,0.08)_42%,rgba(104,141,255,0)_74%)] blur-3xl" />
 
-      <div className="relative mx-auto max-w-[1120px]">
-        <div className="mx-auto max-w-[520px] text-center">
-          <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.05em] text-[#111827] sm:text-[40px] lg:text-[50px]">
-            <span className="block sm:whitespace-nowrap">
-              Select A Suitable Plan
-            </span>
-            <span className="block sm:whitespace-nowrap">
-              For Your Next{' '}
-              <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]">
-                Projects
-              </CurvedUnderlineText>
-            </span>
-          </h2>
-        </div>
-
-        <div className="relative mt-6 sm:mt-8 lg:mt-10">
-          <div
-            ref={scrollRef}
-            // Added `gap-4 sm:gap-0` to push the 2nd card out of view specifically on mobile
-            className="flex snap-x snap-mandatory gap-4 sm:gap-0 overflow-x-auto px-0.5 pb-4 pt-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          >
-            {planCards.map((card, index) => (
-              <PlanCard
-                key={card.id}
-                card={card}
-                onAdvance={() => goToNextCard(index)}
-                isActive={activeIndex === index}
-              />
-            ))}
+      <div className="relative mx-auto max-w-[1360px] lg:pt-12 lg:pr-12 lg:pb-12 lg:pl-16">
+        <div className="mx-auto max-w-[1120px]">
+          <div className="mx-auto max-w-[520px] text-center">
+            <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.05em] text-[#111827] sm:text-[40px] lg:text-[50px]">
+              <span className="block sm:whitespace-nowrap">
+                Select A Suitable Plan
+              </span>
+              <span className="block sm:whitespace-nowrap">
+                For Your Next{' '}
+                <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]">
+                  Projects
+                </CurvedUnderlineText>
+              </span>
+            </h2>
           </div>
 
-          <div className="mt-3 flex items-center justify-center gap-2">
-            {planCards.map((card, index) => (
-              <button
-                key={card.id}
-                type="button"
-                aria-label={`Scroll to ${card.name}`}
-                onClick={() => scrollToCard(index)}
-                className={[
-                  'featured-indicator',
-                  activeIndex === index ? 'featured-indicator-active' : '',
-                ].join(' ')}
-              />
-            ))}
+          <div className="relative mt-6 sm:mt-8 lg:mt-10">
+            <div
+              ref={scrollRef}
+              className="flex snap-x snap-mandatory gap-4 sm:gap-0 overflow-x-auto px-0.5 pb-4 pt-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {planCards.map((card, index) => (
+                <PlanCard
+                  key={card.id}
+                  card={card}
+                  onAdvance={() => goToNextCard(index)}
+                  isActive={activeIndex === index}
+                />
+              ))}
+            </div>
+
+            <div className="mt-3 flex items-center justify-center gap-2">
+              {planCards.map((card, index) => (
+                <button
+                  key={card.id}
+                  type="button"
+                  aria-label={`Scroll to ${card.name}`}
+                  onClick={() => scrollToCard(index)}
+                  className={[
+                    'featured-indicator',
+                    activeIndex === index ? 'featured-indicator-active' : '',
+                  ].join(' ')}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

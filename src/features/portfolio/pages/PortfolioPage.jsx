@@ -2,7 +2,6 @@ import CounterStatsBanner from '../../../components/common/CounterStatsBanner'
 import PortfolioCarousel from '../components/PortfolioCarousel'
 import PortfolioCTASection from '../components/PortfolioCTASection'
 import PortfolioHero from '../components/PortfolioHero'
-import PortfolioLeaderSection from '../components/PortfolioLeaderSection'
 import PortfolioProblemsSection from '../components/PortfolioProblemsSection'
 import PortfolioShowcase from '../components/PortfolioShowcase'
 import PortfolioTestimonialSection from '../components/PortfolioTestimonialSection'
@@ -19,7 +18,6 @@ export function PortfolioPage() {
     <main className="bg-transparent text-[#111827]">
       <PortfolioHero />
       <CounterStatsBanner items={portfolioStats} className="mt-2 w-full" />
-      <PortfolioLeaderSection />
       <PortfolioProblemsSection/>
       <PortfolioCarousel/>
       <PortfolioShowcase/>

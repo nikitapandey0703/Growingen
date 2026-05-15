@@ -17,7 +17,7 @@ export const HomePage = () => {
           <PortfolioScroll/>
            <CTASection/>
            <GrowthStoriesSection/>
-           <TopRatedSection/>          
+           {/* <TopRatedSection/>           */}
            <PromoBannerSection/>
            
            

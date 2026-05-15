@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Button from '../../../components/common/Button'
+import SectionWrapper from '../../../components/common/SectionWrapper'
 
 function AboutHeroVisual() {
   return (
@@ -25,13 +27,10 @@ function AboutHeroVisual() {
 export default function AboutHeroSection() {
   return (
     <section className="relative overflow-hidden bg-transparent">
-      <div className="relative mx-auto max-w-[1360px] px-4 pb-12 pt-8 sm:px-6 sm:pt-10 lg:px-10 lg:pb-16 xl:px-12">
+      <SectionWrapper className="relative mx-auto max-w-[1360px] pt-8 sm:pt-10 xl:px-12">
         <div className="grid items-center gap-12 lg:min-h-[calc(100vh-140px)] lg:grid-cols-[520px_minmax(360px,1fr)] lg:gap-8 lg:pt-0">
           <div className="relative z-40 mx-auto max-w-[520px] pt-2 text-center font-sans text-black lg:mx-0 lg:pt-0 lg:text-left">
-            <p className="hero-copy-reveal hero-copy-reveal--1 text-[clamp(12px,1.26vw,17px)] font-medium tracking-[0.02em] text-gray-700">
-              Home / About / Growingen Solutions
-            </p>
-
+           
             <h1 className="mt-4 w-full text-[30px] font-bold leading-[1.04] tracking-[-0.05em] text-black sm:text-[36px] lg:text-[54px]">
               <span className="block whitespace-nowrap">From Experience to Execution</span>
               <span className="mt-1 block whitespace-nowrap">
@@ -47,19 +46,22 @@ export default function AboutHeroSection() {
             </h1>
 
             <p className="hero-copy-reveal hero-copy-reveal--3 mx-auto mt-5 max-w-[45ch] text-[clamp(14px,1.26vw,17px)] font-medium leading-[1.75] tracking-normal text-gray-800 lg:mx-0">
-              We don&apos;t just deliver services. We build growth systems where strategy, design, and technology work as one.
+              Years of hands-on experience across design, development, and digital marketing shaped a deep understanding of what truly works in business.
+
             </p>
 
             <div className="hero-copy-reveal hero-copy-reveal--4 mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
-              <Button size="hero">
-                Let&apos;s Build Together
-              </Button>
+              <Link to="/contact" className="inline-flex">
+                <Button size="hero">
+                  Let&apos;s Build Together
+                </Button>
+              </Link>
             </div>
           </div>
 
           <AboutHeroVisual />
         </div>
-      </div>
+      </SectionWrapper>
     </section>
   )
 }

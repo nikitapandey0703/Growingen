@@ -1,5 +1,6 @@
 import React from 'react'
 import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
+import SectionWrapper from '../../../components/common/SectionWrapper'
 
 const deliverSteps = [
   {
@@ -43,11 +44,13 @@ const deliverSteps = [
 const cardClassName =
   'group relative flex w-full flex-col justify-between overflow-hidden rounded-[24px] border border-white/60 bg-white p-6 shadow-[0_12px_40px_rgba(0,0,0,0.03)] transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)] sm:px-8 sm:pt-8 sm:pb-5 lg:h-[325px]'
 
+// UPDATED: 20px on mobile, 22px on tablet (sm), and 24px on laptop (lg)
 const cardTitleClassName =
-  'mb-2 text-[20px] font-bold leading-tight tracking-tight text-[#111827] lg:text-[22px]'
+  'mb-2 text-[20px] sm:text-[22px] lg:text-[24px] font-bold leading-tight tracking-tight text-[#111827]'
 
+// UPDATED: 14px on mobile, 15px on tablet and laptop (sm/lg)
 const cardDescriptionClassName =
-  'text-[14px] font-normal leading-[1.5] text-[#5b6472] lg:max-w-[32ch]'
+  'text-[14px] sm:text-[15px] font-normal leading-[1.5] text-[#5b6472] lg:max-w-[32ch]'
 
 const cardImageWrapperClassName =
   'relative mt-4 h-[150px] overflow-hidden rounded-[14px] bg-[#f8fafc] lg:h-[180px]'
@@ -55,7 +58,7 @@ const cardImageWrapperClassName =
 const cardImageClassName =
   'h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.08]'
 
-const sectionContainerClassName = 'relative mx-auto max-w-[1360px] px-6 lg:px-12'
+const sectionContainerClassName = 'relative mx-auto max-w-[1360px]'
 
 const sectionHeadingClassName =
   'mt-4 text-[32px] font-bold leading-[1.08] tracking-[-0.04em] text-black sm:text-[40px] lg:text-[50px]'
@@ -83,7 +86,7 @@ function DeliverCardAbout({ step }) {
 
 export default function WhatWeDeliverAbout() {
   return (
-    <section className="relative bg-transparent py-16 sm:py-20 lg:py-28">
+    <SectionWrapper as="section" className="relative bg-transparent pt-12 sm:pt-14 lg:pt-16">
       <div className={sectionContainerClassName}>
         <div className="mx-auto mb-12 max-w-[760px] text-center sm:mb-16">
           <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-[#7a7f8e]">
@@ -103,6 +106,6 @@ export default function WhatWeDeliverAbout() {
           ))}
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   )
 }

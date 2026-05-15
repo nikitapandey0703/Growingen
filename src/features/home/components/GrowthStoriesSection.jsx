@@ -7,30 +7,30 @@ import ScrollStack, { ScrollStackItem } from '../../../components/common/ScrollS
 const solutionCards = [
   {
     id: 1,
-    title: 'Growingen Solutions',
-    subtitle: 'Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit',
+    title: 'The Power of Social SEO',
+    subtitle: 'Stop Guessing, Start Answering',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'Why traditional hashtags like #MarketingStrategy are becoming less effective. People are now searching for direct solutions to their specific problems rather than browsing broad categories. By using "Social SEO"—writing captions that match the exact questions people ask—you can ensure your content appears right when they need it most.',
     buttonLabel: 'Start the Journey',
     previewImageSrc: '/images/featured/card-1.png',
     videoSrc: '/icons/growingen.mp4',
   },
   {
     id: 2,
-    title: 'Growingen Solutions',
-    subtitle: 'Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit',
+    title: 'Why Saves Matter More Than Likes',
+    subtitle: 'Prioritising "Saves" Over "Likes"',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'While a "like" is a brief nod of approval, a "save" represents a long-term commitment to a piece of content. To drive real impact, focus on creating a "reference library" of blueprints, checklists, and guides that offer lasting utility. Content reaches its highest value when it is useful enough to be revisited later. By prioritising practical resources over fleeting interactions, a feed becomes an essential tool for its audience.',
     buttonLabel: 'Start the Journey',
     previewImageSrc: '/images/featured/card-2.png',
     videoSrc: '/icons/growingen.mp4',
   },
   {
     id: 3,
-    title: 'Growingen Solutions',
-    subtitle: 'Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit',
+    title: 'The Power of the Human Glitch',
+    subtitle: 'Authenticity Over Perfection',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'In an era of highly polished AI content, perfection can often feel robotic or untrustworthy. Real connection is built through "human glitches"—the raw, unedited moments like a simple stutter or a coffee stain that show personality. Keeping audio and visuals authentic makes a brand feel more relatable and grounded. The goal is to move away from cold logos and lean into the messy, genuine traits that make people want to connect.',
     buttonLabel: 'Start the Journey',
     previewImageSrc: '/images/featured/card-3.png',
     videoSrc: '/icons/growingen.mp4',
@@ -67,14 +67,15 @@ function SolutionPreviewCard({ card }) {
       <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_clamp(220px,28vw,270px)] md:items-center lg:gap-10">
         {/* LEFT CONTENT */}
         <div className="growth-stories-card-copy flex w-full flex-col items-start gap-3 px-1 pt-[2px] sm:px-3">
-          <h2 className="w-full font-[var(--font-heading)] text-[36px] font-semibold leading-[1.03] tracking-[-0.04em] text-black sm:text-[50px] capitalize">
+          <h2 className="w-full font-[var(--font-heading)] text-[20px] font-semibold leading-[1.03] tracking-[-0.04em] text-black sm:text-[44px] lg:text-[32px] capitalize">
             {card.title.split(' ').slice(0, -1).join(' ')} <br />
             {card.title.split(' ').slice(-1)}
           </h2>
-          <p className="max-w-[26ch] text-[18px] font-semibold leading-[1.28] text-black sm:text-[20px]">
+          <p className="max-w-[40ch] text-[18px] font-semibold leading-[1.28] text-black sm:text-[20px]">
             {card.subtitle}
           </p>
-          <p className="max-w-[40ch] text-[14px] font-medium leading-[1.55] text-black">
+          {/* Expanded max-w from 40ch to 54ch here to accommodate the new longer descriptions cleanly */}
+          <p className="max-w-[54ch] text-[14px] font-medium leading-[1.55] text-black">
             {card.description}
           </p>
           <Button
@@ -129,43 +130,45 @@ function SolutionPreviewCard({ card }) {
 export default function GrowthStoriesSection() {
   return (
     // 🔥 Standardized Wrapper: Uniform padding applied here
-    <section className="relative overflow-visible bg-transparent px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+    <section className="relative overflow-visible bg-transparent px-4 py-12 sm:px-6 sm:py-16 lg:px-0 lg:py-0">
 
       {/* BACKGROUND GLOW */}
       <div className="pointer-events-none absolute left-[16%] top-[18%] h-[200px] w-[200px] rounded-full bg-[radial-gradient(circle,rgba(255,171,144,0.18)_0%,transparent_70%)] blur-3xl" />
       <div className="pointer-events-none absolute right-[10%] top-[10%] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(102,145,255,0.18)_0%,transparent_70%)] blur-3xl" />
 
       {/* 🔥 Removed extra horizontal paddings (px) from here so it relies on the section wrapper */}
-      <div className="relative mx-auto max-w-[1120px]">
-        {/* SECTION HEADING */}
-        <div className="mx-auto mb-2 max-w-[620px] text-center sm:mb-3">
-          <h2 className="text-[32px] sm:text-[40px] lg:text-[50px] font-semibold leading-[1.08] tracking-[-0.05em] text-[#111827]">
-            Smart Solutions For
-            <br />
-            Growing{' '}
-            <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]">
-              Brands
-            </CurvedUnderlineText>
-          </h2>
-        </div>
-      </div>
+      <div className="relative mx-auto max-w-[1360px] lg:mx-12 lg:mb-16 xl:mx-auto">
+        <div className="relative mx-auto max-w-[1120px]">
+          {/* SECTION HEADING */}
+          <div className="mx-auto mb-2 max-w-[620px] text-center sm:mb-3">
+            <h2 className="text-[32px] sm:text-[40px] lg:text-[50px] font-semibold leading-[1.08] tracking-[-0.05em] text-[#111827]">
+              Smart Solutions For
+              <br />
+              Growing{' '}
+              <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]">
+                Brands
+              </CurvedUnderlineText>
+            </h2>
+          </div>
 
-      {/* STACK */}
-      <div className="relative mx-auto mt-5 max-w-[1030px] sm:mt-6 lg:mt-8">
-        <ScrollStack
-          useWindowScroll
-          itemDistance={90}
-          itemScale={0.04}
-          itemStackDistance={28}
-          stackPosition="20%"
-          scaleEndPosition="12%"
-          baseScale={0.94}
-          className="mx-auto max-w-[1030px]"
-        >
-          {solutionCards.map((card) => (
-            <SolutionPreviewCard key={card.id} card={card} />
-          ))}
-        </ScrollStack>
+          {/* STACK */}
+          <div className="relative mx-auto mt-5 max-w-[1030px] sm:mt-6 lg:mt-8">
+            <ScrollStack
+              useWindowScroll
+              itemDistance={90}
+              itemScale={0.04}
+              itemStackDistance={28}
+              stackPosition="20%"
+              scaleEndPosition="12%"
+              baseScale={0.94}
+              className="mx-auto max-w-[1030px]"
+            >
+              {solutionCards.map((card) => (
+                <SolutionPreviewCard key={card.id} card={card} />
+              ))}
+            </ScrollStack>
+          </div>
+        </div>
       </div>
     </section>
   )

@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import SectionWrapper from "../../../components/common/SectionWrapper";
 
 const defaultTitle = (
   <>
@@ -14,9 +16,10 @@ export default function PortfolioCTASection({
   secondaryButtonLabel = "View All Project",
   showSecondaryButton = true,
   primaryButtonClassName = "",
+  primaryButtonTo,
 }) {
   return (
-    <section className="relative bg-transparent pb-14 pt-0">
+    <SectionWrapper as="section" className="relative bg-transparent pt-0">
       <style>{`
         @keyframes portfolioCtaGlowDrift {
           0% {
@@ -45,7 +48,7 @@ export default function PortfolioCTASection({
         }
       `}</style>
 
-      <div className="mx-auto max-w-[1120px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1120px]">
         <div className="relative overflow-hidden rounded-[28px]">
           <video
             className="absolute inset-0 h-full w-full object-cover"
@@ -83,16 +86,30 @@ export default function PortfolioCTASection({
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <button
-                className={[
-                  "min-w-[158px] rounded-full bg-[#F45328] px-7 py-3 text-center text-[13px] font-medium text-white shadow-[0_12px_24px_rgba(244,83,40,0.22)] transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_16px_28px_rgba(244,83,40,0.3)] sm:min-w-[176px]",
-                  primaryButtonClassName,
-                ]
-                  .filter(Boolean)
-                  .join(" ")}
-              >
-                {primaryButtonLabel}
-              </button>
+              {primaryButtonTo ? (
+                <Link
+                  to={primaryButtonTo}
+                  className={[
+                    "min-w-[158px] rounded-full bg-[#F45328] px-7 py-3 text-center text-[13px] font-medium text-white shadow-[0_12px_24px_rgba(244,83,40,0.22)] transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_16px_28px_rgba(244,83,40,0.3)] sm:min-w-[176px]",
+                    primaryButtonClassName,
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                >
+                  {primaryButtonLabel}
+                </Link>
+              ) : (
+                <button
+                  className={[
+                    "min-w-[158px] rounded-full bg-[#F45328] px-7 py-3 text-center text-[13px] font-medium text-white shadow-[0_12px_24px_rgba(244,83,40,0.22)] transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_16px_28px_rgba(244,83,40,0.3)] sm:min-w-[176px]",
+                    primaryButtonClassName,
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                >
+                  {primaryButtonLabel}
+                </button>
+              )}
 
               {showSecondaryButton ? (
                 <button className="min-w-[158px] rounded-full border border-white/35 bg-black/10 px-7 py-3 text-center text-[13px] font-medium text-white backdrop-blur-[2px] transition-all duration-300 hover:scale-[1.04] hover:bg-white/8 sm:min-w-[176px]">
@@ -103,6 +120,6 @@ export default function PortfolioCTASection({
           </div>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

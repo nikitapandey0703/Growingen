@@ -1,3 +1,4 @@
+// Navbar section
 import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
@@ -10,6 +11,228 @@ const navigationItems = [
   { label: 'Contact Us', href: '/contact' },
 ]
 
+const headerStyles = `
+  .header-cta {
+    --header-cta-bg: #f97316;
+    --header-cta-bg-hover: #fb923c;
+    --header-cta-outline: rgba(249, 115, 22, 0.24);
+    --header-cta-shadow: rgba(0, 0, 0, 0.25);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .header-cta::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: conic-gradient(from 0deg, #f59e0b, #fb923c, #f45328, #2dd4bf, #6366f1, #f59e0b);
+    animation: header-rotate-border 4s linear infinite;
+    z-index: -2;
+  }
+
+  .header-cta::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: inherit;
+    background: white;
+    z-index: -1;
+    transition:
+      inset 0.5s ease,
+      background 0.5s ease;
+  }
+
+  .header-cta:hover {
+    color: #ffffff;
+    outline: 0.1em solid transparent;
+    outline-offset: 0.2em;
+    box-shadow:
+      0 0 1em 0 var(--header-cta-bg),
+      0 16px 34px rgba(249, 115, 22, 0.28);
+    animation:
+      header-cta-ripple 1s linear infinite,
+      header-cta-colorize 1s infinite;
+    transition: 0.5s;
+  }
+
+  .header-cta:hover::before {
+    opacity: 0;
+    filter: blur(0);
+    animation-play-state: paused;
+  }
+
+  .header-cta:hover::after {
+    inset: 0;
+    background: var(--header-cta-bg);
+  }
+
+  .header-cta:active {
+    transform: scale(0.95);
+  }
+
+  .header-cta span {
+    transition: 0.5s;
+  }
+
+  .header-cta:hover span {
+    text-shadow: 5px 5px 5px var(--header-cta-shadow);
+  }
+
+  .header-cta:active span {
+    text-shadow: none;
+  }
+
+  .header-cta img {
+    transition: 0.5s;
+  }
+
+  .header-cta:hover img {
+    filter: brightness(0) invert(1) drop-shadow(5px 5px 2.5px var(--header-cta-shadow));
+  }
+
+  .header-cta:active img {
+    filter: none;
+  }
+
+  @keyframes header-rotate-border {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes header-cta-colorize {
+    0% {
+      background: var(--header-cta-bg);
+    }
+    50% {
+      background: var(--header-cta-bg-hover);
+    }
+    100% {
+      background: var(--header-cta-bg);
+    }
+  }
+
+  @keyframes header-cta-ripple {
+    0% {
+      outline: 0em solid transparent;
+      outline-offset: -0.1em;
+    }
+    50% {
+      outline: 0.2em solid var(--header-cta-outline);
+      outline-offset: 0.2em;
+    }
+    100% {
+      outline: 0.4em solid transparent;
+      outline-offset: 0.4em;
+    }
+  }
+
+  .nav-link {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nav-link__label,
+  .nav-link__hover-line,
+  .nav-link__active-line,
+  .nav-link__glow {
+    position: absolute;
+  }
+
+  .nav-link__label {
+    position: relative;
+    display: inline-block;
+    transition:
+      transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+      color 220ms ease;
+  }
+
+  .nav-link__hover-line,
+  .nav-link__active-line,
+  .nav-link__glow {
+    left: 1rem;
+    right: 1rem;
+    bottom: 0.2rem;
+    border-radius: 9999px;
+    pointer-events: none;
+  }
+
+  .nav-link__hover-line {
+    height: 2px;
+    background: var(--color-nav-highlight);
+    transform: scaleX(0);
+    transform-origin: 0% 50%;
+    transition: transform 340ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .nav-link__active-line {
+    height: 2.5px;
+    background: linear-gradient(90deg, rgba(244, 83, 40, 0.35) 0%, var(--color-nav-highlight) 22%, var(--color-nav-highlight) 78%, rgba(244, 83, 40, 0.35) 100%);
+    transform: scaleX(0);
+    transform-origin: 50% 50%;
+    transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nav-link__glow {
+    height: 8px;
+    bottom: -0.05rem;
+    background: radial-gradient(circle at center, rgba(244, 83, 40, 0.24) 0%, rgba(244, 83, 40, 0.08) 52%, rgba(244, 83, 40, 0) 100%);
+    opacity: 0;
+    transform: translateY(5px) scaleX(0.45);
+    transition:
+      opacity 260ms ease,
+      transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nav-link:hover .nav-link__label,
+  .nav-link:focus-visible .nav-link__label {
+    transform: translateY(-1px);
+  }
+
+  .nav-link:hover .nav-link__hover-line,
+  .nav-link:focus-visible .nav-link__hover-line {
+    transform: scaleX(1);
+  }
+
+  .nav-link:hover .nav-link__glow,
+  .nav-link:focus-visible .nav-link__glow {
+    opacity: 1;
+    transform: translateY(0) scaleX(1);
+  }
+
+  .nav-link-active {
+    color: var(--color-nav-highlight);
+  }
+
+  .nav-link-active .nav-link__label {
+    transform: translateY(-1px);
+  }
+
+  .nav-link-active .nav-link__hover-line {
+    transform: scaleX(0);
+  }
+
+  .nav-link-active .nav-link__active-line {
+    transform: scaleX(1);
+  }
+
+  .nav-link-active .nav-link__glow {
+    opacity: 1;
+    transform: translateY(0) scaleX(1);
+  }
+`
+
 function LogoBlock({ logoSrc }) {
   return (
     <Link
@@ -17,15 +240,16 @@ function LogoBlock({ logoSrc }) {
       className="flex shrink-0 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] rounded-xl"
       aria-label="GrowGen Solutions"
     >
+      {/* MANUAL KEEP: logo sizing is tuned against the nav and CTA lockup. */}
       {logoSrc ? (
         <img
           src={logoSrc}
           alt="GrowGen Solutions"
-          className="h-10 w-auto object-contain sm:h-12 lg:h-14"
+          className="h-10 w-auto object-contain sm:h-12 lg:h-14 2xl:h-[72px]"
         />
       ) : (
-        <div className="flex h-10 w-[140px] items-center justify-center rounded-xl border border-border bg-white px-3 sm:h-12 sm:w-[156px] lg:h-14 lg:w-[172px]">
-          <span className="text-xs font-semibold tracking-[0.16em] text-text-muted uppercase sm:text-sm">
+        <div className="flex h-10 w-[140px] items-center justify-center rounded-xl border border-border bg-white px-3 sm:h-12 sm:w-[156px] lg:h-14 lg:w-[172px] 2xl:h-[72px] 2xl:w-[208px]">
+          <span className="text-[12px] font-semibold tracking-[0.16em] text-text-muted uppercase md:text-[12px] lg:text-[13px] xl:text-[13px] 2xl:text-[16px]">
             Logo Placeholder
           </span>
         </div>
@@ -40,6 +264,7 @@ function NavLinks({ onNavigate, mobile = false }) {
       className={
         mobile
           ? 'flex flex-col gap-2'
+          // MANUAL KEEP: desktop nav sizing is intentionally custom to balance the enlarged CTA/logo at 2xl.
           : 'hidden items-center justify-center gap-1 xl:flex'
       }
       aria-label="Primary"
@@ -54,8 +279,8 @@ function NavLinks({ onNavigate, mobile = false }) {
           className={({ isActive }) =>
             [
               mobile
-                ? 'w-full rounded-full px-4 py-3 text-left text-sm font-medium transition-colors duration-200 sm:text-[15px]'
-                : 'nav-link px-3 py-2 text-sm font-medium transition-colors duration-300 xl:px-4 xl:text-[15px]',
+                ? 'w-full rounded-full px-4 py-3 text-left text-[13px] font-medium transition-colors duration-200 md:text-[14px] lg:text-[15px]'
+                : 'nav-link px-3 py-2 text-[13px] font-medium transition-colors duration-300 md:text-[14px] lg:text-[15px] xl:px-4 xl:text-[15px] 2xl:text-[17px]',
               isActive
                 ? mobile
                   ? 'bg-[#2B1CC1]/10 text-[#2B1CC1]'
@@ -83,33 +308,38 @@ function NavLinks({ onNavigate, mobile = false }) {
 
 export default function Header({ logoSrc }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  // The header uses `isHeaderVisible` consistently; there is no `setIsHeadingVisible`
+  // setter in this file, so any IDE warning under that name is stale/incorrect.
   const [isHeaderVisible, setIsHeaderVisible] = useState(true)
   const [isScrolled, setIsScrolled] = useState(false)
-  
+
   const startProjectIconSrc = '/icons/start-project.svg'
   const lastScrollYRef = useRef(0)
 
   const closeMenu = () => setIsMenuOpen(false)
 
-  // 2. Fixed Production Scroll Logic
+  // Keep the production header behavior stable:
+  // - transparent at the top
+  // - hide on downward scroll
+  // - reveal on upward scroll or while the mobile menu is open
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
 
-      // 1. Determine Glassy State
+      // Switch to the glass treatment once the page has moved past the hero edge.
       setIsScrolled(currentScrollY > 20)
 
-      // Always show header at the very top or if the menu is open
+      // Always show the header near the top of the page or while the menu is open.
       if (currentScrollY <= 50 || isMenuOpen) {
         setIsHeaderVisible(true)
       } else {
         const scrollDelta = currentScrollY - lastScrollYRef.current
-        
-        // Hide when scrolling down past a threshold (to avoid micro-jitters)
+
+        // Ignore micro-scroll jitter so the header does not flicker.
         if (scrollDelta > 10) {
           setIsHeaderVisible(false)
-        } 
-        // Reveal when scrolling up past a threshold
+        }
+        // Reveal the header once the user intentionally scrolls upward.
         else if (scrollDelta < -10) {
           setIsHeaderVisible(true)
         }
@@ -118,54 +348,54 @@ export default function Header({ logoSrc }) {
       lastScrollYRef.current = currentScrollY
     }
 
-    // Set initial configuration on mount
+    // Sync the initial visual state on mount.
     handleScroll()
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [isMenuOpen]) // Added isMenuOpen dependency so it behaves perfectly on mobile
-
-  useEffect(() => {
-    if (isMenuOpen) {
-      setIsHeaderVisible(true)
-    }
   }, [isMenuOpen])
 
   return (
-    <header
+    <>
+      <style>{headerStyles}</style>
+      <header
       className={[
-        'sticky top-0 z-50 px-3 pt-3 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-4 sm:pt-4 lg:px-5',
+        // Shared responsive shell:
+        // laptop spacing stays visually close to the current layout,
+        // while desktop and large-desktop gain the approved horizontal breathing room.
+        'sticky top-0 z-50 mx-auto w-full max-w-[1720px] px-4 pt-3 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:px-6 md:pt-4 lg:px-10 xl:px-12 xl:pt-5 2xl:px-[96px] 2xl:pt-6',
         isHeaderVisible ? 'translate-y-0' : '-translate-y-full',
-        isScrolled ? 'bg-transparent' : 'bg-transparent'
+        isScrolled ? 'bg-transparent' : 'bg-transparent',
       ].join(' ')}
-    >
+      >
       <div
         className={[
-          'mx-auto w-full max-w-[1280px] rounded-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]',
+          // The navbar pill keeps its laptop width, then expands progressively on larger screens.
+          'mx-auto w-full max-w-[1280px] rounded-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] xl:max-w-[1520px] 2xl:max-w-[1720px]',
           isScrolled
             ? 'border border-white/30 bg-white/34 shadow-[0_10px_24px_rgba(15,23,42,0.05)] backdrop-blur-md'
             : 'border border-transparent bg-transparent',
         ].join(' ')}
       >
-        <div className="flex items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between gap-2 px-4 py-3 md:gap-3 md:px-6 lg:gap-4 lg:px-10 xl:gap-6 xl:px-12 2xl:gap-8 2xl:px-[96px]">
           <LogoBlock logoSrc={logoSrc} />
 
           {/* Promote the inline nav only when there is enough horizontal room for every link and CTA. */}
           <NavLinks />
 
           <div className="hidden xl:flex">
-            {/* Keep the desktop CTA at a consistent visual width in the navbar. */}
+            {/* MANUAL KEEP: CTA width and 2xl scale are intentionally custom to preserve the navbar composition. */}
             <Link
-              to="/project-brief"
-              className="header-cta w-[200px] justify-center text-sm font-medium whitespace-nowrap transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] rounded-full"
+              to="/contact"
+              className="header-cta w-[200px] justify-center whitespace-nowrap rounded-full text-[14px] font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] md:text-[15px] lg:text-[15px] xl:text-[15px] 2xl:w-[232px] 2xl:px-7 2xl:py-4 2xl:text-[18px]"
             >
               <img
                 src={startProjectIconSrc}
                 alt=""
                 aria-hidden="true"
-                className="h-[18px] w-[18px] shrink-0"
+                className="h-[18px] w-[18px] shrink-0 2xl:h-5 2xl:w-5"
               />
               <span>Start Project Brief</span>
             </Link>
@@ -187,16 +417,16 @@ export default function Header({ logoSrc }) {
       {isMenuOpen ? (
         <div
           id="mobile-navigation"
-          className="mx-auto mt-2 w-full max-w-[1280px] rounded-[28px] border border-white/30 bg-white/42 backdrop-blur-lg xl:hidden"
+          className="mx-auto mt-2 w-full max-w-[1280px] rounded-[28px] border border-white/30 bg-white/42 backdrop-blur-lg xl:max-w-[1520px] 2xl:max-w-[1720px] xl:hidden"
         >
-          <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-4 px-4 py-4 sm:px-6">
+          <div className="mx-auto flex w-full flex-col gap-2 px-4 py-4 md:gap-3 md:px-6 lg:gap-4 lg:px-10 xl:gap-6 xl:px-12 2xl:gap-8 2xl:px-[96px]">
             <NavLinks mobile onNavigate={closeMenu} />
 
-            {/* Let the mobile CTA scale down on narrow screens while capping at 200px. */}
+            {/* Keep the mobile CTA compact while matching the desktop glow treatment. */}
             <Link
-              to="/project-brief"
+              to="/contact"
               onClick={closeMenu}
-              className="header-cta inline-flex w-full max-w-[200px] self-center items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium text-text shadow-[0_10px_24px_rgba(15,23,42,0.05)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] sm:w-[200px]"
+              className="header-cta inline-flex w-full max-w-[200px] self-center items-center justify-center gap-2 rounded-full px-5 py-3 text-[14px] font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] md:text-[15px] lg:text-[17px] sm:w-[200px]"
             >
               <img
                 src={startProjectIconSrc}
@@ -209,6 +439,7 @@ export default function Header({ logoSrc }) {
           </div>
         </div>
       ) : null}
-    </header>
+      </header>
+    </>
   )
 }

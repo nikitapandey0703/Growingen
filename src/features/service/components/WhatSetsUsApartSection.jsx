@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
+import SectionWrapper from '../../../components/common/SectionWrapper'
 
 function FeatureBullet() {
   return (
@@ -22,7 +24,7 @@ function FeatureBullet() {
 
 export default function WhatSetsUsApartSection() {
   return (
-    <section className="relative overflow-hidden bg-transparent px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-16">
+    <SectionWrapper as="section" className="relative overflow-hidden bg-transparent pt-8 sm:pt-10 lg:pt-16">
       
       <style>
         {`
@@ -176,9 +178,12 @@ export default function WhatSetsUsApartSection() {
 
               {/* Floating Center Button */}
               <div className="absolute -bottom-5 left-1/2 flex w-full -translate-x-1/2 justify-center">
-                <button className="rounded-full bg-[#F45328] px-8 py-[14px] text-[13px] font-bold tracking-wide text-white shadow-[0_8px_20px_rgba(244,83,40,0.3)] transition-transform hover:scale-105 active:scale-95">
+                <Link
+                  to="/contact"
+                  className="rounded-full bg-[#F45328] px-8 py-[14px] text-[13px] font-bold tracking-wide text-white shadow-[0_8px_20px_rgba(244,83,40,0.3)] transition-transform hover:scale-105 active:scale-95"
+                >
                   Schedule A Strategy Call
-                </button>
+                </Link>
               </div>
 
             </div>
@@ -186,6 +191,6 @@ export default function WhatSetsUsApartSection() {
 
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   )
 }

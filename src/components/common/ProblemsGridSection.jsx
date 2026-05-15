@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import CurvedUnderlineText from './CurvedUnderlineText'
+import SectionWrapper from './SectionWrapper'
 
 function ProblemCard({ item, index, isActive, onEnter, onLeave }) {
   let bgFlipClass = ''
@@ -12,10 +13,10 @@ function ProblemCard({ item, index, isActive, onEnter, onLeave }) {
     ? 'items-center text-center sm:items-start sm:text-left'
     : 'items-center text-center sm:items-end sm:text-right'
   let numberPosClass = ''
-  if (index === 0) numberPosClass = 'right-6 top-6 sm:right-8 sm:top-8'
-  if (index === 1) numberPosClass = 'left-6 top-6 sm:left-8 sm:top-8'
-  if (index === 2) numberPosClass = 'right-6 bottom-6 sm:right-8 sm:bottom-8'
-  if (index === 3) numberPosClass = 'left-6 bottom-6 sm:left-8 sm:bottom-8'
+  if (index === 0) numberPosClass = 'right-8 top-8 sm:right-11 sm:top-11'
+  if (index === 1) numberPosClass = 'left-8 top-8 sm:left-11 sm:top-11'
+  if (index === 2) numberPosClass = 'right-8 bottom-8 sm:right-11 sm:bottom-11'
+  if (index === 3) numberPosClass = 'left-8 bottom-8 sm:left-11 sm:bottom-11'
 
   return (
     <article
@@ -52,7 +53,7 @@ function ProblemCard({ item, index, isActive, onEnter, onLeave }) {
         />
 
         <div
-          className={`absolute inset-0 z-10 flex flex-col justify-center overflow-hidden px-6 py-6 transition-colors duration-500 ease-out sm:justify-start sm:px-10 sm:py-8 lg:px-12 lg:py-9 ${alignmentClass}`}
+          className={`absolute inset-0 z-10 flex flex-col justify-center overflow-hidden px-7 py-7 transition-colors duration-500 ease-out sm:justify-start sm:px-12 sm:py-10 lg:px-14 lg:py-11 ${alignmentClass}`}
         >
           
           {/* NUMBER */}
@@ -72,7 +73,7 @@ function ProblemCard({ item, index, isActive, onEnter, onLeave }) {
              {/* 2. DESCRIPTION ON BOTTOM */}
             <p
               className={[
-                'text-[12px] font-medium leading-[1.6] transition-colors duration-500 ease-out lg:text-[13px]',
+                'text-[14px] font-medium leading-[1.6] transition-colors duration-500 ease-out lg:text-[15px]',
                 isActive ? '!text-white/90' : '!text-[#8a8a8e]',
               ].join(' ')}
             >
@@ -118,7 +119,7 @@ export default function ProblemsGridSection({
   const [activeIndex, setActiveIndex] = useState(null)
 
   return (
-    <section className={`relative overflow-hidden bg-transparent px-4 pb-14 pt-2 sm:px-6 sm:pb-16 sm:pt-4 lg:px-10 lg:pb-18 lg:pt-6 xl:px-12 ${className}`}>
+    <SectionWrapper as="section" className={`relative overflow-hidden bg-transparent pt-2 sm:pt-4 lg:pt-6 xl:px-12 ${className}`}>
       <div className="pointer-events-none absolute left-[10%] top-[22%] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(255,151,113,0.22)_0%,rgba(255,151,113,0.08)_44%,rgba(255,151,113,0)_74%)] blur-3xl" />
       <div className="pointer-events-none absolute bottom-[10%] right-[8%] h-[240px] w-[240px] rounded-full bg-[radial-gradient(circle,rgba(104,141,255,0.2)_0%,rgba(104,141,255,0.08)_42%,rgba(104,141,255,0)_74%)] blur-3xl" />
 
@@ -188,6 +189,6 @@ export default function ProblemsGridSection({
           </div>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   )
 }

@@ -1,4 +1,43 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import SectionWrapper from "../../../components/common/SectionWrapper";
+
 export default function BrandBanner() {
+  const [displayedText, setDisplayedText] = useState("");
+  const fullText = "Branding isn't an expense. It's the foundation of everything that follows.";
+
+  useEffect(() => {
+    let typingInterval;
+    let loopTimeout;
+
+    const startTypingCycle = () => {
+      let currentIndex = 0;
+      setDisplayedText(""); // Clear text for the new cycle
+
+      typingInterval = setInterval(() => {
+        if (currentIndex <= fullText.length) {
+          setDisplayedText(fullText.substring(0, currentIndex));
+          currentIndex++;
+        } else {
+          // Once typing is finished, clear the interval...
+          clearInterval(typingInterval);
+          // ...and wait exactly 2 seconds before restarting the cycle
+          loopTimeout = setTimeout(startTypingCycle, 2000);
+        }
+      }, 40); // Typing speed
+    };
+
+    // Initial 2-second delay before the very first typing starts
+    loopTimeout = setTimeout(startTypingCycle, 2000);
+
+    // Cleanup to prevent memory leaks
+    return () => {
+      clearInterval(typingInterval);
+      clearTimeout(loopTimeout);
+    };
+  }, []);
+
   return (
     <section className="relative flex w-full flex-col justify-center overflow-hidden bg-[linear-gradient(90deg,#2d2fd3_0%,#2576cf_48%,#13c6a7_100%)] py-12 lg:h-[360px] lg:py-0">
       <style>
@@ -6,13 +45,12 @@ export default function BrandBanner() {
           @keyframes drawEllipseLoop {
             0% { stroke-dashoffset: 100; }
             50% { stroke-dashoffset: 0; }
-            100% { stroke-dashoffset: 100; }
+            100% { stroke-dashoffset: -100; }
           }
 
           .animate-draw-ellipse-loop {
             stroke-dasharray: 100;
-            stroke-dashoffset: 100;
-            animation: drawEllipseLoop 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            animation: drawEllipseLoop 3s linear infinite;
           }
 
           .brand-banner-copy,
@@ -22,22 +60,13 @@ export default function BrandBanner() {
             color: #ffffff !important;
           }
 
-          /* The "Glop" effect: soft glow and overlay blending like the image */
           .watermark-glop {
             mix-blend-mode: overlay;
           }
         `}
       </style>
 
-      {/* WATERMARK: Same sizes (140px/220px) but with font-black and refined glop shadow */}
-      <div
-        aria-hidden="true"
-        className="watermark-glop pointer-events-none absolute -right-[0%] top-1/2 hidden -translate-y-1/2 text-[140px] font-black tracking-[0.05em] text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.4)] [text-shadow:0_0_40px_rgba(255,255,255,0.25)] lg:block xl:-right-[0%] xl:text-[220px]"
-      >
-        BRAND
-      </div>
-
-      <div className="relative z-10 mx-auto w-full max-w-[1360px] px-4 sm:px-6 lg:px-12 xl:px-16">
+      <SectionWrapper className="relative z-10 mx-auto max-w-[1360px] py-0 xl:px-16">
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_auto] lg:gap-12">
           <div className="brand-banner-copy max-w-[650px]" style={{ color: '#ffffff' }}>
             <h1
@@ -93,16 +122,30 @@ export default function BrandBanner() {
             <br />
 
             <p
-              className="mt-6 max-w-[50ch] text-[15px] font-semibold leading-[1.55] text-white sm:text-[16px] lg:text-[17px]"
+              className="mt-6 max-w-[50ch] text-[15px] font-semibold leading-[1.55] text-white sm:text-[16px] lg:text-[17px] min-h-[3.5em]"
               style={{ color: '#ffffff' }}
             >
-              Branding isn&apos;t an expense. It&apos;s the foundation{' '}
-              <br className="hidden sm:block" />
-              of everything that follows.
+              {/* First 47 characters is the first line */}
+              {displayedText.substring(0, 47)}
+              
+              {/* Insert the line break only when the typing reaches the second line */}
+              {displayedText.length >= 47 && <br className="hidden sm:block" />}
+              
+              {/* The rest of the text */}
+              {displayedText.substring(47)}
+
+              {/* Blinking Cursor */}
+              <span className="inline-block ml-[2px] animate-pulse">|</span>
             </p>
           </div>
 
           <div className="relative mx-auto flex w-full max-w-[480px] items-center justify-center lg:mx-0 lg:max-w-[520px] lg:justify-end lg:pr-6 xl:max-w-[580px] xl:pr-10">
+            <div
+              aria-hidden="true"
+              className="watermark-glop pointer-events-none absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 text-[140px] font-black tracking-[0.05em] text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.4)] [text-shadow:0_0_40px_rgba(255,255,255,0.25)] lg:block xl:text-[220px]"
+            >
+              BRAND
+            </div>
             <img
               src="/images/service/service-banner.webp"
               alt="Ant standing on an elephant to represent brand pressure and positioning"
@@ -110,7 +153,7 @@ export default function BrandBanner() {
             />
           </div>
         </div>
-      </div>
+      </SectionWrapper>
     </section>
-  )
+  );
 }

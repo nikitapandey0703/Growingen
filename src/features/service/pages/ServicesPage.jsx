@@ -14,8 +14,9 @@ export function ServicesPage() {
       <ServiceHero />
       <BrandBanner />
       <ServiceCapabilitiesSection />
-      <ServiceBusinessFitSection />
       <HowWeWorkSection/>
+      <ServiceBusinessFitSection />
+      
       <WhatSetsUsApartSection/>
       <PortfolioTestimonialSection />
       <PortfolioCTASection
@@ -25,8 +26,9 @@ export function ServicesPage() {
             <span className="block whitespace-nowrap">That Actually Works?</span>
           </span>
         }
-        description="Let's create strategy, systems, and experiences that help your business grow with clarity."
-        primaryButtonLabel="Book a Free Consultation"
+        description=" Let’s create systems that don’t just look good — but deliver real results."
+        primaryButtonLabel="Book a Consultation"
+        primaryButtonTo="/contact"
         showSecondaryButton={false}
       />
       

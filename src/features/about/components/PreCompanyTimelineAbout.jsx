@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { motion } from 'motion/react'
+import { motion, useScroll, useTransform, useMotionValueEvent } from 'motion/react'
 import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
+import SectionWrapper from '../../../components/common/SectionWrapper'
 
 const timelineSteps = [
   {
@@ -9,9 +10,9 @@ const timelineSteps = [
     description:
       'Before Growingen had a name, the work had already started through experiments in strategy, design, and digital execution.',
     images: [
-      '/images/about/about-ideacard-1.webp',
-      '/images/about/about-ideacard-2.webp',
-      '/images/about/about-ideacard-3.webp',
+      '/images/about/timeline-brand-experiments-primary.webp',
+      '/images/about/timeline-brand-experiments-secondary.webp',
+      '/images/about/timeline-real-projects-primary.webp',
     ],
   },
   {
@@ -20,9 +21,9 @@ const timelineSteps = [
     description:
       'Small projects became a training ground for understanding what makes brands earn trust and stay memorable.',
     images: [
-      '/images/about/about-ideacard-2.webp',
-      '/images/about/about-ideacard-4.webp',
-      '/images/about/about-ideacard-5.webp',
+      '/images/about/timeline-real-projects-primary.webp',
+      '/images/about/timeline-real-projects-secondary.webp',
+      '/images/about/timeline-brand-experiments-secondary.webp',
     ],
   },
   {
@@ -31,9 +32,9 @@ const timelineSteps = [
     description:
       'Most teams delivered disconnected services. The deeper need was a system where brand, product, and marketing could work together.',
     images: [
-      '/images/about/about-ideacard-3.webp',
-      '/images/about/about-ideacard-5.webp',
-      '/images/about/about-ideacard-6.webp',
+      '/images/about/timeline-market-gap-primary.webp',
+      '/images/about/timeline-market-gap-secondary.webp',
+      '/images/about/timeline-real-projects-secondary.webp',
     ],
   },
   {
@@ -42,9 +43,9 @@ const timelineSteps = [
     description:
       'The approach evolved from isolated execution into repeatable frameworks built around growth, usability, and clarity.',
     images: [
-      '/images/about/about-ideacard-4.webp',
-      '/images/about/about-ideacard-1.webp',
-      '/images/about/about-ideacard-6.webp',
+      '/images/about/timeline-systems-thinking-primary.webp',
+      '/images/about/timeline-systems-thinking-secondary.webp',
+      '/images/about/timeline-market-gap-primary.webp',
     ],
   },
   {
@@ -53,9 +54,9 @@ const timelineSteps = [
     description:
       'Interfaces, websites, and campaign assets were shaped to do more than look good. They had to convert, guide, and scale.',
     images: [
-      '/images/about/about-ideacard-5.webp',
-      '/images/about/about-ideacard-2.webp',
-      '/images/about/about-ideacard-4.webp',
+      '/images/about/timeline-growth-design-primary.webp',
+      '/images/about/timeline-growth-design-secondary.webp',
+      '/images/about/timeline-systems-thinking-primary.webp',
     ],
   },
   {
@@ -64,9 +65,9 @@ const timelineSteps = [
     description:
       'Custom builds and better systems made it possible to connect strategy with execution instead of treating them as separate tracks.',
     images: [
-      '/images/about/about-ideacard-6.webp',
-      '/images/about/about-ideacard-3.webp',
-      '/images/about/about-ideacard-1.webp',
+      '/images/about/timeline-systems-thinking-secondary.webp',
+      '/images/about/timeline-growth-design-secondary.webp',
+      '/images/about/timeline-market-gap-primary.webp',
     ],
   },
 ]
@@ -75,7 +76,7 @@ const closingOffers = [
   {
     title: 'Strategy First',
     description: 'Product And User Journey, Brand Architecture & Positioning, Brand Communication Strategy.',
-    icon: '/images/about/strategy.png',
+    icon: '/images/about/business-strategy.webp',
   },
   {
     title: 'Design With Purpose',
@@ -90,7 +91,7 @@ const closingOffers = [
   {
     title: 'Marketing That Converts',
     description: 'Lead Generation Powered By Brand, Content And Strategic Marketing, SEO And CRO.',
-    icon: '/images/about/marketing.png',
+    icon: '/images/about/marketing-line.webp',
   },
 ]
 
@@ -192,7 +193,7 @@ function TimelineTextCard({ item, align, isActive }) {
     <article className="group relative z-10 min-w-0 w-[calc(50%_-_14px)] sm:w-[calc(50%_-_18px)] lg:w-[calc(50%_-_26px)]">
       <div
         className={[
-          'relative h-[166px] w-full drop-shadow-[0_12px_22px_rgba(15,23,42,0.06)] transition-all duration-500 ease-out sm:h-[192px] lg:h-[212px] xl:h-[224px]',
+          'relative h-[176px] w-full drop-shadow-[0_12px_22px_rgba(15,23,42,0.06)] transition-all duration-500 ease-out sm:h-[198px] lg:h-[216px] xl:h-[228px]',
           isActive ? 'scale-[1.02] drop-shadow-[0_20px_35px_rgba(244,83,40,0.15)]' : 'scale-100',
         ].join(' ')}
       >
@@ -225,14 +226,6 @@ function TimelineTextCard({ item, align, isActive }) {
           </span>
 
           <div className={`relative z-10 flex w-full max-w-[95%] flex-col gap-2 sm:max-w-[260px] lg:max-w-[300px] ${alignmentClass}`}>
-            <p
-              className={[
-                'text-[15px] font-medium leading-[1.5] transition-colors duration-500 ease-out',
-                isActive ? '!text-white/90' : '!text-[#8a8a8e]',
-              ].join(' ')}
-            >
-              {item.description}
-            </p>
             <h3
               className={[
                 'text-[20px] font-bold leading-[1.18] tracking-[-0.03em] transition-colors duration-500 ease-out sm:text-[22px] lg:text-[24px]',
@@ -241,6 +234,14 @@ function TimelineTextCard({ item, align, isActive }) {
             >
               {item.title}
             </h3>
+            <p
+              className={[
+                'text-[14px] font-medium leading-[1.58] transition-colors duration-500 ease-out lg:text-[15px]',
+                isActive ? '!text-white/90' : '!text-[#8a8a8e]',
+              ].join(' ')}
+            >
+              {item.description}
+            </p>
           </div>
         </div>
       </div>
@@ -266,42 +267,30 @@ function TimelineBubble({ item, align, isActive }) {
 
 export default function PreCompanyTimelineAbout() {
   const sectionRef = useRef(null)
+  const timelineTrackRef = useRef(null)
   const [progress, setProgress] = useState(0)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const node = sectionRef.current
+  // 1. Hook directly into the scroll event tightly using Framer Motion
+  // Using 35% to perfectly match your original manual calculation behavior.
+  const { scrollYProgress } = useScroll({
+    target: timelineTrackRef,
+    offset: ["start 35%", "end 35%"]
+  })
 
-      if (!node) {
-        return
-      }
+  // 2. Map the scroll directly to a Transform Value to completely avoid React Re-renders for the line
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0.001, 1])
 
-      const rect = node.getBoundingClientRect()
-      const viewportHeight = window.innerHeight
-      const start = viewportHeight * 0.18
-      const end = rect.height - viewportHeight * 0.34
-      const distance = start - rect.top
-      const normalized = end <= 0 ? 0 : Math.max(0, Math.min(distance / end, 1))
-
-      setProgress(normalized)
-    }
-
-    handleScroll()
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', handleScroll)
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleScroll)
-    }
-  }, [])
+  // 3. Keep updating the state variable ONLY for the active Dots & Cards mapping
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    setProgress(latest)
+  })
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-transparent py-16 sm:py-20 lg:py-24">
+    <SectionWrapper ref={sectionRef} as="section" className="relative overflow-hidden bg-transparent pt-12 sm:pt-14 lg:pt-16">
       <div className="pointer-events-none absolute left-[8%] top-[18%] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(244,83,40,0.16)_0%,rgba(244,83,40,0.08)_45%,rgba(244,83,40,0)_75%)] blur-3xl" />
       <div className="pointer-events-none absolute bottom-[12%] right-[10%] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(65,94,255,0.16)_0%,rgba(65,94,255,0.08)_45%,rgba(65,94,255,0)_75%)] blur-3xl" />
 
-      <div className="relative mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8 xl:px-10">
+      <div className="relative mx-auto max-w-[1180px] xl:px-10">
         <div className="mx-auto max-w-[520px] text-center">
           <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-[#7a7f8e]">
             Before Growingen
@@ -315,25 +304,27 @@ export default function PreCompanyTimelineAbout() {
           </h2>
         </div>
 
-        <div className="relative mx-auto mt-10 max-w-[940px] sm:mt-12 lg:mt-14 xl:max-w-[980px]">
+        <div ref={timelineTrackRef} className="relative mx-auto mt-10 max-w-[940px] sm:mt-10 lg:mt-12 xl:max-w-[980px]">
           <div className="absolute bottom-0 left-1/2 top-0 w-px -translate-x-1/2 bg-[#d8dcef]" />
           
           <div className="absolute bottom-0 left-1/2 top-0 w-[3px] -translate-x-1/2">
+            {/* Swapped standard div with motion.div and passed the scaleY transform to perfectly lock it */}
             <motion.div
-              className="w-full rounded-full bg-[linear-gradient(180deg,#f45328_0%,#5b4dff_100%)]"
-              initial={{ height: 0 }}
-              animate={{ height: `${progress * 100}%` }}
-              transition={{ type: 'spring', stiffness: 250, damping: 30, bounce: 0 }}
+              className="h-full w-full origin-top rounded-full bg-[linear-gradient(180deg,#f45328_0%,#7a4fff_48%,#5b4dff_100%)] shadow-[0_0_18px_rgba(122,79,255,0.18)]"
+              style={{ scaleY }}
             />
           </div>
 
-          <div className="space-y-6 sm:space-y-7 lg:space-y-9">
+          <div className="space-y-5 sm:space-y-6 lg:space-y-7">
             {timelineSteps.map((item, index) => {
               const itemProgress = timelineSteps.length <= 1 ? 1 : index / (timelineSteps.length - 1)
-              const isActive = progress >= itemProgress - 0.06
+              const isActive = progress >= itemProgress - 0.02
 
               return (
-                <div key={item.id} className="relative">
+                <div
+                  key={item.id}
+                  className="relative"
+                >
                   <div
                     className={[
                       'absolute left-1/2 top-1/2 z-20 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 transition-all duration-300 sm:h-4 sm:w-4',
@@ -356,7 +347,7 @@ export default function PreCompanyTimelineAbout() {
       </div>
 
       {/* Target UI Div Match */}
-      <div className="relative mx-auto mt-14 max-w-[1140px] px-4 sm:mt-20 lg:px-0">
+      <div className="relative mx-auto mt-14 max-w-[1140px] sm:mt-20">
         {/* This connector makes the timeline feel like it resolves into the final orange summary block. */}
         <div className="pointer-events-none absolute left-1/2 top-[-40px] h-[40px] w-[3px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,#5b4dff_0%,#f45328_100%)]" />
         <div className="pointer-events-none absolute left-1/2 top-[-50px] h-4 w-4 -translate-x-1/2 rounded-full border-2 border-white bg-[#f45328] shadow-[0_0_0_6px_rgba(244,83,40,0.14)]" />
@@ -410,7 +401,7 @@ export default function PreCompanyTimelineAbout() {
                   className="flex min-h-[90px] w-full items-center gap-4 rounded-[16px] bg-white p-4 shadow-[0_12px_28px_rgba(15,23,42,0.06)] transition-transform duration-300 hover:scale-[1.01] lg:pr-5"
                 >
                   <div className="flex h-[56px] w-[56px] flex-shrink-0 items-center justify-center rounded-[12px] bg-[#fff5ea]">
-                    <img src={offer.icon} alt="" aria-hidden="true" className="h-7 w-7 object-contain" />
+                    <img src={offer.icon} alt="" aria-hidden="true" className="h-8 w-8 object-contain" />
                   </div>
                   <div>
                     <h4 className="text-[20px] font-bold leading-[1.1] tracking-[-0.02em] text-[#111827]">
@@ -427,6 +418,6 @@ export default function PreCompanyTimelineAbout() {
 
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   )
 }

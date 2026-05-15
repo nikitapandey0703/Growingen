@@ -1,5 +1,6 @@
 import React from 'react'
 import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
+import SectionWrapper from '../../../components/common/SectionWrapper'
 
 const teamMembers = [
   {
@@ -79,10 +80,10 @@ function TeamCard({ member }) {
 
 export default function TeamSectionAbout() {
   return (
-    <section className="relative bg-transparent pt-0 pb-20 lg:pb-32">
+    <SectionWrapper as="section" className="relative bg-transparent pt-12 sm:pt-14 lg:pt-16 lg:pb-16">
       
       {/* Consistency: 1360px container */}
-      <div className="relative mx-auto max-w-[1360px] px-6 lg:px-12">
+      <div className="relative mx-auto max-w-[1360px]">
         
         {/* Section Heading */}
         <div className="mx-auto mb-16 max-w-[900px] text-center">
@@ -107,6 +108,6 @@ export default function TeamSectionAbout() {
           ))}
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   )
 }

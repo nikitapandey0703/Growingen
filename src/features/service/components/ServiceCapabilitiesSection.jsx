@@ -1,48 +1,50 @@
+import { Link } from 'react-router-dom'
 import Button from '../../../components/common/Button'
 import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
 import ScrollStack, { ScrollStackItem } from '../../../components/common/ScrollStack'
+import SectionWrapper from '../../../components/common/SectionWrapper'
 
 const capabilityCards = [
   {
     id: 1,
     title: 'Website Development',
-    subtitle: 'High-Performance Websites Designed To Convert.',
+    subtitle: 'High-performance websites designed to convert.',
     description:
-      'We craft digital experiences that balance aesthetics with performance, ensuring your website becomes a growth engine for your business.',
-    imageSrc: '/images/service/service-set-1.webp',
+      'We craft digital experiences that balance aesthetics with performance, ensuring your website becomes a growth engine.',
+    imageSrc: '/images/service/website.webp',
     deliverables: [
-      'Conversion-Focused UI/UX',
-      'SEO-Ready Architecture',
-      'Lightning-Fast Performance',
-      'Built To Scale With Your Business',
+      'Conversion-focused UI/UX',
+      'SEO-ready architecture',
+      'Lightning-fast performance',
+      'Built to scale with your business',
     ],
   },
   {
     id: 2,
-    title: 'Brand Strategy',
-    subtitle: 'Sharper Messaging For Stronger Market Positioning.',
+    title: 'AI-Integrated Applications',
+    subtitle: 'Intelligence built into your operations.',
     description:
-      'We align voice, positioning, and visual direction so your brand becomes instantly clearer, stronger, and more memorable.',
-    imageSrc: '/images/service/service-set-2.webp',
+      'We integrate AI where it creates real business value, automating processes, improving decisions, and enhancing user experiences.',
+    imageSrc: '/images/service/ai-development.webp',
     deliverables: [
-      'Positioning Framework',
-      'Messaging Direction',
-      'Visual Identity Alignment',
-      'Audience Clarity',
+      'Process automation systems',
+      'AI-powered dashboards & insights',
+      'Smart chat & support systems',
+      'Custom AI workflows',
     ],
   },
   {
     id: 3,
-    title: 'Growth Marketing',
-    subtitle: 'Systems That Turn Attention Into Momentum.',
+    title: 'Application Development',
+    subtitle: 'Tailored applications for real-world use.',
     description:
-      'From campaign planning to optimization, we help you build a repeatable engine for visibility, leads, and sustained digital growth.',
-    imageSrc: '/images/service/service-set-2.webp',
+      'From internal tools to customer-facing platforms, we build reliable, scalable applications aligned with your goals.',
+    imageSrc: '/images/service/application.webp',
     deliverables: [
-      'Campaign Planning',
-      'Content Distribution',
-      'Performance Tracking',
-      'Lead-Generation Support',
+      'Web & mobile app development',
+      'Clean, intuitive user interfaces',
+      'Secure & scalable backend systems',
+      'Seamless third-party integrations',
     ],
   },
 ]
@@ -71,15 +73,15 @@ function CapabilityCard({ card }) {
     <ScrollStackItem itemClassName="border border-white/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.99)_0%,rgba(255,255,255,0.95)_100%)]">
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_240px_minmax(0,0.95fr)] lg:items-center">
         <div className="flex flex-col gap-3 px-1 sm:px-2">
-          <h3 className="text-[34px] font-semibold leading-[1.08] tracking-[-0.04em] text-black sm:text-[42px]">
+          <h3 className="text-[46px] font-semibold leading-[1.06] tracking-[-0.04em] text-black">
             {card.title.split(' ').slice(0, -1).join(' ')}
             <br />
             {card.title.split(' ').slice(-1)}
           </h3>
-          <p className="max-w-[28ch] text-[18px] font-semibold leading-[1.28] text-black sm:text-[20px]">
+          <p className="max-w-[30ch] text-[21px] font-semibold leading-[1.3] text-black">
             {card.subtitle}
           </p>
-          <p className="max-w-[38ch] text-[13px] font-medium leading-[1.55] text-[#5b6472]">
+          <p className="max-w-[42ch] text-[14px] font-medium leading-[1.7] text-[#4b5563]">
             {card.description}
           </p>
         </div>
@@ -93,24 +95,29 @@ function CapabilityCard({ card }) {
         </div>
 
         <div className="flex flex-col gap-4 lg:pl-3">
-          <p className="text-[11px] font-medium tracking-[0.28em] text-[#8b90a0] uppercase">
+          <p className="text-[20px] font-light leading-[1.2] tracking-[-0.02em] text-[#111827]">
             Deliverables
           </p>
           <ul className="flex flex-col gap-3">
             {card.deliverables.map((item) => (
-              <li key={item} className="flex items-start gap-3 text-[13px] font-medium text-[#5b6472]">
+              <li key={item} className="flex items-start gap-3 text-[16px] font-medium leading-[1.5] text-[#4b5563]">
                 <FeatureBullet />
                 <span className="pt-[3px]">{item}</span>
               </li>
             ))}
           </ul>
           <div className="pt-2">
-            <Button
-              size="sm"
-              className="min-h-[38px] pl-4 pr-[48px] text-[11px] font-semibold"
+            <Link
+              to="/contact"
+              className="inline-flex"
             >
-              Get In Touch
-            </Button>
+              <Button
+                size="sm"
+                className="h-[40px] w-[208px] min-h-[40px] pl-5 pr-[52px] text-[14px]"
+              >
+                Get In Touch
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
@@ -120,7 +127,7 @@ function CapabilityCard({ card }) {
 
 export default function ServiceCapabilitiesSection() {
   return (
-    <section className="relative overflow-visible bg-transparent px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+    <SectionWrapper as="section" className="relative overflow-visible bg-transparent pt-12 sm:pt-16 lg:pt-20">
       <div className="pointer-events-none absolute left-[16%] top-[10%] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(255,171,144,0.16)_0%,transparent_70%)] blur-3xl" />
       <div className="pointer-events-none absolute right-[10%] top-[8%] h-[240px] w-[240px] rounded-full bg-[radial-gradient(circle,rgba(102,145,255,0.16)_0%,transparent_70%)] blur-3xl" />
 
@@ -154,6 +161,6 @@ export default function ServiceCapabilitiesSection() {
           ))}
         </ScrollStack>
       </div>
-    </section>
+    </SectionWrapper>
   )
 }

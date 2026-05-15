@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Button from '../../../components/common/Button'
+import SectionWrapper from '../../../components/common/SectionWrapper'
 
 function ServiceVisual() {
   const [count, setCount] = useState(0)
@@ -38,15 +39,6 @@ function ServiceVisual() {
 
         <div className="grid grid-cols-[1.1fr_1fr] items-stretch gap-3 sm:gap-4">
           <div className="dashboard-hover relative z-10 min-h-[214px] sm:min-h-[232px]">
-            {/* Offset the avatar badge slightly so it overlaps the card edge cleanly. */}
-            <div className="absolute -top-4 right-6 z-30 h-16 w-16 overflow-hidden rounded-full border-[3px] border-white bg-white shadow-[0_14px_24px_rgba(15,23,42,0.2)] sm:-top-5 sm:right-8 sm:h-[72px] sm:w-[72px]">
-              <img
-                src="/images/service/service-header-1.webp"
-                alt="Social media management icon"
-                className="h-full w-full object-cover"
-              />
-            </div>
-
             <div 
                className="h-full w-full overflow-hidden"
                style={{
@@ -70,9 +62,6 @@ function ServiceVisual() {
                 Creating powerful brands that achieve stronger digital growth
               </p>
             </div>
-            <div className="mt-4 h-1.5 w-full rounded-full bg-white/25">
-              <div className="h-full w-[72%] rounded-full bg-[#FFD500]" />
-            </div>
           </div>
         </div>
 
@@ -94,14 +83,10 @@ export default function ServiceHero() {
       <div className="hero-section__ambient hero-section__ambient--left" aria-hidden="true" />
       <div className="hero-section__ambient hero-section__ambient--right" aria-hidden="true" />
 
-      <div className="relative mx-auto max-w-[1360px] px-4 pb-12 pt-8 sm:px-6 sm:pt-10 lg:px-10 lg:pb-16 xl:px-12">
+      <SectionWrapper className="relative mx-auto max-w-[1360px] pt-8 sm:pt-10 xl:px-12">
         <div className="grid items-center gap-12 lg:min-h-[calc(100vh-140px)] lg:grid-cols-[470px_minmax(400px,1fr)] lg:gap-8 lg:pt-0">
           <div className="relative z-40 mx-auto max-w-[470px] pt-2 text-center font-sans text-black lg:mx-0 lg:max-w-[520px] lg:pt-0 lg:text-left">
-            <p className="text-[clamp(12px,1.26vw,17px)] font-medium tracking-[0.02em] text-gray-700">
-              Home / Services / Social Media Management
-            </p>
-
-            <h1 className="mt-4 w-full text-[30px] font-bold leading-[1.04] tracking-[-0.05em] text-black sm:text-[36px] lg:text-[54px]">
+            <h1 className="w-full text-[30px] font-bold leading-[1.04] tracking-[-0.05em] text-black sm:text-[36px] lg:text-[54px]">
               <span className="block whitespace-nowrap">Most Businesses Do Marketing</span>
               <span className="mt-1 block whitespace-nowrap">
                 Very Few {' '}
@@ -116,20 +101,20 @@ export default function ServiceHero() {
             </h1>
 
             <p className="mx-auto mt-5 max-w-[49ch] text-[clamp(14px,1.26vw,17px)] font-medium leading-[1.7] tracking-normal text-gray-800 lg:mx-0 lg:max-w-[48ch]">
-              At Growingen Solutions Pvt. Ltd., we combine strategy, design, and
-              technology to build brands that stand out, scale faster, and perform better.
+              At Growingen Solutions Pvt. Ltd., we combine strategy, design, and technology to build brands that stand out, scale faster, and perform better. 
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
-              <a href="mailto:connect@growingen.com" className="inline-flex">
+              <Link to="/contact" className="inline-flex">
                 <Button size="hero">
                   Start a Project
                 </Button>
-              </a>
+              </Link>
 
+              {/* SLIGHTLY SLOWER Animated Button */}
               <Link
                 to="/portfolio"
-                className="inline-flex h-[46px] w-[180px] items-center justify-center rounded-full border border-black/50 bg-transparent px-7 text-[clamp(14px,1.26vw,17px)] font-medium text-black transition-all duration-300 ease-in-out hover:bg-[#f65a2d] hover:border-[#f65a2d] hover:!text-white"
+                className="relative isolate overflow-hidden inline-flex h-[46px] w-[180px] items-center justify-center rounded-full border border-black/50 bg-transparent px-7 text-[clamp(14px,1.26vw,17px)] font-medium text-black transition-all duration-[500ms] ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-[#f65a2d] hover:text-white hover:scale-105 hover:shadow-[0_0_20px_rgba(246,90,45,0.4)] active:scale-100 before:absolute before:inset-0 before:m-auto before:h-[50px] before:w-[50px] before:-z-10 before:rounded-full before:bg-[#f65a2d] before:scale-0 before:transition-all before:duration-[800ms] before:ease-[cubic-bezier(0.23,1,0.32,1)] hover:before:scale-[6]"
               >
                 View Our Work
               </Link>
@@ -138,7 +123,7 @@ export default function ServiceHero() {
 
           <ServiceVisual />
         </div>
-      </div>
+      </SectionWrapper>
     </section>
   )
 }

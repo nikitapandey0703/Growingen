@@ -1,3 +1,4 @@
+// We provide the best service with tools
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
@@ -22,24 +23,7 @@ const cards = [
     badgeIconSrc: '/icons/web-platform.svg',
     badgeAlt: 'Custom web platform engineering icon',
   },
-  {
-    title: 'Optimizing Speed for growth funnels',
-    imageSrc: '/images/featured/card-1.png',
-    badgeIconSrc: '/icons/optimizing-speed.svg',
-    badgeAlt: 'Optimizing speed icon',
-  },
-  {
-    title: 'Integrated Strategy for launch teams',
-    imageSrc: '/images/featured/card-2.png',
-    badgeIconSrc: '/icons/digital-strategy.svg',
-    badgeAlt: 'Integrated digital strategy icon',
-  },
-  {
-    title: 'Custom Platforms for scaling brands',
-    imageSrc: '/images/featured/card-3.png',
-    badgeIconSrc: '/icons/web-platform.svg',
-    badgeAlt: 'Custom web platform engineering icon',
-  },
+  
 ]
 
 const tickerItems = ['15+ Years of expertise', '15+ Satisfied Clients', '10+ Team members','1 Year of successful Operations']
@@ -49,7 +33,7 @@ const SWIPE_THRESHOLD = 70
 
 function FeatureArt({ imageSrc }) {
   return (
-    <div className="relative h-[228px] w-full overflow-hidden rounded-[16px] border border-[#e4ebfb] bg-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.72)] sm:h-[234px] lg:h-[240px]">
+    <div className="relative h-[312px] w-full overflow-hidden rounded-[16px] border border-[#e4ebfb] bg-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.72)] sm:h-[322px] lg:h-[336px]">
       <img
         src={imageSrc}
         alt=""
@@ -116,7 +100,7 @@ function FeatureCard({ card, isActive, onSelect }) {
         <FeatureArt imageSrc={card.imageSrc} />
 
         {/* Clamp the title to two lines so cards stay aligned while allowing longer labels to remain readable. */}
-        <div className="flex min-h-[84px] flex-1 items-center justify-center px-3 py-4 text-center sm:min-h-[92px] sm:px-3.5 sm:py-[18px] lg:min-h-[98px] lg:px-4 lg:py-5">
+        <div className="flex min-h-[84px] flex-1 items-center justify-center px-3 py-5 text-center sm:min-h-[92px] sm:px-3.5 sm:py-5 lg:min-h-[98px] lg:px-4 lg:py-5">
           <h3
             className="max-w-[16ch] overflow-hidden text-[16px] font-medium leading-[1.32] tracking-[-0.01em] text-[#111827] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] sm:text-[17px] lg:text-[18px]"
           >
@@ -153,21 +137,27 @@ function FeatureCard({ card, isActive, onSelect }) {
 }
 
 function getCardPresentation(activeCard, index) {
-  const distance = Math.abs(activeCard - index)
+  const totalCards = cards.length
+  const forwardSteps = (index - activeCard + totalCards) % totalCards
+  const backwardSteps = (activeCard - index + totalCards) % totalCards
+  const distance = Math.min(forwardSteps, backwardSteps)
   const isActive = activeCard === index
-  const isNearby = distance <= 1
+  const isNearby = distance === 1
 
   return {
     isActive,
-    opacityClass: isActive ? 'opacity-100' : isNearby ? 'opacity-95' : 'opacity-72',
-    scale: isActive ? 1 : isNearby ? 0.982 : 0.948,
-    translateY: distance === 0 ? 0 : distance === 1 ? 6 : 12,
+    opacityClass: isActive ? 'opacity-100' : isNearby ? 'opacity-92' : 'opacity-80',
+    scale: isActive ? 1 : isNearby ? 0.975 : 0.95,
+    translateY: isActive ? 0 : isNearby ? 10 : 14,
     zIndex: isActive ? 3 : isNearby ? 2 : 1,
   }
 }
 
 export default function FeaturedSection() {
   const [activeCard, setActiveCard] = useState(1)
+  const [isDesktopLayout, setIsDesktopLayout] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth >= 1024 : false
+  )
   const [trackOffset, setTrackOffset] = useState(0)
   const [dragOffset, setDragOffset] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
@@ -183,6 +173,24 @@ export default function FeaturedSection() {
     pointerId: null,
   })
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 1024px)')
+
+    const syncDesktopLayout = (event) => {
+      setIsDesktopLayout(event.matches)
+    }
+
+    syncDesktopLayout(mediaQuery)
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', syncDesktopLayout)
+      return () => mediaQuery.removeEventListener('change', syncDesktopLayout)
+    }
+
+    mediaQuery.addListener(syncDesktopLayout)
+    return () => mediaQuery.removeListener(syncDesktopLayout)
+  }, [])
+
   // Keep the selected card centered as card sizes shift across breakpoints.
   useEffect(() => {
     const updateOffset = () => {
@@ -192,6 +200,11 @@ export default function FeaturedSection() {
       const lastElement = cardRefs.current[cards.length - 1]
 
       if (!viewport || !activeElement || !firstElement || !lastElement) {
+        return
+      }
+
+      if (isDesktopLayout) {
+        setTrackOffset(0)
         return
       }
 
@@ -245,7 +258,7 @@ export default function FeaturedSection() {
       window.removeEventListener('resize', scheduleOffsetUpdate)
       observer.disconnect()
     }
-  }, [activeCard])
+  }, [activeCard, isDesktopLayout])
 
   // Autoplay should never fight against an active user interaction.
   useEffect(() => {
@@ -369,12 +382,12 @@ export default function FeaturedSection() {
           </h2>
         </div>
 
-        <div className="relative mx-auto mt-6 max-w-[1120px] px-2 sm:mt-8 sm:px-10 lg:mt-10 lg:px-14">
+        <div className="relative mx-auto mt-6 max-w-[1120px] px-2 sm:mt-8 sm:px-10 lg:mt-10 lg:max-w-[980px] lg:px-[54px] xl:max-w-[1040px] xl:px-[58px] 2xl:max-w-[1110px] 2xl:px-[64px]">
           <button
             type="button"
             aria-label="Previous featured service"
             onClick={goToPrevious}
-            className="absolute left-0 top-[42%] z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#111827]/12 bg-white text-[#111827] shadow-[0_16px_30px_rgba(15,23,42,0.12)] transition-all duration-300 hover:border-[#F45328]/30 hover:text-[#F45328] sm:inline-flex"
+            className="absolute left-3 top-[42%] z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#111827]/12 bg-white text-[#111827] shadow-[0_16px_30px_rgba(15,23,42,0.12)] transition-all duration-300 hover:border-[#F45328]/30 hover:text-[#F45328] sm:inline-flex lg:left-1 xl:left-2 2xl:left-3"
           >
             <ChevronLeft size={20} />
           </button>
@@ -383,7 +396,7 @@ export default function FeaturedSection() {
             type="button"
             aria-label="Next featured service"
             onClick={goToNext}
-            className="absolute right-0 top-[42%] z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#111827]/12 bg-white text-[#111827] shadow-[0_16px_30px_rgba(15,23,42,0.12)] transition-all duration-300 hover:border-[#F45328]/30 hover:text-[#F45328] sm:inline-flex"
+            className="absolute right-3 top-[42%] z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#111827]/12 bg-white text-[#111827] shadow-[0_16px_30px_rgba(15,23,42,0.12)] transition-all duration-300 hover:border-[#F45328]/30 hover:text-[#F45328] sm:inline-flex lg:right-1 xl:right-2 2xl:right-3"
           >
             <ChevronRight size={20} />
           </button>
@@ -403,12 +416,12 @@ export default function FeaturedSection() {
           >
             <div
               className={[
-                'flex items-start gap-4 will-change-transform sm:gap-5 lg:gap-6',
+                'flex items-start gap-4 will-change-transform sm:gap-5 lg:justify-center lg:gap-6',
                 isDragging
                   ? 'transition-none'
                   : 'transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]',
               ].join(' ')}
-              style={{ transform: `translate3d(${trackOffset + dragOffset}px, 0, 0)` }}
+              style={{ transform: `translate3d(${isDesktopLayout ? 0 : trackOffset + dragOffset}px, 0, 0)` }}
             >
               {cards.map((card, index) => {
                 const presentation = getCardPresentation(activeCard, index)

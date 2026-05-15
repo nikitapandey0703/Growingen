@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
+import SectionWrapper from '../../../components/common/SectionWrapper'
 
 /**
  * Testimonial data array.
@@ -180,7 +181,7 @@ export default function PortfolioTestimonialSection() {
   }
 
   return (
-    <section className="relative overflow-hidden bg-transparent px-4 pb-14 pt-10 sm:px-6 sm:pb-16 sm:pt-12 lg:px-8 lg:pb-18 lg:pt-14">
+    <SectionWrapper as="section" className="relative overflow-hidden bg-transparent pt-0">
       
       {/* Decorative Background Glows */}
       <div className="pointer-events-none absolute left-[10%] top-[24%] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(255,151,113,0.22)_0%,rgba(255,151,113,0.08)_44%,rgba(255,151,113,0)_74%)] blur-3xl" />
@@ -232,6 +233,6 @@ export default function PortfolioTestimonialSection() {
 
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   )
 }

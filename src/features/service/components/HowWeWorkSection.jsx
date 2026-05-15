@@ -1,5 +1,6 @@
 import React from 'react'
 import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
+import SectionWrapper from '../../../components/common/SectionWrapper'
 
 /**
  * Data array for the How We Work process steps.
@@ -63,10 +64,10 @@ function ProcessCard({ step, index }) {
         </div>
         
         {/* Title & Description */}
-        <h3 className="mb-2 text-[18px] font-bold leading-tight tracking-[-0.02em] text-[#111827] sm:text-[20px]">
+        <h3 className="mb-2 text-[20px] font-bold leading-tight tracking-[-0.02em] text-[#111827] sm:text-[22px]">
           {step.title}
         </h3>
-        <p className="text-[13px] font-medium leading-[1.5] text-[#5b6472]">
+        <p className="text-[15px] font-medium leading-[1.5] text-[#5b6472]">
           {step.description}
         </p>
       </div>
@@ -92,7 +93,7 @@ function ProcessCard({ step, index }) {
  */
 export default function HowWeWorkSection() {
   return (
-    <section className="relative overflow-hidden bg-transparent px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+    <SectionWrapper as="section" className="relative overflow-hidden bg-transparent pt-16 sm:pt-20 lg:pt-0">
       
       {/* Soft Background Blurs (Peach on Left, Blue on Right to match your vibe) */}
       <div className="pointer-events-none absolute left-[5%] top-[10%] h-[300px] w-[300px] rounded-full bg-[radial-gradient(circle,rgba(255,171,144,0.15)_0%,transparent_70%)] blur-3xl" />
@@ -130,6 +131,6 @@ export default function HowWeWorkSection() {
         </div>
 
       </div>
-    </section>
+    </SectionWrapper>
   )
 }
