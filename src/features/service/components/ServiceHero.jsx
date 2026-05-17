@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Button from '../../../components/common/Button'
+import HeroYellowUnderlineText from '../../../components/common/HeroYellowUnderlineText'
 import SectionWrapper from '../../../components/common/SectionWrapper'
 
 function ServiceVisual() {
@@ -90,13 +91,9 @@ export default function ServiceHero() {
               <span className="block whitespace-nowrap">Most Businesses Do Marketing</span>
               <span className="mt-1 block whitespace-nowrap">
                 Very Few {' '}
-                <span className="hero-highlight relative inline-block pb-1 moving-gradient">
-                  Build Brands.
-                  <span
-                    aria-hidden="true"
-                    className="hero-highlight__line absolute -bottom-1 left-0 h-1.5 w-full rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 opacity-80"
-                  />
-                </span>
+                <HeroYellowUnderlineText className="hero-highlight pb-1" lineClassName="-bottom-[0.02em] left-[-1%] h-[0.24em] w-[103%]">
+                  <span className="moving-gradient">Build Brands.</span>
+                </HeroYellowUnderlineText>
               </span>
             </h1>
 

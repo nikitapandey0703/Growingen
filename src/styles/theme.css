@@ -23,6 +23,24 @@
   /* Typography */
   --font-sans: "Visby", "Avenir Next", "Segoe UI", sans-serif;
   --font-heading: "Visby", "Avenir Next", "Segoe UI", sans-serif;
+  --fs-hero-title: 32px;
+  --fs-hero-subtitle: 16px;
+  --fs-section-title: 32px;
+  --fs-section-subtitle: 16px;
+  --fs-card-title: 24px;
+  --fs-card-body: 14px;
+  --fs-button: 14px;
+  --fs-nav-link: 13px;
+  --fs-nav-mobile-link: 13px;
+  --fs-nav-cta: 14px;
+  --fs-nav-toggle-icon: 20px;
+  --nav-shell-px: 16px;
+  --nav-shell-pt: 12px;
+  --nav-pill-px: 16px;
+  --nav-pill-py: 12px;
+  --nav-menu-radius: 28px;
+  --nav-logo-height: 40px;
+  --nav-toggle-size: 40px;
 
   /* Responsive breakpoints aligned with Tailwind defaults */
   --breakpoint-sm: 40rem;
@@ -36,4 +54,95 @@
   --radius-pill: 9999px;
   --shadow-card: 0 20px 45px rgba(15, 23, 42, 0.08);
   --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --fs-hero-title: 46px;
+    --fs-hero-subtitle: 16px;
+    --fs-section-title: 36px;
+    --fs-section-subtitle: 16px;
+    --fs-card-title: 26px;
+    --fs-card-body: 14px;
+    --fs-button: 14px;
+    --fs-nav-link: 14px;
+    --fs-nav-mobile-link: 14px;
+    --fs-nav-cta: 14px;
+    --nav-pill-px: 24px;
+    --nav-pill-py: 12px;
+    --nav-logo-height: 48px;
+    --nav-toggle-size: 44px;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --fs-hero-title: 50px;
+    --fs-hero-subtitle: 17px;
+    --fs-section-title: 40px;
+    --fs-section-subtitle: 17px;
+    --fs-card-title: 28px;
+    --fs-card-body: 15px;
+    --fs-button: 14px;
+    --fs-nav-link: 14px;
+    --fs-nav-mobile-link: 14px;
+    --fs-nav-cta: 15px;
+    --nav-shell-px: 24px;
+    --nav-shell-pt: 16px;
+    --nav-pill-px: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --fs-hero-title: 50px;
+    --fs-hero-subtitle: 17px;
+    --fs-section-title: 50px;
+    --fs-section-subtitle: 17px;
+    --fs-card-title: 32px;
+    --fs-card-body: 15px;
+    --fs-button: 14px;
+    --fs-nav-link: 15px;
+    --fs-nav-mobile-link: 15px;
+    --fs-nav-cta: 15px;
+    --nav-shell-px: 40px;
+    --nav-pill-px: 40px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --fs-hero-title: 50px;
+    --fs-hero-subtitle: 17px;
+    --fs-section-title: 50px;
+    --fs-section-subtitle: 17px;
+    --fs-card-title: 32px;
+    --fs-card-body: 15px;
+    --fs-button: 14px;
+    --fs-nav-link: 15px;
+    --fs-nav-mobile-link: 15px;
+    --fs-nav-cta: 15px;
+    --nav-shell-px: 48px;
+    --nav-shell-pt: 20px;
+    --nav-pill-px: 48px;
+  }
+}
+
+@media (min-width: 1536px) {
+  :root {
+    --fs-hero-title: 70px;
+    --fs-hero-subtitle: 24px;
+    --fs-section-title: 70px;
+    --fs-section-subtitle: 24px;
+    --fs-card-title: 40px;
+    --fs-card-body: 18px;
+    --fs-button: 16px;
+    --fs-nav-link: 17px;
+    --fs-nav-mobile-link: 17px;
+    --fs-nav-cta: 18px;
+    --nav-shell-px: 96px;
+    --nav-shell-pt: 24px;
+    --nav-pill-px: 96px;
+    --nav-logo-height: 72px;
+  }
 }

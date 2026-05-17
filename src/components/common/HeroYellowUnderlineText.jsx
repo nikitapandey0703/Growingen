@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-export default function CurvedUnderlineText({
+export default function HeroYellowUnderlineText({
   children,
   className = '',
   lineClassName = '',
@@ -11,7 +11,7 @@ export default function CurvedUnderlineText({
       <span className="relative z-10">{children}</span>
       <motion.img
         aria-hidden="true"
-        src="/images/contact/curveline.png"
+        src="/images/hero/yellow-line.svg"
         alt=""
         initial={{ opacity: 0, scaleX: 0.08 }}
         animate={{ opacity: 1, scaleX: 1 }}

@@ -1,27 +1,27 @@
-import { forwardRef } from 'react'
+import { createElement, forwardRef } from 'react'
 
 const SectionWrapper = forwardRef(function SectionWrapper(
   {
-    as: Component = 'div',
+    as = 'div',
     className = '',
     children,
     ...props
   },
   ref,
 ) {
-  return (
-    <Component
-      ref={ref}
-      className={[
+  return createElement(
+    as,
+    {
+      ref,
+      className: [
         'site-container w-full',
         className,
       ]
         .filter(Boolean)
-        .join(' ')}
-      {...props}
-    >
-      {children}
-    </Component>
+        .join(' '),
+      ...props,
+    },
+    children,
   )
 })
 

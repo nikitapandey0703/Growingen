@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useId, useMemo, useState } from 'react'
 import { loadFull } from 'tsparticles'
 
 const particleOptions = {
@@ -60,8 +60,8 @@ const sizeClasses = {
   },
   hero: {
     button:
-      'h-[42px] w-[180px] pl-5 pr-[54px] text-[13px] font-medium sm:h-[46px] sm:w-[210px] sm:pl-6 sm:pr-[62px] sm:text-[clamp(14px,1.26vw,17px)] lg:w-[240px]',
-    iconWrap: 'h-[42px] w-[42px] right-0 sm:h-[46px] sm:w-[46px]',
+      'h-[48px] w-[214px] pl-6 pr-[62px] text-[length:var(--fs-button)] font-medium sm:h-[52px] sm:w-[232px] sm:pl-7 sm:pr-[68px] md:h-[54px] md:w-[244px] md:pl-7 md:pr-[72px] lg:h-[50px] lg:w-[232px] lg:pl-7 lg:pr-[66px] xl:h-[52px] xl:w-[244px] xl:pr-[70px] 2xl:h-[58px] 2xl:w-[270px] 2xl:pl-8 2xl:pr-[78px]',
+    iconWrap: 'h-[48px] w-[48px] right-0 sm:h-[52px] sm:w-[52px] md:h-[54px] md:w-[54px] lg:h-[50px] lg:w-[50px] xl:h-[52px] xl:w-[52px] 2xl:h-[58px] 2xl:w-[58px]',
     icon: 16,
   },
   sm: {
@@ -80,6 +80,7 @@ export default function Button({
   ...props
 }) {
   const currentSize = sizeClasses[size] ?? sizeClasses.default
+  const particleId = useId()
   const [particleState, setParticleState] = useState()
   const [isHovering, setIsHovering] = useState(false)
 
@@ -110,8 +111,8 @@ export default function Button({
     >
       {!!particleState && (
         <Particles
-          id="cta-button-particles"
-          className={`pointer-events-none absolute -inset-8 z-0 hidden opacity-0 transition-opacity duration-300 sm:block ${
+          id={`${particleId}-particles`}
+          className={`pointer-events-none absolute -inset-5 z-0 opacity-0 transition-opacity duration-300 sm:-inset-8 ${
             particleState === 'ready' ? 'group-hover:opacity-100' : ''
           }`}
           particlesLoaded={async () => {

@@ -245,10 +245,10 @@ function LogoBlock({ logoSrc }) {
         <img
           src={logoSrc}
           alt="GrowGen Solutions"
-          className="h-10 w-auto object-contain sm:h-12 lg:h-14 2xl:h-[72px]"
+          className="site-header__logo w-auto object-contain lg:h-14"
         />
       ) : (
-        <div className="flex h-10 w-[140px] items-center justify-center rounded-xl border border-border bg-white px-3 sm:h-12 sm:w-[156px] lg:h-14 lg:w-[172px] 2xl:h-[72px] 2xl:w-[208px]">
+        <div className="site-header__logo-placeholder flex items-center justify-center rounded-xl border border-border bg-white px-3 lg:h-14 lg:w-[172px]">
           <span className="text-[12px] font-semibold tracking-[0.16em] text-text-muted uppercase md:text-[12px] lg:text-[13px] xl:text-[13px] 2xl:text-[16px]">
             Logo Placeholder
           </span>
@@ -265,7 +265,7 @@ function NavLinks({ onNavigate, mobile = false }) {
         mobile
           ? 'flex flex-col gap-2'
           // MANUAL KEEP: desktop nav sizing is intentionally custom to balance the enlarged CTA/logo at 2xl.
-          : 'hidden items-center justify-center gap-1 xl:flex'
+          : 'site-nav--desktop hidden items-center justify-center xl:flex'
       }
       aria-label="Primary"
     >
@@ -279,11 +279,11 @@ function NavLinks({ onNavigate, mobile = false }) {
           className={({ isActive }) =>
             [
               mobile
-                ? 'w-full rounded-full px-4 py-3 text-left text-[13px] font-medium transition-colors duration-200 md:text-[14px] lg:text-[15px]'
-                : 'nav-link px-3 py-2 text-[13px] font-medium transition-colors duration-300 md:text-[14px] lg:text-[15px] xl:px-4 xl:text-[15px] 2xl:text-[17px]',
+                ? 'site-nav__link site-nav__link--mobile site-nav__mobile-link w-full rounded-full px-4 py-3 text-left font-medium transition-colors duration-200'
+                : 'site-nav__link nav-link px-3 py-2 font-medium transition-colors duration-300 xl:px-4',
               isActive
                 ? mobile
-                  ? 'bg-[#2B1CC1]/10 text-[#2B1CC1]'
+                  ? 'site-nav__mobile-link--active bg-[#2B1CC1]/10 text-[#2B1CC1]'
                   : 'nav-link-active text-[#2B1CC1]'
                 : 'text-text hover:text-[#2B1CC1]',
               mobile && !isActive ? 'w-full rounded-full text-left hover:bg-surface-alt' : '',
@@ -317,6 +317,30 @@ export default function Header({ logoSrc }) {
   const lastScrollYRef = useRef(0)
 
   const closeMenu = () => setIsMenuOpen(false)
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return undefined
+    }
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [isMenuOpen])
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1280) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   // Keep the production header behavior stable:
   // - transparent at the top
@@ -365,7 +389,7 @@ export default function Header({ logoSrc }) {
         // Shared responsive shell:
         // laptop spacing stays visually close to the current layout,
         // while desktop and large-desktop gain the approved horizontal breathing room.
-        'sticky top-0 z-50 mx-auto w-full max-w-[1720px] px-4 pt-3 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] md:px-6 md:pt-4 lg:px-10 xl:px-12 xl:pt-5 2xl:px-[96px] 2xl:pt-6',
+        'site-header sticky top-0 z-50 mx-auto w-full max-w-[1720px] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]',
         isHeaderVisible ? 'translate-y-0' : '-translate-y-full',
         isScrolled ? 'bg-transparent' : 'bg-transparent',
       ].join(' ')}
@@ -373,13 +397,13 @@ export default function Header({ logoSrc }) {
       <div
         className={[
           // The navbar pill keeps its laptop width, then expands progressively on larger screens.
-          'mx-auto w-full max-w-[1280px] rounded-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] xl:max-w-[1520px] 2xl:max-w-[1720px]',
+          'site-header__inner mx-auto w-full rounded-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]',
           isScrolled
             ? 'border border-white/30 bg-white/34 shadow-[0_10px_24px_rgba(15,23,42,0.05)] backdrop-blur-md'
             : 'border border-transparent bg-transparent',
         ].join(' ')}
       >
-        <div className="flex items-center justify-between gap-2 px-4 py-3 md:gap-3 md:px-6 lg:gap-4 lg:px-10 xl:gap-6 xl:px-12 2xl:gap-8 2xl:px-[96px]">
+        <div className="site-header__pill flex items-center justify-between gap-2 md:gap-3 lg:gap-4 xl:gap-6 2xl:gap-8">
           <LogoBlock logoSrc={logoSrc} />
 
           {/* Promote the inline nav only when there is enough horizontal room for every link and CTA. */}
@@ -389,7 +413,7 @@ export default function Header({ logoSrc }) {
             {/* MANUAL KEEP: CTA width and 2xl scale are intentionally custom to preserve the navbar composition. */}
             <Link
               to="/contact"
-              className="header-cta w-[200px] justify-center whitespace-nowrap rounded-full text-[14px] font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] md:text-[15px] lg:text-[15px] xl:text-[15px] 2xl:w-[232px] 2xl:px-7 2xl:py-4 2xl:text-[18px]"
+              className="site-header__cta header-cta w-[200px] justify-center whitespace-nowrap rounded-full font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] 2xl:w-[232px] 2xl:px-7 2xl:py-4"
             >
               <img
                 src={startProjectIconSrc}
@@ -403,39 +427,41 @@ export default function Header({ logoSrc }) {
 
           <button
             type="button"
-            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-black/10 bg-white/70 text-text transition-colors hover:border-[#2B1CC1] hover:text-[#2B1CC1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] sm:h-11 sm:w-11 xl:hidden"
+            className="site-header__toggle inline-flex shrink-0 items-center justify-center rounded-full border border-black/10 bg-white/70 text-text transition-colors hover:border-[#2B1CC1] hover:text-[#2B1CC1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] xl:hidden"
             aria-expanded={isMenuOpen}
             aria-controls="mobile-navigation"
             aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             onClick={() => setIsMenuOpen((open) => !open)}
           >
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {isMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
       </div>
 
       {isMenuOpen ? (
-        <div
-          id="mobile-navigation"
-          className="mx-auto mt-2 w-full max-w-[1280px] rounded-[28px] border border-white/30 bg-white/42 backdrop-blur-lg xl:max-w-[1520px] 2xl:max-w-[1720px] xl:hidden"
-        >
-          <div className="mx-auto flex w-full flex-col gap-2 px-4 py-4 md:gap-3 md:px-6 lg:gap-4 lg:px-10 xl:gap-6 xl:px-12 2xl:gap-8 2xl:px-[96px]">
-            <NavLinks mobile onNavigate={closeMenu} />
+        <div className="xl:hidden">
+          <div className="fixed inset-0 z-40 bg-[#020617]/18 backdrop-blur-[2px]" onClick={closeMenu} aria-hidden="true" />
+          <div
+            id="mobile-navigation"
+            className="site-header__menu site-header__inner relative z-50 mx-auto mt-2 w-full border border-white/30 bg-white/42 backdrop-blur-lg"
+          >
+            <div className="site-header__menu-panel mx-auto flex w-full flex-col">
+              <NavLinks mobile onNavigate={closeMenu} />
 
-            {/* Keep the mobile CTA compact while matching the desktop glow treatment. */}
-            <Link
-              to="/contact"
-              onClick={closeMenu}
-              className="header-cta inline-flex w-full max-w-[200px] self-center items-center justify-center gap-2 rounded-full px-5 py-3 text-[14px] font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] md:text-[15px] lg:text-[17px] sm:w-[200px]"
-            >
-              <img
-                src={startProjectIconSrc}
-                alt=""
-                aria-hidden="true"
-                className="h-[15px] w-[15px] shrink-0"
-              />
-              <span>Start Project Brief</span>
-            </Link>
+              <Link
+                to="/contact"
+                onClick={closeMenu}
+                className="site-header__cta header-cta inline-flex w-full max-w-[220px] self-center items-center justify-center gap-2 rounded-full px-5 py-3 font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] sm:w-[200px]"
+              >
+                <img
+                  src={startProjectIconSrc}
+                  alt=""
+                  aria-hidden="true"
+                  className="h-[15px] w-[15px] shrink-0"
+                />
+                <span>Start Project Brief</span>
+              </Link>
+            </div>
           </div>
         </div>
       ) : null}

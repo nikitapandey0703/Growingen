@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
+import HeroYellowUnderlineText from '../../../components/common/HeroYellowUnderlineText'
+
 export default function PortfolioHero() {
   const bulbTiltRef = useRef(null);
   const frameRef = useRef(0);
@@ -153,16 +155,12 @@ export default function PortfolioHero() {
 
               <span className="mt-1 block sm:whitespace-nowrap">
                 Digital{" "}
-                <span
-                  className="hero-highlight relative inline-block pb-1"
-                  style={highlightStyle}
+                <HeroYellowUnderlineText
+                  className="hero-highlight pb-1"
+                  lineClassName="-bottom-[0.02em] left-[-1%] h-[0.24em] w-[103%]"
                 >
-                  Future
-                  <span
-                    aria-hidden="true"
-                    className="hero-highlight__line absolute -bottom-1 left-0 h-1.5 w-full rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 opacity-80"
-                  />
-                </span>
+                  <span style={highlightStyle}>Future</span>
+                </HeroYellowUnderlineText>
               </span>
             </h1>
 

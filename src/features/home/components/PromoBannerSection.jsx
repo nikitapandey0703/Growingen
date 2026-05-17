@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useTransform } from 'motion/react'
 import { Link } from 'react-router-dom'
+import SectionWrapper from '../../../components/common/SectionWrapper'
 
 const stackedPromoCards = [
   {
@@ -236,7 +237,10 @@ function PromoStack({
 
 function ServicePromoBanner() {
   return (
-    <section className="relative flex w-full flex-col justify-center overflow-hidden bg-[linear-gradient(90deg,#2d2fd3_0%,#2576cf_48%,#13c6a7_100%)] py-12 lg:h-[360px] lg:py-0">
+    <SectionWrapper
+      as="section"
+      className="relative flex w-full flex-col justify-center overflow-hidden bg-[linear-gradient(90deg,#2d2fd3_0%,#2576cf_48%,#13c6a7_100%)] py-12 lg:h-[360px] lg:py-0"
+    >
       <style>
         {`
           @keyframes drawEllipse {
@@ -258,7 +262,7 @@ function ServicePromoBanner() {
         BRAND
       </div>
 
-      <div className="site-container relative z-10">
+      <div className="relative z-10">
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_auto] lg:gap-12">
           <div className="max-w-[650px]">
             <h1 className="text-[32px] font-bold leading-[1.18] tracking-tight text-white sm:text-[40px] lg:text-[50px]">
@@ -308,7 +312,7 @@ function ServicePromoBanner() {
           </div>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   )
 }
 
@@ -318,8 +322,8 @@ export default function PromoBannerSection({ variant = 'default' }) {
   }
 
   return (
-    <section className="section-spacing relative overflow-hidden bg-transparent">
-      <div className="site-container relative">
+    <SectionWrapper as="section" className="section-spacing relative overflow-hidden bg-transparent">
+      <div className="relative">
         <div className="mx-auto w-full max-w-[1060px]">
           <div className="relative flex flex-col gap-6 md:min-h-[326px] md:justify-center">
             
@@ -370,6 +374,6 @@ export default function PromoBannerSection({ variant = 'default' }) {
           </div>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   )
 }

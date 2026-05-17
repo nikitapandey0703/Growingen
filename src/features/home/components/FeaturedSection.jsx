@@ -1,4 +1,3 @@
-// We provide the best service with tools
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
@@ -55,7 +54,7 @@ const SWIPE_THRESHOLD = 70
 
 function FeatureArt({ imageSrc }) {
   return (
-    <div className="relative h-[312px] w-full overflow-hidden rounded-[16px] border border-[#e4ebfb] bg-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.72)] sm:h-[322px] lg:h-[336px]">
+    <div className="relative h-[248px] w-full overflow-hidden rounded-[14px] border border-[#e4ebfb] bg-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.72)] sm:h-[286px] md:h-[304px] lg:h-[318px] xl:h-[336px] 2xl:h-[356px]">
       <img
         src={imageSrc}
         alt=""
@@ -100,7 +99,7 @@ function FeatureCard({ card, isActive, onSelect }) {
   return (
     <article
       className={[
-        'relative isolate flex h-[340px] cursor-pointer flex-col overflow-visible bg-transparent transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F45328] focus-visible:ring-offset-4 focus-visible:ring-offset-white sm:h-[356px] lg:h-[372px]',
+        'relative isolate flex h-[276px] cursor-pointer flex-col overflow-visible bg-transparent transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F45328] focus-visible:ring-offset-4 focus-visible:ring-offset-white sm:h-[324px] md:h-[344px] lg:h-[352px] xl:h-[372px] 2xl:h-[392px]',
       ].join(' ')}
       role="button"
       tabIndex={0}
@@ -118,10 +117,14 @@ function FeatureCard({ card, isActive, onSelect }) {
       />
       <FeatureCardFrame isActive={isActive} />
 
-<div className="relative z-10 flex h-full flex-col px-[15px] pb-[18px] pt-[12px] sm:px-[16px] sm:pb-[20px] sm:pt-[13px] lg:px-[16px] lg:pb-[24px]">        <FeatureArt imageSrc={card.imageSrc} />
+      <div className="relative z-10 flex h-full flex-col px-[12px] pb-[16px] pt-[10px] sm:px-[14px] sm:pb-[18px] sm:pt-[12px] md:px-[15px] md:pb-[20px] lg:px-[16px] lg:pb-[22px] xl:pb-[24px]">
+        <FeatureArt imageSrc={card.imageSrc} />
 
-        <div className="flex min-h-[84px] flex-1 items-center justify-center px-3 py-5 text-center sm:min-h-[92px] sm:px-3.5 sm:py-5 lg:min-h-[98px] lg:px-4 lg:py-5">
-          <h3 className="max-w-[16ch] overflow-hidden text-[15px] font-medium leading-[1.32] tracking-[-0.01em] text-[#111827] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] sm:text-[16px] lg:text-[17px]">
+        <div className="flex min-h-[72px] flex-1 items-center justify-center px-2.5 py-4 text-center sm:min-h-[82px] sm:px-3 sm:py-4.5 md:min-h-[88px] md:px-3.5 lg:min-h-[92px] lg:px-4 lg:py-5 xl:min-h-[98px]">
+          <h3
+            className="max-w-[16ch] overflow-hidden font-medium leading-[1.32] tracking-[-0.01em] text-[#111827] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
+            style={{ fontSize: 'clamp(14px, 0.65rem + 0.55vw, var(--fs-card-body))' }}
+          >
             {card.title}
           </h3>
         </div>
@@ -129,7 +132,7 @@ function FeatureCard({ card, isActive, onSelect }) {
 
       <div className="absolute bottom-[-0px] left-1/2 z-20 -translate-x-1/2 translate-y-1/2">
         <span
-          className={`inline-flex h-[38px] w-[38px] items-center justify-center rounded-full border shadow-md transition-[background-color,border-color,transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          className={`inline-flex h-[34px] w-[34px] items-center justify-center rounded-full border shadow-md transition-[background-color,border-color,transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:h-[36px] sm:w-[36px] lg:h-[38px] lg:w-[38px] 2xl:h-[42px] 2xl:w-[42px] ${
             isActive
               ? 'scale-105 border-[#F45328] bg-[#F45328] shadow-[0_12px_24px_rgba(244,83,40,0.24)]'
               : 'border-[#f3d8d0] bg-white'
@@ -140,7 +143,7 @@ function FeatureCard({ card, isActive, onSelect }) {
               src={card.badgeIconSrc}
               alt={card.badgeAlt}
               className={[
-                'h-[20px] w-[20px] object-contain',
+                'h-[18px] w-[18px] object-contain sm:h-[19px] sm:w-[19px] lg:h-[20px] lg:w-[20px] 2xl:h-[22px] 2xl:w-[22px]',
                 isActive ? 'brightness-0 invert' : 'opacity-90',
               ].join(' ')}
             />
@@ -372,7 +375,10 @@ export default function FeaturedSection() {
     <section className="section-spacing relative overflow-hidden bg-transparent pt-2 sm:pt-4">
       <div className="site-container relative">
         <div className="mx-auto max-w-[760px] text-center">
-          <h2 className="text-[32px] font-semibold leading-[1.1] tracking-[-0.05em] text-[#111827] sm:text-[40px] lg:text-[50px]">
+          <h2
+            className="text-[32px] font-semibold leading-[1.1] tracking-[-0.05em] text-[#111827]"
+            style={{ fontSize: 'var(--fs-section-title)' }}
+          >
             We Provide The Best Service
             <br />
             With{' '}
@@ -385,7 +391,7 @@ export default function FeaturedSection() {
           </h2>
         </div>
 
-        <div className="relative mx-auto mt-6 max-w-[1120px] px-2 sm:mt-8 sm:px-10 lg:mt-10 lg:max-w-[980px] lg:px-[54px] xl:max-w-[1040px] xl:px-[58px] 2xl:max-w-[1110px] 2xl:px-[64px]">
+        <div className="relative mx-auto mt-6 max-w-[1120px] px-1 sm:mt-8 sm:px-8 md:px-10 lg:mt-10 lg:max-w-[980px] lg:px-[54px] xl:max-w-[1040px] xl:px-[58px] 2xl:max-w-[1110px] 2xl:px-[64px]">
           <button
             type="button"
             aria-label="Previous featured service"
@@ -406,7 +412,7 @@ export default function FeaturedSection() {
 
           <div
             ref={viewportRef}
-            className="overflow-hidden px-1 pb-14"
+            className="overflow-hidden px-0.5 pb-14 sm:px-1 md:px-2"
             onFocusCapture={() => setIsPaused(true)}
             onBlurCapture={handleViewportBlur}
             onMouseEnter={() => setIsPaused(true)}
@@ -438,7 +444,7 @@ export default function FeaturedSection() {
                       cardRefs.current[index] = element
                     }}
                     className={[
-                      'w-[84vw] max-w-[255px] min-w-[222px] flex-none transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:w-[242px] sm:min-w-[242px] lg:w-[255px] lg:min-w-[255px]',
+                      'w-[72vw] max-w-[236px] min-w-[214px] flex-none transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:w-[250px] sm:min-w-[250px] md:w-[264px] md:min-w-[264px] lg:w-[255px] lg:min-w-[255px] xl:w-[264px] xl:min-w-[264px] 2xl:w-[284px] 2xl:min-w-[284px]',
                       presentation.opacityClass,
                     ].join(' ')}
                     style={{
@@ -479,7 +485,8 @@ export default function FeaturedSection() {
           </div>
         </div>
 
-        <div className="mt-8 flex items-center justify-center sm:mt-10">
+        {/* HIDING THE INDICATOR DOTS BELOW 1024PX (lg) */}
+        <div className="mt-8 hidden items-center justify-center lg:flex sm:mt-10">
           <div className="flex items-center gap-1.5">
             {cards.map((card, index) => (
               <button

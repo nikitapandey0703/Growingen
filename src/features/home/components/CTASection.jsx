@@ -61,7 +61,6 @@ function renderHeadingWithLastWordOnNextLine(title) {
     return title
   }
 
-  // Keep long plan names inside the frame by balancing them into two lines.
   const splitIndex = words.length >= 4 ? Math.ceil(words.length / 2) : words.length - 1
   const firstLine = words.slice(0, splitIndex).join(' ')
   const secondLine = words.slice(splitIndex).join(' ')
@@ -77,11 +76,11 @@ function renderHeadingWithLastWordOnNextLine(title) {
 
 function FeatureBullet() {
   return (
-    <span className="mt-[6px] inline-flex h-3.5 w-3.5 flex-none items-center justify-center rounded-full bg-[linear-gradient(180deg,#e63e83_0%,#d4376b_100%)] shadow-[0_4px_10px_rgba(212,55,107,0.2)] sm:h-4 sm:w-4">
+    <span className="mt-[6px] inline-flex h-3.5 w-3.5 flex-none items-center justify-center rounded-full bg-[linear-gradient(180deg,#12cfb0_0%,#06BA9D_100%)] shadow-[0_4px_10px_rgba(6,186,157,0.22)] sm:h-4 sm:w-4">
       <svg
         viewBox="0 0 24 24"
         aria-hidden="true"
-        className="h-[8px] w-[8px] text-[#FFB45E] sm:h-[9px] sm:w-[9px]"
+        className="h-[8px] w-[8px] text-white sm:h-[9px] sm:w-[9px]"
         fill="none"
         stroke="currentColor"
         strokeWidth="2.4"
@@ -107,20 +106,19 @@ function PlanCard({ card, onAdvance, isActive }) {
         }
       }}
       className={[
-        'group relative min-w-0 flex-none snap-center sm:snap-start cursor-pointer outline-none',
-        'w-full sm:w-[min(56vw,435px)] lg:w-[calc(50%+38px)]',
-        'mr-0 sm:-mr-6 lg:-mr-[58px]', // Reset negative margins on small screens
-        'text-medium',
+        'group relative min-w-0 flex-none snap-center cursor-pointer outline-none',
+        'w-full max-[399px]:w-[min(84vw,314px)] sm:w-[min(82vw,500px)] md:w-[min(70vw,540px)] lg:w-[calc(50%-12px)] xl:w-[calc(50%-14px)]',
         'transition-transform duration-300 ease-out hover:-translate-y-1 focus-visible:-translate-y-1',
       ].join(' ')}
     >
-      <div className="relative h-[500px] w-full drop-shadow-[0_16px_28px_rgba(15,23,42,0.14)] sm:h-[608px] lg:h-[644px]">
+      <div className="relative flex w-full flex-col min-h-[460px] max-[399px]:min-h-[530px] sm:min-h-[640px] lg:min-h-[620px] drop-shadow-[0_16px_28px_rgba(15,23,42,0.14)]">
+        
         <img
           src="/icons/Subtract-outline.svg"
           alt=""
           aria-hidden="true"
           className={[
-            'pointer-events-none absolute inset-y-0 left-[-4%] h-full w-[108%] max-w-none object-fill transition-opacity duration-300 ease-out',
+            'pointer-events-none absolute inset-y-0 left-[-4%] z-0 h-full w-[108%] max-w-none object-fill transition-opacity duration-300 ease-out max-[399px]:left-[-2%] max-[399px]:w-[104%]',
             isActive ? 'opacity-0 sm:opacity-100 sm:group-hover:opacity-0' : 'opacity-100 group-hover:opacity-0',
           ].join(' ')}
         />
@@ -129,28 +127,28 @@ function PlanCard({ card, onAdvance, isActive }) {
           alt=""
           aria-hidden="true"
           className={[
-            'pointer-events-none absolute inset-y-0 left-[-4%] h-full w-[108%] max-w-none object-fill transition-opacity duration-300 ease-out',
+            'pointer-events-none absolute inset-y-0 left-[-4%] z-0 h-full w-[108%] max-w-none object-fill transition-opacity duration-300 ease-out max-[399px]:left-[-2%] max-[399px]:w-[104%]',
             isActive ? 'opacity-100 sm:opacity-0 sm:group-hover:opacity-100' : 'opacity-0 group-hover:opacity-100',
           ].join(' ')}
         />
 
         <div
           className={[
-            'cta-card-copy absolute inset-0 z-10 flex flex-col',
-            'pl-[16%] pr-[9.5%] pb-[7%] pt-[13%] sm:pl-[18%] sm:pr-[10%] sm:pb-[8%] sm:pt-[14.5%]',
-            'min-w-0 overflow-hidden transition-colors duration-300 ease-out',
+            'cta-card-copy relative z-10 flex flex-1 flex-col',
+            // Increased pb-16 (bottom padding) drastically prevents button from overflowing out of the curved SVG bottom corners
+            'px-6 pt-12 pb-16 max-[399px]:px-4 max-[399px]:pt-20 max-[399px]:pb-12 sm:pl-[12%] sm:pr-[10%] sm:pt-[24%] sm:pb-[4%] md:pl-[13.5%] md:pr-[10.5%] lg:pl-[14%] lg:pr-[10%] lg:pb-[8%]',
+            'transition-colors duration-300 ease-out',
             isActive ? 'text-white sm:text-[#000000] sm:group-hover:text-white' : 'text-[#000000] group-hover:text-white',
           ].join(' ')}
         >
-          <div className="max-w-[92%] sm:max-w-[90%]">
-            {/* Added explicit text colors and group-hover states to h3 for guaranteed rendering fix */}
-            <h3 className="max-w-full break-words text-[28px] font-semibold leading-[1.08] tracking-[-0.045em] transition-colors duration-300 ease-out sm:text-[30px] lg:text-[32px]">
+          <div className="max-w-[100%] sm:max-w-[95%] lg:max-w-[90%] ">
+            <h3 className="max-w-full break-words text-[22px] font-semibold leading-[1.08] tracking-[-0.045em] transition-colors duration-300 ease-out max-[399px]:text-[18px] sm:text-[28px] md:text-[30px] lg:text-[31px] xl:text-[32px] ">
               {renderHeadingWithLastWordOnNextLine(card.name)}
             </h3>
 
             <p
               className={[
-                'mt-6 pt-1 max-w-[98%] break-words text-[14px] leading-[1.45] transition-colors duration-300 ease-out sm:mt-7 sm:max-w-[95%] sm:text-[15px]',
+                'mt-3 max-w-[98%] break-words pt-2 text-[13px] leading-[1.45] transition-colors duration-300 ease-out max-[399px]:mt-2.5 max-[399px]:pt-1 max-[399px]:text-[11.5px] max-[399px]:leading-[1.35] sm:mt-5 sm:max-w-[95%] sm:text-[14px] md:text-[15px]',
                 isActive ? 'text-white/80 sm:text-[#404040] sm:group-hover:text-white/76' : 'text-[#404040] group-hover:text-white/76',
               ].join(' ')}
             >
@@ -159,18 +157,18 @@ function PlanCard({ card, onAdvance, isActive }) {
 
             <div
               className={[
-                'mt-3 h-px w-[96%] transition-colors duration-300 ease-out sm:mt-4 sm:w-[94%]',
+                'mt-4 h-px w-[96%] transition-colors duration-300 ease-out max-[399px]:mt-3 sm:mt-4 sm:w-[94%]',
                 isActive ? 'bg-white/20 sm:bg-[#121212]/12 sm:group-hover:bg-white/20' : 'bg-[#121212]/12 group-hover:bg-white/20',
               ].join(' ')}
             />
 
-            <ul className="mt-3 space-y-2 sm:mt-4 sm:space-y-2.5">
+            <ul className="mt-4 space-y-3 max-[399px]:mt-3 max-[399px]:space-y-1.5 sm:mt-4 lg:space-y-2.5">
               {card.features.map((feature) => (
-                <li key={feature} className="flex max-w-[98%] items-start gap-2.5 pt-1">
+                <li key={feature} className="flex max-w-[100%] items-start gap-2.5 pt-1 max-[399px]:gap-2 max-[399px]:pt-0.5">
                   <FeatureBullet />
                   <span
                     className={[
-                      'min-w-0 max-w-full pt-0.5 break-words text-[14px] leading-[1.35] transition-colors duration-300 ease-out sm:pt-1 sm:text-[15px]',
+                      'min-w-0 max-w-full break-words pt-0.5 text-[13px] leading-[1.35] transition-colors duration-300 ease-out max-[399px]:text-[11.5px] max-[399px]:leading-[1.28] sm:pt-1 sm:text-[14px] md:text-[15px]',
                       isActive ? 'text-white/84 sm:text-[#222222] sm:group-hover:text-white/84' : 'text-[#222222] group-hover:text-white/84',
                     ].join(' ')}
                   >
@@ -181,16 +179,17 @@ function PlanCard({ card, onAdvance, isActive }) {
             </ul>
           </div>
 
-          <div className="mt-auto max-w-[98%] pt-4 sm:max-w-[95%] sm:pt-5">
+          {/* Changed 'mt-auto' to 'mt-8 sm:mt-auto' to completely fix the huge awkward gap on mobile screens */}
+          <div className="mt-8 max-w-[100%] pt-2 max-[399px]:mt-5 max-[399px]:pt-1 sm:mt-auto sm:max-w-[95%] sm:pt-5 lg:max-w-[98%]">
             <p
               className={[
-                'text-[13px] tracking-[0] transition-colors duration-300 ease-out sm:text-[15px]',
+                'text-[12px] tracking-[0] transition-colors duration-300 ease-out max-[399px]:text-[11px] sm:text-[14px] md:text-[15px]',
                 isActive ? 'text-white/60 sm:text-[#5f5f5f] sm:group-hover:text-white/60' : 'text-[#5f5f5f] group-hover:text-white/60',
               ].join(' ')}
             >
               {card.startingLabel}
             </p>
-            <p className="mt-1 text-[34px] font-semibold leading-[0.94] tracking-[-0.05em] transition-colors duration-300 ease-out sm:text-[42px] lg:text-[46px]">
+            <p className="mt-1 text-[30px] font-semibold leading-[0.94] tracking-[-0.05em] transition-colors duration-300 ease-out max-[399px]:text-[24px] sm:text-[38px] md:text-[42px] lg:text-[44px] xl:text-[46px]">
               {card.startingValue}
             </p>
 
@@ -201,7 +200,7 @@ function PlanCard({ card, onAdvance, isActive }) {
               onClick={(event) => {
                 event.stopPropagation()
               }}
-              className="mt-6 inline-flex h-[40px] w-[96%] items-center justify-center self-start rounded-full bg-[linear-gradient(180deg,#ff6a33_0%,#F45328_100%)] px-8 text-[13px] font-medium tracking-[-0.01em] !text-white shadow-[0_12px_24px_rgba(244,83,40,0.24),inset_0_1px_0_rgba(255,255,255,0.18)] transition-all duration-300 ease-out sm:mt-7 sm:h-[45px] sm:w-[96%] sm:text-[14px]"
+              className="mt-5 inline-flex h-[40px] w-full items-center justify-center self-start rounded-full bg-[linear-gradient(180deg,#ff6a33_0%,#F45328_100%)] px-8 text-[13px] font-medium tracking-[-0.01em] !text-white shadow-[0_12px_24px_rgba(244,83,40,0.24),inset_0_1px_0_rgba(255,255,255,0.18)] transition-all duration-300 ease-out max-[399px]:mt-4 max-[399px]:h-[36px] max-[399px]:px-5 max-[399px]:text-[12px] sm:mt-6 sm:h-[44px] sm:text-[14px] md:h-[45px] lg:w-[96%]"
             >
               Get Started
             </a>
@@ -278,12 +277,15 @@ export default function CTASection() {
   return (
     <section className="section-spacing relative overflow-hidden bg-transparent pt-8">
       <div className="pointer-events-none absolute left-[10%] top-[30%] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(255,151,113,0.24)_0%,rgba(255,151,113,0.09)_42%,rgba(255,151,113,0)_74%)] blur-3xl" />
-      <div className="pointer-events-none absolute right-[8%] bottom-[8%] h-[240px] w-[240px] rounded-full bg-[radial-gradient(circle,rgba(104,141,255,0.22)_0%,rgba(104,141,255,0.08)_42%,rgba(104,141,255,0)_74%)] blur-3xl" />
+      <div className="pointer-events-none absolute bottom-[8%] right-[8%] h-[240px] w-[240px] rounded-full bg-[radial-gradient(circle,rgba(104,141,255,0.22)_0%,rgba(104,141,255,0.08)_42%,rgba(104,141,255,0)_74%)] blur-3xl" />
 
       <div className="site-container relative lg:pt-12">
         <div className="section-content">
           <div className="mx-auto max-w-[520px] text-center">
-            <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.05em] text-[#111827] sm:text-[40px] lg:text-[50px]">
+            <h2
+              className="text-[32px] font-semibold leading-[1.08] tracking-[-0.05em] text-[#111827]"
+              style={{ fontSize: 'var(--fs-section-title)' }}
+            >
               <span className="block sm:whitespace-nowrap">
                 Select A Suitable Plan
               </span>
@@ -297,9 +299,13 @@ export default function CTASection() {
           </div>
 
           <div className="relative mt-6 sm:mt-8 lg:mt-10">
+            {/* 
+              Increased gap to 'gap-12' to mathematically guarantee the 108% overflowing background 
+              SVG image is pushed completely out of the viewport. No more edge peeping!
+            */}
             <div
               ref={scrollRef}
-              className="flex snap-x snap-mandatory gap-4 sm:gap-0 overflow-x-auto px-0.5 pb-4 pt-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="mx-auto flex max-w-[1480px] snap-x snap-mandatory gap-12 px-4 pb-8 pt-4 sm:gap-12 sm:px-12 lg:gap-6 lg:px-0 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {planCards.map((card, index) => (
                 <PlanCard
@@ -320,7 +326,8 @@ export default function CTASection() {
                   onClick={() => scrollToCard(index)}
                   className={[
                     'featured-indicator',
-                    activeIndex === index ? 'featured-indicator-active' : '',
+                    'featured-indicator-teal',
+                    activeIndex === index ? 'featured-indicator-active-teal featured-indicator-active' : '',
                   ].join(' ')}
                 />
               ))}

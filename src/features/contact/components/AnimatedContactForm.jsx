@@ -4,6 +4,7 @@ import { CheckCircle2 } from 'lucide-react'
 import { useMemo, useState } from 'react'
 
 import Button from '../../../components/common/Button'
+import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
 import ContactAvatarCanvas from './ContactAvatarCanvas'
 import { EMAILJS_CONFIG } from '../config/emailjs'
 
@@ -392,18 +393,9 @@ export default function AnimatedContactForm() {
             <div className="mx-auto flex gap-2 max-w-[560px] flex-col items-center text-center 2xl:max-w-[620px]">
               <h1 className="font-[var(--font-heading)] text-[25px] font-bold leading-[1.03] tracking-[-0.05em] text-[#101828] sm:text-[29px] lg:text-[32px] 2xl:text-[35px]">
                 Let&apos;s build{' '}
-                <span className="relative inline-block overflow-visible pb-[0.2em]">
-                  <span className="relative z-10">your plan</span>
-                  <motion.img
-                    aria-hidden="true"
-                    src="/images/contact/curveline.png"
-                    alt=""
-                    initial={{ opacity: 0, scaleX: 0.08 }}
-                    animate={{ opacity: 1, scaleX: 1 }}
-                    transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
-                    className="pointer-events-none absolute -bottom-[0.12em] left-[-11%] z-0 h-[0.42em] w-[122%] origin-center select-none object-contain 2xl:h-[0.46em]"
-                  />
-                </span>
+                <CurvedUnderlineText className="pb-[0.2em]" lineClassName="2xl:h-[0.46em]">
+                  your plan
+                </CurvedUnderlineText>
                 {' '}together!
               </h1>
 

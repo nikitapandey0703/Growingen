@@ -20,30 +20,34 @@ const socialIcons = [
 const Footer = ({
   logoSrc = '/images/hero/logo.png',
   illustrationSrc = '/images/banners/footer-character.png',
-  width = '100%',
-  maxWidth = '100%',
-  minHeight = '490px',
 }) => {
   return (
-    <footer
-      className="relative flex justify-center overflow-hidden bg-[#FFF1F0] text-black font-['Visby',_sans-serif]"
-      style={{ width, maxWidth, minHeight }}
-    >
-      <div className="site-container flex w-full flex-col items-center justify-between py-12 lg:flex-row">
-        <div className="flex w-full flex-col justify-center self-start lg:w-auto lg:self-center">
-          <div className="mb-8">
+    <footer className="relative overflow-hidden bg-[#FFF1F0] font-sans text-[var(--color-text)]">
+      {/* 
+        `.site-container` handles standard responsive padding (px-4 -> px-24). 
+        Flex direction handles Mobile (col) -> Desktop (row).
+      */}
+      <div className="site-container flex flex-col justify-between py-10 sm:py-12 lg:flex-row lg:py-16">
+        
+        {/* ======================= */}
+        {/* LEFT SECTION (BRANDING) */}
+        {/* ======================= */}
+        <div className="flex w-full flex-col items-start self-start text-left lg:w-auto">
+          {/* Responsive Logo */}
+          <div className="mb-6 sm:mb-8 lg:mb-12">
             <img
               src={logoSrc}
               alt="GrowinGen Solutions"
-              className="h-[60px] w-auto object-contain"
+              className="h-12 w-auto object-contain sm:h-14 lg:h-[60px]"
               onError={(e) => {
                 e.target.src = 'https://via.placeholder.com/200x50?text=Logo+Placeholder';
               }}
             />
           </div>
 
-          <div className="flex flex-row items-center gap-[40px]">
-            <div className="flex w-[170px] flex-shrink-0 items-center justify-center lg:w-[180px]">
+          <div className="flex flex-row items-center gap-4 sm:gap-6 lg:gap-10">
+            {/* Avatar smoothly scales up from mobile to desktop */}
+            <div className="w-[120px] flex-shrink-0 sm:w-[150px] lg:w-[180px]">
               <img
                 src={illustrationSrc}
                 alt="3D Avatar Character"
@@ -55,13 +59,18 @@ const Footer = ({
             </div>
 
             <div className="relative flex flex-col justify-center">
-              <h2 className="text-[46px] font-[800] leading-[1.05] tracking-tight text-[#0f172a] lg:text-[56px]">
+              {/* Inheriting `--fs-hero-title` naturally scales text from 32px (mobile) to 70px (large screens) */}
+              <h2
+                className="font-extrabold leading-[1.05] tracking-tight text-[#0f172a]"
+                style={{ fontSize: 'var(--fs-hero-title)' }}
+              >
                 Let's
                 <br />
                 Connect
               </h2>
 
-              <div className="pointer-events-none absolute -bottom-[24px] left-[40px] h-[26px] w-[180px] overflow-visible lg:left-[22px] lg:w-[188px]">
+              {/* Decorative underline scales and positions responsively under "Connect" */}
+              <div className="pointer-events-none absolute -bottom-3 left-[10%] h-[16px] w-[110px] overflow-visible sm:-bottom-5 sm:left-[15%] sm:h-[22px] sm:w-[140px] lg:-bottom-6 lg:left-[10%] lg:h-[26px] lg:w-[188px]">
                 <img
                   src={footerMedia.connectUnderline}
                   alt=""
@@ -73,79 +82,123 @@ const Footer = ({
           </div>
         </div>
 
-        <div className="mx-[45px] hidden h-[320px] w-[1.5px] bg-black/25 shadow-[0_0_0_1px_rgba(15,23,42,0.03)] lg:mx-[55px] lg:block"></div>
+        {/* ======================= */}
+        {/* DIVIDER                   */}
+        {/* ======================= */}
+        {/* Horizontal on mobile/tablet, Vertical on Desktop */}
+        <div className="my-10 block h-[1px] w-full bg-black/10 lg:hidden"></div>
+        <div className="my-10 hidden w-[1.5px] bg-black/15 shadow-[0_0_0_1px_rgba(15,23,42,0.03)] lg:mx-10 xl:mx-14 lg:block"></div>
 
-        <div className="mt-12 flex w-full flex-1 flex-col justify-center lg:mt-0">
-          <div className="flex w-full flex-col gap-[20px] border-b border-black/15 pb-8">
-            <div className="group flex cursor-pointer items-center gap-[16px]">
-              <div className="h-[42px] w-[42px] flex-shrink-0 transition-transform group-hover:-translate-y-1 lg:h-[48px] lg:w-[48px]">
+        {/* ======================= */}
+        {/* RIGHT SECTION (LINKS)   */}
+        {/* ======================= */}
+        <div className="flex w-full flex-1 flex-col justify-center">
+          
+          {/* Contact Methods */}
+          <div className="flex w-full flex-col gap-5 border-b border-black/10 pb-8 sm:gap-6 lg:pb-10">
+            {/* Email */}
+            <div className="group flex cursor-pointer items-center gap-4 sm:gap-5">
+              <div className="h-10 w-10 flex-shrink-0 transition-transform group-hover:-translate-y-1 sm:h-12 sm:w-12 lg:h-[48px] lg:w-[48px]">
                 <img
                   src={footerMedia.emailIcon}
                   alt="Email icon"
                   className="h-full w-full object-contain drop-shadow-md"
                 />
               </div>
-              <span className="text-[24px] font-[700] leading-none tracking-tight transition-colors group-hover:text-blue-600 lg:text-[34px]">
+              {/* Inherits `--fs-card-title` for responsive 24px -> 40px scaling. Uses break-all on mobile to stop screen blowout. */}
+              <span
+                className="break-all font-bold leading-none tracking-tight transition-colors group-hover:text-blue-600 sm:break-normal"
+                style={{ fontSize: 'var(--fs-card-title)' }}
+              >
                 connect@growingen.com
               </span>
             </div>
 
-            <div className="group flex cursor-pointer items-center gap-[16px]">
-              <div className="h-[42px] w-[42px] flex-shrink-0 transition-transform group-hover:-translate-y-1 lg:h-[48px] lg:w-[48px]">
+            {/* Phone */}
+            <div className="group flex cursor-pointer items-center gap-4 sm:gap-5">
+              <div className="h-10 w-10 flex-shrink-0 transition-transform group-hover:-translate-y-1 sm:h-12 sm:w-12 lg:h-[48px] lg:w-[48px]">
                 <img
                   src={footerMedia.whatsappIcon}
                   alt="WhatsApp icon"
                   className="h-full w-full object-contain drop-shadow-md"
                 />
               </div>
-              <span className="text-[24px] font-[700] leading-none tracking-tight transition-colors group-hover:text-green-600 lg:text-[34px]">
+              <span
+                className="font-bold leading-none tracking-tight transition-colors group-hover:text-green-600"
+                style={{ fontSize: 'var(--fs-card-title)' }}
+              >
                 +91 86 2591 2593
               </span>
             </div>
           </div>
 
-          <div className="flex w-full flex-wrap items-start justify-between gap-y-8 pt-8 lg:flex-nowrap">
-            <div className="flex min-w-0 flex-[0_1_470px] flex-wrap items-start gap-x-[52px] gap-y-6">
-              <div className="min-w-[188px]">
-                <h4 className="mb-[36px] pb-4 text-[17px] font-[700] leading-none text-[#0f172a]">Services</h4>
-                <ul className="flex flex-col gap-[4px]">
-                {['Website Optimization', 'Business Growth', 'Social Media Managment', 'SEO Development'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="footer-link relative inline-flex w-fit pr-5">
-                      <span className="footer-link__text text-[14px] font-[500] leading-[1.35] tracking-normal text-[#6B7280]">
-                        {item}
-                      </span>
-                      <span className="footer-link__line w-[118%]"></span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          {/* Menus & Socials Container */}
+          <div className="flex flex-col justify-between gap-10 pt-8 sm:flex-row sm:flex-wrap lg:flex-nowrap lg:gap-8 lg:pt-10">
+            
+            {/* Link Columns */}
+            <div className="flex flex-1 flex-col gap-10 sm:flex-row sm:gap-12 md:gap-24 lg:gap-16">
+              {/* Services List */}
+              <div className="min-w-max">
+                <h4
+                  className="mb-4 pb-2 font-bold leading-none text-[#0f172a]"
+                  style={{ fontSize: 'var(--fs-section-subtitle)' }}
+                >
+                  Services
+                </h4>
+                <ul className="flex flex-col gap-3">
+                  {['Website Optimization', 'Business Growth', 'Social Media Management', 'SEO Development'].map((item) => (
+                    <li key={item}>
+                      <a href="#" className="footer-link relative inline-flex w-fit pr-5">
+                        <span
+                          className="footer-link__text font-medium leading-relaxed tracking-normal text-[#6B7280]"
+                          style={{ fontSize: 'var(--fs-card-body)' }}
+                        >
+                          {item}
+                        </span>
+                        <span className="footer-link__line w-[118%]"></span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Quick Links List */}
+              <div className="min-w-max">
+                <h4
+                  className="mb-4 pb-2 font-bold leading-none text-[#0f172a]"
+                  style={{ fontSize: 'var(--fs-section-subtitle)' }}
+                >
+                  Quick Links
+                </h4>
+                <ul className="flex flex-col gap-3">
+                  {['Terms & Conditions', 'Privacy Policy', 'Sitemap'].map((item) => (
+                    <li key={item}>
+                      <a href="#" className="footer-link relative inline-flex w-fit pr-5">
+                        <span
+                          className="footer-link__text font-medium leading-relaxed tracking-normal text-[#6B7280]"
+                          style={{ fontSize: 'var(--fs-card-body)' }}
+                        >
+                          {item}
+                        </span>
+                        <span className="footer-link__line w-[118%]"></span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
-              <div className="min-w-[172px]">
-                <h4 className="mb-[36px] pb-4 text-[17px] font-[700] leading-none text-[#0f172a]">Quick Links</h4>
-                <ul className="flex flex-col gap-[4px]">
-                {['Terms & Conditions', 'Privacy Policy', 'Sitemap'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="footer-link relative inline-flex w-fit pr-5">
-                      <span className="footer-link__text text-[14px] font-[500] leading-[1.35] tracking-normal text-[#6B7280]">
-                        {item}
-                      </span>
-                      <span className="footer-link__line w-[118%]"></span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            </div>
-
-            <div className="ml-auto flex flex-col items-center gap-[18px] self-start lg:pt-[4px]">
-              <div className="flex items-center justify-center gap-[12px]">
+            {/* Social Media & QR Code */}
+            {/* On mobile: row layout. On tablet/desktop: column layout aligned to the right. */}
+            <div className="flex flex-row items-center justify-between border-t border-black/10 pt-8 sm:flex-col sm:items-end sm:border-none sm:pt-0 lg:items-center">
+              
+              {/* Icons */}
+              <div className="flex items-center justify-center gap-3 sm:gap-4">
                 {socialIcons.map((icon) => (
                   <a
                     key={icon.alt}
                     href={icon.href}
-                    className="flex h-[32px] w-[32px] items-center justify-center transition-transform hover:-translate-y-1"
+                    className="flex h-9 w-9 items-center justify-center transition-transform hover:-translate-y-1 sm:h-10 sm:w-10"
                   >
                     <img
                       src={icon.src}
@@ -156,12 +209,13 @@ const Footer = ({
                 ))}
               </div>
 
-              <div className="relative mt-1 flex justify-center self-center">
-                <div className="group relative h-[76px] w-[76px] cursor-pointer p-[6px]">
-                  <div className="absolute top-0 left-0 h-[14px] w-[14px] rounded-tl-[3px] border-t-[2px] border-l-[2px] border-gray-500 transition-all group-hover:border-[#F45328]"></div>
-                  <div className="absolute top-0 right-0 h-[14px] w-[14px] rounded-tr-[3px] border-t-[2px] border-r-[2px] border-gray-500 transition-all group-hover:border-[#F45328]"></div>
-                  <div className="absolute bottom-0 left-0 h-[14px] w-[14px] rounded-bl-[3px] border-b-[2px] border-l-[2px] border-gray-500 transition-all group-hover:border-[#F45328]"></div>
-                  <div className="absolute right-0 bottom-0 h-[14px] w-[14px] rounded-br-[3px] border-r-[2px] border-b-[2px] border-gray-500 transition-all group-hover:border-[#F45328]"></div>
+              {/* Custom QR Code Box */}
+              <div className="relative mt-0 flex justify-center self-center sm:mt-6">
+                <div className="group relative h-16 w-16 cursor-pointer p-1.5 sm:h-[76px] sm:w-[76px]">
+                  <div className="absolute left-0 top-0 h-3 w-3 rounded-tl-[3px] border-l-2 border-t-2 border-gray-500 transition-all group-hover:border-[var(--color-nav-highlight)] sm:h-[14px] sm:w-[14px]"></div>
+                  <div className="absolute right-0 top-0 h-3 w-3 rounded-tr-[3px] border-r-2 border-t-2 border-gray-500 transition-all group-hover:border-[var(--color-nav-highlight)] sm:h-[14px] sm:w-[14px]"></div>
+                  <div className="absolute bottom-0 left-0 h-3 w-3 rounded-bl-[3px] border-b-2 border-l-2 border-gray-500 transition-all group-hover:border-[var(--color-nav-highlight)] sm:h-[14px] sm:w-[14px]"></div>
+                  <div className="absolute bottom-0 right-0 h-3 w-3 rounded-br-[3px] border-b-2 border-r-2 border-gray-500 transition-all group-hover:border-[var(--color-nav-highlight)] sm:h-[14px] sm:w-[14px]"></div>
                   <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-[2px] bg-white">
                     <img
                       src="/icons/qr.png"
@@ -171,6 +225,7 @@ const Footer = ({
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
