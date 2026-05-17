@@ -1,38 +1,46 @@
 import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useTransform } from 'motion/react'
-import { Megaphone } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
-const stackedPromoCards =[
+const stackedPromoCards = [
   {
-    id: 'campaigns',
-    stat: '200+',
-    label: 'Campaigns Delivered',
-    detailPrimary: 'Successful Digital',
-    detailSecondary: 'Campaigns Delivered',
+    id: 'expertise',
+    stat: '15+',
+    label: 'Years of Expertise',
+    detailPrimary: '15+ Years of',
+    detailSecondary: 'Industry Expertise',
     theme: 'orange',
   },
   {
-    id: 'campaigns-alt',
-    stat: '200+',
-    label: 'Campaigns Delivered',
-    detailPrimary: 'Successful Digital',
-    detailSecondary: 'Campaigns Delivered',
+    id: 'clients',
+    stat: '15+',
+    label: 'Satisfied Clients',
+    detailPrimary: '15+ Happy',
+    detailSecondary: 'Satisfied Clients',
     theme: 'white',
   },
   {
-    id: 'campaigns-alt-2',
-    stat: '200+',
-    label: 'Campaigns Delivered',
-    detailPrimary: 'Successful Digital',
-    detailSecondary: 'Campaigns Delivered',
+    id: 'team',
+    stat: '10+',
+    label: 'Team Members',
+    detailPrimary: '10+ Skilled',
+    detailSecondary: 'Team Members',
     theme: 'orange',
+  },
+  {
+    id: 'operations',
+    stat: '1',
+    label: 'Year of Successful Operations',
+    detailPrimary: '1 Year of',
+    detailSecondary: 'Successful Operations',
+    theme: 'white',
   },
 ]
 
 function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false }) {
   const x = useMotionValue(0)
   const y = useMotionValue(0)
-  const rotateX = useTransform(y,[-100, 100], [16, -16])
+  const rotateX = useTransform(y, [-100, 100], [16, -16])
   const rotateY = useTransform(x, [-100, 100], [-16, 16])
 
   function handleDragEnd(_, info) {
@@ -79,7 +87,7 @@ function PromoStack({
   mobileClickOnly = true,
   mobileBreakpoint = 768,
 }) {
-  const[isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const [stack, setStack] = useState(stackedPromoCards)
 
@@ -143,15 +151,15 @@ function PromoStack({
             className={[
               'flex h-full w-full flex-col rounded-[24px] p-7 shadow-[0_24px_44px_rgba(15,23,42,0.2)]',
               card.theme === 'white'
-                ? 'border border-[#f3f3f3] bg-white text-[#111111] shadow-[0_22px_44px_rgba(255,255,255,0.2)]'
+                ? 'border border-[#f3f3f3] bg-white  shadow-[0_22px_44px_rgba(255,255,255,0.2)]'
                 : 'bg-[#ff5b2e] text-white shadow-[0_22px_40px_rgba(255,91,46,0.32)]',
             ].join(' ')}
             onClick={() => shouldEnableClick && sendToBack(card.id)}
             animate={{
-              rotateZ:[-3.5, 4.75, -8][index] ?? -4,
-              scale:[0.91, 0.96, 1][index] ?? 1,
-              x: [20, 10, 0][index] ?? 0,
-              y: [7, 2, -4][index] ?? 0,
+              rotateZ: [-6, 3, -4, -8][index] ?? -4,
+              scale: [0.86, 0.91, 0.96, 1][index] ?? 1,
+              x: [30, 20, 10, 0][index] ?? 0,
+              y: [12, 7, 2, -4][index] ?? 0,
               transformOrigin: '18% 84%',
             }}
             initial={false}
@@ -165,47 +173,58 @@ function PromoStack({
               <p className="text-[52px] font-semibold leading-none tracking-[-0.06em] sm:text-[58px]">
                 {card.stat}
               </p>
+              {/* Bold text for the label */}
               <p
                 className={[
-                  'mt-3 max-w-[11ch] text-[13px] font-medium leading-[1.2] tracking-[-0.03em]',
-                  card.theme === 'white' ? 'text-[#111111]' : 'text-white/95',
+                  'mt-2 w-full text-[16px] font-bold leading-[1.2] tracking-[-0.03em] sm:text-[18px] lg:text-[22px]',
+                  card.theme === 'white' ? '' : 'text-white',
                 ].join(' ')}
               >
                 {card.label}
               </p>
             </div>
 
-            <div
-              className={[
-                'mt-5 h-px w-[84%]',
-                card.theme === 'white' ? 'bg-[#111111]/14' : 'bg-white/38',
-              ].join(' ')}
-            />
+            <div className="mt-4 flex items-center">
+              <span
+                aria-hidden="true"
+                className={[
+                  'block h-px w-[84%]',
+                  card.theme === 'white'
+                    ? 'bg-[linear-gradient(90deg,rgba(17,17,17,0.22)_0%,rgba(17,17,17,0.08)_100%)]'
+                    : 'bg-[linear-gradient(90deg,rgba(255,255,255,0.68)_0%,rgba(255,255,255,0.14)_100%)]',
+                ].join(' ')}
+              />
+            </div>
 
-            <div className="mt-6">
+            <div className="mt-4">
+              {/* Below text with SAME size as label, but NORMAL weight */}
               <p
                 className={[
-                  'text-[13px] leading-[1.3]',
-                  card.theme === 'white' ? 'text-[#111111]/82' : 'text-white/88',
+                  'text-[12px] font-light leading-[1.25] sm:text-[18px] lg:text-[16px]',
+                  card.theme === 'white' ? 'text-[#111111]/85' : 'text-white/90',
                 ].join(' ')}
               >
                 {card.detailPrimary}
               </p>
               <p
                 className={[
-                  'text-[13px] leading-[1.3]',
-                  card.theme === 'white' ? 'text-[#111111]/82' : 'text-white/88',
+                  'text-[12px] font-light leading-[1.25] sm:text-[18px] lg:text-[16px]',
+                  card.theme === 'white' ? 'text-[#111111]/85' : 'text-white/90',
                 ].join(' ')}
               >
                 {card.detailSecondary}
               </p>
             </div>
 
-            <div className="mt-auto flex justify-center pt-7">
-              <Megaphone
-                size={36}
-                strokeWidth={1.7}
-                className={card.theme === 'white' ? 'text-[#111111]' : 'text-white'}
+            <div className="mt-auto flex justify-center pt-4">
+              <img
+                src="/images/hero/brand-awareness_200+brands.svg"
+                alt=""
+                aria-hidden="true"
+                className={[
+                  'h-[38px] w-[38px] object-contain sm:h-[42px] sm:w-[42px]',
+                  card.theme === 'white' ? 'brightness-0 saturate-0' : '',
+                ].join(' ')}
               />
             </div>
           </motion.div>
@@ -217,9 +236,7 @@ function PromoStack({
 
 function ServicePromoBanner() {
   return (
-        <section className="relative flex w-full flex-col justify-center overflow-hidden bg-[linear-gradient(90deg,#2d2fd3_0%,#2576cf_48%,#13c6a7_100%)] py-12 lg:h-[360px] lg:py-0">
-      
-      {/* Inline styles for the SVG drawing animation */}
+    <section className="relative flex w-full flex-col justify-center overflow-hidden bg-[linear-gradient(90deg,#2d2fd3_0%,#2576cf_48%,#13c6a7_100%)] py-12 lg:h-[360px] lg:py-0">
       <style>
         {`
           @keyframes drawEllipse {
@@ -234,7 +251,6 @@ function ServicePromoBanner() {
         `}
       </style>
 
-      {/* Improved Watermark: Extreme right, strict white stroke, and white glow */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -right-[10%] top-1/2 hidden -translate-y-1/2 text-[160px] font-bold tracking-[0.05em] text-transparent [-webkit-text-stroke:2px_#ffffff] [text-shadow:0_0_35px_rgba(255,255,255,0.4)] lg:block xl:-right-[5%] xl:text-[240px]"
@@ -242,18 +258,13 @@ function ServicePromoBanner() {
         BRAND
       </div>
 
-      {/* Main Content Container */}
       <div className="relative z-10 mx-auto w-full max-w-[1360px] px-4 sm:px-6 lg:px-12 xl:px-16">
         <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_auto] lg:gap-12">
-          
-          {/* Left Text Content */}
           <div className="max-w-[650px]">
             <h1 className="text-[32px] font-bold leading-[1.18] tracking-tight text-white sm:text-[40px] lg:text-[50px]">
               Why Most{' '}
               <span className="relative inline-block whitespace-nowrap text-white">
                 <span className="relative z-10 text-white">Brands Fail</span>
-                
-                {/* Hand-drawn yellow ellipse SVG with drawing animation */}
                 <svg
                   className="absolute -bottom-2 -left-4 -right-4 -top-1 z-0 h-[130%] w-[120%] text-[#FBBF24]"
                   viewBox="0 0 100 40"
@@ -288,7 +299,6 @@ function ServicePromoBanner() {
             </p>
           </div>
 
-          {/* Right Image */}
           <div className="relative mx-auto flex w-full max-w-[480px] items-center justify-center lg:mx-0 lg:max-w-[520px] lg:justify-end lg:pr-6 xl:max-w-[580px] xl:pr-10">
             <img
               src="/images/service/service-banner.webp"
@@ -296,7 +306,6 @@ function ServicePromoBanner() {
               className="relative z-10 max-h-[280px] w-full object-contain drop-shadow-[0_24px_35px_rgba(15,23,42,0.25)] lg:max-h-[340px]"
             />
           </div>
-          
         </div>
       </div>
     </section>
@@ -309,17 +318,21 @@ export default function PromoBannerSection({ variant = 'default' }) {
   }
 
   return (
-    // 🔥 Standardized Wrapper: Uniform padding applied here
     <section className="relative overflow-hidden bg-transparent px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
       <div className="relative mx-auto max-w-[1060px]">
         <div className="mx-auto w-full max-w-[1020px]">
           <div className="relative flex flex-col gap-6 md:min-h-[326px] md:justify-center">
-            <div className="relative z-20 mx-auto md:absolute md:left-[20px] md:top-1/2 md:mx-0 md:-translate-y-1/2">
+            
+            <div className="relative z-20 mx-auto md:absolute md:-left-[10px] md:top-1/2 md:mx-0 md:-translate-y-1/2 lg:-left-[20px]">
               <PromoStack />
             </div>
 
+            {/* 
+              Shifted left padding (pl) down from 320px to 270px (lg) and 300px to 260px (md).
+              This pulls the text block more left on the right side.
+            */}
             <div
-              className="relative overflow-hidden rounded-[28px] bg-[#0b0b0b] px-6 py-8 text-white shadow-[0_24px_44px_rgba(15,23,42,0.18)] sm:px-8 sm:py-9 md:ml-[154px] md:pl-[280px] md:pr-12 md:py-10"
+              className="relative overflow-hidden rounded-[28px] bg-[#0b0b0b] px-6 py-8 text-white shadow-[0_24px_44px_rgba(15,23,42,0.18)] sm:px-8 sm:py-9 md:ml-[80px] md:py-10 md:pl-[260px] md:pr-12 lg:ml-[60px] lg:pl-[270px]"
               style={{ fontFamily: 'Visby', color: '#ffffff' }}
             >
               <div className="pointer-events-none absolute right-[-30px] top-[-24px] h-[136px] w-[136px] rounded-full bg-[radial-gradient(circle,rgba(255,114,74,0.16)_0%,rgba(255,114,74,0.04)_48%,rgba(255,114,74,0)_76%)] blur-2xl" />
@@ -342,12 +355,16 @@ export default function PromoBannerSection({ variant = 'default' }) {
                   Or SEO That Drives Results, We&apos;ve Got You Covered.
                 </p>
 
-                <button
-                  type="button"
-                  className="mt-5 inline-flex h-[42px] items-center justify-center rounded-[8px] bg-[#ff5b2e] px-6 text-[15px] font-medium text-white transition-transform duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0"
+                {/* 
+                  Fully curved borders (rounded-full)
+                  Width 240px and Height 50px on laptop, scaling responsively down. 
+                */}
+                <Link
+                  to="/contact"
+                  className="mt-6 flex h-[44px] w-[200px] items-center justify-center rounded-full bg-[#ff5b2e] text-[15px] font-bold text-white transition-transform duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 sm:h-[48px] sm:w-[220px] sm:text-[16px] lg:h-[50px] lg:w-[240px]"
                 >
                   Book A Demo
-                </button>
+                </Link>
               </div>
             </div>
           </div>

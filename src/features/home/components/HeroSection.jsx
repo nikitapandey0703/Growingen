@@ -43,7 +43,7 @@ function HeroVisual() {
         <div className="hero-ambient-orb hero-ambient-orb--secondary" aria-hidden="true" />
 
         <img
-          src="/images/hero/girl.webp"
+          src="/images/hero/girl-main.webp"
           alt="Growingen hero illustration"
           className="pointer-events-none absolute z-20 h-full w-auto max-w-none object-contain scale-[0.95] sm:scale-[1.0] lg:scale-[1.05]"
         />
@@ -73,12 +73,12 @@ export default function HeroSection() {
       <div className="relative mx-auto max-w-[1360px] px-4 pb-12 pt-8 sm:px-6 sm:pb-14 sm:pt-10 lg:px-10 lg:pb-16 lg:pt-12 xl:px-12">
         <div className="grid items-center gap-10 lg:min-h-[calc(100vh-140px)] lg:grid-cols-[minmax(0,560px)_minmax(360px,1fr)] lg:gap-8 xl:grid-cols-[minmax(0,600px)_minmax(420px,1fr)]">
           {/* Copy stays centered on compact screens, then locks to the left once the two-column layout has enough breathing room. */}
-          <div className="relative z-40 mx-auto flex w-full max-w-[580px] flex-col items-center pt-2 text-center font-sans text-black lg:mx-0 lg:max-w-[600px] lg:items-start lg:pt-0 lg:text-left">
-            <p className="hero-copy-reveal hero-copy-reveal--1 text-[clamp(11px,2.2vw,16px)] font-medium uppercase tracking-[0.14em] text-gray-800 sm:tracking-[0.16em]">
+          <div className="relative z-40 mx-auto flex w-full max-w-[580px] flex-col items-center pt-2 text-center font-sans  lg:mx-0 lg:max-w-[600px] lg:items-start lg:pt-0 lg:text-left">
+            <p className="hero-copy-reveal hero-copy-reveal--1 text-[clamp(11px,2.2vw,16px)] font-medium uppercase tracking-[0.14em] sm:tracking-[0.16em]">
               Welcome to Growingen Solutions
             </p>
 
-            <h1 className="hero-copy-reveal hero-copy-reveal--2 mt-4 w-full max-w-[15ch] text-[clamp(2.15rem,8vw,3.6rem)] font-bold leading-[1.02] tracking-[-0.05em] text-black sm:max-w-[16ch] lg:max-w-[16.5ch]">
+            <h1 className="hero-copy-reveal hero-copy-reveal--2 mt-4 w-full max-w-[15ch] text-[clamp(2.15rem,8vw,3.6rem)] font-bold leading-[1.02] tracking-[-0.05em]  sm:max-w-[16ch] lg:max-w-[16.5ch]">
               <span className="block whitespace-nowrap">Elevate Your Digital</span>
               <span className="mt-2 block whitespace-nowrap sm:mt-1">
                 Footprint with{' '}
@@ -92,7 +92,7 @@ export default function HeroSection() {
               </span>
             </h1>
 
-            <p className="hero-copy-reveal hero-copy-reveal--3 mx-auto mt-5 max-w-[34ch] text-[clamp(14px,2.5vw,17px)] font-medium leading-[1.68] tracking-normal text-gray-800 sm:max-w-[46ch] lg:mx-0 lg:max-w-[58ch]">
+            <p className="hero-copy-reveal hero-copy-reveal--3 mx-auto mt-5 max-w-[34ch] text-[clamp(14px,2.5vw,17px)] font-medium leading-[1.68] tracking-normal  sm:max-w-[46ch] lg:mx-0 lg:max-w-[58ch]">
               <span className="block sm:inline">
               At Growingen Solutions, we help brands grow through SEO-driven marketing, paid ads, lead generation, custom websites, and innovative app solutions. 
               </span>

@@ -6,10 +6,6 @@ export default function TickerBanner({
   duration = '12s',
   ariaLabel = 'Highlights',
 }) {
-  if (!items.length) {
-    return null
-  }
-
   const rootClassName = ['ticker-banner', className].filter(Boolean).join(' ')
   const viewportRef = useRef(null)
   const groupRef = useRef(null)
@@ -17,25 +13,24 @@ export default function TickerBanner({
   const [repeatCount, setRepeatCount] = useState(2)
 
   useEffect(() => {
+    if (!items.length) return
+
     const viewport = viewportRef.current
     const group = groupRef.current
 
-    if (!viewport || !group) {
-      return undefined
-    }
+    if (!viewport || !group) return
 
     const updateTickerMetrics = () => {
       const nextGroupWidth = group.scrollWidth
       const viewportWidth = viewport.clientWidth
 
-      if (!nextGroupWidth) {
-        return
-      }
+      if (!nextGroupWidth) return
 
       setGroupWidth(nextGroupWidth)
 
-      // Keep enough copies mounted so the loop stays seamless on wide screens too.
-      const copiesNeeded = Math.max(2, Math.ceil(viewportWidth / nextGroupWidth) + 2)
+      const copiesNeeded =
+        Math.max(2, Math.ceil(viewportWidth / nextGroupWidth) + 2)
+
       setRepeatCount(copiesNeeded)
     }
 
@@ -53,12 +48,14 @@ export default function TickerBanner({
     observer.observe(viewport)
     observer.observe(group)
 
-    return () => {
-      observer.disconnect()
-    }
+    return () => observer.disconnect()
   }, [items])
 
-  return (
+  if (!items.length) {
+    return null
+  }
+
+   return (
     <div
       className={rootClassName}
       style={{

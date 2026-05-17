@@ -12,8 +12,8 @@ const solutionCards = [
     description:
       'Why traditional hashtags like #MarketingStrategy are becoming less effective. People are now searching for direct solutions to their specific problems rather than browsing broad categories. By using "Social SEO"—writing captions that match the exact questions people ask—you can ensure your content appears right when they need it most.',
     buttonLabel: 'Start the Journey',
-    previewImageSrc: '/images/featured/card-1.png',
-    videoSrc: '/icons/growingen.mp4',
+    previewImageSrc: '/images/hero/social-seo-thumbnail.png',
+    videoSrc: '/videos/social-seo-video.webm',
   },
   {
     id: 2,
@@ -22,8 +22,8 @@ const solutionCards = [
     description:
       'While a "like" is a brief nod of approval, a "save" represents a long-term commitment to a piece of content. To drive real impact, focus on creating a "reference library" of blueprints, checklists, and guides that offer lasting utility. Content reaches its highest value when it is useful enough to be revisited later. By prioritising practical resources over fleeting interactions, a feed becomes an essential tool for its audience.',
     buttonLabel: 'Start the Journey',
-    previewImageSrc: '/images/featured/card-2.png',
-    videoSrc: '/icons/growingen.mp4',
+    previewImageSrc: '/images/hero/saves-matter-thumbnail.png',
+    videoSrc: '/videos/saves-matter-video.webm',
   },
   {
     id: 3,
@@ -32,8 +32,8 @@ const solutionCards = [
     description:
       'In an era of highly polished AI content, perfection can often feel robotic or untrustworthy. Real connection is built through "human glitches"—the raw, unedited moments like a simple stutter or a coffee stain that show personality. Keeping audio and visuals authentic makes a brand feel more relatable and grounded. The goal is to move away from cold logos and lean into the messy, genuine traits that make people want to connect.',
     buttonLabel: 'Start the Journey',
-    previewImageSrc: '/images/featured/card-3.png',
-    videoSrc: '/icons/growingen.mp4',
+    previewImageSrc: '/images/hero/human-glitch-thumbnail.png',
+    videoSrc: '/videos/human-glitch-video.mp4',
   },
 ]
 
@@ -48,43 +48,59 @@ function SolutionPreviewCard({ card }) {
     })
   }
 
-  const handlePlayVideo = async () => {
-    setIsPlaying(true)
+  const handleToggleVideo = async () => {
+    if (!videoRef.current) return
 
-    if (!videoRef.current) {
-      return
+    if (isPlaying) {
+      // Pause if currently playing
+      videoRef.current.pause()
+      setIsPlaying(false)
+    } else {
+      // Play if paused
+      try {
+        // If it ended previously, restart it
+        if (videoRef.current.currentTime === videoRef.current.duration) {
+          videoRef.current.currentTime = 0
+        }
+        await videoRef.current.play()
+        setIsPlaying(true)
+      } catch (error) {
+        console.error('Preview video could not start:', error)
+      }
     }
+  }
 
-    try {
-      await videoRef.current.play()
-    } catch (error) {
-      console.error('Preview video could not start:', error)
-    }
+  const handleVideoEnded = () => {
+    setIsPlaying(false)
   }
 
   return (
     <ScrollStackItem itemClassName="border border-white/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.98)_0%,rgba(255,255,255,0.94)_100%)]">
-      <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_clamp(220px,28vw,270px)] md:items-center lg:gap-10">
+      <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_clamp(220px,28vw,270px)] md:items-center lg:gap-12">
         {/* LEFT CONTENT */}
-        <div className="growth-stories-card-copy flex w-full flex-col items-start gap-3 px-1 pt-[2px] sm:px-3">
-          <h2 className="w-full font-[var(--font-heading)] text-[20px] font-semibold leading-[1.03] tracking-[-0.04em] text-black sm:text-[44px] lg:text-[32px] capitalize">
-            {card.title.split(' ').slice(0, -1).join(' ')} <br />
-            {card.title.split(' ').slice(-1)}
+        <div className="flex w-full flex-col items-start justify-center gap-3 px-2 sm:gap-4 sm:px-4 lg:px-6 lg:py-4">
+          <h2 className="w-full text-left font-[var(--font-heading)] text-[22px] font-semibold capitalize leading-[1.1] tracking-[-0.03em]  sm:text-[32px] lg:whitespace-nowrap lg:text-[36px]">
+            {card.title}
           </h2>
-          <p className="max-w-[40ch] text-[18px] font-semibold leading-[1.28] text-black sm:text-[20px]">
+          
+          <p className="w-full text-left text-[18px] font-semibold leading-[1.3] sm:text-[20px] lg:text-[24px]">
             {card.subtitle}
           </p>
-          {/* Expanded max-w from 40ch to 54ch here to accommodate the new longer descriptions cleanly */}
-          <p className="max-w-[54ch] text-[14px] font-medium leading-[1.55] text-black">
+          
+          <p className="w-full max-w-[56ch] text-left text-[14px] font-medium leading-[1.6]  sm:text-[15px]">
             {card.description}
           </p>
-          <Button
-            size="sm"
-            className="mt-4 min-h-[40px] pl-5 pr-[52px] text-[12px] font-semibold"
-            onClick={handleStartJourney}
-          >
-            {card.buttonLabel}
-          </Button>
+          
+          {/* WRAPPER guarantees strict left alignment to match paragraph text */}
+          <div className="mt-2 flex w-full justify-start">
+            <Button
+              className="m-0 w-[214px] self-start [&>button]:h-[42px] [&>button]:w-full [&>button]:min-h-[42px] [&>button]:justify-center [&>button]:pl-5 [&>button]:pr-[56px] [&>button]:text-[13px] [&>button_span:last-child]:h-[42px] [&>button_span:last-child]:w-[42px] lg:w-[236px] lg:[&>button]:h-[46px] lg:[&>button]:min-h-[46px] lg:[&>button]:pl-6 lg:[&>button]:pr-[62px] lg:[&>button]:text-[14px] lg:[&>button_span:last-child]:h-[46px] lg:[&>button_span:last-child]:w-[46px]"
+              size="default"
+              onClick={handleStartJourney}
+            >
+              {card.buttonLabel}
+            </Button>
+          </div>
         </div>
 
         {/* REEL PREVIEW */}
@@ -93,7 +109,8 @@ function SolutionPreviewCard({ card }) {
             <img
               src={card.previewImageSrc}
               alt={`${card.title} reel preview`}
-              className="h-full w-full object-cover"
+              className="h-full w-full cursor-pointer object-cover"
+              onClick={handleToggleVideo}
             />
           ) : null}
 
@@ -102,11 +119,11 @@ function SolutionPreviewCard({ card }) {
             src={card.videoSrc}
             poster={card.previewImageSrc}
             playsInline
-            muted
-            loop
+            onEnded={handleVideoEnded}
+            onClick={handleToggleVideo}
             preload="metadata"
             className={[
-              'h-full w-full object-cover transition-opacity duration-300',
+              'h-full w-full cursor-pointer object-cover transition-opacity duration-300',
               isPlaying ? 'opacity-100' : 'absolute inset-0 opacity-0',
             ].join(' ')}
           />
@@ -114,7 +131,7 @@ function SolutionPreviewCard({ card }) {
           {!isPlaying ? (
             <button
               type="button"
-              onClick={handlePlayVideo}
+              onClick={handleToggleVideo}
               aria-label={`Play ${card.title} reel`}
               className="absolute left-1/2 top-1/2 z-20 flex h-[58px] w-[58px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white/75 shadow-[0_10px_24px_rgba(15,23,42,0.2)] backdrop-blur-md transition-transform duration-300 hover:scale-105"
             >
@@ -129,19 +146,16 @@ function SolutionPreviewCard({ card }) {
 
 export default function GrowthStoriesSection() {
   return (
-    // 🔥 Standardized Wrapper: Uniform padding applied here
     <section className="relative overflow-visible bg-transparent px-4 py-12 sm:px-6 sm:py-16 lg:px-0 lg:py-0">
-
       {/* BACKGROUND GLOW */}
       <div className="pointer-events-none absolute left-[16%] top-[18%] h-[200px] w-[200px] rounded-full bg-[radial-gradient(circle,rgba(255,171,144,0.18)_0%,transparent_70%)] blur-3xl" />
       <div className="pointer-events-none absolute right-[10%] top-[10%] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(102,145,255,0.18)_0%,transparent_70%)] blur-3xl" />
 
-      {/* 🔥 Removed extra horizontal paddings (px) from here so it relies on the section wrapper */}
       <div className="relative mx-auto max-w-[1360px] lg:mx-12 lg:mb-16 xl:mx-auto">
         <div className="relative mx-auto max-w-[1120px]">
           {/* SECTION HEADING */}
           <div className="mx-auto mb-2 max-w-[620px] text-center sm:mb-3">
-            <h2 className="text-[32px] sm:text-[40px] lg:text-[50px] font-semibold leading-[1.08] tracking-[-0.05em] text-[#111827]">
+            <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.05em] text-[#111827] sm:text-[40px] lg:text-[50px]">
               Smart Solutions For
               <br />
               Growing{' '}

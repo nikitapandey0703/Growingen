@@ -126,6 +126,49 @@ textarea
   font: inherit;
 }
 
+/*
+  Keep orange CTAs readable even when they inherit text color from surrounding
+  layout wrappers. This covers the orange button variants used across pages.
+*/
+:is(button, a, [role="button"])[class*='bg-[#F45328]'],
+:is(button, a, [role="button"])[class*='bg-[#f45328]'],
+:is(button, a, [role="button"])[class*='bg-[#ff5b2e]'],
+:is(button, a, [role="button"])[class*='bg-[#f65a2d]'] {
+  color: #fff;
+}
+
+:is(button, a, [role="button"])[class*='bg-[#F45328]'] :is(span, svg),
+:is(button, a, [role="button"])[class*='bg-[#f45328]'] :is(span, svg),
+:is(button, a, [role="button"])[class*='bg-[#ff5b2e]'] :is(span, svg),
+:is(button, a, [role="button"])[class*='bg-[#f65a2d]'] :is(span, svg) {
+  color: inherit;
+}
+
+:is(button, a, [role="button"])[class*='bg-[#F45328]'],
+:is(button, a, [role="button"])[class*='bg-[#f45328]'],
+:is(button, a, [role="button"])[class*='bg-[#ff5b2e]'],
+:is(button, a, [role="button"])[class*='bg-[#f65a2d]'],
+:is(button, a, [role="button"])[class*='bg-[linear-gradient(180deg,#ff6a33_0%,#F45328_100%)]'] {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+:is(button, a, [role="button"])[class*='bg-[#F45328]']:hover,
+:is(button, a, [role="button"])[class*='bg-[#f45328]']:hover,
+:is(button, a, [role="button"])[class*='bg-[#ff5b2e]']:hover,
+:is(button, a, [role="button"])[class*='bg-[#f65a2d]']:hover,
+:is(button, a, [role="button"])[class*='bg-[linear-gradient(180deg,#ff6a33_0%,#F45328_100%)]']:hover {
+  transform: translateY(3px);
+  box-shadow: none !important;
+}
+
+:is(button, a, [role="button"])[class*='bg-[#F45328]']:active,
+:is(button, a, [role="button"])[class*='bg-[#f45328]']:active,
+:is(button, a, [role="button"])[class*='bg-[#ff5b2e]']:active,
+:is(button, a, [role="button"])[class*='bg-[#f65a2d]']:active,
+:is(button, a, [role="button"])[class*='bg-[linear-gradient(180deg,#ff6a33_0%,#F45328_100%)]']:active {
+  opacity: 0.5;
+}
+
 
 #root {
   min-height: 100vh;
@@ -670,7 +713,7 @@ textarea
   min-width: 18rem;
   padding: 0.98rem 2.85rem;
   color: white;
-  font-size: 1.6rem;
+  font-size: 1.9rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   white-space: nowrap;

@@ -71,7 +71,7 @@ export default function PortfolioScroll() {
       {/* ======================= MOBILE / TABLET VIEW ======================= */}
       <section className="w-full px-4 pb-16 pt-6 sm:px-6 sm:pt-8 lg:hidden">
         <div className="mx-auto max-w-[760px] text-center">
-          <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.04em] text-[#111827] sm:text-[40px] lg:text-[50px]">
+          <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.04em]  sm:text-[40px] lg:text-[50px]">
             Our Recent Projects
             <br />
             For{" "}
@@ -91,7 +91,7 @@ export default function PortfolioScroll() {
           </div>
 
           <div className="rounded-[8px] border border-gray-400 bg-transparent px-6 py-6">
-            <h3 className="text-[clamp(16px,3vw,26px)] font-semibold text-black text-center leading-[1.25]">
+            <h3 className="text-[clamp(16px,3vw,26px)] font-semibold  text-center leading-[1.25]">
               " Your Growth, Our Success "
             </h3>
 
@@ -131,7 +131,7 @@ export default function PortfolioScroll() {
 
       {/* ======================= DESKTOP VIEW ======================= */}
       <div className="hidden w-full text-center pt-4 pb-10 lg:block">
-        <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.04em] text-[#111827] sm:text-[40px] lg:text-[50px]">
+        <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.04em]  sm:text-[40px] lg:text-[50px]">
           Our Recent Projects
           <br />
           For{" "}
@@ -169,7 +169,7 @@ export default function PortfolioScroll() {
 
             {/* CENTER CARD (Stays put throughout) */}
             <div className="absolute top-[38%] left-[36%] w-[28%] aspect-[1.9/1] rounded-[8px] border border-gray-400 flex flex-col items-center justify-center px-6 py-6 z-20 bg-transparent">
-              <h3 className="text-[clamp(16px,1.7vw,30px)] font-semibold text-black text-center leading-[1.25] mb-6">
+              <h3 className="text-[clamp(16px,1.7vw,30px)] font-semibold  text-center leading-[1.25] mb-6">
                 “ Your Growth, Our Success ”
               </h3>
               <div className="flex items-center gap-3 pt-4">
@@ -177,7 +177,7 @@ export default function PortfolioScroll() {
                   <img src="/images/portfolio/mini-illustration.png" alt="avatar" className="w-full h-full object-contain" />
                 </div>
                 <div className="flex flex-col leading-tight">
-                  <span className="text-[clamp(14px,1.2vw,20px)] font-semibold text-black">Ankita Verma</span>
+                  <span className="text-[clamp(14px,1.2vw,20px)] font-semibold ">Ankita Verma</span>
                   <span className="text-[clamp(10px,0.8vw,14px)] text-gray-600 mt-[2px]">CEO & CO-FOUNDER</span>
                 </div>
               </div>

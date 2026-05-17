@@ -110,7 +110,7 @@ function PlanCard({ card, onAdvance, isActive }) {
         'group relative min-w-0 flex-none snap-center sm:snap-start cursor-pointer outline-none',
         'w-full sm:w-[min(56vw,435px)] lg:w-[calc(50%+38px)]',
         'mr-0 sm:-mr-6 lg:-mr-[58px]', // Reset negative margins on small screens
-        'text-[#121212]',
+        'text-medium',
         'transition-transform duration-300 ease-out hover:-translate-y-1 focus-visible:-translate-y-1',
       ].join(' ')}
     >
@@ -139,7 +139,7 @@ function PlanCard({ card, onAdvance, isActive }) {
             'cta-card-copy absolute inset-0 z-10 flex flex-col',
             'pl-[16%] pr-[9.5%] pb-[7%] pt-[13%] sm:pl-[18%] sm:pr-[10%] sm:pb-[8%] sm:pt-[14.5%]',
             'min-w-0 overflow-hidden transition-colors duration-300 ease-out',
-            isActive ? 'text-white sm:text-[#121212] sm:group-hover:text-white' : 'text-[#121212] group-hover:text-white',
+            isActive ? 'text-white sm:text-[#000000] sm:group-hover:text-white' : 'text-[#000000] group-hover:text-white',
           ].join(' ')}
         >
           <div className="max-w-[92%] sm:max-w-[90%]">
@@ -201,7 +201,7 @@ function PlanCard({ card, onAdvance, isActive }) {
               onClick={(event) => {
                 event.stopPropagation()
               }}
-              className="mt-6 inline-flex h-[40px] w-[96%] items-center justify-center self-start rounded-full bg-[linear-gradient(180deg,#ff6a33_0%,#F45328_100%)] px-8 text-[13px] font-medium tracking-[-0.01em] text-white shadow-[0_12px_24px_rgba(244,83,40,0.24),inset_0_1px_0_rgba(255,255,255,0.18)] transition-all duration-300 ease-out sm:mt-7 sm:h-[45px] sm:w-[96%] sm:text-[14px]"
+              className="mt-6 inline-flex h-[40px] w-[96%] items-center justify-center self-start rounded-full bg-[linear-gradient(180deg,#ff6a33_0%,#F45328_100%)] px-8 text-[13px] font-medium tracking-[-0.01em] !text-white shadow-[0_12px_24px_rgba(244,83,40,0.24),inset_0_1px_0_rgba(255,255,255,0.18)] transition-all duration-300 ease-out sm:mt-7 sm:h-[45px] sm:w-[96%] sm:text-[14px]"
             >
               Get Started
             </a>
