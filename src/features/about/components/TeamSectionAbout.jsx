@@ -80,7 +80,7 @@ function TeamCard({ member }) {
 
 export default function TeamSectionAbout() {
   return (
-    <SectionWrapper as="section" className="section-spacing relative bg-transparent pt-12 sm:pt-14 lg:pt-16 lg:pb-16">
+    <SectionWrapper as="section" className="section-spacing relative bg-transparent section-spacing lg:pb-16">
       
       {/* Consistency: 1360px container */}
       <div className="relative">

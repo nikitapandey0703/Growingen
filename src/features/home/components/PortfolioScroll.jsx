@@ -72,11 +72,10 @@ export default function PortfolioScroll() {
       <section className="site-container w-full pb-16 pt-6 sm:pt-8 lg:hidden">
         <div className="mx-auto max-w-[760px] text-center">
           <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.04em]  sm:text-[40px] lg:text-[50px]">
-            Our Recent Projects
-            <br />
-            For{" "}
+            Our Recent
+           
             <CurvedUnderlineText className="hero-highlight pb-[0.16em]">
-              Clients
+              Projects
             </CurvedUnderlineText>
           </h2>
         </div>
@@ -101,12 +100,10 @@ export default function PortfolioScroll() {
               </div>
 
               <div className="flex flex-col leading-tight text-left">
-                <span className="text-[15px] font-semibold text-black sm:text-[17px]">
-                  Ankita Verma
+                <span className="text-[17px] font-semibold text-black sm:text-[19px]">
+                  Team Growingen
                 </span>
-                <span className="mt-[2px] text-[11px] text-gray-600 sm:text-[12px]">
-                  CEO & CO-FOUNDER
-                </span>
+                
               </div>
             </div>
           </div>
@@ -131,12 +128,11 @@ export default function PortfolioScroll() {
 
       {/* ======================= DESKTOP VIEW ======================= */}
       <div className="hidden w-full text-center pt-4 pb-10 lg:block">
-        <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.04em]  sm:text-[40px] lg:text-[50px]">
-          Our Recent Projects
-          <br />
-          For{" "}
+        <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.04em]  sm:text-[40px] lg:text-[50px] pb-2">
+          Our Recent {""}
+          
           <CurvedUnderlineText className="hero-highlight pb-[0.16em]">
-            Clients
+            Projects
           </CurvedUnderlineText>
         </h2>
       </div>
@@ -177,8 +173,9 @@ export default function PortfolioScroll() {
                   <img src="/images/portfolio/mini-illustration.png" alt="avatar" className="w-full h-full object-contain" />
                 </div>
                 <div className="flex flex-col leading-tight">
-                  <span className="text-[clamp(14px,1.2vw,20px)] font-semibold ">Ankita Verma</span>
-                  <span className="text-[clamp(10px,0.8vw,14px)] text-gray-600 mt-[2px]">CEO & CO-FOUNDER</span>
+                  <span className="text-[clamp(14px,1.2vw,24px)] font-semibold ">                  Team Growingen
+</span>
+                 
                 </div>
               </div>
             </div>

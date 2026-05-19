@@ -73,8 +73,8 @@ function ProblemCard({ item, index, isActive, onEnter, onLeave }) {
              {/* 2. DESCRIPTION ON BOTTOM */}
             <p
               className={[
-                'text-[14px] font-medium leading-[1.6] transition-colors duration-500 ease-out lg:text-[15px]',
-                isActive ? '!text-white/90' : '!text-[#8a8a8e]',
+                'text-[14px] font-regular leading-[1.6] transition-colors duration-500 ease-out lg:text-[15px]',
+                isActive ? '!text-white/90' : '!font-regular',
               ].join(' ')}
             >
               {item.description}
@@ -85,7 +85,7 @@ function ProblemCard({ item, index, isActive, onEnter, onLeave }) {
                 'text-[20px] font-bold leading-[1.25] tracking-[-0.03em] transition-colors duration-500 ease-out sm:text-[22px] lg:text-[24px]',
                 'max-w-full text-balance whitespace-pre-line', // Removed pixel restriction, relies on new card width + text-balance
                 item.titleClassName ?? '',
-                isActive ? '!text-white' : '!text-[#333333]',
+                isActive ? '!text-white' : '!text-black',
               ].join(' ')}
             >
               {item.title}

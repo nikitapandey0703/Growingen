@@ -75,7 +75,7 @@ function PhilosophyCard({ item, index, isActive, onEnter, onLeave }) {
             <h3
               className={[
                 'max-w-[30ch] text-[20px] font-bold leading-[1.18] tracking-[-0.03em] text-balance transition-colors duration-500 ease-out sm:text-[22px] lg:text-[24px]',
-                isActive ? '!text-white' : '!text-[#333333]',
+                isActive ? '!text-white' : '!text-black',
               ].join(' ')}
             >
               {item.title}
@@ -84,7 +84,7 @@ function PhilosophyCard({ item, index, isActive, onEnter, onLeave }) {
             <p
               className={[
                 'max-w-[34ch] text-[14px] font-medium leading-[1.45] transition-colors duration-500 ease-out lg:text-[15px]',
-                isActive ? '!text-white/90' : '!text-[#8a8a8e]',
+                isActive ? '!text-white/90' : '!text-black',
               ].join(' ')}
             >
               {item.description}
@@ -100,7 +100,7 @@ export default function PhilosophySystemsAbout() {
   const [activeIndex, setActiveIndex] = useState(0)
 
   return (
-    <SectionWrapper as="section" className="relative bg-transparent pt-12 sm:pt-14 lg:pt-16">
+    <SectionWrapper as="section" className="relative bg-transparent section-spacing">
       <div className="relative mx-auto max-w-[1200px]">
         <div className="mx-auto mb-10 max-w-[760px] text-center sm:mb-12">
           <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.28em] text-[#7a7f8e]">

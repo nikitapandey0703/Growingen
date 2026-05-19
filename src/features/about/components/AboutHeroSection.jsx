@@ -28,7 +28,7 @@ function AboutHeroVisual() {
 export default function AboutHeroSection() {
   return (
     <section className="relative overflow-hidden bg-transparent">
-      <SectionWrapper className="relative pt-8 sm:pt-10">
+      <SectionWrapper className="relative section-spacing">
         <div className="grid items-center gap-12 lg:min-h-[calc(100vh-140px)] lg:grid-cols-[520px_minmax(360px,1fr)] lg:gap-8 lg:pt-0">
           <div className="relative z-40 mx-auto max-w-[520px] pt-2 text-center font-sans text-black lg:mx-0 lg:pt-0 lg:text-left">
            
@@ -43,8 +43,7 @@ export default function AboutHeroSection() {
             </h1>
 
             <p className="hero-copy-reveal hero-copy-reveal--3 mx-auto mt-5 max-w-[45ch] text-[clamp(14px,1.26vw,17px)] font-medium leading-[1.75] tracking-normal text-gray-800 lg:mx-0">
-              Years of hands-on experience across design, development, and digital marketing shaped a deep understanding of what truly works in business.
-
+              We don't just deliver services, we build growth systems where strategy, design, and technology work as one.
             </p>
 
             <div className="hero-copy-reveal hero-copy-reveal--4 mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start">

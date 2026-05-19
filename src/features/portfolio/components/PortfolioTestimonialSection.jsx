@@ -192,7 +192,7 @@ export default function PortfolioTestimonialSection() {
         {/* Section Heading */}
         <div className="mx-auto max-w-[560px] text-center">
           <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.05em] text-[#111827] sm:text-[40px] lg:text-[50px]">
-            What the{' '}
+            What Our{' '}
             <CurvedUnderlineText className="hero-highlight pb-[0.16em]">
               Client Said
             </CurvedUnderlineText>

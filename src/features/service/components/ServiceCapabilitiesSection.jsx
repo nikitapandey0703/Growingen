@@ -34,31 +34,31 @@ const capabilityCards = [
     ],
   },
   {
-    id: 3,
-    title: 'Application Development',
-    subtitle: 'Tailored applications for real-world use.',
-    description:
-      'From internal tools to customer-facing platforms, we build reliable, scalable applications aligned with your goals.',
-    imageSrc: '/images/service/application.webp',
-    deliverables: [
-      'Web & mobile app development',
-      'Clean, intuitive user interfaces',
-      'Secure & scalable backend systems',
-      'Seamless third-party integrations',
-    ],
-  },
+  id: 3,
+  title: 'Digital Marketing',
+  subtitle: 'Performance-driven growth strategies.',
+  description:
+    'Every campaign is built with a clear objective — leads, conversions, and ROI.',
+  imageSrc: '/images/service/application.webp',
+  deliverables: [
+    'Paid advertising (Meta & Google)',
+    'Funnel & campaign strategy',
+    'Social media growth',
+    'Conversion optimization',
+  ],
+},
 ]
 
 function FeatureBullet() {
   return (
-    <span className="mt-[6px] inline-flex h-3.5 w-3.5 flex-none items-center justify-center rounded-full bg-[linear-gradient(180deg,#e63e83_0%,#d4376b_100%)] shadow-[0_4px_10px_rgba(212,55,107,0.2)] sm:h-4 sm:w-4">
+    <span className="mt-[6px] inline-flex h-3.5 w-3.5 flex-none items-center justify-center rounded-full bg-[linear-gradient(180deg,#06BA9D_0%,#059f87_100%)] shadow-[0_4px_10px_rgba(6,186,157,0.22)] sm:h-4 sm:w-4">
       <svg
         viewBox="0 0 24 24"
         aria-hidden="true"
-        className="h-[8px] w-[8px] text-[#FFB45E] sm:h-[9px] sm:w-[9px]"
+        className="h-[9px] w-[9px] text-white sm:h-[10px] sm:w-[10px]"
         fill="none"
         stroke="currentColor"
-        strokeWidth="2.4"
+        strokeWidth="2.8"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
@@ -73,34 +73,34 @@ function CapabilityCard({ card }) {
     <ScrollStackItem itemClassName="border border-white/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.99)_0%,rgba(255,255,255,0.95)_100%)]">
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_240px_minmax(0,0.95fr)] lg:items-center">
         <div className="flex flex-col gap-3 px-1 sm:px-2">
-          <h3 className="text-[46px] font-semibold leading-[1.06] tracking-[-0.04em] text-black">
+          <h3 className="text-[46px] font-semibold leading-[1.06] tracking-[-0.04em] ">
             {card.title.split(' ').slice(0, -1).join(' ')}
             <br />
             {card.title.split(' ').slice(-1)}
           </h3>
-          <p className="max-w-[30ch] text-[21px] font-semibold leading-[1.3] text-black">
+          <p className="max-w-[30ch] text-[21px] font-semibold leading-[1.3] ">
             {card.subtitle}
           </p>
-          <p className="max-w-[42ch] text-[14px] font-medium leading-[1.7] text-[#4b5563]">
+          <p className="max-w-[42ch] text-[14px] font-medium leading-[1.7] ">
             {card.description}
           </p>
         </div>
 
-        <div className="mx-auto w-full max-w-[240px] overflow-hidden rounded-[4px] rounded-tl-[34px] bg-[#e9eef8] shadow-[0_16px_32px_rgba(15,23,42,0.1)]">
+        <div className="mx-auto w-full max-w-[240px] overflow-hidden shadow-[0_16px_32px_rgba(15,23,42,0.1)]">
           <img
             src={card.imageSrc}
             alt={card.title}
-            className="h-[236px] w-full object-cover object-center"
+            className="h-[236px] w-full object-fit object-center "
           />
         </div>
 
         <div className="flex flex-col gap-4 lg:pl-3">
-          <p className="text-[20px] font-light leading-[1.2] tracking-[-0.02em] text-[#111827]">
+          <p className="text-[20px] font-light leading-[1.2] tracking-[-0.02em] ">
             Deliverables
           </p>
           <ul className="flex flex-col gap-3">
             {card.deliverables.map((item) => (
-              <li key={item} className="flex items-start gap-3 text-[16px] font-medium leading-[1.5] text-[#4b5563]">
+              <li key={item} className="flex items-start gap-3 text-[16px] font-medium leading-[1.5] ">
                 <FeatureBullet />
                 <span className="pt-[3px]">{item}</span>
               </li>
@@ -133,7 +133,7 @@ export default function ServiceCapabilitiesSection() {
 
       <div className="relative mx-auto max-w-[1120px]">
         <div className="mx-auto mb-4 max-w-[760px] text-center">
-          <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-[#7a7f8e]">
+          <p className="text-[21px] font-medium uppercase tracking-[0.28em]">
             Our Core Capabilities
           </p>
           <h2 className="text-[32px] font-bold leading-[1.08] tracking-[-0.04em] text-black sm:text-[40px] lg:text-[50px]">

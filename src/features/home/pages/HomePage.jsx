@@ -18,7 +18,7 @@ export const HomePage = () => {
            <CTASection/>
            <GrowthStoriesSection/>
            {/* <TopRatedSection/>           */}
-           <PromoBannerSection/>
+           <PromoBannerSection />
            
            
          </main>

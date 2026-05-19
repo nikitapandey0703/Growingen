@@ -22,21 +22,21 @@ export function AboutPage() {
       <CounterStatsBanner items={aboutStats} className="mt-2 w-full" />
       <PhilosophySystemsAbout />
       <PreCompanyTimelineAbout />
-      <WhatWeDeliverAbout/>
+      {/* <WhatWeDeliverAbout/> */}
       <PortfolioLeaderSection />
       <WhyGrowingenAboutSection />
       <PortfolioCTASection
         title={
           <span className="inline-flex flex-col items-center text-center">
             <span className="block whitespace-nowrap">LET&apos;S BUILD SOMETHING</span>
-            <span className="block whitespace-nowrap">THAT WORKS</span>
+            <span className="block whitespace-nowrap pb-4">THAT WORKS</span>
           </span>
         }
-        description="If you’re looking for more than just execution —
- and want a partner who understands the bigger picture —
+        description="If you’re looking for more than just execution 
+ and want a partner who understands the bigger picture 
 "
         primaryButtonLabel="Let's connect"
-        primaryButtonClassName="w-[240px]"
+        primaryButtonClassName="w-[240px] text-[15px]"
         primaryButtonTo="/contact"
         showSecondaryButton={false}
       />

@@ -7,22 +7,27 @@ import PortfolioShowcase from '../components/PortfolioShowcase'
 import PortfolioTestimonialSection from '../components/PortfolioTestimonialSection'
 
 const portfolioStats = [
-  { value: 320, suffix: '%', label: 'Increase in Website Traffic' },
-  { value: 5, suffix: 'x', label: 'Return On Ad Spend' },
-  { value: 68, suffix: '%', label: 'Lead Conversion Rate' },
-  { value: 185, label: 'Revenue Generated' },
+  { value: 92, suffix: '%', label: 'Improved User Experience Score' },
+  { value: 45, suffix: '%', label: 'Faster Application Performance' },
+  { value: 3, suffix: 'x', label: 'Increase In User Engagement' },
+  { value: 99.9, suffix: '%', label: 'Backend Integration Stability' },
 ]
 
 export function PortfolioPage() {
   return (
     <main className="bg-transparent text-[#111827]">
       <PortfolioHero />
-      <CounterStatsBanner items={portfolioStats} className="mt-2 w-full" />
-      <PortfolioProblemsSection/>
+      <CounterStatsBanner items={portfolioStats} className="mb-[45px] w-full" />
       <PortfolioCarousel/>
+      <PortfolioProblemsSection/>
+      
       <PortfolioShowcase/>
-      <PortfolioTestimonialSection/>
-      <PortfolioCTASection/>
+      <div className="section-spacing">
+        <PortfolioTestimonialSection />
+      </div>
+      <div className="section-spacing">
+        <PortfolioCTASection />
+      </div>
     </main>
   )
 }

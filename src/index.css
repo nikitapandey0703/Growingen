@@ -131,6 +131,14 @@ textarea
   font: inherit;
 }
 
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+[role="button"] {
+  cursor: pointer;
+}
+
 /*
   Keep orange CTAs readable even when they inherit text color from surrounding
   layout wrappers. This covers the orange button variants used across pages.

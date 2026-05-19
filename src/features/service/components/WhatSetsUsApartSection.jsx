@@ -5,14 +5,14 @@ import SectionWrapper from '../../../components/common/SectionWrapper'
 
 function FeatureBullet() {
   return (
-    <span className="mt-[2px] inline-flex h-3.5 w-3.5 flex-none items-center justify-center rounded-full bg-[linear-gradient(180deg,#e63e83_0%,#d4376b_100%)] shadow-[0_4px_10px_rgba(212,55,107,0.2)] sm:mt-[4px] sm:h-4 sm:w-4">
+    <span className="mt-[2px] inline-flex h-3.5 w-3.5 flex-none items-center justify-center rounded-full bg-[linear-gradient(180deg,#06BA9D_0%,#059f87_100%)] shadow-[0_4px_10px_rgba(6,186,157,0.22)] sm:mt-[4px] sm:h-4 sm:w-4">
       <svg
         viewBox="0 0 24 24"
         aria-hidden="true"
-        className="h-[8px] w-[8px] text-[#FFB45E] sm:h-[9px] sm:w-[9px]"
+        className="h-[9px] w-[9px] text-white sm:h-[10px] sm:w-[10px]"
         fill="none"
         stroke="currentColor"
-        strokeWidth="2.4"
+        strokeWidth="2.8"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
@@ -180,7 +180,7 @@ export default function WhatSetsUsApartSection() {
               <div className="absolute -bottom-5 left-1/2 flex w-full -translate-x-1/2 justify-center">
                 <Link
                   to="/contact"
-                  className="rounded-full bg-[#F45328] px-8 py-[14px] text-[13px] font-bold tracking-wide text-white shadow-[0_8px_20px_rgba(244,83,40,0.3)] transition-transform hover:scale-105 active:scale-95"
+                  className="rounded-full bg-[#F45328] px-8 py-[14px] text-[13px] font-semibold tracking-wide text-white shadow-[0_8px_20px_rgba(244,83,40,0.3)] transition-transform hover:scale-105 active:scale-95"
                 >
                   Schedule A Strategy Call
                 </Link>

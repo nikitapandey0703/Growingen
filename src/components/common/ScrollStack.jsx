@@ -336,7 +336,7 @@ export default function ScrollStack({
 
   return (
     <div className={containerClassName} ref={scrollerRef} style={containerStyles}>
-      <div className="scroll-stack-inner min-h-screen overflow-x-clip px-4 pb-[10rem]  sm:px-6 lg:px-8 lg:pb-[16rem]">
+      <div className="scroll-stack-inner min-h-screen overflow-x-clip px-4 pb-[18rem] sm:px-6 sm:pb-[20rem] lg:px-8 lg:pb-[16rem]">
         {children}
         <div className="scroll-stack-end h-px w-full" />
       </div>

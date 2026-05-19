@@ -6,22 +6,6 @@ const businessWhatsappLink = 'https://wa.me/918625912593'
 const planCards = [
   {
     id: 1,
-    name: 'Complete Digital Marketing Solution',
-    description:
-      'Perfect for businesses looking to build visibility, generate leads, and grow consistently online.',
-    features: [
-      'Social Media Management (Instagram, Facebook & LinkedIn)',
-      'SEO Optimization for Better Search Visibility',
-      'Paid Ads Management (Meta/Google Ads)',
-      'Monthly Content & Creative Support',
-      'Lead Generation & Performance Reporting',
-    ],
-    startingLabel: 'Starting from',
-    startingValue: '₹50,000',
-    theme: 'dark',
-  },
-  {
-    id: 2,
     name: 'Website Development',
     description:
       'Custom-built websites designed to establish a strong digital presence and improve conversions.',
@@ -35,6 +19,22 @@ const planCards = [
     startingLabel: 'Starting from',
     startingValue: '₹25,000',
     theme: 'light',
+  },
+  {
+    id: 2,
+    name: 'Complete Digital Marketing Solution',
+    description:
+      'Perfect for businesses looking to build visibility, generate leads, and grow consistently online.',
+    features: [
+      'Social Media Management (Instagram, Facebook & LinkedIn)',
+      'SEO Optimization for Better Search Visibility',
+      'Paid Ads Management (Meta/Google Ads)',
+      'Monthly Content & Creative Support',
+      'Lead Generation & Performance Reporting',
+    ],
+    startingLabel: 'Starting from',
+    startingValue: '₹50,000',
+    theme: 'dark',
   },
   {
     id: 3,
@@ -106,12 +106,12 @@ function PlanCard({ card, onAdvance, isActive }) {
         }
       }}
       className={[
-        'group relative min-w-0 flex-none snap-center cursor-pointer outline-none',
+        'group relative min-w-0 flex-none snap-center self-stretch cursor-pointer outline-none',
         'w-full max-[399px]:w-[min(84vw,314px)] sm:w-[min(82vw,500px)] md:w-[min(70vw,540px)] lg:w-[calc(50%-12px)] xl:w-[calc(50%-14px)]',
         'transition-transform duration-300 ease-out hover:-translate-y-1 focus-visible:-translate-y-1',
       ].join(' ')}
     >
-      <div className="relative flex w-full flex-col min-h-[460px] max-[399px]:min-h-[530px] sm:min-h-[640px] lg:min-h-[620px] drop-shadow-[0_16px_28px_rgba(15,23,42,0.14)]">
+      <div className="relative flex h-full w-full flex-col min-h-[460px] max-[399px]:min-h-[530px] sm:min-h-[640px] lg:min-h-[620px] drop-shadow-[0_16px_28px_rgba(15,23,42,0.14)]">
         
         <img
           src="/icons/Subtract-outline.svg"
@@ -135,8 +135,7 @@ function PlanCard({ card, onAdvance, isActive }) {
         <div
           className={[
             'cta-card-copy relative z-10 flex flex-1 flex-col',
-            // Increased pb-16 (bottom padding) drastically prevents button from overflowing out of the curved SVG bottom corners
-            'px-6 pt-12 pb-16 max-[399px]:px-4 max-[399px]:pt-20 max-[399px]:pb-12 sm:pl-[12%] sm:pr-[10%] sm:pt-[24%] sm:pb-[4%] md:pl-[13.5%] md:pr-[10.5%] lg:pl-[14%] lg:pr-[10%] lg:pb-[8%]',
+            'px-6 pt-4 pb-16 max-[399px]:px-4 max-[399px]:pt-20 max-[399px]:pb-8 min-[400px]:max-[540px]:pl-[12%] min-[400px]:max-[540px]:pr-[8%] min-[400px]:max-[540px]:pt-[24%] sm:pl-[12%] sm:pr-[10%] sm:pt-[16%] sm:pb-[4%] md:pl-[13.5%] md:pr-[10.5%] lg:pl-[14%] lg:pr-[10%] lg:pb-[8%]',
             'transition-colors duration-300 ease-out',
             isActive ? 'text-white sm:text-[#000000] sm:group-hover:text-white' : 'text-[#000000] group-hover:text-white',
           ].join(' ')}
@@ -179,7 +178,6 @@ function PlanCard({ card, onAdvance, isActive }) {
             </ul>
           </div>
 
-          {/* Changed 'mt-auto' to 'mt-8 sm:mt-auto' to completely fix the huge awkward gap on mobile screens */}
           <div className="mt-8 max-w-[100%] pt-2 max-[399px]:mt-5 max-[399px]:pt-1 sm:mt-auto sm:max-w-[95%] sm:pt-5 lg:max-w-[98%]">
             <p
               className={[
@@ -214,20 +212,29 @@ function PlanCard({ card, onAdvance, isActive }) {
 export default function CTASection() {
   const scrollRef = useRef(null)
   const [activeIndex, setActiveIndex] = useState(0)
+  const [cardsPerView, setCardsPerView] = useState(1)
 
+  // 1. Listen for screen resize to dynamically update the viewable amount
+  useEffect(() => {
+    const updateCardsPerView = () => {
+      if (typeof window !== 'undefined') {
+        // Breakpoint matching 'lg' exactly where you split the views to 'w-[calc(50%-12px)]'
+        setCardsPerView(window.innerWidth >= 1024 ? 2 : 1)
+      }
+    }
+    updateCardsPerView()
+    window.addEventListener('resize', updateCardsPerView)
+    return () => window.removeEventListener('resize', updateCardsPerView)
+  }, [])
+
+  // 2. Track the active/nearest card on scroll
   useEffect(() => {
     const node = scrollRef.current
-
-    if (!node) {
-      return undefined
-    }
+    if (!node) return undefined
 
     const handleScroll = () => {
       const cards = Array.from(node.children)
-
-      if (!cards.length) {
-        return
-      }
+      if (!cards.length) return
 
       const containerLeft = node.getBoundingClientRect().left
       let closestIndex = 0
@@ -247,7 +254,7 @@ export default function CTASection() {
 
     handleScroll()
     node.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', handleScroll)
+    window.addEventListener('resize', handleScroll) // Keep to recalculate closest correctly on resize
 
     return () => {
       node.removeEventListener('scroll', handleScroll)
@@ -255,13 +262,16 @@ export default function CTASection() {
     }
   }, [])
 
+  // 3. Compute dynamic indicators calculation
+  const numIndicators = Math.max(1, planCards.length - cardsPerView + 1)
+  const activeIndicator = Math.min(activeIndex, numIndicators - 1)
+  const indicatorsArray = Array.from({ length: numIndicators }, (_, i) => i)
+
   const scrollToCard = (index) => {
     const node = scrollRef.current
     const target = node?.children?.[index]
 
-    if (!node || !target) {
-      return
-    }
+    if (!node || !target) return
 
     node.scrollTo({
       left: target.offsetLeft,
@@ -269,9 +279,10 @@ export default function CTASection() {
     })
   }
 
-  const goToNextCard = (index) => {
-    const nextIndex = (index + 1) % planCards.length
-    scrollToCard(nextIndex)
+  // 4. Update the card advancer function to target indicators instead of purely card index
+  const goToNextCard = () => {
+    const nextIndicator = (activeIndicator + 1) % numIndicators
+    scrollToCard(nextIndicator)
   }
 
   return (
@@ -299,35 +310,32 @@ export default function CTASection() {
           </div>
 
           <div className="relative mt-6 sm:mt-8 lg:mt-10">
-            {/* 
-              Increased gap to 'gap-12' to mathematically guarantee the 108% overflowing background 
-              SVG image is pushed completely out of the viewport. No more edge peeping!
-            */}
             <div
               ref={scrollRef}
-              className="mx-auto flex max-w-[1480px] snap-x snap-mandatory gap-12 px-4 pb-8 pt-4 sm:gap-12 sm:px-12 lg:gap-6 lg:px-0 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="mx-auto flex items-stretch max-w-[1480px] snap-x snap-mandatory gap-12 px-4 pb-8 pt-4 sm:gap-12 sm:px-12 lg:gap-6 lg:px-0 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {planCards.map((card, index) => (
                 <PlanCard
                   key={card.id}
                   card={card}
-                  onAdvance={() => goToNextCard(index)}
+                  onAdvance={goToNextCard}
                   isActive={activeIndex === index}
                 />
               ))}
             </div>
 
             <div className="mt-3 flex items-center justify-center gap-2">
-              {planCards.map((card, index) => (
+              {/* Dynamically render dots based on our screen size view calculations */}
+              {indicatorsArray.map((indicatorIndex) => (
                 <button
-                  key={card.id}
+                  key={indicatorIndex}
                   type="button"
-                  aria-label={`Scroll to ${card.name}`}
-                  onClick={() => scrollToCard(index)}
+                  aria-label={`Scroll to view ${indicatorIndex + 1}`}
+                  onClick={() => scrollToCard(indicatorIndex)}
                   className={[
                     'featured-indicator',
                     'featured-indicator-teal',
-                    activeIndex === index ? 'featured-indicator-active-teal featured-indicator-active' : '',
+                    activeIndicator === indicatorIndex ? 'featured-indicator-active-teal featured-indicator-active' : '',
                   ].join(' ')}
                 />
               ))}

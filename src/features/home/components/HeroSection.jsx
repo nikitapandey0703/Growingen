@@ -76,7 +76,7 @@ export default function HeroSection() {
             </p>
 
             <h1
-              className="hero-copy-reveal hero-copy-reveal--2 mt-4 w-full max-w-[15ch] font-bold leading-[1.04] tracking-[-0.05em] sm:mt-5 sm:max-w-[15.5ch] md:max-w-[16ch] md:leading-[1.02] lg:max-w-[16.2ch] xl:max-w-[16.4ch] 2xl:mt-6 2xl:max-w-[16.8ch]"
+              className="hero-copy-reveal hero-copy-reveal--2 mt-4 w-full max-w-[15ch] font-bold leading-[1.04] tracking-[-0.05em] sm:mt-5 sm:max-w-[15.5ch] md:max-w-[16ch] md:leading-[1.02] lg:max-w-[22ch] xl:max-w-[23ch] 2xl:mt-6 2xl:max-w-[24ch]"
               style={{ fontSize: 'var(--fs-hero-title)' }}
             >
               <span className="block whitespace-nowrap md:whitespace-normal lg:whitespace-nowrap">Elevate Your Digital</span>

@@ -5,37 +5,37 @@ import TickerBanner from '../../../components/common/TickerBanner'
 
 const cards = [
   {
-    title: 'Optimizing Speed for your webpages',
-    imageSrc: '/images/featured/card-1.png',
+    title: 'AI-Powered Software Solutions',
+    imageSrc: '/images/featured/card-1.svg',
     badgeIconSrc: '/icons/optimizing-speed.svg',
     badgeAlt: 'Optimizing speed icon',
   },
   {
-    title: 'Integrated Digital Strategy',
+    title: 'Content & Campaign Management',
     imageSrc: '/images/featured/card-2.png',
     badgeIconSrc: '/icons/digital-strategy.svg',
     badgeAlt: 'Integrated digital strategy icon',
   },
   {
-    title: 'Custom Web Platform Engineering',
+    title: 'Website & App Development',
     imageSrc: '/images/featured/card-3.png',
     badgeIconSrc: '/icons/web-platform.svg',
     badgeAlt: 'Custom web platform engineering icon',
   },
   {
-    title: 'Performance-driven growth strategies',
+    title: 'Social Media & Digital Marketing ',
     imageSrc: '/images/featured/card-4.png',
     badgeIconSrc: '/icons/optimizing-speed.svg', // Update with your actual path
     badgeAlt: 'Cloud hosting solutions icon',
   },
   {
-    title: 'Visibility that compounds over time',
+    title: 'Business Growth Strategy ',
     imageSrc: '/images/featured/card-5.png',
     badgeIconSrc: '/icons/digital-strategy.svg', // Update with your actual path
     badgeAlt: 'Mobile app development icon',
   },
   {
-    title: 'From concept to market-ready product',
+    title: 'Branding & Creative Design',
     imageSrc: '/images/featured/card-6.png',
     badgeIconSrc: '/icons/web-platform.svg', // Update with your actual path
     badgeAlt: 'Data analytics icon',
@@ -509,7 +509,7 @@ export default function FeaturedSection() {
 
       <TickerBanner
         items={tickerItems}
-        className="mt-12"
+        className="mt-12 uppercase"
         ariaLabel="Featured company stats"
       />
     </section>

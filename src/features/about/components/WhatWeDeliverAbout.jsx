@@ -86,7 +86,7 @@ function DeliverCardAbout({ step }) {
 
 export default function WhatWeDeliverAbout() {
   return (
-    <SectionWrapper as="section" className="section-spacing relative bg-transparent pt-12 sm:pt-14 lg:pt-16">
+    <SectionWrapper as="section" className="section-spacing relative bg-transparent ">
       <div className={sectionContainerClassName}>
         <div className="mx-auto mb-12 max-w-[760px] text-center sm:mb-16">
           <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-[#7a7f8e]">

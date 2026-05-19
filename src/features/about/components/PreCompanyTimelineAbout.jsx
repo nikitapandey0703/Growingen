@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'motion/react'
 import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
+import HeroYellowUnderlineText from '../../../components/common/HeroYellowUnderlineText'
 import SectionWrapper from '../../../components/common/SectionWrapper'
 
 const timelineSteps = [
   {
     id: 1,
+    tag: 'FOUNDATION',
     title: 'Building Before The Company Even Existed',
     description:
       'Before Growingen had a name, the work had already started through experiments in strategy, design, and digital execution.',
@@ -17,6 +19,7 @@ const timelineSteps = [
   },
   {
     id: 2,
+    tag: '12+ YEARS',
     title: 'Learning Through Real Projects',
     description:
       'Small projects became a training ground for understanding what makes brands earn trust and stay memorable.',
@@ -28,6 +31,7 @@ const timelineSteps = [
   },
   {
     id: 3,
+    tag: 'KEY REALIZATION',
     title: 'Seeing The Gap',
     description:
       'Most teams delivered disconnected services. The deeper need was a system where brand, product, and marketing could work together.',
@@ -39,6 +43,7 @@ const timelineSteps = [
   },
   {
     id: 4,
+    tag: 'LAUNCH',
     title: 'From Freelance Thinking To Systems Thinking',
     description:
       'The approach evolved from isolated execution into repeatable frameworks built around growth, usability, and clarity.',
@@ -50,6 +55,7 @@ const timelineSteps = [
   },
   {
     id: 5,
+    tag: 'YEAR 1',
     title: 'Design Became A Growth Tool',
     description:
       'Interfaces, websites, and campaign assets were shaped to do more than look good. They had to convert, guide, and scale.',
@@ -61,6 +67,7 @@ const timelineSteps = [
   },
   {
     id: 6,
+    tag: 'IMPACT',
     title: 'Technology Closed The Loop',
     description:
       'Custom builds and better systems made it possible to connect strategy with execution instead of treating them as separate tracks.',
@@ -68,6 +75,18 @@ const timelineSteps = [
       '/images/about/timeline-systems-thinking-secondary.webp',
       '/images/about/timeline-growth-design-secondary.webp',
       '/images/about/timeline-market-gap-primary.webp',
+    ],
+  },
+  {
+    id: 7,
+    tag: 'TODAY & BEYOND',
+    title: 'The Birth of Growingen',
+    description:
+      'All these lessons, frameworks, and successful experiments naturally converged into a single unified entity. Growingen was finally born.',
+    images: [
+      '/images/about/timeline-brand-experiments-primary.webp',
+      '/images/about/timeline-systems-thinking-secondary.webp',
+      '/images/about/timeline-growth-design-primary.webp',
     ],
   },
 ]
@@ -225,23 +244,37 @@ function TimelineTextCard({ item, align, isActive }) {
             {String(item.id).padStart(2, '0')}
           </span>
 
-          <div className={`relative z-10 flex w-full max-w-[95%] flex-col gap-2 sm:max-w-[260px] lg:max-w-[300px] ${alignmentClass}`}>
+          <div className={`relative z-10 flex w-full max-w-[95%] flex-col sm:max-w-[260px] lg:max-w-[300px] ${alignmentClass}`}>
+            
+            {/* Added TAG rendering aligned properly with alternating styling */}
+            {item.tag && (
+              <span
+                className={[
+                  'mb-1 text-[3px] font-light uppercase tracking-[0.2em] transition-colors duration-500 ease-out sm:text-[4px] md:text-[5px] xl:text-[6px]',
+                  isActive ? '!text-white/80' : '!text-[#7a7f8e]',
+                ].join(' ')}
+              >
+                {item.tag}
+              </span>
+            )}
+
             <h3
               className={[
                 'text-[20px] font-bold leading-[1.18] tracking-[-0.03em] transition-colors duration-500 ease-out sm:text-[22px] lg:text-[24px]',
-                isActive ? '!text-white' : '!text-[#333333]',
+                isActive ? '!text-white' : '!text-black',
               ].join(' ')}
             >
               {item.title}
             </h3>
-            <p
+            
+            <div
               className={[
-                'text-[14px] font-medium leading-[1.58] transition-colors duration-500 ease-out lg:text-[15px]',
-                isActive ? '!text-white/90' : '!text-[#8a8a8e]',
+                'mt-1.5 text-[14px] font-medium leading-[1.58] transition-colors duration-500 ease-out lg:text-[15px]',
+                isActive ? '!text-white/90' : '!text-black',
               ].join(' ')}
             >
               {item.description}
-            </p>
+            </div>
           </div>
         </div>
       </div>
@@ -286,7 +319,7 @@ export default function PreCompanyTimelineAbout() {
   })
 
   return (
-    <SectionWrapper ref={sectionRef} as="section" className="relative overflow-hidden bg-transparent pt-12 sm:pt-14 lg:pt-16">
+    <SectionWrapper ref={sectionRef} as="section" className="relative overflow-hidden bg-transparent section-spacing">
       <div className="pointer-events-none absolute left-[8%] top-[18%] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(244,83,40,0.16)_0%,rgba(244,83,40,0.08)_45%,rgba(244,83,40,0)_75%)] blur-3xl" />
       <div className="pointer-events-none absolute bottom-[12%] right-[10%] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(65,94,255,0.16)_0%,rgba(65,94,255,0.08)_45%,rgba(65,94,255,0)_75%)] blur-3xl" />
 
@@ -298,7 +331,7 @@ export default function PreCompanyTimelineAbout() {
           <h2 className="mt-3 text-[32px] font-bold leading-[1.08] tracking-[-0.04em] text-[#111827] sm:text-[40px] lg:text-[50px]">
             Building Before
             <br />
-            <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]">
+            <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em] -bottom-[0.20em]">
               The Company Existed
             </CurvedUnderlineText>
           </h2>
@@ -334,9 +367,10 @@ export default function PreCompanyTimelineAbout() {
                     ].join(' ')}
                   />
 
+                  {/* Reversed the left/right logic to swap text and image positions globally */}
                   <TimelineBubble
                     item={item}
-                    align={index % 2 === 0 ? 'left' : 'right'}
+                    align={index % 2 === 0 ? 'right' : 'left'}
                     isActive={isActive}
                   />
                 </div>
@@ -358,13 +392,12 @@ export default function PreCompanyTimelineAbout() {
           <div className="flex flex-col justify-center px-7 py-8 lg:w-[50%] lg:px-[56px] lg:py-0">
             <h3 className="!text-white text-[34px] font-bold leading-[1.04] tracking-[-0.03em] sm:text-[42px] lg:text-[54px]">
               <span className="block whitespace-nowrap">Most Offer Services.</span>
-              <span className="growth-stories-title__accent relative mt-1 inline-block !text-white whitespace-nowrap">
+              <HeroYellowUnderlineText className="hero-highlight mt-2 inline-block whitespace-nowrap !text-white pb-2" lineClassName="-bottom-[0.20em] left-[10%] h-[0.4em] !w-[70%]">
                 We Build Systems.
-                <span aria-hidden="true" className="growth-stories-title__accent-line" />
-              </span>
+              </HeroYellowUnderlineText>
             </h3>
 
-            <p className="mt-7 !text-white text-[15px] leading-[1.6] lg:max-w-[430px]">
+            <p className="mt-7 !text-white text-[15px] leading-[1.6] lg:max-w-[430px] pt-4">
               Because from experience, we've seen the same problem repeat across every industry we've worked in.
             </p>
 
@@ -376,18 +409,24 @@ export default function PreCompanyTimelineAbout() {
                 "So we changed the approach entirely."
               ].map((point, i) => (
                 <li key={i} className="flex items-start gap-3 !text-white text-[15px] leading-[1.45]">
-                  <span className="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-[6px] bg-white text-[#f45328] shadow-[0_6px_14px_rgba(0,0,0,0.08)]">
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M2 2L8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-                      <path d="M8 2L2 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-                    </svg>
+                  <span className={`mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-[6px] bg-white shadow-[0_6px_14px_rgba(0,0,0,0.08)] ${i === 3 ? 'text-[#10b981]' : 'text-[#f45328]'}`}>
+                    {i === 3 ? (
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 5L4.5 7.5L8 3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    ) : (
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 2L8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                        <path d="M8 2L2 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+                      </svg>
+                    )}
                   </span>
                   <span>{point}</span>
                 </li>
               ))}
             </ul>
 
-            <p className="mt-6 !text-white text-[15px] leading-[1.6] lg:max-w-[430px]">
+            <p className="mt-6 pt-4 !text-white text-[15px] leading-[1.6] lg:max-w-[430px]">
               We don't just execute. We understand structure, and then build - ensuring every part of your growth engine works together.
             </p>
           </div>
@@ -400,7 +439,7 @@ export default function PreCompanyTimelineAbout() {
                   key={offer.title}
                   className="flex min-h-[90px] w-full items-center gap-4 rounded-[16px] bg-white p-4 shadow-[0_12px_28px_rgba(15,23,42,0.06)] transition-transform duration-300 hover:scale-[1.01] lg:pr-5"
                 >
-                  <div className="flex h-[56px] w-[56px] flex-shrink-0 items-center justify-center rounded-[12px] bg-[#fff5ea]">
+                  <div className="flex h-[56px] w-[56px] flex-shrink-0 items-center justify-center rounded-[12px] border-[0.5px] border-black/30 shadow-[0_4px_12px_rgba(15,23,42,0.06)]">
                     <img src={offer.icon} alt="" aria-hidden="true" className="h-8 w-8 object-contain" />
                   </div>
                   <div>

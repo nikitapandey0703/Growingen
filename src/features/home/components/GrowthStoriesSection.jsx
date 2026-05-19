@@ -12,7 +12,7 @@ const solutionCards = [
     description:
       'Why traditional hashtags like #MarketingStrategy are becoming less effective. People are now searching for direct solutions to their specific problems rather than browsing broad categories. By using "Social SEO"—writing captions that match the exact questions people ask—you can ensure your content appears right when they need it most.',
     buttonLabel: 'Start the Journey',
-    previewImageSrc: '/images/hero/social-seo-thumbnail.png',
+    previewImageSrc: '/images/hero/social-seo-thumbnail.svg',
     videoSrc: '/videos/social-seo-video.webm',
   },
   {
@@ -22,7 +22,7 @@ const solutionCards = [
     description:
       'While a "like" is a brief nod of approval, a "save" represents a long-term commitment to a piece of content. To drive real impact, focus on creating a "reference library" of blueprints, checklists, and guides that offer lasting utility. Content reaches its highest value when it is useful enough to be revisited later. By prioritising practical resources over fleeting interactions, a feed becomes an essential tool for its audience.',
     buttonLabel: 'Start the Journey',
-    previewImageSrc: '/images/hero/saves-matter-thumbnail.png',
+    previewImageSrc: '/images/hero/saves-matter-thumbnail.svg',
     videoSrc: '/videos/saves-matter-video.webm',
   },
   {
@@ -154,9 +154,9 @@ function SolutionPreviewCard({ card, onOpenMobileVideo }) {
               type="button"
               onClick={handleToggleVideo}
               aria-label={`Play ${card.title} reel`}
-              className="absolute left-1/2 top-1/2 z-20 flex h-[58px] w-[58px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white/75 shadow-[0_10px_24px_rgba(15,23,42,0.2)] backdrop-blur-md transition-transform duration-300 hover:scale-105 2xl:h-[66px] 2xl:w-[66px]"
+              className="absolute bottom-4 right-4 z-20 flex h-[58px] w-[58px] items-center justify-center rounded-full border border-white/20 bg-red-500/70 shadow-[0_10px_24px_rgba(15,23,42,0.2)] backdrop-blur-md transition-transform duration-300 hover:scale-105 2xl:bottom-6 2xl:right-6 2xl:h-[66px] 2xl:w-[66px]"
             >
-              <Play size={18} fill="#111827" className="ml-1 text-[#111827] 2xl:h-5 2xl:w-5" />
+              <Play size={18} fill="white" className="ml-1 text-white 2xl:h-5 2xl:w-5" />
             </button>
           ) : null}
         </div>
@@ -191,7 +191,7 @@ export default function GrowthStoriesSection() {
   }, [mobileVideoCard])
 
   return (
-    <section className="section-spacing relative overflow-visible bg-transparent pb-28 sm:pb-32 lg:pb-40">
+    <section className="section-spacing relative overflow-visible bg-transparent pb-24 sm:pb-28 md:pb-32 lg:pb-40">
       {/* BACKGROUND GLOW */}
       <div className="pointer-events-none absolute left-[16%] top-[18%] h-[200px] w-[200px] rounded-full bg-[radial-gradient(circle,rgba(255,171,144,0.18)_0%,transparent_70%)] blur-3xl" />
       <div className="pointer-events-none absolute right-[10%] top-[10%] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(102,145,255,0.18)_0%,transparent_70%)] blur-3xl" />

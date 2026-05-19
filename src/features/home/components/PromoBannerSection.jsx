@@ -136,8 +136,7 @@ function PromoStack({
 
   return (
     <div
-      className="relative h-[272px] w-[246px] sm:h-[312px] sm:w-[286px]"
-      style={{ perspective: 700 }}
+className="relative h-[240px] w-[220px] sm:h-[272px] sm:w-[246px] md:h-[312px] md:w-[286px]"      style={{ perspective: 700 }}
       onMouseEnter={() => pauseOnHover && setIsPaused(true)}
       onMouseLeave={() => pauseOnHover && setIsPaused(false)}
     >
@@ -152,7 +151,7 @@ function PromoStack({
             className={[
               'flex h-full w-full flex-col rounded-[24px] p-7 shadow-[0_24px_44px_rgba(15,23,42,0.2)]',
               card.theme === 'white'
-                ? 'border border-[#f3f3f3] bg-white  shadow-[0_22px_44px_rgba(255,255,255,0.2)]'
+                ? 'border border-[#f3f3f3] bg-white text-[#111111] shadow-[0_22px_44px_rgba(255,255,255,0.2)]'
                 : 'bg-[#ff5b2e] text-white shadow-[0_22px_40px_rgba(255,91,46,0.32)]',
             ].join(' ')}
             onClick={() => shouldEnableClick && sendToBack(card.id)}
@@ -322,53 +321,63 @@ export default function PromoBannerSection({ variant = 'default' }) {
   }
 
   return (
-    <SectionWrapper as="section" className="section-spacing relative overflow-hidden bg-transparent">
-      <div className="relative">
-        <div className="mx-auto w-full max-w-[1060px]">
-          <div className="relative flex flex-col gap-6 md:min-h-[326px] md:justify-center">
-            
-            <div className="relative z-20 mx-auto md:absolute md:-left-[10px] md:top-1/2 md:mx-0 md:-translate-y-1/2 lg:-left-[20px]">
-              <PromoStack />
-            </div>
+    <SectionWrapper
+      as="section"
+      className="section-spacing relative isolate mt-14 overflow-hidden bg-transparent sm:mt-16 md:mt-0"
+    >
+      <div className="section-content">
+        <div className="relative">
+          <div className="mx-auto w-full max-w-[1060px]">
+            <div className="relative flex flex-col gap-8 md:min-h-[420px] md:justify-center lg:min-h-[460px]">
+              <div className="relative z-20 mx-auto hidden md:absolute md:-left-[10px] md:top-1/2 md:block md:mx-0 md:-translate-y-1/2 lg:-left-[20px]">
+                <PromoStack />
+              </div>
 
-            {/* 
-              Shifted left padding (pl) down from 320px to 270px (lg) and 300px to 260px (md).
-              This pulls the text block more left on the right side.
-            */}
-            <div
-              className="relative overflow-hidden rounded-[28px] bg-[#0b0b0b] px-6 py-8 text-white shadow-[0_24px_44px_rgba(15,23,42,0.18)] sm:px-8 sm:py-9 md:ml-[80px] md:py-10 md:pl-[260px] md:pr-12 lg:ml-[60px] lg:pl-[270px]"
-              style={{ fontFamily: 'Visby', color: '#ffffff' }}
-            >
-              <div className="pointer-events-none absolute right-[-30px] top-[-24px] h-[136px] w-[136px] rounded-full bg-[radial-gradient(circle,rgba(255,114,74,0.16)_0%,rgba(255,114,74,0.04)_48%,rgba(255,114,74,0)_76%)] blur-2xl" />
+              {/* 
+                Shifted left padding (pl) down from 320px to 270px (lg) and 300px to 260px (md).
+                This pulls the text block more left on the right side.
+              */}
+              <div
+                className="relative overflow-hidden rounded-[28px] bg-[#0b0b0b] px-5 py-6 text-white shadow-[0_24px_44px_rgba(15,23,42,0.18)] sm:px-8 sm:py-9 md:ml-[80px] md:py-10 md:pl-[260px] md:pr-12 lg:ml-[60px] lg:pl-[270px]"
+                style={{ fontFamily: 'Visby', color: '#ffffff' }}
+              >
+                <div className="pointer-events-none absolute right-[-30px] top-[-24px] h-[136px] w-[136px] rounded-full bg-[radial-gradient(circle,rgba(255,114,74,0.16)_0%,rgba(255,114,74,0.04)_48%,rgba(255,114,74,0)_76%)] blur-2xl" />
 
-              <div className="relative max-w-[620px]">
-                <h2
-                  className="text-[32px] font-semibold leading-[1.08] tracking-[-0.04em] sm:text-[40px] lg:text-[50px]"
-                  style={{ color: '#ffffff' }}
-                >
-                  Ready to Elevate Your
-                  <br />
-                  Digital Presence?
-                </h2>
-                <p
-                  className="mt-3 max-w-[44ch] text-[14px] leading-[1.55] sm:text-[15px]"
-                  style={{ color: '#ffffff', marginTop: '0.5rem' }}
-                >
-                  Unlock The Power Of Cutting-Edge Digital Strategies With Boostip.
-                  Whether You Need A Stunning Website, A Winning Social Media Campaign,
-                  Or SEO That Drives Results, We&apos;ve Got You Covered.
-                </p>
+                <div className="relative md:hidden">
+                  <div className="flex justify-center pb-6">
+                    <PromoStack />
+                  </div>
+                </div>
 
-                {/* 
-                  Fully curved borders (rounded-full)
-                  Width 240px and Height 50px on laptop, scaling responsively down. 
-                */}
-                <Link
-                  to="/contact"
-                  className="mt-6 flex h-[44px] w-[200px] items-center justify-center rounded-full bg-[#ff5b2e] text-[15px] font-bold text-white transition-transform duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 sm:h-[48px] sm:w-[220px] sm:text-[16px] lg:h-[50px] lg:w-[240px]"
-                >
-                  Book A Demo
-                </Link>
+                <div className="relative max-w-[620px]">
+                  <h2
+                    className="text-[32px] font-semibold leading-[1.08] tracking-[-0.04em] sm:text-[40px] lg:text-[50px]"
+                    style={{ color: '#ffffff' }}
+                  >
+                    Ready to Elevate Your
+                    <br />
+                    Digital Presence?
+                  </h2>
+                  <p
+                    className="mt-3 max-w-[44ch] text-[14px] leading-[1.55] sm:text-[15px]"
+                    style={{ color: '#ffffff', marginTop: '0.5rem' }}
+                  >
+                    Unlock The Power Of Cutting-Edge Digital Strategies With Boostip.
+                    Whether You Need A Stunning Website, A Winning Social Media Campaign,
+                    Or SEO That Drives Results, We&apos;ve Got You Covered.
+                  </p>
+
+                  {/* 
+                    Fully curved borders (rounded-full)
+                    Width 240px and Height 50px on laptop, scaling responsively down. 
+                  */}
+                  <Link
+                    to="/contact"
+                    className="mt-6 flex h-[44px] w-[200px] items-center justify-center rounded-full bg-[#ff5b2e] text-[15px] font-medium text-white transition-transform duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 sm:h-[48px] sm:w-[220px] sm:text-[16px] lg:h-[50px] lg:w-[240px]"
+                  >
+                    Book A Demo
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

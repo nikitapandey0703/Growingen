@@ -1,32 +1,32 @@
 import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
+import SectionWrapper from '../../../components/common/SectionWrapper'
 
 export default function PortfolioLeaderSection() {
   return (
-    <section className="section-spacing relative overflow-hidden bg-transparent">
-      <div className="site-container pb-24 pt-16 sm:pb-28 sm:pt-20 lg:pb-28 lg:pt-24">
+    <SectionWrapper
+      as="section"
+      className="section-spacing relative overflow-hidden bg-transparent "
+    >
         <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,560px)_minmax(360px,1fr)] lg:gap-x-16 xl:grid-cols-[minmax(0,590px)_minmax(400px,1fr)]">
           <div className="mx-auto w-full max-w-[560px] text-center lg:mx-0 lg:text-left">
             <h2 className="text-[32px] font-semibold leading-[1.06] tracking-[-0.05em] text-[#111827] sm:text-[40px] lg:text-[50px]">
-              <span className="block">From Invisible</span>
+              <span className="block">From Vision </span>
               <span className="mt-1 block">
-                to Industry{" "}
+                To Profitable{" "}
                 <CurvedUnderlineText className="hero-highlight pb-[0.16em]">
-                  Leader
+                  Growth
                 </CurvedUnderlineText>
               </span>
             </h2>
 
-            <div className="mx-auto mt-6 max-w-[50ch] space-y-5 text-[14px] font-medium leading-[1.72] text-gray-600 sm:text-[15px] lg:mx-0">
+            <div className="mx-auto mt-6 max-w-[50ch] space-y-5 text-[14px] font-medium leading-[1.72]  sm:text-[15px] lg:mx-0">
               <p>
-                LuxLite Solutions had an exceptional product line but zero digital visibility.
-                They came to Growingen with a challenge: break into the premium lighting
-                market digitally and build a brand that commands premium pricing.
+                Growingen started with a simple goal — building digital products and marketing systems that actually drive business growth, not just online presence. Within the first year, the company scaled through execution-focused development, performance marketing, and long-term client partnerships.
               </p>
                 <br />
               <p>
-                We developed a holistic strategy combining brand identity redesign,
-                custom website development, SEO, social media management, and targeted
-                paid campaigns, all unified under a single creative vision.
+                What began as a small vision quickly evolved into a profitable digital growth company delivering website development, application development, branding, and digital marketing solutions for modern businesses. Every project was built with one focus: creating measurable impact through strategy, design, and technology.
+
               </p>
             </div>
           </div>
@@ -45,7 +45,6 @@ export default function PortfolioLeaderSection() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+    </SectionWrapper>
   )
 }

@@ -110,8 +110,8 @@ export default function ServiceHero() {
 
               {/* SLIGHTLY SLOWER Animated Button */}
               <Link
-                to="/portfolio"
-                className="relative isolate overflow-hidden inline-flex h-[46px] w-[180px] items-center justify-center rounded-full border border-black/50 bg-transparent px-7 text-[clamp(14px,1.26vw,17px)] font-medium text-black transition-all duration-[500ms] ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-[#f65a2d] hover:text-white hover:scale-105 hover:shadow-[0_0_20px_rgba(246,90,45,0.4)] active:scale-100 before:absolute before:inset-0 before:m-auto before:h-[50px] before:w-[50px] before:-z-10 before:rounded-full before:bg-[#f65a2d] before:scale-0 before:transition-all before:duration-[800ms] before:ease-[cubic-bezier(0.23,1,0.32,1)] hover:before:scale-[6]"
+                to="/portfolio#portfolio-carousel"
+                className="relative isolate overflow-hidden inline-flex h-[46px] w-[180px] items-center justify-center rounded-full border border-black/50 bg-transparent px-7 text-[clamp(14px,1.26vw,17px)] font-medium !text-black transition-all duration-[500ms] ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-[#f65a2d] hover:!text-white hover:scale-105 hover:shadow-[0_0_20px_rgba(246,90,45,0.4)] active:scale-100 before:absolute before:inset-0 before:m-auto before:h-[50px] before:w-[50px] before:-z-10 before:rounded-full before:bg-[#f65a2d] before:scale-0 before:transition-all before:duration-[800ms] before:ease-[cubic-bezier(0.23,1,0.32,1)] hover:before:scale-[6]"
               >
                 View Our Work
               </Link>

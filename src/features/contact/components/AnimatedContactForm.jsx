@@ -1,6 +1,6 @@
 import emailjs from '@emailjs/browser'
 import { AnimatePresence, motion } from 'framer-motion'
-import { CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, ChevronDown } from 'lucide-react'
 import { useMemo, useState } from 'react'
 
 import Button from '../../../components/common/Button'
@@ -36,31 +36,25 @@ const validationRules = {
     },
     pattern: {
       value: /^[A-Za-z]+(?:[ '-][A-Za-z]+)*$/,
-      message:
-        'Full name can contain only letters, spaces, hyphens, and apostrophes.',
+      message: 'Can only contain letters, spaces, hyphens.',
     },
     validate: {
       notOnlySpaces: (value) =>
-        value.trim().length > 0 ||
-        'Full name cannot contain only spaces.',
-      noLeadingOrTrailingSpaces: (value) =>
-        value.trim() === value ||
-        'Remove extra spaces before or after your name.',
+        value.trim().length > 0 || 'Cannot contain only spaces.',
       atLeastTwoWords: (value) =>
         value.trim().split(/\s+/).length >= 2 ||
-        'Please enter both your first and last name.',
+        'Please enter both first and last name.',
     },
   },
   phone: {
     required: 'Please enter your contact number.',
     pattern: {
       value: /^(?:\+91[\s-]?|91[\s-]?)?[6-9]\d{9}$/,
-      message: 'Please enter a valid 10-digit mobile number.',
+      message: 'Please enter a valid 10-digit number.',
     },
     validate: {
       notOnlySpaces: (value) =>
-        value.trim().length > 0 ||
-        'Contact number cannot contain only spaces.',
+        value.trim().length > 0 || 'Cannot contain only spaces.',
       exactDigits: (value) => {
         const digits = value.replace(/\D/g, '')
         const normalized =
@@ -70,7 +64,7 @@ const validationRules = {
 
         return (
           normalized.length === 10 ||
-          'Contact number must contain exactly 10 digits.'
+          'Must contain exactly 10 digits.'
         )
       },
     },
@@ -88,19 +82,16 @@ const validationRules = {
     },
     validate: {
       notOnlySpaces: (value) =>
-        value.trim().length > 0 ||
-        'Email address cannot contain only spaces.',
+        value.trim().length > 0 || 'Cannot contain only spaces.',
       noSpaces: (value) =>
-        !/\s/.test(value) ||
-        'Email address cannot contain spaces.',
+        !/\s/.test(value) || 'Cannot contain spaces.',
     },
   },
   service: {
     required: 'Please select a service.',
     validate: {
       validOption: (value) =>
-        SERVICE_OPTIONS.includes(value) ||
-        'Please select a valid service.',
+        SERVICE_OPTIONS.includes(value) || 'Please select a valid service.',
     },
   },
   message: {
@@ -115,14 +106,10 @@ const validationRules = {
     },
     validate: {
       notOnlySpaces: (value) =>
-        value.trim().length > 0 ||
-        'Message cannot contain only spaces.',
-      noLeadingOrTrailingSpaces: (value) =>
-        value.trim() === value ||
-        'Remove extra spaces before or after your message.',
+        value.trim().length > 0 || 'Cannot contain only spaces.',
       meaningfulMessage: (value) =>
         value.trim().length >= 20 ||
-        'Please provide more details about your requirements.',
+        'Please provide more details.',
     },
   },
 }
@@ -130,35 +117,19 @@ const validationRules = {
 function validateField(fieldName, rawValue) {
   const rules = validationRules[fieldName]
 
-  if (!rules) {
-    return ''
-  }
+  if (!rules) return ''
 
   const value = typeof rawValue === 'string' ? rawValue : ''
 
-  if (rules.required && !value.trim()) {
-    return rules.required
-  }
-
-  if (rules.minLength && value.trim().length < rules.minLength.value) {
-    return rules.minLength.message
-  }
-
-  if (rules.maxLength && value.length > rules.maxLength.value) {
-    return rules.maxLength.message
-  }
-
-  if (rules.pattern && !rules.pattern.value.test(value)) {
-    return rules.pattern.message
-  }
+  if (rules.required && !value.trim()) return rules.required
+  if (rules.minLength && value.trim().length < rules.minLength.value) return rules.minLength.message
+  if (rules.maxLength && value.length > rules.maxLength.value) return rules.maxLength.message
+  if (rules.pattern && !rules.pattern.value.test(value)) return rules.pattern.message
 
   if (rules.validate) {
     for (const validateFn of Object.values(rules.validate)) {
       const result = validateFn(value)
-
-      if (result !== true) {
-        return result
-      }
+      if (result !== true) return result
     }
   }
 
@@ -175,45 +146,20 @@ function validateFormData(data) {
   }
 }
 
-function getFirstFieldError(validationErrors) {
-  const orderedFields = ['name', 'phone', 'email', 'service', 'message']
-
-  for (const fieldName of orderedFields) {
-    if (validationErrors[fieldName]) {
-      return {
-        fieldName,
-        message: validationErrors[fieldName],
-      }
-    }
-  }
-
-  return null
-}
-
 function getFieldBorderState(fieldName, value, activeField, fieldErrors) {
-  if (activeField === fieldName) {
-    return 'focus'
-  }
-
-  if (fieldErrors[fieldName]) {
-    return 'error'
-  }
-
-  if (!value.trim()) {
-    return 'default'
-  }
-
+  if (activeField === fieldName) return 'focus'
+  if (fieldErrors[fieldName]) return 'error'
+  if (!value.trim()) return 'default'
   return validateField(fieldName, value) ? 'error' : 'success'
 }
 
 function getFieldClassName(baseClassName, state) {
   const stateClasses = {
-    default: 'border-[#eceaf2] focus:bg-white',
-    focus: 'border-[#3b82f6] bg-white ring-2 ring-[#bfdbfe]',
-    error: 'border-[#ef4444] bg-white ring-2 ring-[#fecaca]',
-    success: 'border-[#22c55e] bg-white ring-2 ring-[#bbf7d0]',
+    default: 'border-[#eceaf2] bg-[#f6f5f8]',
+    focus: 'border-[#3b82f6] bg-[#f6f5f8] ring-2 ring-[#bfdbfe]',
+    error: 'border-[#ef4444] bg-[#f6f5f8] ring-2 ring-[#fecaca]',
+    success: 'border-[#22c55e] bg-[#f6f5f8] ring-2 ring-[#bbf7d0]',
   }
-
   return [baseClassName, stateClasses[state] || stateClasses.default].join(' ')
 }
 
@@ -224,23 +170,14 @@ export default function AnimatedContactForm() {
   const [formData, setFormData] = useState(initialFormState)
   const [activeField, setActiveField] = useState('')
   const [submitState, setSubmitState] = useState('idle')
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('') // Only used for global API failures now
   const [submittedName, setSubmittedName] = useState('')
   const [fieldErrors, setFieldErrors] = useState({})
 
   const avatarState = useMemo(() => {
-    if (submitState === 'success') {
-      return 'success'
-    }
-
-    if (activeField === 'phone') {
-      return 'phone'
-    }
-
-    if (activeField === 'message') {
-      return 'focus'
-    }
-
+    if (submitState === 'success') return 'success'
+    if (activeField === 'phone') return 'phone'
+    if (activeField === 'message') return 'focus'
     return 'idle'
   }, [activeField, submitState])
 
@@ -256,23 +193,9 @@ export default function AnimatedContactForm() {
     setFormData(nextFormData)
     setErrorMessage('')
 
+    // Clear individual field error on change to give immediate feedback
     if (fieldErrors[name]) {
-      const nextValidationErrors = validateFormData({
-        name: nextFormData.name.trim(),
-        email: nextFormData.email.trim(),
-        phone: nextFormData.phone.trim(),
-        service: nextFormData.service.trim(),
-        message: nextFormData.message.trim(),
-      })
-      const nextVisibleError = getFirstFieldError(nextValidationErrors)
-
-      setFieldErrors(
-        nextVisibleError
-          ? { [nextVisibleError.fieldName]: nextVisibleError.message }
-          : {},
-      )
-    } else {
-      setFieldErrors({})
+      setFieldErrors((prev) => ({ ...prev, [name]: '' }))
     }
   }
 
@@ -280,7 +203,7 @@ export default function AnimatedContactForm() {
     const { name, value } = event.target
     setActiveField('')
     const fieldError = validateField(name, value)
-    setFieldErrors(fieldError ? { [name]: fieldError } : {})
+    setFieldErrors((prev) => ({ ...prev, [name]: fieldError }))
   }
 
   const handleSubmit = async (event) => {
@@ -295,24 +218,21 @@ export default function AnimatedContactForm() {
       message: formData.message.trim(),
     }
 
-    const isFormCompletelyEmpty = Object.values(sanitizedFormData).every(
-      (value) => !value,
-    )
-
-    if (isFormCompletelyEmpty) {
-      setFieldErrors({})
-      setSubmitState('error')
-      setErrorMessage('Please enter your information.')
-      return
-    }
-
     const validationErrors = validateFormData(sanitizedFormData)
-    const firstFieldError = getFirstFieldError(validationErrors)
+    const errorsToSet = {}
+    let hasErrors = false
 
-    if (firstFieldError) {
-      setFieldErrors({ [firstFieldError.fieldName]: firstFieldError.message })
+    // Identify all fields with errors
+    Object.entries(validationErrors).forEach(([key, value]) => {
+      if (value) {
+        errorsToSet[key] = value
+        hasErrors = true
+      }
+    })
+
+    if (hasErrors) {
+      setFieldErrors(errorsToSet)
       setSubmitState('error')
-      setErrorMessage(firstFieldError.message)
       return
     }
 
@@ -350,9 +270,8 @@ export default function AnimatedContactForm() {
     }
   }
 
-  // Base input class handling up to 38px
-  const baseInputClass = "w-full rounded-[5px] bg-[#f6f5f8] px-3 text-[13px] text-[#101828] outline-none transition placeholder:text-[13px] placeholder:font-medium placeholder:text-[#8D8D90] h-[34px] sm:h-[36px] lg:h-[38px]"
-  const baseTextareaClass = "w-full resize-none rounded-[5px] bg-[#f6f5f8] px-3 pb-2 pt-2 text-[13px] text-[#101828] outline-none transition placeholder:text-[13px] placeholder:font-medium placeholder:text-[#8D8D90] h-[66px] sm:h-[70px] lg:h-[76px]"
+  const baseInputClass = "w-full rounded-[5px] bg-[#f6f5f8] px-3 text-[13px] font-medium text-[#101828] outline-none transition placeholder:text-[13px] placeholder:font-medium placeholder:text-[#8D8D90] h-[34px] sm:h-[36px] lg:h-[38px]"
+  const baseTextareaClass = "w-full resize-none rounded-[5px] bg-[#f6f5f8] px-3 pb-2 pt-2 text-[13px] font-medium text-[#101828] outline-none transition placeholder:text-[13px] placeholder:font-medium placeholder:text-[#8D8D90] h-[66px] sm:h-[70px] lg:h-[76px]"
 
   return (
     <section className="section-spacing relative w-full overflow-hidden bg-transparent">
@@ -365,11 +284,12 @@ export default function AnimatedContactForm() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            // Responsive width coverage while keeping strict form max-height limits
-            className="relative mx-auto w-full max-w-full overflow-visible lg:h-[442px] lg:max-w-[790px] 2xl:h-[472px] 2xl:max-w-[872px]"
+            // Scaled up height and width to provide room for validation gaps
+            className="relative mx-auto w-full max-w-full overflow-visible lg:h-[480px] lg:max-w-[840px] 2xl:h-[520px] 2xl:max-w-[920px]"
           >
             <div className="hidden lg:absolute lg:-left-[148px] lg:bottom-0 lg:block lg:w-[210px] 2xl:-left-[176px] 2xl:w-[236px]">
-              <ContactAvatarCanvas status={avatarState} className="h-[312px] 2xl:h-[340px]" />
+              {/* Scaled Avatar height slightly to match the new card height gracefully */}
+              <ContactAvatarCanvas status={avatarState} className="h-[340px] 2xl:h-[380px]" />
             </div>
 
             <div className="w-full rounded-[30px] border border-white/70 bg-white px-5 py-6 shadow-[0_26px_70px_rgba(15,23,42,0.1)] sm:px-8 sm:py-7 lg:h-full lg:px-12 lg:py-9 2xl:px-[3.75rem] 2xl:py-11">
@@ -378,7 +298,6 @@ export default function AnimatedContactForm() {
               </div>
 
               <div className="mx-auto flex w-full max-w-[560px] flex-col items-center gap-2 text-center 2xl:max-w-[620px]">
-                {/* Scaled section heading up to exactly 42px on 2xl */}
                 <h1 className="font-[var(--font-heading)] text-[28px] font-bold leading-[1.03] tracking-[-0.05em] text-[#101828] sm:text-[34px] md:text-[38px] lg:text-[40px] 2xl:text-[42px]">
                   Let&apos;s build{' '}
                   <CurvedUnderlineText className="pb-[0.2em]" lineClassName="2xl:h-[0.46em]">
@@ -386,8 +305,7 @@ export default function AnimatedContactForm() {
                   </CurvedUnderlineText>
                   {' '}together!
                 </h1>
-
-                <p className="mx-auto mt-3 max-w-[440px] text-center text-[13px] font-medium leading-[1.42] text-[#666f80] lg:text-[14px] 2xl:max-w-[490px] 2xl:text-[15px]">
+                <p className="mx-auto mt-3 max-w-[440px] text-center text-[13px] font-medium leading-[1.42] text-[#666f80] lg:text-[14px] xl:text-[15px] 2xl:max-w-[490px] 2xl:text-[17px]">
                   Have a question about training, nutrition, or which program fits you
                   best? Reach out we&apos;ll help you find your next step forward
                 </p>
@@ -431,12 +349,13 @@ export default function AnimatedContactForm() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -12 }}
                     onSubmit={handleSubmit}
-                    // Adjusted slightly tighter top margins to guarantee form boundaries remain intact with taller inputs
-                    className="mx-auto mt-6 w-full max-w-[700px] sm:mt-7 lg:flex lg:h-full lg:flex-col 2xl:max-w-[744px]"
+                    // Scaled max-width for internal form container
+                    className="mx-auto mt-6 w-full max-w-[740px] sm:mt-7 lg:flex lg:h-full lg:flex-col 2xl:max-w-[800px]"
                     noValidate
                   >
-                    <div className="grid gap-x-4 gap-y-3.5 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-4 lg:mt-1 2xl:gap-x-6 2xl:gap-y-5">
-                      <div>
+                    {/* Increased vertical gaps to leave room for absolute error messages */}
+                    <div className="grid gap-x-4 gap-y-6 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-7 lg:mt-1 2xl:gap-x-6 2xl:gap-y-8">
+                      <div className="relative">
                         <label htmlFor="contact-name" className="mb-1.5 block text-[14px] font-semibold leading-none text-[#101828]">
                           Full Name
                         </label>
@@ -454,9 +373,21 @@ export default function AnimatedContactForm() {
                           aria-invalid={fieldErrors.name ? 'true' : 'false'}
                           className={getFieldClassName(baseInputClass, nameFieldState)}
                         />
+                        <AnimatePresence>
+                          {fieldErrors.name && (
+                            <motion.span
+                              initial={{ opacity: 0, y: -2 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -2 }}
+                              className="absolute left-0 top-[calc(100%+4px)] text-[10.5px] font-semibold leading-tight tracking-tight text-[#ef4444]"
+                            >
+                              {fieldErrors.name}
+                            </motion.span>
+                          )}
+                        </AnimatePresence>
                       </div>
 
-                      <div>
+                      <div className="relative">
                         <label htmlFor="contact-phone" className="mb-1.5 block text-[14px] font-semibold leading-none text-[#101828]">
                           Contact
                         </label>
@@ -474,9 +405,21 @@ export default function AnimatedContactForm() {
                           aria-invalid={fieldErrors.phone ? 'true' : 'false'}
                           className={getFieldClassName(baseInputClass, phoneFieldState)}
                         />
+                        <AnimatePresence>
+                          {fieldErrors.phone && (
+                            <motion.span
+                              initial={{ opacity: 0, y: -2 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -2 }}
+                              className="absolute left-0 top-[calc(100%+4px)] text-[10.5px] font-semibold leading-tight tracking-tight text-[#ef4444]"
+                            >
+                              {fieldErrors.phone}
+                            </motion.span>
+                          )}
+                        </AnimatePresence>
                       </div>
 
-                      <div>
+                      <div className="relative">
                         <label htmlFor="contact-email" className="mb-1.5 block text-[14px] font-semibold leading-none text-[#101828]">
                           Email
                         </label>
@@ -494,9 +437,21 @@ export default function AnimatedContactForm() {
                           aria-invalid={fieldErrors.email ? 'true' : 'false'}
                           className={getFieldClassName(baseInputClass, emailFieldState)}
                         />
+                        <AnimatePresence>
+                          {fieldErrors.email && (
+                            <motion.span
+                              initial={{ opacity: 0, y: -2 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -2 }}
+                              className="absolute left-0 top-[calc(100%+4px)] text-[10.5px] font-semibold leading-tight tracking-tight text-[#ef4444]"
+                            >
+                              {fieldErrors.email}
+                            </motion.span>
+                          )}
+                        </AnimatePresence>
                       </div>
 
-                      <div>
+                      <div className="relative">
                         <label htmlFor="contact-service" className="mb-1.5 block text-[14px] font-semibold leading-none text-[#101828]">
                           Service
                         </label>
@@ -512,10 +467,10 @@ export default function AnimatedContactForm() {
                             aria-invalid={fieldErrors.service ? 'true' : 'false'}
                             className={[
                               getFieldClassName(
-                                `appearance-none pr-8 ${baseInputClass}`,
+                                `appearance-none pr-9 ${baseInputClass}`,
                                 serviceFieldState,
                               ),
-                              formData.service ? 'text-[#101828]' : 'font-medium text-[#8D8D90]',
+                              formData.service ? 'bg-[#f6f5f8] text-[#101828]' : 'bg-[#f6f5f8] text-[#8D8D90]',
                             ].join(' ')}
                           >
                             <option value="" disabled>
@@ -526,13 +481,23 @@ export default function AnimatedContactForm() {
                             <option value="Brand Identity">Brand Identity</option>
                             <option value="Marketing Strategy">Marketing Strategy</option>
                           </select>
-                          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[14px] font-medium text-[#98a2b3]">
-                            ˅
-                          </span>
+                          <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-[#98a2b3] stroke-[2.5]" />
                         </div>
+                        <AnimatePresence>
+                          {fieldErrors.service && (
+                            <motion.span
+                              initial={{ opacity: 0, y: -2 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -2 }}
+                              className="absolute left-0 top-[calc(100%+4px)] text-[10.5px] font-semibold leading-tight tracking-tight text-[#ef4444]"
+                            >
+                              {fieldErrors.service}
+                            </motion.span>
+                          )}
+                        </AnimatePresence>
                       </div>
 
-                      <div>
+                      <div className="relative">
                         <label htmlFor="contact-message" className="mb-2.5 block text-[14px] font-semibold leading-none text-[#101828]">
                           Message
                         </label>
@@ -549,13 +514,24 @@ export default function AnimatedContactForm() {
                           aria-invalid={fieldErrors.message ? 'true' : 'false'}
                           className={getFieldClassName(baseTextareaClass, messageFieldState)}
                         />
+                        <AnimatePresence>
+                          {fieldErrors.message && (
+                            <motion.span
+                              initial={{ opacity: 0, y: -2 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -2 }}
+                              className="absolute left-0 top-[calc(100%+4px)] text-[10.5px] font-semibold leading-tight tracking-tight text-[#ef4444]"
+                            >
+                              {fieldErrors.message}
+                            </motion.span>
+                          )}
+                        </AnimatePresence>
                       </div>
 
                       <div className="flex flex-col pt-[12px] sm:pt-0">
                         <label className="mb-2.5 hidden text-[14px] font-semibold leading-none opacity-0 sm:block" aria-hidden="true">
                           Spacer
                         </label>
-                        {/* Properly scaled flex box to align button exactly with textarea height block without bleeding limits */}
                         <div className="flex w-full items-center sm:h-[70px] lg:h-[76px]">
                           <Button
                             type="submit"
@@ -569,14 +545,11 @@ export default function AnimatedContactForm() {
                       </div>
                     </div>
 
-                    {submitState === 'error' && errorMessage ? (
-                      <p
-                        className="mt-3 text-[12px] font-bold"
-                        style={{ color: '#F45328' }}
-                      >
+                    {submitState === 'error' && errorMessage && (
+                      <p className="mt-3 text-[12px] font-bold text-[#F45328]">
                         {errorMessage}
                       </p>
-                    ) : null}
+                    )}
                   </MotionForm>
                 )}
               </AnimatePresence>

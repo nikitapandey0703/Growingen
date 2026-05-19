@@ -7,10 +7,12 @@ import { HomePage } from './features/home/pages/HomePage'
 import { PortfolioPage } from './features/portfolio'
 import { ServicesPage } from './features/service'
 import ScrollNavigator from './components/common/ScrollNavigator'
+import ScrollToTop from './components/common/ScrollToTop'
 
 function App() {
   return (
     <div className="flex min-h-screen flex-col bg-transparent">
+      <ScrollToTop />
       <Header logoSrc="/images/hero/logo.png" />
       <div className="flex-1 bg-transparent">
         <Routes>

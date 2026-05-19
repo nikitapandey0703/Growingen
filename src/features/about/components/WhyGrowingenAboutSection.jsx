@@ -1,28 +1,34 @@
 import { useState } from 'react'
 import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
-import SectionWrapper from '../../../components/common/SectionWrapper'
 
 const benefitCards = [
   {
     id: 1,
-    title: 'Battle-Tested Knowledge',
+    title: 'Start With Clarity, Not Assumptions',
     description:
-      "We've already seen what works and what doesn't across industries. You benefit from that experience without paying the tuition.",
-    icon: '/images/about/knowledge.webp',
+      'Every successful project begins with understanding the problem deeply, not rushing into production based on guesswork.',
+    icon: '/images/about/clearity.webp',
   },
   {
     id: 2,
-    title: 'Business-First Thinking',
+    title: 'Design With Purpose, Not Just Aesthetics',
     description:
-      'We understand business beyond just design or marketing. Every recommendation connects back to your actual goals.',
-    icon: '/images/about/thinking.webp',
+      'Good design is not decoration. It should communicate, guide decisions, and make every interaction easier to trust.',
+    icon: '/images/about/target.webp',
   },
   {
     id: 3,
-    title: 'Long-Term Value Focus',
+    title: 'Build For Scale, Not Just Launch',
     description:
-      "We're not optimizing for the invoice. We're building things that deliver compounding returns over time.",
-    icon: '/images/about/focus.webp',
+      'We create systems and experiences that can keep growing with your business instead of breaking after version one.',
+    icon: '/images/about/products.webp',
+  },
+  {
+    id: 4,
+    title: 'Focus On Outcomes, Not Just Deliverables',
+    description:
+      'Reports, pages, and campaigns only matter when they improve clarity, performance, trust, and long-term momentum.',
+    icon: '/images/about/focus-outcomes.webp',
   },
 ]
 
@@ -31,7 +37,7 @@ function BenefitCard({ card, index, isActive, onEnter, onLeave }) {
     <article
       className={[
         'group relative flex min-h-[248px] flex-col justify-between overflow-hidden border border-black/12 px-8 py-8 transition-colors duration-300 ease-out lg:min-h-[260px]',
-        isActive ? 'bg-black text-white shadow-[0_18px_38px_rgba(15,23,42,0.18)]' : 'bg-transparent text-[#111827]',
+        isActive ? 'bg-black text-white shadow-[0_18px_38px_rgba(15,23,42,0.18)]' : 'bg-white text-[#111827]',
       ].join(' ')}
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
@@ -48,7 +54,7 @@ function BenefitCard({ card, index, isActive, onEnter, onLeave }) {
       </span>
 
       <div className="relative z-10 flex flex-col gap-5">
-        <div className="flex h-[62px] w-[62px] items-center justify-center">
+        <div className="flex h-[62px] w-[62px] items-center justify-center  p-3 transition-colors duration-300 ">
           <img src={card.icon} alt="" aria-hidden="true" className="h-full w-full object-contain" />
         </div>
 
@@ -63,7 +69,7 @@ function BenefitCard({ card, index, isActive, onEnter, onLeave }) {
           </h3>
           <p
             className={[
-              'mt-4 text-[15px] font-medium leading-[1.55] transition-colors duration-300 space-y-4',
+              'mt-4 text-[15px] font-medium leading-[1.55] transition-colors duration-300 space-y-4 pt-2',
               isActive ? 'text-white/72' : 'text-[#7a7f8e]',
             ].join(' ')}
           >
@@ -79,7 +85,7 @@ export default function WhyGrowingenAboutSection() {
   const [activeId, setActiveId] = useState(null)
 
   return (
-    <SectionWrapper as="section" className="relative bg-transparent pt-12 sm:pt-14 lg:pt-16">
+    <section className="relative bg-transparent section-spacing">
       <div className="relative mx-auto max-w-[1360px]">
         <div className="mx-auto max-w-[760px] text-center">
           <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-[#7a7f8e]">
@@ -96,7 +102,7 @@ export default function WhyGrowingenAboutSection() {
           </h2>
         </div>
 
-        <div className="mt-12 grid overflow-hidden border border-black/10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid overflow-hidden border border-black/10 sm:grid-cols-2 xl:grid-cols-4">
           {benefitCards.map((card, index) => (
             <BenefitCard
               key={card.id}
@@ -109,6 +115,6 @@ export default function WhyGrowingenAboutSection() {
           ))}
         </div>
       </div>
-    </SectionWrapper>
+    </section>
   )
 }

@@ -19,7 +19,7 @@ export default function PortfolioCTASection({
   primaryButtonTo,
 }) {
   return (
-    <SectionWrapper as="section" className="relative bg-transparent pt-0">
+    <SectionWrapper as="section" className="relative bg-transparent section-spacing">
       <style>{`
         @keyframes portfolioCtaGlowDrift {
           0% {
