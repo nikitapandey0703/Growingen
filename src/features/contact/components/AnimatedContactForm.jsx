@@ -300,7 +300,7 @@ export default function AnimatedContactForm() {
               <div className="mx-auto flex w-full max-w-[560px] flex-col items-center gap-2 text-center 2xl:max-w-[620px]">
                 <h1 className="font-[var(--font-heading)] text-[28px] font-bold leading-[1.03] tracking-[-0.05em] text-[#101828] sm:text-[34px] md:text-[38px] lg:text-[40px] 2xl:text-[42px]">
                   Let&apos;s build{' '}
-                  <CurvedUnderlineText className="pb-[0.2em]" lineClassName="2xl:h-[0.46em]">
+                  <CurvedUnderlineText className="pb-[0.2em]" lineClassName="2xl:h-[0.46em] h-[0.38em] w-full left-[2%] -bottom-[6px] sm:-bottom-[8px] md:-bottom-[10px] lg:-bottom-[12px] xl:-bottom-[14px] 2xl:-bottom-[16px]">
                     your plan
                   </CurvedUnderlineText>
                   {' '}together!

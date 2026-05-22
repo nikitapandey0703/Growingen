@@ -10,7 +10,7 @@ import WhatSetsUsApartSection from '../components/WhatSetsUsApartSection'
 
 export function ServicesPage() {
   return (
-    <main className="bg-transparent text-[#111827]">
+    <main className="bg-transparent ">
       <ServiceHero />
       <BrandBanner />
       <ServiceCapabilitiesSection />
@@ -23,7 +23,7 @@ export function ServicesPage() {
         title={
           <span className="inline-flex flex-col items-center text-center">
             <span className="block whitespace-nowrap">Ready to Build Something</span>
-            <span className="block whitespace-nowrap">That Actually Works?</span>
+            <span className="block whitespace-nowrap pb-2 sm:pb-3 md:pb-3 lg:pb-4 xl:pb-4">That Actually Works?</span>
           </span>
         }
         description=" Let’s create systems that don’t just look good — but deliver real results."

@@ -14,7 +14,7 @@ export const portfolioPageData = {
   contacts: [
     {
       id: 'email',
-      iconSrc: '/icons/gmail.png',
+      iconSrc: '/icons/email-main.webp',
       label: 'Email',
       value: 'connect@growingen.com',
       href: 'mailto:connect@growingen.com',
@@ -22,7 +22,7 @@ export const portfolioPageData = {
     },
     {
       id: 'phone',
-      iconSrc: '/icons/whatsapp.png',
+      iconSrc: '/icons/whatsapp-main.webp',
       label: 'Phone',
       value: '+91 86 2591 2593',
       href: 'tel:+918625912593',

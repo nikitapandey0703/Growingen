@@ -133,12 +133,12 @@ export default function ServiceCapabilitiesSection() {
 
       <div className="relative mx-auto max-w-[1120px]">
         <div className="mx-auto mb-4 max-w-[760px] text-center">
-          <p className="text-[21px] font-medium uppercase tracking-[0.28em]">
+          <p className="text-[16px] sm:text-[18px] lg:text-[20px] xl:text-[22px] 2xl:text-[24px] font-medium uppercase tracking-[0.28em]">
             Our Core Capabilities
           </p>
           <h2 className="text-[32px] font-bold leading-[1.08] tracking-[-0.04em] text-black sm:text-[40px] lg:text-[50px]">
             Everything Under{' '}
-            <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]">
+            <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]" lineClassName="h-[0.22em] w-full left-[0%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]">
               One Roof
             </CurvedUnderlineText>
           </h2>

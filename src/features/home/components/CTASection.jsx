@@ -294,7 +294,7 @@ export default function CTASection() {
         <div className="section-content">
           <div className="mx-auto max-w-[520px] text-center">
             <h2
-              className="text-[32px] font-semibold leading-[1.08] tracking-[-0.05em] text-[#111827]"
+              className="text-[32px] font-semibold leading-[1.08] tracking-[-0.05em] "
               style={{ fontSize: 'var(--fs-section-title)' }}
             >
               <span className="block sm:whitespace-nowrap">
@@ -302,7 +302,7 @@ export default function CTASection() {
               </span>
               <span className="block sm:whitespace-nowrap">
                 For Your Next{' '}
-                <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]">
+                <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]" lineClassName="h-[0.22em] w-full left-[2%] -bottom-[10px] sm:-bottom-[12px] md:-bottom-[14px] lg:-bottom-[16px] xl:-bottom-[18px] 2xl:-bottom-[20px]">
                   Projects
                 </CurvedUnderlineText>
               </span>

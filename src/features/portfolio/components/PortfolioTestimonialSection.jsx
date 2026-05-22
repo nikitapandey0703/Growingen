@@ -15,24 +15,22 @@ const testimonials = [
   },
   {
     id: 2,
-    name: 'Rahul Mehta',
-    role: 'Founder & CEO, LuxeLite Solutions',
+    name: 'Anita Sharma',
+    role: 'CMO, Urban Nest',
     text:
-      "Growingen didn't just deliver a website and some ads – they completely transformed how our brand is perceived in the market. Within 3 months, we were getting inquiries from clients we could only dream about before. The ROI on this investment has been extraordinary.",
+      "Their strategic approach to building our brand identity was flawless. We saw a 40% increase in user engagement and our customer acquisition cost dropped significantly. Highly recommend their dedicated team!",
   },
   {
     id: 3,
-    name: 'Rahul Mehta',
-    role: 'Founder & CEO, LuxeLite Solutions',
+    name: 'Vikram Singh',
+    role: 'Director, Zenith Corp',
     text:
-      "Growingen didn't just deliver a website and some ads – they completely transformed how our brand is perceived in the market. Within 3 months, we were getting inquiries from clients we could only dream about before. The ROI on this investment has been extraordinary.",
+      "From strategy to execution, Growingen was exceptional. The new digital presence they built for us truly reflects our brand's authority. We have seen tremendous scale and performance improvements across the board.",
   },
 ]
 
 /**
  * Individual Testimonial Card Component.
- * - By default, the background is transparent (showing only the stroke outline).
- * - On hover, it fills with a solid black background, and all text elements transition to white.
  */
 function TestimonialCard({ item, onAdvance }) {
   return (
@@ -47,18 +45,20 @@ function TestimonialCard({ item, onAdvance }) {
         }
       }}
       className={[
-        'group relative min-w-0 flex-none snap-start',
-        'w-[min(82vw,292px)] sm:w-[min(66vw,360px)] lg:w-[calc(50%-34px)]',
+        'group relative flex flex-col flex-none snap-start',
+        // Mobile/Tablet: 1 card full width. Desktop (lg): 2 cards per view (accounting for gap-9 = 36px => calc(50% - 18px))
+        'w-full lg:w-[calc(50%-18px)]',
         'cursor-pointer outline-none transition-transform duration-300 ease-out hover:-translate-y-1 focus-visible:-translate-y-1',
       ].join(' ')}
     >
       {/* 
-        Reduced Height Container: 
-        Lowered the height to balance the reduced width (max 280px on desktop).
+        Scalable Container: 
+        Uses `h-full` and `min-h` so it grows with the content, 
+        while keeping all cards the same height in the flex row.
       */}
-      <div className="relative h-[270px] w-full sm:h-[286px] lg:h-[308px]">
+      <div className="relative flex h-full min-h-[260px] w-full flex-col sm:min-h-[280px]">
         
-        {/* Custom SVG Background Shape */}
+        {/* Custom SVG Background Shape - Automatically stretches */}
         <svg
           viewBox="0 0 520 260"
           preserveAspectRatio="none"
@@ -74,46 +74,42 @@ function TestimonialCard({ item, onAdvance }) {
         {/* Inner Content Container */}
         <div
           className={[
-            'absolute inset-0 z-10 flex flex-col items-center justify-between text-center',
-            'px-6 pb-6 pt-10 sm:px-8 sm:pb-7 sm:pt-12 lg:px-9 lg:pb-8 lg:pt-[3.5rem]',
+            'relative z-10 flex h-full flex-col items-center justify-between text-center',
+            'px-6 pb-6 pt-10 sm:px-8 sm:pb-7 sm:pt-12 lg:px-10 lg:pb-8 lg:pt-[3.5rem]',
             'transition-colors duration-300 group-hover:text-white',
           ].join(' ')}
         >
-          
-          {/* Rating Stars */}
-          <div className="flex justify-center gap-1.5 text-[18px] text-[#FFC107] sm:text-[20px] lg:text-[24px]">
-            <span>★</span>
-            <span>★</span>
-            <span>★</span>
-            <span>★</span>
-            <span>★</span>
+          <div className="flex flex-col items-center gap-4 sm:gap-5">
+            {/* Rating Stars */}
+            <div className="flex justify-center gap-1.5 text-[18px] text-[#FFC107] sm:text-[20px] lg:text-[24px]">
+              <span>★</span>
+              <span>★</span>
+              <span>★</span>
+              <span>★</span>
+              <span>★</span>
+            </div>
+
+            {/* Review Text - Responsive Typography Variable */}
+            <p className="mx-auto max-w-[46ch] font-sans font-medium leading-[1.65]  transition-colors duration-300 group-hover:!text-white text-[length:var(--fs-card-body)]">
+              "{item.text}"
+            </p>
           </div>
 
-          {/* Review Text - Strictly turns white on hover */}
-          <p className="mx-auto max-w-[46ch] font-sans text-[11.5px] font-medium leading-[1.65] text-[#4b5563] transition-colors duration-300 group-hover:!text-white sm:text-[12.5px] lg:text-[13px]">
-            "{item.text}"
-          </p>
-
           {/* Profile Section */}
-          <div className="flex items-center justify-center gap-3.5">
-            
-            {/* Avatar Pill with Vertical Gradient */}
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-b from-[#A21C5C] to-[#F30799] text-[14px] font-semibold text-white shadow-sm sm:h-11 sm:w-11 lg:h-12 lg:w-12 lg:text-[15px]">
+          <div className="mt-6 flex items-center justify-center gap-3.5 sm:mt-8">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-b from-[#A21C5C] to-[#F30799] text-[length:var(--fs-button)] font-semibold text-white shadow-sm sm:h-11 sm:w-11 lg:h-12 lg:w-12">
               {item.name[0]}
             </div>
 
             <div className="text-left">
-              {/* Name - Strictly turns white on hover */}
-              <p className="font-sans text-[13px] font-semibold leading-tight text-[#111827] transition-colors duration-300 group-hover:!text-white sm:text-[14px] lg:text-[15px]">
+              <p className="font-sans font-semibold leading-tight  transition-colors duration-300 group-hover:!text-white text-[length:var(--fs-nav-cta)]">
                 {item.name}
               </p>
-              {/* Role - Turns an off-white/light gray on hover for subtle hierarchy */}
-              <p className="mt-0.5 font-sans text-[10.5px] font-medium leading-tight text-[#6b7280] transition-colors duration-300 group-hover:!text-white sm:text-[11.5px]">
+              <p className="mt-0.5 font-sans font-medium leading-tight  transition-colors duration-300 group-hover:!text-white text-[length:var(--fs-nav-link)] opacity-90">
                 {item.role}
               </p>
             </div>
           </div>
-
         </div>
       </div>
     </article>
@@ -123,11 +119,27 @@ function TestimonialCard({ item, onAdvance }) {
 export default function PortfolioTestimonialSection() {
   const scrollRef = useRef(null)
   const [activeIndex, setActiveIndex] = useState(0)
+  const [cardsPerView, setCardsPerView] = useState(1)
 
-  /**
-   * Intersection logic to determine which card is currently centered
-   * to highlight the corresponding navigation dot.
-   */
+  // Calculate dynamic dots (3 on mobile, 2 on desktop)
+  const numDots = Math.max(1, testimonials.length - cardsPerView + 1)
+
+  useEffect(() => {
+    const handleResize = () => {
+      // lg breakpoint in Tailwind is 1024px
+      if (window.innerWidth >= 1024) {
+        setCardsPerView(2)
+      } else {
+        setCardsPerView(1)
+      }
+    }
+
+    // Set initial layout
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   useEffect(() => {
     const node = scrollRef.current
     if (!node) return undefined
@@ -149,18 +161,21 @@ export default function PortfolioTestimonialSection() {
         }
       })
 
-      setActiveIndex(closestIndex)
+      // Clamp the active index so it doesn't exceed the number of available dots
+      setActiveIndex(Math.min(closestIndex, numDots - 1))
     }
 
-    handleScroll()
-    node.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', handleScroll)
+    // Delay scroll listener attachment slightly to allow initial render
+    const timeoutId = setTimeout(() => {
+      handleScroll()
+      node.addEventListener('scroll', handleScroll, { passive: true })
+    }, 100)
 
     return () => {
+      clearTimeout(timeoutId)
       node.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleScroll)
     }
-  }, [])
+  }, [numDots])
 
   const scrollToCard = (index) => {
     const node = scrollRef.current
@@ -169,19 +184,20 @@ export default function PortfolioTestimonialSection() {
     if (!node || !target) return
 
     node.scrollTo({
-      left: target.offsetLeft,
+      // Account for scroll container's offset to align perfectly
+      left: target.offsetLeft - node.offsetLeft,
       behavior: 'smooth',
     })
     setActiveIndex(index)
   }
 
-  const goToNextCard = (index) => {
-    const nextIndex = (index + 1) % testimonials.length
+  const goToNextCard = () => {
+    const nextIndex = (activeIndex + 1) % numDots
     scrollToCard(nextIndex)
   }
 
   return (
-    <SectionWrapper as="section" className="relative overflow-hidden bg-transparent pt-0">
+    <SectionWrapper as="section" className="relative overflow-hidden bg-transparent section-spacing ">
       
       {/* Decorative Background Glows */}
       <div className="pointer-events-none absolute left-[10%] top-[24%] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(255,151,113,0.22)_0%,rgba(255,151,113,0.08)_44%,rgba(255,151,113,0)_74%)] blur-3xl" />
@@ -189,11 +205,11 @@ export default function PortfolioTestimonialSection() {
 
       <div className="relative mx-auto max-w-[1120px]">
         
-        {/* Section Heading */}
+        {/* Section Heading - Responsive Typography Variable */}
         <div className="mx-auto max-w-[560px] text-center">
-          <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.05em] text-[#111827] sm:text-[40px] lg:text-[50px]">
+          <h2 className="font-semibold leading-[1.08] tracking-[-0.05em]  text-[length:var(--fs-section-title)]">
             What Our{' '}
-            <CurvedUnderlineText className="hero-highlight pb-[0.16em]">
+            <CurvedUnderlineText className="hero-highlight pb-[0.16em]" lineClassName="h-[0.22em] w-full left-[0%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]">
               Client Said
             </CurvedUnderlineText>
           </h2>
@@ -204,24 +220,25 @@ export default function PortfolioTestimonialSection() {
           {/* Scrollable Container */}
           <div
             ref={scrollRef}
-            className="flex snap-x snap-mandatory gap-6 overflow-x-auto px-0.5 pb-4 pt-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-7 lg:gap-9"
+            // items-stretch ensures all cards map to the highest content height
+            className="flex items-stretch snap-x snap-mandatory gap-6 overflow-x-auto px-1 pb-6 pt-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:gap-9"
           >
-            {testimonials.map((item, index) => (
+            {testimonials.map((item) => (
               <TestimonialCard
                 key={item.id}
                 item={item}
-                onAdvance={() => goToNextCard(index)}
+                onAdvance={goToNextCard}
               />
             ))}
           </div>
 
-          {/* Indicator Dots */}
+          {/* Indicator Dots - Reverted back to original classes but tied to numDots */}
           <div className="mt-4 flex items-center justify-center gap-2">
-            {testimonials.map((item, index) => (
+            {Array.from({ length: numDots }).map((_, index) => (
               <button
-                key={item.id}
+                key={index}
                 type="button"
-                aria-label={`Scroll to testimonial from ${item.name}`}
+                aria-label={`Scroll to testimonial page ${index + 1}`}
                 onClick={() => scrollToCard(index)}
                 className={[
                   'featured-indicator',

@@ -18,6 +18,9 @@ export default function PortfolioCTASection({
   primaryButtonClassName = "",
   primaryButtonTo,
 }) {
+  const actionButtonClassName =
+    "inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3 text-center font-medium shadow-[0_12px_24px_rgba(244,83,40,0.22)] transition-all duration-300 sm:min-h-[52px] sm:px-7 md:px-8";
+
   return (
     <SectionWrapper as="section" className="relative bg-transparent section-spacing">
       <style>{`
@@ -48,8 +51,8 @@ export default function PortfolioCTASection({
         }
       `}</style>
 
-      <div className="mx-auto max-w-[1120px]">
-        <div className="relative overflow-hidden rounded-[28px]">
+      <div className="section-content">
+        <div className="relative overflow-hidden rounded-[24px] sm:rounded-[28px] lg:rounded-[32px]">
           <video
             className="absolute inset-0 h-full w-full object-cover"
             autoPlay
@@ -74,45 +77,64 @@ export default function PortfolioCTASection({
           />
 
           <div
-            className="relative z-10 flex flex-col items-center justify-center px-6 py-12 text-center sm:px-8 sm:py-14 lg:px-10 lg:py-16"
+            className="relative z-10 flex flex-col items-center justify-center px-5 py-10 text-center sm:px-8 sm:py-14 md:px-10 md:py-16 lg:px-14 lg:py-18 xl:px-16 xl:py-20 2xl:px-20 2xl:py-24"
             style={{ animation: "portfolioCtaContentRise 700ms cubic-bezier(0.22,1,0.36,1) both" }}
           >
-            <h2 className="max-w-[620px] text-[32px] font-semibold leading-[1.12] tracking-[-0.04em] !text-white sm:text-[40px] lg:text-[50px]">
+            <h2
+              className="max-w-[18ch] text-balance !text-white"
+              style={{
+                fontSize: "var(--fs-section-title)",
+                lineHeight: 1.12,
+                letterSpacing: "-0.04em",
+                fontWeight: 600,
+              }}
+            >
               {title}
             </h2>
 
-            <p className="mt-3 max-w-[420px] text-[12px] leading-[1.6] !text-white/80 sm:text-[13px] lg:text-[14px]">
+            <p
+              className="mt-3 max-w-[34ch] text-balance !text-white/80 sm:mt-4"
+              style={{
+                fontSize: "var(--fs-section-subtitle)",
+                lineHeight: 1.6,
+              }}
+            >
               {description}
             </p>
 
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <div className="mt-7 flex w-full max-w-[560px] flex-col justify-center gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4">
               {primaryButtonTo ? (
                 <Link
                   to={primaryButtonTo}
                   className={[
-                    "min-w-[158px] rounded-full bg-[#F45328] px-7 py-3 text-center text-[13px] font-medium text-white shadow-[0_12px_24px_rgba(244,83,40,0.22)] transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_16px_28px_rgba(244,83,40,0.3)] sm:min-w-[176px]",
+                    `${actionButtonClassName} w-full bg-[#F45328] text-white hover:scale-[1.04] hover:shadow-[0_16px_28px_rgba(244,83,40,0.3)] sm:w-auto sm:min-w-[176px]`,
                     primaryButtonClassName,
                   ]
                     .filter(Boolean)
                     .join(" ")}
+                  style={{ fontSize: "var(--fs-button)" }}
                 >
                   {primaryButtonLabel}
                 </Link>
               ) : (
                 <button
                   className={[
-                    "min-w-[158px] rounded-full bg-[#F45328] px-7 py-3 text-center text-[13px] font-medium text-white shadow-[0_12px_24px_rgba(244,83,40,0.22)] transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_16px_28px_rgba(244,83,40,0.3)] sm:min-w-[176px]",
+                    `${actionButtonClassName} w-full bg-[#F45328] text-white hover:scale-[1.04] hover:shadow-[0_16px_28px_rgba(244,83,40,0.3)] sm:w-auto sm:min-w-[176px]`,
                     primaryButtonClassName,
                   ]
                     .filter(Boolean)
                     .join(" ")}
+                  style={{ fontSize: "var(--fs-button)" }}
                 >
                   {primaryButtonLabel}
                 </button>
               )}
 
               {showSecondaryButton ? (
-                <button className="min-w-[158px] rounded-full border border-white/35 bg-black/10 px-7 py-3 text-center text-[13px] font-medium text-white backdrop-blur-[2px] transition-all duration-300 hover:scale-[1.04] hover:bg-white/8 sm:min-w-[176px]">
+                <button
+                  className={`${actionButtonClassName} w-full border border-white/35 bg-black/10 text-white backdrop-blur-[2px] hover:scale-[1.04] hover:bg-white/8 sm:w-auto sm:min-w-[176px]`}
+                  style={{ fontSize: "var(--fs-button)" }}
+                >
                   {secondaryButtonLabel}
                 </button>
               ) : null}

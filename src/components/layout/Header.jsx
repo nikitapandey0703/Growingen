@@ -1,7 +1,7 @@
 // Navbar section
 import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 const navigationItems = [
   { label: 'Home', href: '/' },
@@ -233,10 +233,11 @@ const headerStyles = `
   }
 `
 
-function LogoBlock({ logoSrc }) {
+function LogoBlock({ logoSrc, onNavigate }) {
   return (
     <Link
       to="/"
+      onClick={onNavigate('/')}
       className="flex shrink-0 items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] rounded-xl"
       aria-label="GrowGen Solutions"
     >
@@ -265,7 +266,7 @@ function NavLinks({ onNavigate, mobile = false }) {
         mobile
           ? 'flex flex-col gap-2'
           // MANUAL KEEP: desktop nav sizing is intentionally custom to balance the enlarged CTA/logo at 2xl.
-          : 'site-nav--desktop hidden items-center justify-center xl:flex'
+          : 'site-nav--desktop hidden items-center justify-center lg:flex'
       }
       aria-label="Primary"
     >
@@ -273,14 +274,12 @@ function NavLinks({ onNavigate, mobile = false }) {
         <NavLink
           key={item.label}
           to={item.href}
-          onClick={() => {
-            onNavigate?.()
-          }}
+          onClick={onNavigate(item.href)}
           className={({ isActive }) =>
             [
               mobile
                 ? 'site-nav__link site-nav__link--mobile site-nav__mobile-link w-full rounded-full px-4 py-3 text-left font-medium transition-colors duration-200'
-                : 'site-nav__link nav-link px-3 py-2 font-medium transition-colors duration-300 xl:px-4',
+                : 'site-nav__link nav-link px-3 py-2 font-medium transition-colors duration-300 lg:px-3 xl:px-4',
               isActive
                 ? mobile
                   ? 'site-nav__mobile-link--active bg-[#2B1CC1]/10 text-[#2B1CC1]'
@@ -315,8 +314,33 @@ export default function Header({ logoSrc }) {
 
   const startProjectIconSrc = '/icons/start-project.svg'
   const lastScrollYRef = useRef(0)
+  const navigate = useNavigate()
 
   const closeMenu = () => setIsMenuOpen(false)
+
+  const handleRouteNavigation = (targetPath) => (event) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
+      return
+    }
+
+    event.preventDefault()
+
+    const root = document.documentElement
+    const previousScrollBehavior = root.style.scrollBehavior
+
+    closeMenu()
+    root.style.scrollBehavior = 'auto'
+    window.history.scrollRestoration = 'manual'
+    root.scrollTop = 0
+    document.body.scrollTop = 0
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+
+    navigate(targetPath)
+
+    requestAnimationFrame(() => {
+      root.style.scrollBehavior = previousScrollBehavior
+    })
+  }
 
   useEffect(() => {
     if (!isMenuOpen) {
@@ -333,7 +357,7 @@ export default function Header({ logoSrc }) {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1280) {
+      if (window.innerWidth >= 1024) {
         setIsMenuOpen(false)
       }
     }
@@ -404,15 +428,16 @@ export default function Header({ logoSrc }) {
         ].join(' ')}
       >
         <div className="site-header__pill flex items-center justify-between gap-2 md:gap-3 lg:gap-4 xl:gap-6 2xl:gap-8">
-          <LogoBlock logoSrc={logoSrc} />
+          <LogoBlock logoSrc={logoSrc} onNavigate={handleRouteNavigation} />
 
           {/* Promote the inline nav only when there is enough horizontal room for every link and CTA. */}
-          <NavLinks />
+          <NavLinks onNavigate={handleRouteNavigation} />
 
-          <div className="hidden xl:flex">
+          <div className="hidden lg:flex">
             {/* MANUAL KEEP: CTA width and 2xl scale are intentionally custom to preserve the navbar composition. */}
             <Link
               to="/contact"
+              onClick={handleRouteNavigation('/contact')}
               className="site-header__cta header-cta w-[200px] justify-center whitespace-nowrap rounded-full font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] 2xl:w-[232px] 2xl:px-7 2xl:py-4"
             >
               <img
@@ -427,7 +452,7 @@ export default function Header({ logoSrc }) {
 
           <button
             type="button"
-            className="site-header__toggle inline-flex shrink-0 items-center justify-center rounded-full border border-black/10 bg-white/70 text-text transition-colors hover:border-[#2B1CC1] hover:text-[#2B1CC1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] xl:hidden"
+            className="site-header__toggle inline-flex shrink-0 items-center justify-center rounded-full border border-black/10 bg-white/70 text-text transition-colors hover:border-[#2B1CC1] hover:text-[#2B1CC1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] lg:hidden"
             aria-expanded={isMenuOpen}
             aria-controls="mobile-navigation"
             aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
@@ -439,18 +464,18 @@ export default function Header({ logoSrc }) {
       </div>
 
       {isMenuOpen ? (
-        <div className="xl:hidden">
+        <div className="lg:hidden">
           <div className="fixed inset-0 z-40 bg-[#020617]/18 backdrop-blur-[2px]" onClick={closeMenu} aria-hidden="true" />
           <div
             id="mobile-navigation"
             className="site-header__menu site-header__inner relative z-50 mx-auto mt-2 w-full border border-white/30 bg-white/42 backdrop-blur-lg"
           >
             <div className="site-header__menu-panel mx-auto flex w-full flex-col">
-              <NavLinks mobile onNavigate={closeMenu} />
+              <NavLinks mobile onNavigate={handleRouteNavigation} />
 
               <Link
                 to="/contact"
-                onClick={closeMenu}
+                onClick={handleRouteNavigation('/contact')}
                 className="site-header__cta header-cta inline-flex w-full max-w-[220px] self-center items-center justify-center gap-2 rounded-full px-5 py-3 font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] sm:w-[200px]"
               >
                 <img

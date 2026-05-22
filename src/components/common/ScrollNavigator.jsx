@@ -28,7 +28,7 @@ export default function ScrollNavigator() {
 
   const handleClick = () => {
     if (isBottom) {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      window.scrollTo({ top: 0, behavior: 'auto' })
       return
     }
 

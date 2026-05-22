@@ -74,7 +74,7 @@ export default function PortfolioScroll() {
           <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.04em]  sm:text-[40px] lg:text-[50px]">
             Our Recent
            
-            <CurvedUnderlineText className="hero-highlight pb-[0.16em]">
+            <CurvedUnderlineText className="hero-highlight pb-[0.16em]" lineClassName="h-[0.22em] w-full left-[2%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]">
               Projects
             </CurvedUnderlineText>
           </h2>
@@ -101,7 +101,7 @@ export default function PortfolioScroll() {
 
               <div className="flex flex-col leading-tight text-left">
                 <span className="text-[17px] font-semibold text-black sm:text-[19px]">
-                  Team Growingen
+                 With Growingen Team
                 </span>
                 
               </div>
@@ -131,7 +131,7 @@ export default function PortfolioScroll() {
         <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.04em]  sm:text-[40px] lg:text-[50px] pb-2">
           Our Recent {""}
           
-          <CurvedUnderlineText className="hero-highlight pb-[0.16em]">
+          <CurvedUnderlineText className="hero-highlight pb-[0.16em] " lineClassName="h-[0.22em] w-full left-[1%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]">
             Projects
           </CurvedUnderlineText>
         </h2>
@@ -173,7 +173,7 @@ export default function PortfolioScroll() {
                   <img src="/images/portfolio/mini-illustration.png" alt="avatar" className="w-full h-full object-contain" />
                 </div>
                 <div className="flex flex-col leading-tight">
-                  <span className="text-[clamp(14px,1.2vw,24px)] font-semibold ">                  Team Growingen
+                  <span className="text-[clamp(14px,1.2vw,24px)] font-semibold ">                  With Growingen Team
 </span>
                  
                 </div>

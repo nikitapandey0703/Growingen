@@ -52,7 +52,7 @@ function TeamCard({ member }) {
       <div className="absolute bottom-0 left-0 w-full bg-white px-6 py-6 text-center transition-all duration-500 ease-in-out">
         
         {/* Always visible */}
-        <h3 className="text-[24px] font-bold text-[#111827] lg:text-[28px]">
+        <h3 className="text-[24px] font-bold  lg:text-[28px]">
           {member.name}
         </h3>
         <p className="mt-1 text-[12px] font-bold uppercase tracking-[0.18em] text-gray-400">
@@ -87,14 +87,14 @@ export default function TeamSectionAbout() {
         
         {/* Section Heading */}
         <div className="mx-auto mb-16 max-w-[900px] text-center">
-          <p className="mb-4 text-[10px] font-medium uppercase tracking-[0.28em] text-[#7a7f8e]">
+          <p className="mb-4 text-[16px] sm:text-[18px] lg:text-[20px] xl:text-[22px] 2xl:text-[24px] font-medium uppercase tracking-[0.28em] ">
             THE TEAM
           </p>
           <h2 className="text-[32px] font-bold leading-[1.08] tracking-[-0.04em] text-black sm:text-[40px] lg:text-[50px]">
             <span className="block whitespace-nowrap">Behind Growingen Is A Team Shaped By</span>
             <span className="mt-1 inline-block whitespace-nowrap">
               Real-World{' '}
-              <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]">
+              <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]" lineClassName="h-[0.22em] w-full left-[22%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]">
                 Experience.
               </CurvedUnderlineText>
             </span>

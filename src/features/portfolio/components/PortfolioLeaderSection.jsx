@@ -9,17 +9,17 @@ export default function PortfolioLeaderSection() {
     >
         <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,560px)_minmax(360px,1fr)] lg:gap-x-16 xl:grid-cols-[minmax(0,590px)_minmax(400px,1fr)]">
           <div className="mx-auto w-full max-w-[560px] text-center lg:mx-0 lg:text-left">
-            <h2 className="text-[32px] font-semibold leading-[1.06] tracking-[-0.05em] text-[#111827] sm:text-[40px] lg:text-[50px]">
+            <h2 className="text-[32px] font-semibold leading-[1.06] tracking-[-0.05em]  sm:text-[40px] lg:text-[50px]">
               <span className="block">From Vision </span>
               <span className="mt-1 block">
                 To Profitable{" "}
-                <CurvedUnderlineText className="hero-highlight pb-[0.16em]">
+                <CurvedUnderlineText className="hero-highlight pb-[0.16em]" lineClassName="h-[0.22em] w-full left-[-50%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]">
                   Growth
                 </CurvedUnderlineText>
               </span>
             </h2>
 
-            <div className="mx-auto mt-6 max-w-[50ch] space-y-5 text-[14px] font-medium leading-[1.72]  sm:text-[15px] lg:mx-0">
+            <div className="mx-auto mt-6 max-w-[50ch] space-y-5 text-[14px] font-medium leading-[1.72]  sm:text-[15px] lg-text-[16px] lg:mx-0">
               <p>
                 Growingen started with a simple goal — building digital products and marketing systems that actually drive business growth, not just online presence. Within the first year, the company scaled through execution-focused development, performance marketing, and long-term client partnerships.
               </p>

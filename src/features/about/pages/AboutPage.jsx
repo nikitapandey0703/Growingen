@@ -17,7 +17,7 @@ const aboutStats = [
 
 export function AboutPage() {
   return (
-    <main className="bg-transparent text-[#111827]">
+    <main className="bg-transparent ">
       <AboutHeroSection />
       <CounterStatsBanner items={aboutStats} className="mt-2 w-full" />
       <PhilosophySystemsAbout />

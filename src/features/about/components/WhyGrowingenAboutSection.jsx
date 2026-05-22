@@ -14,7 +14,7 @@ const benefitCards = [
     title: 'Design With Purpose, Not Just Aesthetics',
     description:
       'Good design is not decoration. It should communicate, guide decisions, and make every interaction easier to trust.',
-    icon: '/images/about/target.webp',
+    icon: '/images/about/target.svg',
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const benefitCards = [
     title: 'Focus On Outcomes, Not Just Deliverables',
     description:
       'Reports, pages, and campaigns only matter when they improve clarity, performance, trust, and long-term momentum.',
-    icon: '/images/about/focus-outcomes.webp',
+    icon: '/images/about/focus-outcomes.svg',
   },
 ]
 
@@ -37,7 +37,7 @@ function BenefitCard({ card, index, isActive, onEnter, onLeave }) {
     <article
       className={[
         'group relative flex min-h-[248px] flex-col justify-between overflow-hidden border border-black/12 px-8 py-8 transition-colors duration-300 ease-out lg:min-h-[260px]',
-        isActive ? 'bg-black text-white shadow-[0_18px_38px_rgba(15,23,42,0.18)]' : 'bg-white text-[#111827]',
+        isActive ? 'bg-black text-white shadow-[0_18px_38px_rgba(15,23,42,0.18)]' : 'bg-white text-[#000000]',
       ].join(' ')}
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
@@ -62,7 +62,7 @@ function BenefitCard({ card, index, isActive, onEnter, onLeave }) {
           <h3
             className={[
               'text-[24px] font-bold leading-[1.15] tracking-[-0.03em] transition-colors duration-300',
-              isActive ? '!text-white' : 'text-[#111827]',
+              isActive ? '!text-white' : 'text-[#000000]',
             ].join(' ')}
           >
             {card.title}
@@ -70,7 +70,7 @@ function BenefitCard({ card, index, isActive, onEnter, onLeave }) {
           <p
             className={[
               'mt-4 text-[15px] font-medium leading-[1.55] transition-colors duration-300 space-y-4 pt-2',
-              isActive ? 'text-white/72' : 'text-[#7a7f8e]',
+              isActive ? 'text-white/72' : 'text-[#000000]',
             ].join(' ')}
           >
             {card.description}
@@ -88,17 +88,17 @@ export default function WhyGrowingenAboutSection() {
     <section className="relative bg-transparent section-spacing">
       <div className="relative mx-auto max-w-[1360px]">
         <div className="mx-auto max-w-[760px] text-center">
-          <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-[#7a7f8e]">
+          <p className="text-[16px] sm:text-[18px] lg:text-[20px] xl:text-[22px] 2xl:text-[24px] font-medium uppercase tracking-[0.28em] ">
             Why Growingen
           </p>
           <h2 className="mt-4 text-[32px] font-bold leading-[1.08] tracking-[-0.04em] text-black sm:text-[40px] lg:text-[50px]">
             When You Work With
           <br />
-            <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]">
-             {' '} Growingen
+            <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]" lineClassName="h-[0.22em] w-full left-[2%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]">
+             {' '} Growingen,
             </CurvedUnderlineText>
            
-            You Get More.
+            {" "}You Get More.
           </h2>
         </div>
 

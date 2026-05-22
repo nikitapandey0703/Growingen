@@ -15,9 +15,9 @@ const portfolioStats = [
 
 export function PortfolioPage() {
   return (
-    <main className="bg-transparent text-[#111827]">
+    <main className="bg-transparent ">
       <PortfolioHero />
-      <CounterStatsBanner items={portfolioStats} className="mb-[45px] w-full" />
+      <CounterStatsBanner items={portfolioStats} className=" w-full" />
       <PortfolioCarousel/>
       <PortfolioProblemsSection/>
       

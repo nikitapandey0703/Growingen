@@ -48,7 +48,6 @@
 
 /* Base document styles */
 html {
-  scroll-behavior: smooth;
   min-height: 100%;
 }
 

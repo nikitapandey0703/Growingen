@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import SectionWrapper from "./SectionWrapper";
 
 /**
  * Formats the counter value with the specified decimal places.
@@ -71,13 +72,25 @@ function CounterStat({ item, duration }) {
   }, [duration, item.value, item.decimals]);
 
   return (
-    <div className="flex min-h-[120px] min-w-[120px] flex-col items-center justify-center px-4 py-4 text-center text-white">
-      <p className="font-sans text-[24px] font-semibold leading-none tracking-[-0.05em] text-white sm:text-[32px] lg:text-[38px]" style={{ color: "#ffffff" }}>
+    <div className="flex min-h-[120px] w-full min-w-0 flex-col items-center justify-center px-3 py-4 text-center text-white sm:min-h-[136px] sm:px-4 sm:py-5 lg:min-h-[148px] lg:px-5">
+      <p
+        className="font-sans font-semibold leading-none tracking-[-0.05em] text-white"
+        style={{
+          color: "#ffffff",
+          fontSize: "clamp(24px, 1.2rem + 1vw, var(--fs-card-title))",
+        }}
+      >
         {item.prefix ?? ""}
         <span ref={numberRef}>0</span>
         {item.suffix ?? ""}
       </p>
-      <p className="mt-5 max-w-[15ch] font-sans text-[14px] font-light leading-[1.28] text-white/100 sm:text-[15px]" style={{ color: "#ffffff" }}>
+      <p
+        className="mt-3 max-w-[16ch] text-balance font-sans font-light leading-[1.35] text-white/100 sm:mt-4"
+        style={{
+          color: "#ffffff",
+          fontSize: "var(--fs-section-subtitle)",
+        }}
+      >
         {item.label}
       </p>
     </div>
@@ -101,19 +114,18 @@ export default function CounterStatsBanner({
   }
 
   return (
-    <section
-      className={`${rootClassName} text-white`}
-      aria-label="Performance metrics"
-    >
-      <div className="grid w-full grid-cols-2 justify-items-center gap-y-2 px-3 sm:px-4 lg:grid-cols-4 lg:px-5">
-        {items.map((item) => (
-          <CounterStat
-            key={`${item.label}-${item.value}`}
-            item={item}
-            duration={duration}
-          />
-        ))}
+    <SectionWrapper as="section" className="relative bg-transparent !pl-0 !pr-0 section-spacing " aria-label="Performance metrics">
+      <div className={`${rootClassName} w-full text-white`}>
+        <div className="grid w-full grid-cols-1 justify-items-center gap-y-1 px-4 py-2 sm:grid-cols-2 sm:gap-x-3 sm:gap-y-2 sm:px-5 md:px-6 lg:grid-cols-4 lg:gap-x-2 lg:px-5 xl:px-6 2xl:px-8">
+          {items.map((item) => (
+            <CounterStat
+              key={`${item.label}-${item.value}`}
+              item={item}
+              duration={duration}
+            />
+          ))}
+        </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

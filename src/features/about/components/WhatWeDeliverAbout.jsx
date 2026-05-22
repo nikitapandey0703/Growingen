@@ -46,7 +46,7 @@ const cardClassName =
 
 // UPDATED: 20px on mobile, 22px on tablet (sm), and 24px on laptop (lg)
 const cardTitleClassName =
-  'mb-2 text-[20px] sm:text-[22px] lg:text-[24px] font-bold leading-tight tracking-tight text-[#111827]'
+  'mb-2 text-[20px] sm:text-[22px] lg:text-[24px] font-bold leading-tight tracking-tight '
 
 // UPDATED: 14px on mobile, 15px on tablet and laptop (sm/lg)
 const cardDescriptionClassName =
@@ -89,12 +89,12 @@ export default function WhatWeDeliverAbout() {
     <SectionWrapper as="section" className="section-spacing relative bg-transparent ">
       <div className={sectionContainerClassName}>
         <div className="mx-auto mb-12 max-w-[760px] text-center sm:mb-16">
-          <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-[#7a7f8e]">
+          <p className="text-[16px] sm:text-[18px] lg:text-[20px] xl:text-[22px] 2xl:text-[24px] font-medium uppercase tracking-[0.28em] ">
             What We Deliver
           </p>
           <h2 className={sectionHeadingClassName}>
             Turning Ideas {' '}
-            <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]">
+            <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]" lineClassName="h-[0.22em] w-full left-[22%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]">
               Into Impact
             </CurvedUnderlineText>
           </h2>

@@ -25,19 +25,19 @@ const cards = [
   {
     title: 'Social Media & Digital Marketing ',
     imageSrc: '/images/featured/card-4.png',
-    badgeIconSrc: '/icons/optimizing-speed.svg', // Update with your actual path
+    badgeIconSrc: '/icons/optimizing-speed.svg',
     badgeAlt: 'Cloud hosting solutions icon',
   },
   {
     title: 'Business Growth Strategy ',
     imageSrc: '/images/featured/card-5.png',
-    badgeIconSrc: '/icons/digital-strategy.svg', // Update with your actual path
+    badgeIconSrc: '/icons/digital-strategy.svg',
     badgeAlt: 'Mobile app development icon',
   },
   {
     title: 'Branding & Creative Design',
     imageSrc: '/images/featured/card-6.png',
-    badgeIconSrc: '/icons/web-platform.svg', // Update with your actual path
+    badgeIconSrc: '/icons/web-platform.svg',
     badgeAlt: 'Data analytics icon',
   },
 ]
@@ -122,8 +122,8 @@ function FeatureCard({ card, isActive, onSelect }) {
 
         <div className="flex min-h-[72px] flex-1 items-center justify-center px-2.5 py-4 text-center sm:min-h-[82px] sm:px-3 sm:py-4.5 md:min-h-[88px] md:px-3.5 lg:min-h-[92px] lg:px-4 lg:py-5 xl:min-h-[98px]">
           <h3
-            className="max-w-[16ch] overflow-hidden font-medium leading-[1.32] tracking-[-0.01em] text-[#111827] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
-            style={{ fontSize: 'clamp(14px, 0.65rem + 0.55vw, var(--fs-card-body))' }}
+            className="max-w-[16ch] overflow-hidden font-medium leading-[1.32] tracking-[-0.01em] text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] 2xl:text-[24px] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
+            
           >
             {card.title}
           </h3>
@@ -376,7 +376,7 @@ export default function FeaturedSection() {
       <div className="site-container relative">
         <div className="mx-auto max-w-[760px] text-center">
           <h2
-            className="text-[32px] font-semibold leading-[1.1] tracking-[-0.05em] text-[#111827]"
+            className="text-[32px] font-semibold leading-[1.1] tracking-[-0.05em] "
             style={{ fontSize: 'var(--fs-section-title)' }}
           >
             We Provide The Best Service
@@ -384,7 +384,7 @@ export default function FeaturedSection() {
             With{' '}
             <CurvedUnderlineText
               className="featured-highlight pb-[0.14em]"
-              lineClassName="h-[0.38em] w-[118%] left-[-9%] -bottom-[0.08em]"
+              lineClassName="h-[0.38em] w-[118%] left-[1%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]"
             >
               Our Tools
             </CurvedUnderlineText>
@@ -469,7 +469,7 @@ export default function FeaturedSection() {
               type="button"
               aria-label="Previous featured service"
               onClick={goToPrevious}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#111827]/12 bg-white text-[#111827] shadow-[0_12px_24px_rgba(15,23,42,0.1)] transition-colors duration-300 hover:border-[#F45328]/30 hover:text-[#F45328]"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#111827]/12 bg-white  shadow-[0_12px_24px_rgba(15,23,42,0.1)] transition-colors duration-300 hover:border-[#F45328]/30 hover:text-[#F45328]"
             >
               <ChevronLeft size={18} />
             </button>
@@ -478,7 +478,7 @@ export default function FeaturedSection() {
               type="button"
               aria-label="Next featured service"
               onClick={goToNext}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#111827]/12 bg-white text-[#111827] shadow-[0_12px_24px_rgba(15,23,42,0.1)] transition-colors duration-300 hover:border-[#F45328]/30 hover:text-[#F45328]"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#111827]/12 bg-white  shadow-[0_12px_24px_rgba(15,23,42,0.1)] transition-colors duration-300 hover:border-[#F45328]/30 hover:text-[#F45328]"
             >
               <ChevronRight size={18} />
             </button>

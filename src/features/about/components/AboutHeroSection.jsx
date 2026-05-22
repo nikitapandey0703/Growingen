@@ -6,14 +6,15 @@ import SectionWrapper from '../../../components/common/SectionWrapper'
 
 function AboutHeroVisual() {
   return (
-    <div className="hero-visual-reveal relative mx-auto mt-10 flex w-full max-w-[580px] items-center justify-center lg:ml-auto lg:mr-0 lg:mt-0 lg:justify-end">
-      <div className="hero-stage relative flex w-full max-w-[500px] items-center justify-center">
+    // Replaced the fixed max-width with the fluid responsive max-widths from ServiceVisual
+    <div className="hero-visual-reveal relative mx-auto flex w-full max-w-[360px] items-center justify-center sm:max-w-[460px] md:max-w-[540px] xl:mx-0 xl:max-w-[500px] xl:justify-end 2xl:max-w-[620px]">
+      <div className="hero-stage relative flex w-full flex-col gap-3 sm:gap-4">
         <div className="hero-stage__glow" aria-hidden="true" />
         <div className="hero-stage__sheen" aria-hidden="true" />
         <div className="hero-ambient-orb hero-ambient-orb--primary" aria-hidden="true" />
         <div className="hero-ambient-orb hero-ambient-orb--secondary" aria-hidden="true" />
 
-        <div className="dashboard-hover relative z-10 w-full max-w-[500px]">
+        <div className="dashboard-hover relative z-10 w-full">
           <img
             src="/images/about/about-hero-img.svg"
             alt="Growingen about page hero visual"
@@ -27,33 +28,63 @@ function AboutHeroVisual() {
 
 export default function AboutHeroSection() {
   return (
-    <section className="relative overflow-hidden bg-transparent">
-      <SectionWrapper className="relative section-spacing">
-        <div className="grid items-center gap-12 lg:min-h-[calc(100vh-140px)] lg:grid-cols-[520px_minmax(360px,1fr)] lg:gap-8 lg:pt-0">
-          <div className="relative z-40 mx-auto max-w-[520px] pt-2 text-center font-sans text-black lg:mx-0 lg:pt-0 lg:text-left">
-           
-            <h1 className="mt-4 w-full text-[30px] font-bold leading-[1.04] tracking-[-0.05em] text-black sm:text-[36px] lg:text-[54px]">
-              <span className="block whitespace-nowrap">From Experience to Execution</span>
-              <span className="mt-1 block whitespace-nowrap">
-                Building a company{' '}
-                <HeroYellowUnderlineText className="hero-highlight pb-1" lineClassName="-bottom-[0.02em] left-[-1%] h-[0.24em] w-[103%]">
-                  <span className="moving-gradient">That Delivers</span>
-                </HeroYellowUnderlineText>
-              </span>
-            </h1>
+    // Copied the exact wrapper padding, background, and grid rules from ServiceHero
+    <section className="hero-section relative overflow-hidden bg-transparent pt-8 sm:pt-12 lg:pt-2 xl:pt-0">
+      <div className="hero-section__ambient hero-section__ambient--left" aria-hidden="true" />
+      <div className="hero-section__ambient hero-section__ambient--right" aria-hidden="true" />
 
-            <p className="hero-copy-reveal hero-copy-reveal--3 mx-auto mt-5 max-w-[45ch] text-[clamp(14px,1.26vw,17px)] font-medium leading-[1.75] tracking-normal text-gray-800 lg:mx-0">
-              We don't just deliver services, we build growth systems where strategy, design, and technology work as one.
-            </p>
+      <SectionWrapper className="relative section-spacing !px-4 sm:!px-6 md:!px-8 lg:!px-10 xl:!px-[clamp(32px,3vw,40px)] 2xl:!px-[clamp(40px,4.8vw,72px)]">
+        <div className="grid w-full items-center gap-10 sm:gap-12 md:gap-14 lg:gap-12 xl:min-h-[calc(100vh-176px)] xl:grid-cols-[minmax(0,1.12fr)_minmax(0,0.88fr)] xl:gap-10 2xl:min-h-[calc(100vh-160px)] 2xl:grid-cols-[minmax(0,1.14fr)_minmax(0,0.86fr)] 2xl:gap-14">
+          
+          {/* Text Container aligned center on mobile, left on desktop */}
+         <div className="relative z-40 mx-auto flex w-full max-w-[34rem] flex-col items-center text-center sm:max-w-[40rem] md:max-w-[44rem] xl:mx-0 xl:max-w-[40rem] xl:items-start xl:text-left 2xl:max-w-[46rem]">
 
-            <div className="hero-copy-reveal hero-copy-reveal--4 mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
-              <Link to="/contact" className="inline-flex">
-                <Button size="hero">
-                  Let&apos;s Build Together
-                </Button>
-              </Link>
-            </div>
-          </div>
+  {/* Hero Heading Chunk */}
+  <div className="mt-1 sm:mt-1 md:mt-2 lg:mt-2 xl:mt-3 2xl:mt-4">
+    <h1
+      className="w-full max-w-[15ch] font-bold leading-[1.06] tracking-[-0.04em] text-black sm:max-w-[16ch] md:max-w-[18ch] xl:max-w-none"
+      style={{ fontSize: 'var(--fs-hero-title)' }}
+    >
+      <span className="block xl:whitespace-nowrap">
+        From Experience to Execution
+      </span>
+
+      <span className="mt-1 block xl:mt-1 xl:whitespace-nowrap">
+        Building a company{' '}
+        <HeroYellowUnderlineText
+          className="hero-highlight inline-block pb-1"
+          lineClassName="h-[0.22em] w-full left-[2%] -bottom-[6px] sm:-bottom-[8px] md:-bottom-[10px] lg:-bottom-[12px] xl:-bottom-[14px] 2xl:-bottom-[16px]"
+        >
+          <span className="moving-gradient whitespace-nowrap">
+            That Delivers
+          </span>
+        </HeroYellowUnderlineText>
+      </span>
+    </h1>
+  </div>
+
+  {/* Description + CTA Chunk */}
+  <div className="mt-1 sm:mt-1 md:mt-2 lg:mt-2 xl:mt-3 2xl:mt-4 flex flex-col items-center xl:items-start">
+    
+    <p
+      className="w-full max-w-[39ch] font-medium leading-[1.65] tracking-normal text-gray-800 sm:max-w-[46ch] md:max-w-[52ch] xl:max-w-[50ch] 2xl:max-w-[54ch]"
+      style={{ fontSize: 'var(--fs-hero-subtitle)' }}
+    >
+      We don't just deliver services, we build growth systems where strategy,
+      design, and technology work as one.
+    </p>
+
+    <div className="mt-7 sm:mt-8 flex w-full flex-col items-center justify-center gap-4 sm:flex-row xl:justify-start">
+      <Link to="/contact" className="inline-flex justify-center">
+        <Button size="hero" className="justify-center">
+          Let&apos;s Build Together
+        </Button>
+      </Link>
+    </div>
+
+  </div>
+
+</div>
 
           <AboutHeroVisual />
         </div>

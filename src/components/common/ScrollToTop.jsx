@@ -1,28 +1,27 @@
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 export default function ScrollToTop() {
-  const { pathname, hash } = useLocation()
+  const { pathname } = useLocation()
 
-  useEffect(() => {
-    if (hash) {
-      const target = document.getElementById(hash.slice(1))
+  useLayoutEffect(() => {
+    const root = document.documentElement
+    const previousScrollBehavior = root.style.scrollBehavior
+    const previousScrollRestoration = window.history.scrollRestoration
 
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'auto',
-          block: 'start',
-        })
-        return
-      }
-    }
+    // Prevent the browser from restoring the prior page position on route changes.
+    window.history.scrollRestoration = 'manual'
+    root.style.scrollBehavior = 'auto'
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
 
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'auto',
+    requestAnimationFrame(() => {
+      root.style.scrollBehavior = previousScrollBehavior
     })
-  }, [pathname, hash])
+
+    return () => {
+      window.history.scrollRestoration = previousScrollRestoration
+    }
+  }, [pathname])
 
   return null
 }

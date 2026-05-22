@@ -138,11 +138,11 @@ export default function PortfolioShowcase() {
       <div className="relative">
         <div className="section-content max-w-[1080px]">
           <div className="mx-auto max-w-[560px] text-center">
-            <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.05em] text-[#111827] sm:text-[40px] lg:text-[50px]">
+            <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.05em]  sm:text-[40px] lg:text-[50px]">
               Visual{' '}
               <CurvedUnderlineText
                 className="hero-highlight pb-[0.18em]"
-                lineClassName="left-[7%] w-[86%] h-[0.18em]"
+                lineClassName="left-[-24%] w-[86%] h-[0.18em] -bottom-[6px] sm:-bottom-[8px] md:-bottom-[10px] lg:-bottom-[12px] xl:-bottom-[14px] 2xl:-bottom-[16px]"
               >
                 Showcase
               </CurvedUnderlineText>

@@ -12,6 +12,7 @@ const solutionCards = [
     description:
       'Why traditional hashtags like #MarketingStrategy are becoming less effective. People are now searching for direct solutions to their specific problems rather than browsing broad categories. By using "Social SEO"—writing captions that match the exact questions people ask—you can ensure your content appears right when they need it most.',
     buttonLabel: 'Start the Journey',
+    ctaHref: 'https://www.instagram.com/growin.gen?igsh=YWI3MThuNnltc3Fl',
     previewImageSrc: '/images/hero/social-seo-thumbnail.svg',
     videoSrc: '/videos/social-seo-video.webm',
   },
@@ -22,6 +23,7 @@ const solutionCards = [
     description:
       'While a "like" is a brief nod of approval, a "save" represents a long-term commitment to a piece of content. To drive real impact, focus on creating a "reference library" of blueprints, checklists, and guides that offer lasting utility. Content reaches its highest value when it is useful enough to be revisited later. By prioritising practical resources over fleeting interactions, a feed becomes an essential tool for its audience.',
     buttonLabel: 'Start the Journey',
+    ctaHref: 'https://www.instagram.com/growin.gen?igsh=YWI3MThuNnltc3Fl',
     previewImageSrc: '/images/hero/saves-matter-thumbnail.svg',
     videoSrc: '/videos/saves-matter-video.webm',
   },
@@ -32,6 +34,7 @@ const solutionCards = [
     description:
       'In an era of highly polished AI content, perfection can often feel robotic or untrustworthy. Real connection is built through "human glitches"—the raw, unedited moments like a simple stutter or a coffee stain that show personality. Keeping audio and visuals authentic makes a brand feel more relatable and grounded. The goal is to move away from cold logos and lean into the messy, genuine traits that make people want to connect.',
     buttonLabel: 'Start the Journey',
+    ctaHref: 'https://www.instagram.com/growin.gen?igsh=YWI3MThuNnltc3Fl',
     previewImageSrc: '/images/hero/human-glitch-thumbnail.png',
     videoSrc: '/videos/human-glitch-video.mp4',
   },
@@ -60,10 +63,7 @@ function SolutionPreviewCard({ card, onOpenMobileVideo }) {
   const videoRef = useRef(null)
 
   const handleStartJourney = () => {
-    document.getElementById('home')?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    })
+    window.open(card.ctaHref, '_blank', 'noopener,noreferrer')
   }
 
   const handleToggleVideo = async () => {
@@ -101,7 +101,7 @@ function SolutionPreviewCard({ card, onOpenMobileVideo }) {
             {card.title}
           </h2>
           
-          <p className="w-full text-left text-[16px] font-semibold leading-[1.3] text-[#111827] sm:text-[18px] md:text-[20px] lg:text-[24px] 2xl:text-[28px]">
+          <p className="w-full text-left text-[16px] font-semibold leading-[1.3]  sm:text-[18px] md:text-[20px] lg:text-[24px] 2xl:text-[28px]">
             {card.subtitle}
           </p>
           
@@ -201,13 +201,13 @@ export default function GrowthStoriesSection() {
           {/* SECTION HEADING */}
           <div className="mx-auto mb-2 max-w-[620px] text-center sm:mb-3 2xl:max-w-[760px]">
             <h2
-              className="text-[32px] font-semibold leading-[1.08] tracking-[-0.05em] text-[#111827]"
+              className="text-[32px] font-semibold leading-[1.08] tracking-[-0.05em] "
               style={{ fontSize: 'var(--fs-section-title)' }}
             >
               Smart Solutions For
               <br />
               Growing{' '}
-              <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]">
+              <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em]" lineClassName="h-[0.22em] w-full left-[2%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]">
                 Brands
               </CurvedUnderlineText>
             </h2>

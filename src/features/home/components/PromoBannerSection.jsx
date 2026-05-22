@@ -218,11 +218,11 @@ className="relative h-[240px] w-[220px] sm:h-[272px] sm:w-[246px] md:h-[312px] m
 
             <div className="mt-auto flex justify-center pt-4">
               <img
-                src="/images/hero/brand-awareness_200+brands.svg"
+                src="/icons/brand-awareness.webp"
                 alt=""
                 aria-hidden="true"
                 className={[
-                  'h-[38px] w-[38px] object-contain sm:h-[42px] sm:w-[42px]',
+                  'h-[40px] w-[40px] object-contain sm:h-[42px] sm:w-[42px] md:h-[44px] md:w-[44px] lg:h-[46px] lg:w-[46px] xl:h-[48px] xl:w-[48px] 2xl:h-[50px] 2xl:w-[50px]',
                   card.theme === 'white' ? 'brightness-0 saturate-0' : '',
                 ].join(' ')}
               />

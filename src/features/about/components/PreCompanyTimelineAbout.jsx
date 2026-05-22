@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform, useMotionValueEvent } from 'motion/react'
 import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
 import HeroYellowUnderlineText from '../../../components/common/HeroYellowUnderlineText'
@@ -14,7 +14,7 @@ const timelineSteps = [
     images: [
       '/images/about/timeline-brand-experiments-primary.webp',
       '/images/about/timeline-brand-experiments-secondary.webp',
-      '/images/about/timeline-real-projects-primary.webp',
+      
     ],
   },
   {
@@ -26,7 +26,7 @@ const timelineSteps = [
     images: [
       '/images/about/timeline-real-projects-primary.webp',
       '/images/about/timeline-real-projects-secondary.webp',
-      '/images/about/timeline-brand-experiments-secondary.webp',
+     
     ],
   },
   {
@@ -38,7 +38,7 @@ const timelineSteps = [
     images: [
       '/images/about/timeline-market-gap-primary.webp',
       '/images/about/timeline-market-gap-secondary.webp',
-      '/images/about/timeline-real-projects-secondary.webp',
+      
     ],
   },
   {
@@ -50,7 +50,7 @@ const timelineSteps = [
     images: [
       '/images/about/timeline-systems-thinking-primary.webp',
       '/images/about/timeline-systems-thinking-secondary.webp',
-      '/images/about/timeline-market-gap-primary.webp',
+      
     ],
   },
   {
@@ -62,7 +62,7 @@ const timelineSteps = [
     images: [
       '/images/about/timeline-growth-design-primary.webp',
       '/images/about/timeline-growth-design-secondary.webp',
-      '/images/about/timeline-systems-thinking-primary.webp',
+      
     ],
   },
   {
@@ -72,9 +72,9 @@ const timelineSteps = [
     description:
       'Custom builds and better systems made it possible to connect strategy with execution instead of treating them as separate tracks.',
     images: [
-      '/images/about/timeline-systems-thinking-secondary.webp',
-      '/images/about/timeline-growth-design-secondary.webp',
-      '/images/about/timeline-market-gap-primary.webp',
+     
+      '/images/about/timeline-impact-primary.webp',
+      '/images/about/timeline-impact-secondary.webp',
     ],
   },
   {
@@ -84,9 +84,9 @@ const timelineSteps = [
     description:
       'All these lessons, frameworks, and successful experiments naturally converged into a single unified entity. Growingen was finally born.',
     images: [
-      '/images/about/timeline-brand-experiments-primary.webp',
-      '/images/about/timeline-systems-thinking-secondary.webp',
-      '/images/about/timeline-growth-design-primary.webp',
+      '/images/about/timeline-today&beyond-primary.webp',
+      '/images/about/timeline-today&beyond-secondary.webp',
+      
     ],
   },
 ]
@@ -148,12 +148,12 @@ function TimelineImageCard({ item, isActive }) {
   return (
     <div
       className={[
-        'relative flex w-[calc(50%_-_18px)] justify-center transition-all duration-500 sm:w-[calc(50%_-_24px)] lg:w-[calc(50%_-_34px)]',
+        'relative flex w-full justify-start transition-all duration-500 md:w-[calc(50%_-_18px)] md:justify-center lg:w-[calc(50%_-_34px)]',
         isActive ? 'scale-[1.02]' : 'scale-100',
       ].join(' ')}
     >
       <div
-        className="relative h-[271px] w-[288px] max-w-full"
+        className="relative h-[236px] w-[252px] max-w-full md:h-[271px] md:w-[288px]"
         style={{ perspective: 700 }}
       >
         {stack.map((image, index) => (
@@ -196,23 +196,30 @@ function TimelineImageCard({ item, isActive }) {
 
 function TimelineTextCard({ item, align, isActive }) {
   const isLeft = align === 'left'
-  const alignmentClass = isLeft
-    ? 'items-center text-center sm:items-start sm:text-left'
-    : 'items-center text-center sm:items-end sm:text-right'
-  const numberPosClass = isLeft
-    ? 'right-4 top-4 sm:right-6 sm:top-6'
-    : 'left-4 top-4 sm:left-6 sm:top-6'
 
+  // On Mobile: Number is always on the left, Content on the right.
+  // On Desktop: Alternates based on side.
+  const alignmentClass = isLeft
+    ? 'items-end text-right md:items-start md:text-left'
+    : 'items-end text-right'
+    
+  const numberPosClass = isLeft
+    ? 'left-4 top-4 md:left-auto md:right-6 md:top-6'
+    : 'left-4 top-4 md:left-6 md:top-6'
+
+  // Always point the "speech bubble notch" left towards the track on mobile view
   let bgFlipClass = ''
-  if (!isLeft) {
-    bgFlipClass = 'sm:-scale-x-100'
+  if (isLeft) {
+    bgFlipClass = 'max-md:-scale-x-100' // Default points right, flip for mobile
+  } else {
+    bgFlipClass = '-scale-x-100' // Flips for both mobile & desktop
   }
 
   return (
-    <article className="group relative z-10 min-w-0 w-[calc(50%_-_14px)] sm:w-[calc(50%_-_18px)] lg:w-[calc(50%_-_26px)]">
+    <article className="group relative z-10 w-full min-w-0 md:w-[calc(50%_-_18px)] lg:w-[calc(50%_-_26px)]">
       <div
         className={[
-          'relative h-[176px] w-full drop-shadow-[0_12px_22px_rgba(15,23,42,0.06)] transition-all duration-500 ease-out sm:h-[198px] lg:h-[216px] xl:h-[228px]',
+          'relative h-[176px] w-full drop-shadow-[0_12px_22px_rgba(15,23,42,0.06)] transition-all duration-500 ease-out md:h-[198px] lg:h-[216px] xl:h-[228px]',
           isActive ? 'scale-[1.02] drop-shadow-[0_20px_35px_rgba(244,83,40,0.15)]' : 'scale-100',
         ].join(' ')}
       >
@@ -244,13 +251,12 @@ function TimelineTextCard({ item, align, isActive }) {
             {String(item.id).padStart(2, '0')}
           </span>
 
-          <div className={`relative z-10 flex w-full max-w-[95%] flex-col sm:max-w-[260px] lg:max-w-[300px] ${alignmentClass}`}>
+          <div className={`relative z-10 flex w-full max-w-[95%] flex-col md:max-w-[260px] lg:max-w-[300px] ${alignmentClass}`}>
             
-            {/* Added TAG rendering aligned properly with alternating styling */}
             {item.tag && (
               <span
                 className={[
-                  'mb-1 text-[3px] font-light uppercase tracking-[0.2em] transition-colors duration-500 ease-out sm:text-[4px] md:text-[5px] xl:text-[6px]',
+                  'mb-0.5 text-[3px] font-light uppercase tracking-[0.18em] leading-none transition-colors duration-500 ease-out sm:text-[4px] md:text-[5px] xl:text-[6px]',
                   isActive ? '!text-white/80' : '!text-[#7a7f8e]',
                 ].join(' ')}
               >
@@ -260,7 +266,7 @@ function TimelineTextCard({ item, align, isActive }) {
 
             <h3
               className={[
-                'text-[20px] font-bold leading-[1.18] tracking-[-0.03em] transition-colors duration-500 ease-out sm:text-[22px] lg:text-[24px]',
+                'text-[18px] font-bold leading-[1.08] tracking-[-0.03em] transition-colors duration-500 ease-out md:text-[22px] md:leading-[1.18] lg:text-[24px]',
                 isActive ? '!text-white' : '!text-black',
               ].join(' ')}
             >
@@ -269,7 +275,7 @@ function TimelineTextCard({ item, align, isActive }) {
             
             <div
               className={[
-                'mt-1.5 text-[14px] font-medium leading-[1.58] transition-colors duration-500 ease-out lg:text-[15px]',
+                'mt-1 text-[13px] font-medium leading-[1.34] transition-colors duration-500 ease-out md:mt-1.5 md:text-[14px] md:leading-[1.58] lg:text-[15px]',
                 isActive ? '!text-white/90' : '!text-black',
               ].join(' ')}
             >
@@ -288,8 +294,10 @@ function TimelineBubble({ item, align, isActive }) {
   return (
     <div
       className={[
-        'relative flex items-center justify-between gap-3 sm:gap-4',
-        isLeft ? 'flex-row' : 'flex-row-reverse',
+        'relative flex justify-between gap-6 md:gap-4',
+        'flex-col items-start md:items-center', // Mobile: Stack Vertically
+        isLeft ? 'md:flex-row' : 'md:flex-row-reverse', // Desktop: Alternate
+        'pl-[44px] pr-2 md:px-0' // Mobile Left Padding Space for Track Line
       ].join(' ')}
     >
       <TimelineTextCard item={item} align={align} isActive={isActive} />
@@ -301,73 +309,162 @@ function TimelineBubble({ item, align, isActive }) {
 export default function PreCompanyTimelineAbout() {
   const sectionRef = useRef(null)
   const timelineTrackRef = useRef(null)
+  const finalConnectorRef = useRef(null)
+  const finalLineRef = useRef(null)
+  const dotRefs = useRef([])
+  const finalDotRef = useRef(null)
   const [progress, setProgress] = useState(0)
+  const [dotOffsets, setDotOffsets] = useState([])
+  const [finalDotOffset, setFinalDotOffset] = useState(null)
+  const [finalLineMetrics, setFinalLineMetrics] = useState({ top: 0, height: 0 })
 
-  // 1. Hook directly into the scroll event tightly using Framer Motion
-  // Using 35% to perfectly match your original manual calculation behavior.
   const { scrollYProgress } = useScroll({
     target: timelineTrackRef,
     offset: ["start 35%", "end 35%"]
   })
 
-  // 2. Map the scroll directly to a Transform Value to completely avoid React Re-renders for the line
   const scaleY = useTransform(scrollYProgress, [0, 1], [0.001, 1])
 
-  // 3. Keep updating the state variable ONLY for the active Dots & Cards mapping
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     setProgress(latest)
   })
+
+  useLayoutEffect(() => {
+    const measureDots = () => {
+      const trackRect = timelineTrackRef.current?.getBoundingClientRect()
+      const finalConnectorRect = finalConnectorRef.current?.getBoundingClientRect()
+
+      if (!trackRect || !finalConnectorRect) {
+        return
+      }
+
+      const nextDotOffsets = dotRefs.current.map((dot) => {
+        if (!dot) {
+          return null
+        }
+
+        const dotRect = dot.getBoundingClientRect()
+        return dotRect.top + dotRect.height / 2 - trackRect.top
+      })
+
+      const finalRect = finalDotRef.current?.getBoundingClientRect()
+      const finalLineRect = finalLineRef.current?.getBoundingClientRect()
+      const nextFinalOffset = finalRect
+        ? finalRect.top + finalRect.height / 2 - finalConnectorRect.top
+        : null
+      const nextFinalLineMetrics = finalLineRect
+        ? {
+            top: finalLineRect.top - finalConnectorRect.top,
+            height: finalLineRect.height,
+          }
+        : { top: 0, height: 0 }
+
+      setDotOffsets(nextDotOffsets)
+      setFinalDotOffset(nextFinalOffset)
+      setFinalLineMetrics(nextFinalLineMetrics)
+    }
+
+    measureDots()
+
+    const resizeObserver =
+      typeof ResizeObserver !== 'undefined' ? new ResizeObserver(measureDots) : null
+
+    if (timelineTrackRef.current) {
+      resizeObserver?.observe(timelineTrackRef.current)
+    }
+
+    if (finalConnectorRef.current) {
+      resizeObserver?.observe(finalConnectorRef.current)
+    }
+
+    dotRefs.current.forEach((dot) => {
+      if (dot) {
+        resizeObserver?.observe(dot)
+      }
+    })
+
+    if (finalDotRef.current) {
+      resizeObserver?.observe(finalDotRef.current)
+    }
+
+    if (finalLineRef.current) {
+      resizeObserver?.observe(finalLineRef.current)
+    }
+
+    window.addEventListener('resize', measureDots)
+
+    return () => {
+      resizeObserver?.disconnect()
+      window.removeEventListener('resize', measureDots)
+    }
+  }, [])
+
+  const trackHeight = timelineTrackRef.current?.offsetHeight ?? 0
+  const filledTrackHeight = progress * trackHeight
+  const finalConnectorStart = 0.94
+  const finalConnectorProgress = Math.min(
+    Math.max((progress - finalConnectorStart) / (1 - finalConnectorStart), 0),
+    1,
+  )
+  const filledFinalConnectorHeight = finalConnectorProgress * finalLineMetrics.height
+  const isFinalDotActive =
+    finalDotOffset != null &&
+    finalLineMetrics.height > 0 &&
+    filledFinalConnectorHeight + finalLineMetrics.top >= finalDotOffset - 2
 
   return (
     <SectionWrapper ref={sectionRef} as="section" className="relative overflow-hidden bg-transparent section-spacing">
       <div className="pointer-events-none absolute left-[8%] top-[18%] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(244,83,40,0.16)_0%,rgba(244,83,40,0.08)_45%,rgba(244,83,40,0)_75%)] blur-3xl" />
       <div className="pointer-events-none absolute bottom-[12%] right-[10%] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(65,94,255,0.16)_0%,rgba(65,94,255,0.08)_45%,rgba(65,94,255,0)_75%)] blur-3xl" />
 
-      <div className="relative mx-auto max-w-[1180px] xl:px-10">
-        <div className="mx-auto max-w-[520px] text-center">
-          <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-[#7a7f8e]">
+      <div className="relative mx-auto max-w-[1180px] xl:px-10 ">
+        <div className="mx-auto max-w-[600px] text-center">
+          <p className="text-[16px] sm:text-[18px] lg:text-[20px] xl:text-[22px] 2xl:text-[24px] font-medium uppercase tracking-[0.28em]">
             Before Growingen
           </p>
-          <h2 className="mt-3 text-[32px] font-bold leading-[1.08] tracking-[-0.04em] text-[#111827] sm:text-[40px] lg:text-[50px]">
-            Building Before
+          <h2 className="mt-3 text-[32px] font-bold leading-[1.08] tracking-[-0.04em]  sm:text-[40px] lg:text-[50px]">
+            Building Before The
             <br />
-            <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em] -bottom-[0.20em]">
-              The Company Existed
+            <CurvedUnderlineText className="growth-stories-title__accent pb-[0.16em] -bottom-[0.20em]" lineClassName="h-[0.20em] !w-[50%] left-[22%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]">
+               Company Even Existed
             </CurvedUnderlineText>
           </h2>
         </div>
 
-        <div ref={timelineTrackRef} className="relative mx-auto mt-10 max-w-[940px] sm:mt-10 lg:mt-12 xl:max-w-[980px]">
-          <div className="absolute bottom-0 left-1/2 top-0 w-px -translate-x-1/2 bg-[#d8dcef]" />
+        <div ref={timelineTrackRef} className="relative mx-auto mt-12 max-w-[940px] sm:mt-14 lg:mt-16 xl:mt-18 2xl:mt-20 xl:max-w-[980px]">
           
-          <div className="absolute bottom-0 left-1/2 top-0 w-[3px] -translate-x-1/2">
-            {/* Swapped standard div with motion.div and passed the scaleY transform to perfectly lock it */}
+          {/* Timeline Tracking Line - Shifted left for Mobile, Centered for Desktop */}
+          <div className="absolute bottom-0 left-[20px] top-0 w-px -translate-x-1/2 bg-[#d8dcef] md:left-1/2" />
+          <div className="absolute bottom-0 left-[20px] top-0 w-[3px] -translate-x-1/2 md:left-1/2">
             <motion.div
               className="h-full w-full origin-top rounded-full bg-[linear-gradient(180deg,#f45328_0%,#7a4fff_48%,#5b4dff_100%)] shadow-[0_0_18px_rgba(122,79,255,0.18)]"
               style={{ scaleY }}
             />
           </div>
 
-          <div className="space-y-5 sm:space-y-6 lg:space-y-7">
+          {/* Increased space-y heavily on mobile to account for the stacked cards */}
+          <div className="space-y-12 md:space-y-6 lg:space-y-7">
             {timelineSteps.map((item, index) => {
-              const itemProgress = timelineSteps.length <= 1 ? 1 : index / (timelineSteps.length - 1)
-              const isActive = progress >= itemProgress - 0.02
+              const dotOffset = dotOffsets[index]
+              const isActive = dotOffset == null ? index === 0 : filledTrackHeight >= dotOffset - 2
 
               return (
-                <div
-                  key={item.id}
-                  className="relative"
-                >
+                <div key={item.id} className="relative">
+                  
+                  {/* Timeline Map Dot - Aligned with the Text Card Top Center on Mobile, Exact center on desktop */}
                   <div
+                    ref={(node) => {
+                      dotRefs.current[index] = node
+                    }}
                     className={[
-                      'absolute left-1/2 top-1/2 z-20 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 transition-all duration-300 sm:h-4 sm:w-4',
+                      'absolute z-20 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 transition-all duration-300 md:h-4 md:w-4',
+                      'left-[20px] top-[88px] md:left-1/2 md:top-1/2', 
                       isActive
                         ? 'border-white bg-[#f45328] shadow-[0_0_0_6px_rgba(244,83,40,0.14)]'
                         : 'border-[#cfd6e6] bg-white',
                     ].join(' ')}
                   />
 
-                  {/* Reversed the left/right logic to swap text and image positions globally */}
                   <TimelineBubble
                     item={item}
                     align={index % 2 === 0 ? 'right' : 'left'}
@@ -380,24 +477,41 @@ export default function PreCompanyTimelineAbout() {
         </div>
       </div>
 
-      {/* Target UI Div Match */}
       <div className="relative mx-auto mt-14 max-w-[1140px] sm:mt-20">
-        {/* This connector makes the timeline feel like it resolves into the final orange summary block. */}
-        <div className="pointer-events-none absolute left-1/2 top-[-40px] h-[40px] w-[3px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,#5b4dff_0%,#f45328_100%)]" />
-        <div className="pointer-events-none absolute left-1/2 top-[-50px] h-4 w-4 -translate-x-1/2 rounded-full border-2 border-white bg-[#f45328] shadow-[0_0_0_6px_rgba(244,83,40,0.14)]" />
+        
+        {/* Connector bridging the shifted track to the final block */}
+        <div ref={finalConnectorRef} className="pointer-events-none absolute left-[20px] top-[-50px] h-[50px] w-4 -translate-x-1/2 md:left-1/2">
+          <div className="absolute left-1/2 top-[8px] h-[42px] w-px -translate-x-1/2 bg-[#d8dcef]" />
+          <div ref={finalLineRef} className="absolute left-1/2 top-[8px] h-[42px] w-[3px] -translate-x-1/2">
+            <motion.div
+              className="h-full w-full origin-bottom rounded-full bg-[linear-gradient(180deg,#5b4dff_0%,#f45328_100%)]"
+              style={{
+                scaleY: finalLineMetrics.height > 0 ? filledFinalConnectorHeight / finalLineMetrics.height : 0.001,
+              }}
+            />
+          </div>
+          <div
+            ref={finalDotRef}
+            className={[
+              'absolute left-1/2 top-0 h-4 w-4 -translate-x-1/2 rounded-full border-2 transition-all duration-300',
+              isFinalDotActive
+                ? 'border-white bg-[#f45328] shadow-[0_0_0_6px_rgba(244,83,40,0.14)]'
+                : 'border-[#cfd6e6] bg-white',
+            ].join(' ')}
+          />
+        </div>
 
         <div className="flex w-full flex-col overflow-hidden rounded-[28px] bg-[#f45328] shadow-[0_24px_50px_rgba(244,83,40,0.25)] lg:h-[492px] lg:flex-row lg:items-stretch lg:justify-between">
           
-          {/* Left Text Box */}
           <div className="flex flex-col justify-center px-7 py-8 lg:w-[50%] lg:px-[56px] lg:py-0">
             <h3 className="!text-white text-[34px] font-bold leading-[1.04] tracking-[-0.03em] sm:text-[42px] lg:text-[54px]">
               <span className="block whitespace-nowrap">Most Offer Services.</span>
-              <HeroYellowUnderlineText className="hero-highlight mt-2 inline-block whitespace-nowrap !text-white pb-2" lineClassName="-bottom-[0.20em] left-[10%] h-[0.4em] !w-[70%]">
+              <HeroYellowUnderlineText className="hero-highlight mt-2 inline-block whitespace-nowrap !text-white pb-2" lineClassName=" left-[10%] h-[16px] !w-[70%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]">
                 We Build Systems.
               </HeroYellowUnderlineText>
             </h3>
 
-            <p className="mt-7 !text-white text-[15px] leading-[1.6] lg:max-w-[430px] pt-4">
+            <p className="mt-7 pt-4 text-[15px] leading-[1.6] !text-white lg:max-w-[430px]">
               Because from experience, we've seen the same problem repeat across every industry we've worked in.
             </p>
 
@@ -408,7 +522,7 @@ export default function PreCompanyTimelineAbout() {
                 "Websites don't perform without strategy behind them",
                 "So we changed the approach entirely."
               ].map((point, i) => (
-                <li key={i} className="flex items-start gap-3 !text-white text-[15px] leading-[1.45]">
+                <li key={i} className="flex items-start gap-3 text-[15px] leading-[1.45] !text-white">
                   <span className={`mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-[6px] bg-white shadow-[0_6px_14px_rgba(0,0,0,0.08)] ${i === 3 ? 'text-[#10b981]' : 'text-[#f45328]'}`}>
                     {i === 3 ? (
                       <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -426,13 +540,12 @@ export default function PreCompanyTimelineAbout() {
               ))}
             </ul>
 
-            <p className="mt-6 pt-4 !text-white text-[15px] leading-[1.6] lg:max-w-[430px]">
+            <p className="mt-6 pt-4 text-[15px] leading-[1.6] !text-white lg:max-w-[430px]">
               We don't just execute. We understand structure, and then build - ensuring every part of your growth engine works together.
             </p>
           </div>
 
-          {/* Right Cards Stack */}
-          <div className="flex flex-col justify-center px-7 pb-8 lg:w-[45%] lg:px-[56px] lg:py-0 lg:pl-0">
+          <div className="flex flex-col justify-center px-7 pb-8 lg:w-[45%] lg:pl-0 lg:pr-[56px] lg:py-0">
             <div className="flex w-full flex-col gap-3.5">
               {closingOffers.map((offer) => (
                 <div
@@ -443,7 +556,7 @@ export default function PreCompanyTimelineAbout() {
                     <img src={offer.icon} alt="" aria-hidden="true" className="h-8 w-8 object-contain" />
                   </div>
                   <div>
-                    <h4 className="text-[20px] font-bold leading-[1.1] tracking-[-0.02em] text-[#111827]">
+                    <h4 className="text-[20px] font-bold leading-[1.1] tracking-[-0.02em] ">
                       {offer.title}
                     </h4>
                     <p className="mt-1 text-[15px] leading-[1.45] text-[#6b7280]">

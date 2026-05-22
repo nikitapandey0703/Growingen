@@ -34,11 +34,12 @@ const businessFitItems = [
 export default function ServiceBusinessFitSection() {
   return (
     <ProblemsGridSection
+      className="section-spacing"
       eyebrow="Who We Work With"
       title="Built For Growth-Focused"
       highlight="Businesses."
       items={businessFitItems}
-      maxWidthClass="max-w-[760px]"
+      maxWidthClass="max-w-2xl md:max-w-3xl lg:max-w-4xl" // Replaced manual pixel width with fluid responsive max-widths
     />
   )
 }

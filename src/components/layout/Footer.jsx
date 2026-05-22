@@ -1,20 +1,20 @@
 import React from 'react';
 
 const footerMedia = {
-  emailIcon: '/icons/email-main.png',
-  whatsappIcon: '/icons/whatsapp-main.png',
-  linkedinIcon: '/icons/linkedin-1.png',
-  instagramIcon: '/icons/instagram.png',
-  facebookIcon: '/icons/facebook.png',
-  pinterestIcon: '/icons/pinterest.png',
+  emailIcon: '/icons/email-main.webp',
+  whatsappIcon: '/icons/whatsapp-main.webp',
+  linkedinIcon: '/icons/linkedin-1.webp',
+  instagramIcon: '/icons/instagram.webp',
+  facebookIcon: '/icons/facebook.webp',
+  pinterestIcon: '/icons/pinterest.webp',
   connectUnderline: '/icons/Isolation_Mode.svg',
 };
 
 const socialIcons = [
-  { href: '#', src: footerMedia.linkedinIcon, alt: 'LinkedIn' },
-  { href: '#', src: footerMedia.instagramIcon, alt: 'Instagram' },
-  { href: '#', src: footerMedia.facebookIcon, alt: 'Facebook' },
-  { href: '#', src: footerMedia.pinterestIcon, alt: 'Pinterest' },
+  { href: 'https://www.linkedin.com/company/growingen-solutions/', src: footerMedia.linkedinIcon, alt: 'LinkedIn' },
+  { href: 'https://www.instagram.com/growin.gen?igsh=YWI3MThuNnltc3Fl', src: footerMedia.instagramIcon, alt: 'Instagram' },
+  { href: 'https://www.facebook.com/profile.php?id=61576986820913', src: footerMedia.facebookIcon, alt: 'Facebook' },
+  { href: 'https://in.pinterest.com/infogrowingen/', src: footerMedia.pinterestIcon, alt: 'Pinterest' },
 ];
 
 const Footer = ({
@@ -198,6 +198,9 @@ const Footer = ({
                   <a
                     key={icon.alt}
                     href={icon.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Visit Growingen on ${icon.alt}`}
                     className="flex h-9 w-9 items-center justify-center transition-transform hover:-translate-y-1 sm:h-10 sm:w-10"
                   >
                     <img
@@ -211,14 +214,14 @@ const Footer = ({
 
               {/* Custom QR Code Box */}
               <div className="relative mt-0 flex justify-center self-center sm:mt-6">
-                <div className="group relative h-16 w-16 cursor-pointer p-1.5 sm:h-[76px] sm:w-[76px]">
+                <div className="group relative h-20 w-20 cursor-pointer p-1.5 sm:h-[60px] sm:w-[60px] md:h-[80px] md:w-[80px] lg:h-[100px] lg:w-[100px] xl:h-[100px] xl:w-[100px] 2xl:h-[120px] 2xl:w-[120px]">
                   <div className="absolute left-0 top-0 h-3 w-3 rounded-tl-[3px] border-l-2 border-t-2 border-gray-500 transition-all group-hover:border-[var(--color-nav-highlight)] sm:h-[14px] sm:w-[14px]"></div>
                   <div className="absolute right-0 top-0 h-3 w-3 rounded-tr-[3px] border-r-2 border-t-2 border-gray-500 transition-all group-hover:border-[var(--color-nav-highlight)] sm:h-[14px] sm:w-[14px]"></div>
                   <div className="absolute bottom-0 left-0 h-3 w-3 rounded-bl-[3px] border-b-2 border-l-2 border-gray-500 transition-all group-hover:border-[var(--color-nav-highlight)] sm:h-[14px] sm:w-[14px]"></div>
                   <div className="absolute bottom-0 right-0 h-3 w-3 rounded-br-[3px] border-b-2 border-r-2 border-gray-500 transition-all group-hover:border-[var(--color-nav-highlight)] sm:h-[14px] sm:w-[14px]"></div>
                   <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-[2px] bg-white">
                     <img
-                      src="/icons/qr.png"
+                      src="/icons/qr.svg"
                       alt="QR Code"
                       className="h-full w-full object-contain"
                     />
