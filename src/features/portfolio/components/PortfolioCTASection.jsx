@@ -81,7 +81,7 @@ export default function PortfolioCTASection({
             style={{ animation: "portfolioCtaContentRise 700ms cubic-bezier(0.22,1,0.36,1) both" }}
           >
             <h2
-              className="max-w-[18ch] text-balance !text-white"
+              className="max-w-[18ch] text-balance !text-white pb-2 sm:pb-3 md:pb-4 lg:pb-5 xl:pb-6 2xl:pb-7"
               style={{
                 fontSize: "var(--fs-section-title)",
                 lineHeight: 1.12,

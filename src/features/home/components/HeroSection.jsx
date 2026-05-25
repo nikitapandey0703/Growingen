@@ -67,49 +67,52 @@ export default function HeroSection() {
 
       <div className="site-container relative">
         <div className="grid items-center gap-8 sm:gap-10 md:gap-12 lg:min-h-[calc(100vh-220px)] lg:grid-cols-[minmax(0,1.18fr)_minmax(420px,0.92fr)] lg:gap-8 xl:min-h-[calc(100vh-210px)] xl:grid-cols-[minmax(0,1.22fr)_minmax(470px,0.9fr)] xl:gap-10 2xl:min-h-[calc(100vh-190px)] 2xl:grid-cols-[minmax(0,1.24fr)_minmax(540px,0.9fr)] 2xl:gap-14">
-<div className="relative z-40 mx-auto flex w-full max-w-[580px] flex-col items-center text-center font-sans sm:max-w-[620px] md:max-w-[680px] lg:mx-0 lg:max-w-[680px] lg:items-start lg:text-left xl:max-w-[760px] 2xl:max-w-[860px]">     
-         <p
+          <div className="relative z-40 mx-auto flex w-full max-w-[580px] flex-col items-center text-center font-sans sm:max-w-[620px] md:max-w-[680px] lg:mx-0 lg:max-w-[680px] lg:items-start lg:text-left xl:max-w-[760px] 2xl:max-w-[860px]">     
+            <p
               className="hero-copy-reveal hero-copy-reveal--1 font-medium uppercase tracking-[0.14em] sm:tracking-[0.16em] md:tracking-[0.18em] 2xl:tracking-[0.2em]"
               style={{ fontSize: 'var(--fs-hero-subtitle)' }}
             >
               Welcome to Growingen Solutions
             </p>
-<div className="mt-1 sm:mt-1 md:mt-2 lg:mt-2 xl:mt-3 2xl:mt-4">
-  <h1
-    className="hero-copy-reveal hero-copy-reveal--2 w-full max-w-[15ch] font-bold leading-[1.04] tracking-[-0.05em] sm:max-w-[15.5ch] md:max-w-[16ch] md:leading-[1.02] lg:max-w-[16.5ch] lg:leading-[0.98] xl:max-w-[17ch] 2xl:max-w-[17.5ch]"
-    style={{ fontSize: 'var(--fs-hero-title)' }}
-  >
-    <span className="block whitespace-nowrap md:whitespace-normal lg:whitespace-nowrap">
-      Elevate Your Digital
-    </span> 
+            <div className="mt-1 sm:mt-1 md:mt-2 lg:mt-2 xl:mt-3 2xl:mt-4">
+              <h1
+                // Removed the restrictive ch limits on lg, xl, 2xl to allow the full 2 lines to stretch
+                className="hero-copy-reveal hero-copy-reveal--2 w-full max-w-[15ch] font-bold leading-[1.04] tracking-[-0.05em] sm:max-w-[15.5ch] md:max-w-[16ch] md:leading-[1.02] lg:max-w-full lg:leading-[0.98]"
+                style={{ fontSize: 'var(--fs-hero-title)' }}
+              >
+                <span className="block whitespace-nowrap md:whitespace-normal lg:whitespace-nowrap">
+                  Elevate Your Digital
+                </span> 
 
-    <span className="mt-2 block sm:mt-1 md:mt-2 lg:mt-1">
-      Footprint with{' '}
-      <HeroYellowUnderlineText
-        className="hero-highlight inline-block pb-[0.22em]"
-        lineClassName="h-[0.22em] w-full left-[2%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]"
-      >
-        <span className="moving-gradient">Growingen</span>
-      </HeroYellowUnderlineText>
-    </span>
-  </h1>
-</div>
-         <div className="hero-copy-reveal hero-copy-reveal--3 mt-1 flex flex-col items-center sm:mt-1 md:mt-2 lg:mt-2 lg:items-start xl:mt-3 2xl:mt-4">
-  <p
-    className="max-w-[34ch] font-medium leading-[1.68] tracking-normal sm:max-w-[42ch] md:max-w-[48ch] lg:max-w-[52ch] xl:max-w-[56ch] 2xl:max-w-[58ch]"
-    style={{ fontSize: 'var(--fs-hero-subtitle)' }}
-  >
-    At Growingen Solutions, we help brands grow through SEO-driven
-    marketing, paid ads, lead generation, custom websites, and innovative
-    app solutions.
-  </p>
+                {/* Added lg:whitespace-nowrap to guarantee the second line never breaks into a 3rd line */}
+                <span className="mt-2 block sm:mt-1 md:mt-2 lg:mt-1 lg:whitespace-nowrap">
+                  Footprint with{' '}
+                  <HeroYellowUnderlineText
+                    className="hero-highlight inline-block pb-[0.22em]"
+                    lineClassName="h-[0.22em] w-full left-[2%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]"
+                  >
+                    <span className="moving-gradient">Growingen</span>
+                  </HeroYellowUnderlineText>
+                </span>
+              </h1>
+            </div>
+            
+            <div className="hero-copy-reveal hero-copy-reveal--3 mt-1 flex flex-col items-center sm:mt-1 md:mt-2 lg:mt-2 lg:items-start xl:mt-3 2xl:mt-4">
+              <p
+                className="max-w-[34ch] font-medium leading-[1.68] tracking-normal sm:max-w-[42ch] md:max-w-[48ch] lg:max-w-[52ch] xl:max-w-[56ch] 2xl:max-w-[58ch]"
+                style={{ fontSize: 'var(--fs-hero-subtitle)' }}
+              >
+                At Growingen Solutions, we help brands grow through SEO-driven
+                marketing, paid ads, lead generation, custom websites, and innovative
+                app solutions.
+              </p>
 
-  <div className="mt-5 sm:mt-6">
-    <Link to="/contact" className="inline-flex">
-      <Button size="hero">Start the Journey</Button>
-    </Link>
-  </div>
-</div>
+              <div className="mt-5 sm:mt-6">
+                <Link to="/contact" className="inline-flex">
+                  <Button size="hero">Start the Journey</Button>
+                </Link>
+              </div>
+            </div>
           </div>
 
           <HeroVisual />

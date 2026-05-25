@@ -362,9 +362,7 @@ export default function PromoBannerSection({ variant = 'default' }) {
                     className="mt-3 max-w-[44ch] text-[14px] leading-[1.55] sm:text-[15px]"
                     style={{ color: '#ffffff', marginTop: '0.5rem' }}
                   >
-                    Unlock The Power Of Cutting-Edge Digital Strategies With Boostip.
-                    Whether You Need A Stunning Website, A Winning Social Media Campaign,
-                    Or SEO That Drives Results, We&apos;ve Got You Covered.
+                    Grow your business with smart digital solutions. From stunning websites and engaging social media campaigns to SEO that brings real results — we help your brand grow online.
                   </p>
 
                   {/* 

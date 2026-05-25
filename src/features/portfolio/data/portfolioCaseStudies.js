@@ -6,24 +6,24 @@ const leadGrowthIcon = '/images/portfolio/pop-up/lead-growth.webp'
 const lowerCplIcon = '/images/portfolio/pop-up/lower-cpl.webp'
 
 const detailTones = {
-  goal: 'bg-[#f8fbf8]',
-  challenge: 'bg-[#fdf7f2]',
-  solution: 'bg-[#ffffff]',
-  execution: 'bg-[#f4f7fb]',
+  goal: 'bg-[#F1F9F5]',
+  challenge: 'bg-[#FEF7F0]',
+  solution: 'bg-[#F2F7FC]',
+  execution: 'bg-[#F5F2FB]',
 }
 
 const metricTones = {
   slate: {
-    tone: 'bg-[#f4f6fa]',
-    iconBg: 'bg-[#e8efff]',
-    valueColor: 'text-[#0bb38a]',
-    labelColor: 'text-[#0bb38a]',
+    tone: 'bg-[#F1F4FD]',
+    iconBg: 'bg-[#E2E7FC]',
+    valueColor: '#06BA9D',
+    labelColor: '#06BA9D',
   },
   mint: {
-    tone: 'bg-[#f2fbf4]',
-    iconBg: 'bg-[#d9f6e3]',
-    valueColor: 'text-[#1b43d6]',
-    labelColor: 'text-[#1b43d6]',
+    tone: 'bg-[#F2F9F5]',
+    iconBg: 'bg-[#D3FFD7]',
+    valueColor: '#1043C6',
+    labelColor: '#1043C6',
   },
 }
 
@@ -78,29 +78,29 @@ const createMetrics = (primary, secondary) => [
 
 export const portfolioCaseStudies = [
   {
-    id: 'financial-services',
-    title: 'Financial Services',
-    industry: 'Financial Services',
-    img: '/images/portfolio/Financal Services.webp',
-    previewImg: '/images/portfolio/Financal Services.webp',
+    id: 'financial-consulting',
+    title: 'Financial-Services',
+    industry: 'Financial Consulting',
+    img: '/images/portfolio/Financal-Services.webp',
+    previewImg: '/images/portfolio/Financal-Services.webp',
     impact:
-      'Established a more trustworthy digital presence for the financial brand, helping simplify communication and improve response quality across early customer touchpoints.',
+      'The website helped establish a more authentic and approachable online identity for the business. By aligning the digital experience with the client’s personality, the brand created better trust, stronger connection, and a more professional first impression for potential clients.',
     metrics: createMetrics(
-      { value: '2.1X', label: 'Higher Consultation Interest' },
-      { value: '92%', label: 'Stronger Trust Signals\nAcross Key Landing Screens' }
+      { value: 'Stronger', label: 'Personal Brand Presence Online' },
+      { value: 'Improved', label: 'Client Trust & Professional Perception' }
     ),
     details: createDetails({
-      goal: 'Build stronger trust and clarity around a finance-led service offer.',
+      goal: 'Build a professional online presence that reflects the client’s warm, trustworthy, and approachable personality.',
       challenge:
-        'The brand communicated complex financial services with weak structure, making the offer feel difficult to understand and low-confidence.',
+        'The business lacked a strong digital presence, making it difficult to communicate credibility and personal connection with potential clients online. The client wanted a website that felt professional yet friendly – matching the experience clients have during personal interactions.',
       solution:
-        'Created a cleaner presentation system with stronger hierarchy, trust-building visuals, and more conversion-friendly content blocks.',
+        'Designed and developed a personality-driven website focused on trust, simplicity and approachable communication while maintaining a professional financial brand image.',
       execution: [
-        'Financial Brand Positioning',
-        'Landing Page Refinement',
-        'Trust Signal Design',
-        'Offer Clarification System',
-        'Visual Consistency Setup',
+        'Website Design & Development',
+        'Warm & Friendly Brand Positioning',
+        'Personalized Content Structuring',
+        'Mobile-Optimized Experience',
+        'Professional Yet Human-Centric UI Design',
       ],
     }),
     cta,
@@ -161,34 +161,41 @@ export const portfolioCaseStudies = [
     }),
     cta,
   },
-  {
-    id: 'finance-saas',
-    title: 'Finance SaaS Platform',
-    industry: 'Finance Technology',
-    img: '/images/portfolio/Finance SaaS Platform.webp',
-    previewImg: '/images/portfolio/Finance SaaS Platform.webp',
-    impact:
-      'The product started looking more modern and decision-friendly, helping users understand the platform faster and improving overall perceived product quality.',
-    metrics: createMetrics(
-      { value: '34%', label: 'Faster Product Understanding' },
-      { value: '95%', label: 'Improved Visual Consistency\nAcross SaaS Experience' }
-    ),
-    details: createDetails({
-      goal: 'Present a finance SaaS product with more clarity, confidence, and usability.',
-      challenge:
-        'The interface looked dense and technical, with weak visual hierarchy across dashboards and product explanations.',
-      solution:
-        'Built a stronger product presentation system with simplified hierarchy, guided UX patterns, and cleaner SaaS storytelling.',
-      execution: [
-        'Dashboard UX Direction',
-        'Product Positioning Refresh',
-        'Hierarchy Optimization',
-        'Feature Communication Design',
-        'UI Consistency Setup',
-      ],
-    }),
-    cta,
-  },
+{
+  id: 'finance-saas',
+  title: 'Finance SaaS Platform',
+  industry: 'Finance Technology',
+  img: '/images/portfolio/Finance SaaS Platform.webp',
+  previewImg: '/images/portfolio/Finance SaaS Platform.webp',
+  impact:
+    'The platform evolved from a technically strong system into a polished and presentation-ready SaaS product. The improved UX helped build confidence for market launch, enhanced user experience, and strengthened the platform’s professional positioning in the tech space.',
+
+  metrics: createMetrics(
+    { value: 'Market-Ready', label: 'Professional SaaS Product Experience' },
+    { value: 'Improved', label: 'Client Confidence for Product Demonstrations' }
+  ),
+
+  details: createDetails({
+    goal:
+      'Transform a powerful finance platform into a product-ready experience with a professional and user-friendly interface.',
+
+    challenge:
+      'Although the platform had strong backend functionality and powerful insights, the poor UX design reduced product confidence and made it difficult for the team to present it effectively to potential customers.',
+
+    solution:
+      'Redesigned the complete product experience with a structured user flow, simplified visuals, and branded-ready design aligned with the platform’s finance ecosystem.',
+
+    execution: [
+      'Complete UX Strategy & Wireframing',
+      'Modern SaaS UI Design',
+      'Dashboard & Portfolio Screen Design',
+      'Feature-Ready UI Development Support',
+      'Backend Integration Coordination',
+    ],
+  }),
+
+  cta,
+},
   {
     id: 'electrical-engineering',
     title: 'Electrical Engineering Services',
@@ -217,35 +224,35 @@ export const portfolioCaseStudies = [
     }),
     cta,
   },
-  {
+{
     id: 'vision-inspection-automation',
-    title: 'Vision Inspection Automation',
-    industry: 'Manufacturing Automation',
+    title: 'Manufacturing Automation',
+    industry: 'Industrial Automation & Vision Inspection Systems',
     img: '/images/portfolio/Manufacturing Automation.webp',
     previewImg: '/images/portfolio/Manufacturing Automation.webp',
     impact:
-      'The automation solution became easier to demonstrate visually, helping technical buyers grasp value faster and respond with stronger intent.',
+      'The brand established a professional online presence with visually engaging content that simplified complex machine operations and improved product understanding for potential clients and industrial audiences.',
     metrics: createMetrics(
-      { value: '3.1X', label: 'Higher Product Demo Interest' },
-      { value: '86%', label: 'Improved Technical Storytelling\nAcross Product Screens' }
+      { value: '1 Year', label: 'Of Consistent Digital Growth' },
+      { value: 'Multiple', label: 'Technical Case Studies & Product Visuals Created' }
     ),
     details: createDetails({
-      goal: 'Make an industrial automation solution easier to understand and market.',
+      goal: 'Build a strong digital presence and simplify product communication for a highly technical industrial product.',
       challenge:
-        'The product solved a highly technical problem, but the visual narrative did not clearly communicate outcomes to potential clients.',
+        'The product required real-time visual demonstration to explain its functionality, but the client lacked digital presence and couldn’t frequently shoot machine operations due to daily production activities and operational limitations.',
       solution:
-        'Built a product-focused creative system that translated technical workflows into a simpler, more business-friendly story.',
+        'Used AI-powered visual storytelling and strategic content creation to make the product easy to understand through engaging videos, case studies, and digital content.',
       execution: [
-        'Product Storyboarding',
-        'Automation Use-Case Design',
-        'Sales Deck Visual Support',
-        'Explainer Screen Styling',
-        'Technical Visual Cleanup',
+        'AI-Based Product Visualization',
+        'Industrial Video Content Creation',
+        'Product Explainer Content',
+        'Case Study Development',
+        'Social Media Management',
       ],
     }),
     cta,
   },
-  {
+   {
     id: 'interior-solutions',
     title: 'Interior Solutions',
     industry: 'Interior Design & Furnishing',
@@ -273,228 +280,246 @@ export const portfolioCaseStudies = [
     }),
     cta,
   },
-  {
-    id: 'digital-it-solutions',
-    title: 'Digital & IT Solutions',
-    industry: 'Digital Transformation & IT Services',
+ {
+    id: 'it-services',
+    title: 'IT Services',
+    industry: 'Project Management & Business Consulting Solutions',
     img: '/images/portfolio/IT Services.webp',
     previewImg: '/images/portfolio/IT Services.webp',
     impact:
-      'The IT services brand gained a clearer enterprise-facing identity, helping present digital transformation services with more structure and credibility.',
+      'The company established a stronger and more modern corporate image that aligned with its industry reputation and large-scale operations. The redesigned branding and company profile helped improve presentation quality, strengthened business credibility, and created a more impressive experience during client interactions and proposals.',
     metrics: createMetrics(
-      { value: '47%', label: 'Better Enterprise Engagement' },
-      { value: '91%', label: 'Improved Service Clarity\nAcross Digital Touchpoints' }
+      { value: '3X', label: 'More Professional Brand Presentation' },
+      { value: '60%', label: 'Improved Client Engagement During Meetings' }
     ),
     details: createDetails({
-      goal: 'Present digital and IT capabilities in a more scalable, enterprise-friendly way.',
+      goal: 'Modernize the company’s brand presentation and create professional business assets that matched the scale and credibility of the organization.',
       challenge:
-        'The brand communicated too broadly, which made the service offer feel generic and reduced differentiation.',
+        'Despite being a well-established company with strong industry expertise and international partnerships, the business was still using an outdated company profile and inconsistent branding materials during client presentations, which reduced the overall impact in high-value meetings.',
       solution:
-        'Built a more structured communication system focused on clarity, specialization, and stronger business outcomes.',
+        'Redesigned the brand identity system and created modern corporate communication assets that reflected the company’s professionalism and market positioning.',
       execution: [
-        'IT Service Positioning',
-        'Enterprise Messaging Layers',
-        'Website Experience Cleanup',
-        'Proof & Capability Structuring',
-        'Lead Flow Improvement',
+        'Logo Redesign',
+        'Professional Company Profile Design',
+        'Corporate Brand Styling',
+        'Modern Presentation Layout System',
+        'Improved Visual Communication for Client Meetings',
       ],
     }),
     cta,
   },
-  {
-    id: 'fmcg',
-    title: 'FMCG',
-    industry: 'Fast-Moving Consumer Goods',
+{
+    id: 'tea-franchise',
+    title: 'Tea Franchise Brand',
+    industry: 'Food & Beverage',
     img: '/images/portfolio/FMCG.webp',
     previewImg: '/images/portfolio/FMCG.webp',
     impact:
-      'The brand moved from one-off messaging to a more structured retention system, creating stronger continuity across campaigns and repeat-purchase moments.',
+      'The website helped transform the brand from a locally popular tea business into a professionally presented franchise-ready brand. It strengthened business authenticity, supported franchise inquiries, and created better opportunities for corporate collaborations and vendor partnerships.',
     metrics: createMetrics(
-      { value: '2.4X', label: 'Higher Repeat Engagement' },
-      { value: '84%', label: 'Stronger Lifecycle Messaging\nAcross Retention Flows' }
+      { value: '20+', label: 'Branch Presence Digitally Showcased' },
+      { value: 'Improved', label: 'Franchise & Corporate Business Credibility' }
     ),
     details: createDetails({
-      goal: 'Improve repeat engagement and increase customer lifetime value.',
+      goal: 'Build a professional digital presence to support franchise expansion and corporate business opportunities.',
       challenge:
-        'The brand relied too heavily on acquisition and lacked meaningful retention systems after the first purchase.',
+        'Despite having a strong local reputation and 20+ branches across Maharashtra, the business lacked a professional website, making franchise scaling and corporate collaborations difficult in today’s digital-first market. The brand also needed a platform to present its unique product positioning and business credibility effectively.',
       solution:
-        'Designed a behavior-based communication structure that aligned messaging with different customer stages and purchase intent.',
+        'Developed a modern business website focused on franchise growth, brand authenticity, and corporate presentation.',
       execution: [
-        'Retention Flow Design',
-        'Lifecycle Messaging System',
-        'Offer Timing Strategy',
-        'Audience Segmentation Support',
-        'Brand Consistency Across Flows',
+        'Website Design & Development',
+        'Franchise-Focused Website Structure',
+        'Brand Story & Product Positioning',
+        'Corporate Vendor Presentation Pages',
+        'Mobile-Optimized User Experience',
       ],
     }),
     cta,
   },
-  {
-    id: 'it-solutions',
-    title: 'IT Solutions',
-    industry: 'IT Consulting & Solutions',
+ {
+    id: 'industrial-engineering-solutions',
+    title: 'Industrial & Engineering Solutions',
+    industry: 'Industrial Solutions',
     img: '/images/portfolio/IT Services-1.webp',
     previewImg: '/images/portfolio/IT Services-1.webp',
     impact:
-      'Improved the performance marketing foundation by making the landing experience and offer framing more aligned with campaign intent.',
+      'The website helped position the company as a professionally established business ready for international expansion. It strengthened digital credibility, supported offshore business development efforts, and created a more trustworthy presence for potential global clients and partners.',
     metrics: createMetrics(
-      { value: '39%', label: 'Lower Acquisition Friction' },
-      { value: '89%', label: 'Stronger Offer Alignment\nBetween Ads And Landing Pages' }
+      { value: 'Stronger', label: 'International Business Presence' },
+      { value: 'Improved', label: 'Offshore Brand Credibility & Client Trust' }
     ),
     details: createDetails({
-      goal: 'Support more efficient lead acquisition through stronger campaign structure.',
+      goal: 'Build a strong digital presence to support offshore business expansion and strengthen international brand credibility.',
       challenge:
-        'Traffic was being generated, but weak landing page alignment and inconsistent creative reduced conversion quality.',
+        'The company was planning to scale operations in Australia through its business development partner, but lacked a professional digital presence required to build trust and establish credibility in the international market.',
       solution:
-        'Built a more connected acquisition system where creative, messaging, and destination experiences supported the same conversion goal.',
+        'Developed a professional corporate website focused on business positioning, global credibility, and offshore market readiness.',
       execution: [
-        'Landing Page Alignment',
-        'Paid Media Support Design',
-        'Campaign Messaging Cleanup',
-        'Trust Positioning Improvements',
-        'Offer Clarity Optimization',
+        'Corporate Website Design & Development',
+        'International Brand Positioning',
+        'Business & Service Presentation',
+        'Professional Content Structuring',
+        'Mobile-Optimized User Experience',
       ],
     }),
     cta,
   },
-  {
+{
     id: 'document-management-saas',
     title: 'Document Management SaaS',
-    industry: 'SaaS & Workflow Automation',
+    industry: 'Food & Beverage',
     img: '/images/portfolio/Document Management SaaS.webp',
     previewImg: '/images/portfolio/Document Management SaaS.webp',
     impact:
-      'The platform became easier to navigate and more action-oriented, which helped reduce friction and strengthen perceived product maturity.',
+      'The platform transformed into a polished and professionally designed SaaS product that better reflected its capabilities. The improved UI/UX enhanced usability, strengthened client confidence, and helped position the software more effectively for business presentations and future growth.',
     metrics: createMetrics(
-      { value: '40%', label: 'Higher Conversion Completion' },
-      { value: '94%', label: 'Cleaner Workflow Communication\nAcross Product Screens' }
+      { value: 'Market-Ready', label: 'Professional Product Experience' },
+      { value: 'Improved', label: 'User Experience & Client Presentation Confidence' }
     ),
     details: createDetails({
-      goal: 'Improve conversion performance by refining the product’s decision flow.',
+      goal: 'Create a professional and user-friendly product experience for a document management platform preparing for market positioning and client demonstrations.',
       challenge:
-        'Users were facing friction in understanding the product journey, causing hesitation and weaker action completion.',
+        'The platform had strong functionality and workflow capabilities, but the outdated UI and weak user experience reduced product confidence and impacted presentation quality during client interactions.',
       solution:
-        'Applied a CRO-led redesign approach to improve hierarchy, simplify flows, and make the interface more conversion-aware.',
+        'Redesigned the complete product interface with a modern SaaS-focused UI/UX system to make the platform more intuitive, professional, and market-ready.',
       execution: [
-        'CRO Audit Support',
-        'Workflow Simplification',
-        'Form & CTA Refinement',
-        'Interface Hierarchy Cleanup',
-        'User Path Optimization',
+        'UX Strategy & User Flow Planning',
+        'Modern SaaS UI Design',
+        'Dashboard & Document Workflow Screens',
+        'Frontend-Ready UI Support',
+        'Backend Integration Coordination',
       ],
     }),
     cta,
   },
-  {
+{
     id: 'cloud-kitchen-pro',
-    title: 'Cloud Kitchen Pro',
-    industry: 'Food Brand Repositioning',
+    title: 'Cloud Kitchen',
+    industry: 'Food & Beverage',
     img: '/images/portfolio/Cloud Kitchen.webp',
     previewImg: '/images/portfolio/Cloud Kitchen.webp',
     impact:
-      'The repositioned identity helped the food brand feel more polished and memorable, improving presentation quality across customer-facing materials.',
+      'The business established a professional digital presence that supported QR code functionality, improved customer trust, and enabled smoother onboarding on food delivery and third-party platforms. The website created a scalable foundation for future business growth and online visibility.',
     metrics: createMetrics(
-      { value: '2.7X', label: 'Stronger Brand Recognition' },
-      { value: '96%', label: 'Unified Visual Direction\nAcross Customer Collateral' }
+      { value: '1 Week', label: 'Higher Brand Recall' },
+      { value: 'Improved', label: 'Business Credibility & Platform Readiness' }
     ),
     details: createDetails({
-      goal: 'Modernize the brand and create a more premium market perception.',
+      goal: 'Build a professional online presence and create a scalable digital foundation for business growth and food platform onboarding.',
       challenge:
-        'The previous identity felt generic and did not reflect the ambition or product quality of the business.',
+        'The brand distributed QR enabled business cards with food parcels, but the codes led nowhere due to the lack of a website. Without an online presence, onboarding on third-party delivery platforms was blocked, limiting scale.',
       solution:
-        'Rebuilt the visual identity around a clearer brand language, better packaging consistency, and more memorable presentation.',
+        'Developed a complete website within a rapid timeline of just one week with original content, business-aligned visuals, and a professional digital presence tailored for the food industry.',
       execution: [
-        'Brand Refresh Strategy',
-        'Visual Identity Upgrade',
-        'Packaging Design Support',
-        'Collateral System Cleanup',
-        'Brand Recognition Enhancement',
+        'Website Design & Development',
+        'Original Content Creation',
+        'Business-Aligned Visual Design',
+        'Mobile-Friendly Experience',
+        'Fast Delivery & Deployment',
       ],
     }),
     cta,
   },
-  {
+{
     id: 'manufacturing-automation',
-    title: 'Manufacturing Automation',
-    industry: 'Industrial Systems & Automation',
+    title: 'Industrial Automation Brand',
+    industry: 'Industrial Automation',
     img: '/images/portfolio/Manufacturing Automation-1.webp',
     previewImg: '/images/portfolio/Manufacturing Automation-1.webp',
     impact:
-      'The technical offering became more visually compelling and easier to explain, improving product comprehension across sales conversations.',
+      'The website helped establish a verified and professional corporate identity for the business, making it easier to participate in tenders, support official documentation requirements, and strengthen trust with industrial clients and partners.',
     metrics: createMetrics(
-      { value: '2.8X', label: 'Higher Product Interest' },
-      { value: '87%', label: 'Better Technical Communication\nAcross Sales Assets' }
+      { value: 'Stronger', label: 'Business Authentication & Professional Presence' },
+      { value: 'Improved', label: 'Tender & Official Documentation Readiness' }
     ),
     details: createDetails({
-      goal: 'Explain a complex manufacturing product in a more intuitive visual format.',
+      goal: 'Establish a professional online presence to support official business requirements, tenders, and corporate credibility.',
       challenge:
-        'Static technical materials were not helping prospects connect product capability with real business value.',
+        'The company specialized in advanced vision inspection machines for multiple industries and materials, but lacked a website – making it difficult to fulfill tender requirements, official documentation processes, and professional business verification needs.',
       solution:
-        'Developed a more visual communication system using clearer demonstrations, stronger sequencing, and simplified technical context.',
+        'Developed a clean and professional corporate website focused on credibility, business presentation, and product visibility.',
       execution: [
-        'Explainer Asset Design',
-        'Technical Sequence Planning',
-        'Motion-Ready Story Support',
-        'Presentation System Cleanup',
-        'Product Benefit Framing',
+        'Corporate Website Design & Development',
+        'Product & Solution Presentation',
+        'Business Information Structuring',
+        'Professional Brand Positioning',
+        'Mobile-Friendly User Experience',
       ],
     }),
     cta,
   },
-  {
-    id: 'it-growth-solutions',
-    title: 'IT Growth Solutions',
-    industry: 'B2B Lead Generation',
-    img: '/images/portfolio/IT Services-2.webp',
-    previewImg: '/images/portfolio/IT Services-2.webp',
-    impact:
-      'Lead quality improved as the business started communicating more selectively, with better targeting and stronger trust positioning across outreach assets.',
-    metrics: createMetrics(
-      { value: '3.0X', label: 'Higher Quality Inbound Leads' },
-      { value: '85%', label: 'Better Sales-Readiness\nAcross Lead Acquisition Funnel' }
-    ),
-    details: createDetails({
-      goal: 'Generate more qualified leads for high-value IT services.',
-      challenge:
-        'The brand was attracting broad interest but struggling to convert attention into serious, sales-ready conversations.',
-      solution:
-        'Refined the lead acquisition system around more focused targeting, stronger buyer messaging, and better trust communication.',
-      execution: [
-        'Lead Funnel Positioning',
-        'High-Ticket Messaging Support',
-        'Audience Refinement',
-        'Proof & Trust Layering',
-        'Conversion Journey Cleanup',
-      ],
-    }),
-    cta,
-  },
-  {
-    id: 'saas-platform',
-    title: 'SaaS Platform',
-    industry: 'Software As A Service',
-    img: '/images/portfolio/SaaS.webp',
-    previewImg: '/images/portfolio/SaaS.webp',
-    impact:
-      'The SaaS experience became more intuitive and product-led, helping reduce confusion and strengthen first impressions across onboarding and demos.',
-    metrics: createMetrics(
-      { value: '52%', label: 'Faster Onboarding Readiness' },
-      { value: '97%', label: 'More Intuitive Product Experience\nAcross Core Workflows' }
-    ),
-    details: createDetails({
-      goal: 'Make the SaaS platform feel simpler, smarter, and easier to adopt.',
-      challenge:
-        'Feature density and weak information hierarchy made the product feel heavier than it needed to be for new users.',
-      solution:
-        'Redesigned the product experience around better visual grouping, cleaner navigation logic, and stronger product-led storytelling.',
-      execution: [
-        'Onboarding Flow Refinement',
-        'Navigation Logic Cleanup',
-        'Feature Hierarchy Rework',
-        'Product Demo Support',
-        'UI Experience Optimization',
-      ],
-    }),
-    cta,
-  },
+{
+  id: 'it-growth-solutions',
+  title: 'IT Services',
+  industry: 'Project Management & Business Consulting Solutions',
+
+  img: '/images/portfolio/IT Services-2.webp',
+  previewImg: '/images/portfolio/IT Services-2.webp',
+
+  impact:
+    'The company established a stronger and more modern corporate image that aligned with its industry reputation and large-scale operations. The redesigned branding and company profile helped improve presentation quality, strengthened business credibility, and created a more impressive experience during client interactions and proposals.',
+
+  metrics: createMetrics(
+    { value: '3X', label: 'More Professional Brand Presentation' },
+    { value: '60%', label: 'Improved Client Engagement During Meetings' }
+  ),
+
+  details: createDetails({
+    goal:
+      'Modernize the company’s brand presentation and create professional business assets that matched the scale and credibility of the organization.',
+
+    challenge:
+      'Despite being a well-established company with strong industry expertise and international partnerships, the business was still using an outdated company profile and inconsistent branding materials during client presentations, which reduced the overall impact in high-value meetings.',
+
+    solution:
+      'Redesigned the brand identity system and created modern corporate communication assets that reflected the company’s professionalism and market positioning.',
+
+    execution: [
+      'Logo Redesign',
+      'Professional Company Profile Design',
+      'Corporate Brand Styling',
+      'Modern Presentation Layout System',
+      'Improved Visual Communication for Client Meetings',
+    ],
+  }),
+
+  cta,
+},
+{
+  id: 'saas-platform',
+  title: 'AI-Powered Design Template Platform',
+  industry: 'Graphic Design & Creative Technology',
+
+  img: '/images/portfolio/SaaS.webp',
+  previewImg: '/images/portfolio/SaaS.webp',
+
+  impact:
+    'The application successfully maintained a strong competitive edge with consistently high-quality design templates that became one of its biggest value propositions. The streamlined workflow enabled smooth large-scale production while ensuring zero compromise on creative standards, helping the platform deliver a premium user experience consistently.',
+
+  metrics: createMetrics(
+    { value: '3000+', label: 'Premium Templates Delivered Every Month' },
+    { value: '100+', label: 'High-Quality Templates Delivered Daily' }
+  ),
+
+  details: createDetails({
+    goal:
+      'Build a scalable and high-quality creative production system for the core content engine of the application while maintaining premium design standards to stay ahead of competitors.',
+
+    challenge:
+      'The application’s success heavily depended on the quality of its graphic templates, making design content the core part of the platform experience. The client required large-scale daily production without compromising creativity, consistency, or premium visual standards in an already competitive market.',
+
+    solution:
+      'Created a streamlined creative workflow and scalable production system focused on delivering high-quality templates at speed while maintaining strict design consistency and brand standards across all categories.',
+
+    execution: [
+      'Daily Social Media Template Design',
+      'High-Quality Multi-Category Creative Production',
+      'Standardized Design Quality Framework',
+      'Fast Revision & Correction Workflow',
+      'Optimized High-Volume Delivery Pipeline',
+    ],
+  }),
+
+  cta,
+},
 ]

@@ -62,11 +62,11 @@ function TestimonialCard({ item, onAdvance }) {
         <svg
           viewBox="0 0 520 260"
           preserveAspectRatio="none"
-          className="absolute inset-0 h-full w-full transition-all duration-300"
+          className="absolute inset-0 h-full w-full overflow-visible transition-all duration-300"
           aria-hidden="true"
         >
           <path
-            d="M20,0 H150 Q170,0 178,18 Q186,34 220,34 H300 Q334,34 342,18 Q350,0 370,0 H500 Q520,0 520,20 V240 Q520,260 500,260 H20 Q0,260 0,240 V20 Q0,0 20,0 Z"
+            d="M20,1 H150 Q170,1 178,19 Q186,35 220,35 H300 Q334,35 342,19 Q350,1 370,1 H499 Q519,1 519,21 V239 Q519,259 499,259 H21 Q1,259 1,239 V21 Q1,1 20,1 Z"
             className="fill-transparent stroke-[rgba(0,0,0,0.5)] stroke-[0.8] transition-all duration-300 group-hover:fill-[#0a0a0a] group-hover:stroke-[#0a0a0a]"
           />
         </svg>

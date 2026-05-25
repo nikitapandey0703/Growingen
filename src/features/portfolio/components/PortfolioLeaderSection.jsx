@@ -36,7 +36,7 @@ export default function PortfolioLeaderSection() {
               <div className="overflow-hidden rounded-[20px] border border-white/60 bg-white/35 p-2 shadow-[0_18px_44px_rgba(15,23,42,0.12)] backdrop-blur-[6px] sm:rounded-[24px] sm:p-[10px]">
                 <div className="aspect-[16/11] overflow-hidden rounded-[16px] sm:rounded-[18px]">
                   <img
-                    src="/images/portfolio/leder-section-image.svg"
+                    src="/images/portfolio/leder-section-image.webp"
                     alt="LuxLite team leader standing in front of a crowd"
                     className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.08]"
                   />

@@ -70,11 +70,16 @@ export default function PortfolioScroll() {
     <>
       {/* ======================= MOBILE / TABLET VIEW ======================= */}
       <section className="site-container w-full pb-16 pt-6 sm:pt-8 lg:hidden">
-        <div className="mx-auto max-w-[760px] text-center">
-          <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.04em]  sm:text-[40px] lg:text-[50px]">
-            Our Recent
-           
-            <CurvedUnderlineText className="hero-highlight pb-[0.16em]" lineClassName="h-[0.22em] w-full left-[2%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]">
+        <div className="mx-auto max-w-[760px] lg:max-w-[960px] xl:max-w-[1100px] 2xl:max-w-full px-4 text-center">
+          <h2 
+            className="text-[32px] font-semibold leading-[1.1] tracking-[-0.05em]"
+            style={{ fontSize: 'var(--fs-section-title)' }}
+          >
+            Our Recent{' '}
+            <CurvedUnderlineText 
+              className="hero-highlight pb-[0.16em]" 
+              lineClassName="h-[0.22em] w-full left-[2%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]"
+            >
               Projects
             </CurvedUnderlineText>
           </h2>
@@ -127,30 +132,35 @@ export default function PortfolioScroll() {
       </section>
 
       {/* ======================= DESKTOP VIEW ======================= */}
-      <div className="hidden w-full text-center pt-4 pb-10 lg:block">
-        <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.04em]  sm:text-[40px] lg:text-[50px] pb-2">
-          Our Recent {""}
-          
-          <CurvedUnderlineText className="hero-highlight pb-[0.16em] " lineClassName="h-[0.22em] w-full left-[1%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]">
+      <div className="hidden mx-auto max-w-[760px] lg:max-w-[960px] xl:max-w-[1100px] 2xl:max-w-full px-4 text-center pt-4 pb-10 lg:block">
+        <h2 
+          className="text-[32px] font-semibold leading-[1.1] tracking-[-0.05em] pb-2"
+          style={{ fontSize: 'var(--fs-section-title)' }}
+        >
+          Our Recent{' '}
+          <CurvedUnderlineText 
+            className="hero-highlight pb-[0.16em]" 
+            lineClassName="h-[0.22em] w-full left-[1%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]"
+          >
             Projects
           </CurvedUnderlineText>
         </h2>
       </div>
 
-      <section ref={containerRef} className="relative hidden w-full h-[460vh] bg-transparent lg:block">
+      <section ref={containerRef} className="relative hidden w-full h-[460vh] bg-transparent lg:block 2xl:h-[430vh] 3xl:h-[400vh]">
         
         {/* 'overflow-hidden' roks it from creating horizontal scrolls */}
         <div className="hidden sticky top-0 h-screen w-full items-center justify-center overflow-hidden lg:flex">
           
           <motion.div 
             style={{ scale: mainScale }} 
-            className="relative w-full max-w-[1400px] aspect-[1.6/1] origin-center"
+            className="relative w-full max-w-[1400px] aspect-[1.6/1] origin-center 2xl:max-w-[1540px] 2xl:aspect-[1.57/1] 3xl:max-w-[1680px] 3xl:aspect-[1.54/1]"
           >
             
             {/* LIGHTING - Top Left */}
             <motion.div 
               style={{ x: xTopLeft, y: yTopLeft, rotate: rotateTopLeft }}
-              className="absolute top-[12.5%] left-[9%] w-[23.5%] aspect-[1/1.05] bg-gray-200 rounded-[10px] shadow-md border border-gray-300 overflow-hidden"
+              className="absolute top-[12.5%] left-[9%] w-[23.5%] aspect-[1/1.05] overflow-hidden rounded-[10px] border border-gray-300 bg-gray-200 shadow-md 2xl:left-[8.4%] 2xl:w-[24.2%] 2xl:rounded-[12px] 3xl:left-[8.1%] 3xl:w-[24.8%] 3xl:rounded-[14px]"
             >
               <img src={portfolioScrollImages.topLeft} className="w-full h-full object-cover" alt="Recent project showcase 1" />
             </motion.div>
@@ -158,22 +168,22 @@ export default function PortfolioScroll() {
             {/* SOFTWARE - Top Center */}
             <motion.div 
               style={{ y: yTopMid, rotate: rotateTopMid }}
-              className="absolute top-[5%] left-[36.8%] w-[37.5%] aspect-[16/7.5] bg-gray-200 rounded-[10px] shadow-md border border-gray-300 overflow-hidden"
+              className="absolute top-[5%] left-[36.8%] w-[37.5%] aspect-[16/7.5] overflow-hidden rounded-[10px] border border-gray-300 bg-gray-200 shadow-md 2xl:left-[35.7%] 2xl:w-[38.8%] 2xl:rounded-[12px] 3xl:left-[35.3%] 3xl:w-[39.6%] 3xl:rounded-[14px]"
             >
               <img src={portfolioScrollImages.topCenter} className="w-full h-full object-cover" alt="Recent project showcase 2" />
             </motion.div>
 
             {/* CENTER CARD (Stays put throughout) */}
-            <div className="absolute top-[38%] left-[36%] w-[28%] aspect-[1.9/1] rounded-[8px] border border-gray-400 flex flex-col items-center justify-center px-6 py-6 z-20 bg-transparent">
-              <h3 className="text-[clamp(16px,1.7vw,30px)] font-semibold  text-center leading-[1.25] mb-6">
+            <div className="absolute top-[38%] left-[36%] z-20 flex w-[28%] aspect-[1.9/1] flex-col items-center justify-center rounded-[8px] border border-gray-400 bg-transparent px-6 py-6 2xl:left-[35.1%] 2xl:w-[29.4%] 2xl:rounded-[10px] 2xl:px-7 2xl:py-7 3xl:left-[34.8%] 3xl:w-[30.2%] 3xl:rounded-[12px] 3xl:px-8 3xl:py-8">
+              <h3 className="mb-6 text-[clamp(16px,1.7vw,30px)] font-semibold text-center leading-[1.25] 2xl:mb-7 2xl:text-[clamp(18px,1.55vw,32px)] 3xl:mb-8 3xl:text-[clamp(20px,1.5vw,34px)]">
                 “ Your Growth, Our Success ”
               </h3>
-              <div className="flex items-center gap-3 pt-4">
-                <div className="w-[clamp(56px,4.5vw,72px)] h-[clamp(56px,4.5vw,72px)] rounded-full bg-[#F47A14] flex items-center justify-center overflow-hidden">      
+              <div className="flex items-center gap-3 pt-4 2xl:gap-4 2xl:pt-5 3xl:pt-6">
+                <div className="flex h-[clamp(56px,4.5vw,72px)] w-[clamp(56px,4.5vw,72px)] items-center justify-center overflow-hidden rounded-full bg-[#F47A14] 2xl:h-[clamp(64px,4.2vw,82px)] 2xl:w-[clamp(64px,4.2vw,82px)] 3xl:h-[clamp(70px,4vw,88px)] 3xl:w-[clamp(70px,4vw,88px)]">      
                   <img src="/images/portfolio/mini-illustration.png" alt="avatar" className="w-full h-full object-contain" />
                 </div>
                 <div className="flex flex-col leading-tight">
-                  <span className="text-[clamp(14px,1.2vw,24px)] font-semibold ">                  With Growingen Team
+                  <span className="text-[clamp(14px,1.2vw,24px)] font-semibold 2xl:text-[clamp(16px,1.1vw,26px)] 3xl:text-[clamp(18px,1vw,28px)]">                  With Growingen Team
 </span>
                  
                 </div>
@@ -183,7 +193,7 @@ export default function PortfolioScroll() {
             {/* SKINCARE - Top Right */}
             <motion.div 
               style={{ x: xTopRight, y: yTopRight, rotate: rotateTopRight }}
-              className="absolute top-[35.5%] left-[68.8%] w-[22.5%] aspect-[1.4/1] bg-gray-200 rounded-[10px] shadow-md border border-gray-300 overflow-hidden"
+              className="absolute top-[35.5%] left-[68.8%] w-[22.5%] aspect-[1.4/1] overflow-hidden rounded-[10px] border border-gray-300 bg-gray-200 shadow-md 2xl:left-[69.2%] 2xl:w-[23.1%] 2xl:rounded-[12px] 3xl:left-[69.6%] 3xl:w-[23.6%] 3xl:rounded-[14px]"
             >
               <img src={portfolioScrollImages.topRight} className="w-full h-full object-cover" alt="Recent project showcase 3" />
             </motion.div>
@@ -191,7 +201,7 @@ export default function PortfolioScroll() {
             {/* SKIN 1 - Bottom Left */}
             <motion.div 
               style={{ x: xBotLeft, y: yBotLeft, rotate: rotateBotLeft }}
-              className="absolute top-[64.5%] left-[11%] w-[29.5%] aspect-[21/9] bg-gray-200 rounded-[10px] shadow-md border border-gray-300 overflow-hidden"
+              className="absolute top-[64.5%] left-[11%] w-[29.5%] aspect-[21/9] overflow-hidden rounded-[10px] border border-gray-300 bg-gray-200 shadow-md 2xl:left-[10.4%] 2xl:w-[30.4%] 2xl:rounded-[12px] 3xl:left-[10%] 3xl:w-[31%] 3xl:rounded-[14px]"
             >
               <img src={portfolioScrollImages.bottomLeft} className="w-full h-full object-cover" alt="Recent project showcase 4" />
             </motion.div>
@@ -199,7 +209,7 @@ export default function PortfolioScroll() {
             {/* SPEAKER - Bottom Center */}
             <motion.div 
               style={{ y: yBotMid, rotate: rotateBotMid }}
-              className="absolute top-[65.5%] left-[45%] w-[20.5%] aspect-[1.5/1] bg-gray-200 rounded-[10px] shadow-md border border-gray-300 overflow-hidden"
+              className="absolute top-[65.5%] left-[45%] w-[20.5%] aspect-[1.5/1] overflow-hidden rounded-[10px] border border-gray-300 bg-gray-200 shadow-md 2xl:w-[21.2%] 2xl:rounded-[12px] 3xl:left-[44.8%] 3xl:w-[21.7%] 3xl:rounded-[14px]"
             >
               <img src={portfolioScrollImages.bottomCenter} className="w-full h-full object-cover" alt="Recent project showcase 5" />
             </motion.div>
@@ -207,7 +217,7 @@ export default function PortfolioScroll() {
             {/* GRINDING - Bottom Right */}
             <motion.div 
               style={{ x: xBotRight, y: yBotRight, rotate: rotateBotRight }}
-              className="absolute top-[67.5%] left-[69%] w-[18.5%] aspect-[1.8/1] bg-gray-200 rounded-[10px] shadow-md border border-gray-300 overflow-hidden z-10"
+              className="absolute top-[67.5%] left-[69%] z-10 w-[18.5%] aspect-[1.8/1] overflow-hidden rounded-[10px] border border-gray-300 bg-gray-200 shadow-md 2xl:left-[69.8%] 2xl:w-[19.2%] 2xl:rounded-[12px] 3xl:left-[70.1%] 3xl:w-[19.6%] 3xl:rounded-[14px]"
             >
               <img src={portfolioScrollImages.bottomRight} className="w-full h-full object-cover" alt="Recent project showcase 6" />
             </motion.div>

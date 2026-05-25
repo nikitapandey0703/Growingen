@@ -20,14 +20,10 @@ export function PortfolioPage() {
       <CounterStatsBanner items={portfolioStats} className=" w-full" />
       <PortfolioCarousel/>
       <PortfolioProblemsSection/>
-      
       <PortfolioShowcase/>
-      <div className="section-spacing">
-        <PortfolioTestimonialSection />
-      </div>
-      <div className="section-spacing">
-        <PortfolioCTASection />
-      </div>
+      <PortfolioTestimonialSection />
+      <PortfolioCTASection />
+     
     </main>
   )
 }

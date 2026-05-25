@@ -114,7 +114,7 @@ export default function CounterStatsBanner({
   }
 
   return (
-    <SectionWrapper as="section" className="relative bg-transparent !pl-0 !pr-0 section-spacing " aria-label="Performance metrics">
+    <SectionWrapper as="section" className="relative bg-transparent !pl-0 !pr-0 !2xl:pl-0 !2xl:pr-0 !3xl:pl-0 !3xl:pr-0 section-spacing " aria-label="Performance metrics">
       <div className={`${rootClassName} w-full text-white`}>
         <div className="grid w-full grid-cols-1 justify-items-center gap-y-1 px-4 py-2 sm:grid-cols-2 sm:gap-x-3 sm:gap-y-2 sm:px-5 md:px-6 lg:grid-cols-4 lg:gap-x-2 lg:px-5 xl:px-6 2xl:px-8">
           {items.map((item) => (

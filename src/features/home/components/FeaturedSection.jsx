@@ -54,7 +54,7 @@ const SWIPE_THRESHOLD = 70
 
 function FeatureArt({ imageSrc }) {
   return (
-    <div className="relative h-[248px] w-full overflow-hidden rounded-[14px] border border-[#e4ebfb] bg-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.72)] sm:h-[286px] md:h-[304px] lg:h-[318px] xl:h-[336px] 2xl:h-[356px]">
+    <div className="relative h-[248px] w-full overflow-hidden rounded-[14px] border border-[#e4ebfb] bg-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.72)] sm:h-[286px] md:h-[304px] lg:h-[318px] xl:h-[336px] 2xl:h-[408px] 3xl:h-[436px]">
       <img
         src={imageSrc}
         alt=""
@@ -99,7 +99,7 @@ function FeatureCard({ card, isActive, onSelect }) {
   return (
     <article
       className={[
-        'relative isolate flex h-[276px] cursor-pointer flex-col overflow-visible bg-transparent transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F45328] focus-visible:ring-offset-4 focus-visible:ring-offset-white sm:h-[324px] md:h-[344px] lg:h-[352px] xl:h-[372px] 2xl:h-[392px]',
+        'relative isolate flex h-[276px] cursor-pointer flex-col overflow-visible bg-transparent transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F45328] focus-visible:ring-offset-4 focus-visible:ring-offset-white sm:h-[324px] md:h-[344px] lg:h-[352px] xl:h-[372px] 2xl:h-[492px] 3xl:h-[527px]',
       ].join(' ')}
       role="button"
       tabIndex={0}
@@ -117,12 +117,12 @@ function FeatureCard({ card, isActive, onSelect }) {
       />
       <FeatureCardFrame isActive={isActive} />
 
-      <div className="relative z-10 flex h-full flex-col px-[12px] pb-[16px] pt-[10px] sm:px-[14px] sm:pb-[18px] sm:pt-[12px] md:px-[15px] md:pb-[20px] lg:px-[16px] lg:pb-[22px] xl:pb-[24px]">
+      <div className="relative z-10 flex h-full flex-col px-[12px] pb-[16px] pt-[10px] sm:px-[14px] sm:pb-[18px] sm:pt-[12px] md:px-[15px] md:pb-[20px] lg:px-[16px] lg:pb-[22px] xl:pb-[24px] 2xl:px-[18px] 2xl:pb-[28px] 2xl:pt-[14px] 3xl:px-[20px] 3xl:pb-[30px] 3xl:pt-[15px]">
         <FeatureArt imageSrc={card.imageSrc} />
 
-        <div className="flex min-h-[72px] flex-1 items-center justify-center px-2.5 py-4 text-center sm:min-h-[82px] sm:px-3 sm:py-4.5 md:min-h-[88px] md:px-3.5 lg:min-h-[92px] lg:px-4 lg:py-5 xl:min-h-[98px]">
+        <div className="flex min-h-[72px] flex-1 items-center justify-center px-2.5 py-4 text-center sm:min-h-[82px] sm:px-3 sm:py-4.5 md:min-h-[88px] md:px-3.5 lg:min-h-[92px] lg:px-4 lg:py-5 xl:min-h-[98px] 2xl:min-h-[112px] 2xl:px-5 2xl:py-6 3xl:min-h-[122px] 3xl:px-6 3xl:py-7">
           <h3
-            className="max-w-[16ch] overflow-hidden font-medium leading-[1.32] tracking-[-0.01em] text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] 2xl:text-[24px] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
+            className="max-w-[16ch] overflow-hidden font-medium leading-[1.32] tracking-[-0.01em] text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] 2xl:text-[22px] 3xl:text-[26px] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
             
           >
             {card.title}
@@ -132,7 +132,7 @@ function FeatureCard({ card, isActive, onSelect }) {
 
       <div className="absolute bottom-[-0px] left-1/2 z-20 -translate-x-1/2 translate-y-1/2">
         <span
-          className={`inline-flex h-[34px] w-[34px] items-center justify-center rounded-full border shadow-md transition-[background-color,border-color,transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:h-[36px] sm:w-[36px] lg:h-[38px] lg:w-[38px] 2xl:h-[42px] 2xl:w-[42px] ${
+          className={`inline-flex h-[34px] w-[34px] items-center justify-center rounded-full border shadow-md transition-[background-color,border-color,transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:h-[36px] sm:w-[36px] lg:h-[38px] lg:w-[38px] 2xl:h-[46px] 2xl:w-[46px] 3xl:h-[50px] 3xl:w-[50px] ${
             isActive
               ? 'scale-105 border-[#F45328] bg-[#F45328] shadow-[0_12px_24px_rgba(244,83,40,0.24)]'
               : 'border-[#f3d8d0] bg-white'
@@ -143,7 +143,7 @@ function FeatureCard({ card, isActive, onSelect }) {
               src={card.badgeIconSrc}
               alt={card.badgeAlt}
               className={[
-                'h-[18px] w-[18px] object-contain sm:h-[19px] sm:w-[19px] lg:h-[20px] lg:w-[20px] 2xl:h-[22px] 2xl:w-[22px]',
+                'h-[18px] w-[18px] object-contain sm:h-[19px] sm:w-[19px] lg:h-[20px] lg:w-[20px] 2xl:h-[24px] 2xl:w-[24px] 3xl:h-[26px] 3xl:w-[26px]',
                 isActive ? 'brightness-0 invert' : 'opacity-90',
               ].join(' ')}
             />
@@ -374,29 +374,37 @@ export default function FeaturedSection() {
   return (
     <section className="section-spacing relative overflow-hidden bg-transparent pt-2 sm:pt-4">
       <div className="site-container relative">
-        <div className="mx-auto max-w-[760px] text-center">
+        
+        {/* UPDATED HEADING WRAPPER */}
+        <div className="mx-auto max-w-[760px] lg:max-w-[960px] xl:max-w-[1100px] 2xl:max-w-full px-4 text-center">
           <h2
-            className="text-[32px] font-semibold leading-[1.1] tracking-[-0.05em] "
+            className="text-[32px] font-semibold leading-[1.1] tracking-[-0.05em]"
             style={{ fontSize: 'var(--fs-section-title)' }}
           >
-            We Provide The Best Service
-            <br />
-            With{' '}
-            <CurvedUnderlineText
-              className="featured-highlight pb-[0.14em]"
-              lineClassName="h-[0.38em] w-[118%] left-[1%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]"
-            >
-              Our Tools
-            </CurvedUnderlineText>
+            {/* 1st Line */}
+            <span className="block whitespace-normal lg:whitespace-nowrap">
+              We Provide The Best Service
+            </span>
+            
+            {/* 2nd Line */}
+            <span className="block whitespace-normal lg:whitespace-nowrap">
+              With{' '}
+              <CurvedUnderlineText
+                className="featured-highlight pb-[0.14em]"
+                lineClassName="h-[0.38em] w-[118%] left-[1%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]"
+              >
+                Our Tools
+              </CurvedUnderlineText>
+            </span>
           </h2>
         </div>
 
-        <div className="relative mx-auto mt-6 max-w-[1120px] px-1 sm:mt-8 sm:px-8 md:px-10 lg:mt-10 lg:max-w-[980px] lg:px-[54px] xl:max-w-[1040px] xl:px-[58px] 2xl:max-w-[1110px] 2xl:px-[64px]">
+        <div className="relative mx-auto mt-6 max-w-[1120px] px-1 sm:mt-8 sm:px-8 md:px-10 lg:mt-10 lg:max-w-[980px] lg:px-[54px] xl:max-w-[1040px] xl:px-[58px] 2xl:max-w-[1320px] 2xl:px-[72px] 3xl:max-w-[1560px] 3xl:px-[84px]">
           <button
             type="button"
             aria-label="Previous featured service"
             onClick={goToPrevious}
-            className="absolute left-3 top-[42%] z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#111827]/12 bg-white text-[#111827] shadow-[0_16px_30px_rgba(15,23,42,0.12)] transition-all duration-300 hover:border-[#F45328]/30 hover:text-[#F45328] sm:inline-flex lg:left-1 xl:left-2 2xl:left-3"
+            className="absolute left-3 top-[42%] z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#111827]/12 bg-white text-[#111827] shadow-[0_16px_30px_rgba(15,23,42,0.12)] transition-all duration-300 hover:border-[#F45328]/30 hover:text-[#F45328] sm:inline-flex lg:left-1 xl:left-2 2xl:left-3 3xl:left-4"
           >
             <ChevronLeft size={20} />
           </button>
@@ -405,7 +413,7 @@ export default function FeaturedSection() {
             type="button"
             aria-label="Next featured service"
             onClick={goToNext}
-            className="absolute right-3 top-[42%] z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#111827]/12 bg-white text-[#111827] shadow-[0_16px_30px_rgba(15,23,42,0.12)] transition-all duration-300 hover:border-[#F45328]/30 hover:text-[#F45328] sm:inline-flex lg:right-1 xl:right-2 2xl:right-3"
+            className="absolute right-3 top-[42%] z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#111827]/12 bg-white text-[#111827] shadow-[0_16px_30px_rgba(15,23,42,0.12)] transition-all duration-300 hover:border-[#F45328]/30 hover:text-[#F45328] sm:inline-flex lg:right-1 xl:right-2 2xl:right-3 3xl:right-4"
           >
             <ChevronRight size={20} />
           </button>
@@ -425,7 +433,7 @@ export default function FeaturedSection() {
           >
             <div
               className={[
-                'flex items-start gap-4 will-change-transform sm:gap-5 lg:gap-6',
+                'flex items-start gap-4 will-change-transform sm:gap-5 lg:gap-6 2xl:gap-7 3xl:gap-8',
                 isDragging
                   ? 'transition-none'
                   : 'transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]',
@@ -444,7 +452,7 @@ export default function FeaturedSection() {
                       cardRefs.current[index] = element
                     }}
                     className={[
-                      'w-[72vw] max-w-[236px] min-w-[214px] flex-none transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:w-[250px] sm:min-w-[250px] md:w-[264px] md:min-w-[264px] lg:w-[255px] lg:min-w-[255px] xl:w-[264px] xl:min-w-[264px] 2xl:w-[284px] 2xl:min-w-[284px]',
+                      'w-[72vw] max-w-[236px] min-w-[214px] flex-none transition-[transform,opacity] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:w-[250px] sm:min-w-[250px] md:w-[264px] md:min-w-[264px] lg:w-[255px] lg:min-w-[255px] xl:w-[264px] xl:min-w-[264px] 2xl:w-[324px] 2xl:min-w-[324px] 3xl:w-[348px] 3xl:min-w-[348px]',
                       presentation.opacityClass,
                     ].join(' ')}
                     style={{

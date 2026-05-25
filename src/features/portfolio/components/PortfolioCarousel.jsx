@@ -126,12 +126,13 @@ export default function PortfolioCarousel() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-transparent py-20">
-        <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-10 xl:px-12">
-          <div className="mb-14 text-center">
-            <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.04em] text-[#111827] sm:text-[40px] lg:text-[50px]">
+      <section className="relative overflow-hidden bg-transparent py-14 sm:py-16 md:py-[4.5rem] lg:py-20 xl:py-[5.5rem] 2xl:py-24">
+        <div className="mx-auto max-w-[1320px] px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:max-w-[1560px] 2xl:px-16">
+          <div className="mb-10 text-center sm:mb-12 md:mb-[3.25rem] lg:mb-14 xl:mb-[3.75rem] 2xl:mb-16">
+            <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.04em] text-[#111827] sm:text-[40px] md:text-[42px] lg:text-[46px] xl:text-[50px] 2xl:text-[70px]">
               Build a Brand{' '}
-              <CurvedUnderlineText className="hero-highlight pb-[0.16em]">
+              <CurvedUnderlineText className="hero-highlight pb-[0.16em]"  lineClassName="left-[-50%] w-[120%] h-[0.18em] -bottom-[6px] sm:-bottom-[8px] md:-bottom-[10px] lg:-bottom-[12px] xl:-bottom-[14px] 2xl:-bottom-[16px]"
+                            >
                 People
               </CurvedUnderlineText>{' '}
               Recognize
@@ -139,8 +140,8 @@ export default function PortfolioCarousel() {
           </div>
 
           <div className="relative overflow-hidden">
-            <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-[#fffdfb] to-transparent" />
-            <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-[#fffdfb] to-transparent" />
+            <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-8 bg-gradient-to-r from-[#fffdfb] to-transparent sm:w-12 md:w-14 lg:w-16 xl:w-[4.5rem] 2xl:w-20" />
+            <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-8 bg-gradient-to-l from-[#fffdfb] to-transparent sm:w-12 md:w-14 lg:w-16 xl:w-[4.5rem] 2xl:w-20" />
 
             <div
               ref={trackRef}
@@ -162,31 +163,30 @@ export default function PortfolioCarousel() {
               style={{ touchAction: 'pan-y' }}
             >
               {[1, 2, 3].map((setIndex) => (
-                <div key={setIndex} className="flex shrink-0 gap-7 pr-7">
+                <div key={setIndex} className="flex shrink-0 gap-4 pr-4 sm:gap-5 sm:pr-5 md:gap-6 md:pr-6 lg:gap-7 lg:pr-7 xl:gap-[1.85rem] xl:pr-[1.85rem] 2xl:gap-8 2xl:pr-8">
                   {portfolioCaseStudies.map((item, index) => (
                     <button
                       key={`${setIndex}-${item.id}-${index}`}
                       type="button"
                       onClick={() => handleCardClick(item)}
                       className="
-                        w-[220px] flex-shrink-0 overflow-hidden rounded-t-[18px] rounded-b-none
-                        bg-white/70 text-left shadow-[0_12px_34px_rgba(15,23,42,0.08)] backdrop-blur-sm
+                        group flex w-[78vw] max-w-[250px] min-w-[212px] flex-shrink-0 flex-col appearance-none overflow-hidden rounded-t-[18px] rounded-b-none border-0 bg-white/70 p-0 text-left shadow-[0_12px_34px_rgba(15,23,42,0.08)] backdrop-blur-sm
                         transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
                         hover:-translate-y-1 hover:scale-[1.03]
                         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F45328] focus-visible:ring-offset-2
-                        sm:w-[240px] lg:w-[250px]
+                        sm:w-[240px] sm:min-w-[240px] md:w-[248px] md:min-w-[248px] lg:w-[250px] lg:min-w-[250px] xl:w-[258px] xl:min-w-[258px] 2xl:w-[292px] 2xl:min-w-[292px]
                       "
                     >
-                      <div className="h-[240px] w-full overflow-hidden rounded-t-[18px] rounded-b-none sm:h-[260px] lg:h-[280px]">
+                      <div className="relative h-[250px] w-full shrink-0 overflow-hidden rounded-t-[18px] rounded-b-none sm:h-[270px] md:h-[280px] lg:h-[290px] xl:h-[300px] 2xl:h-[340px]">
                         <img
                           src={item.img}
                           alt={item.title}
                           draggable="false"
-                          className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.06]"
+                          className="absolute inset-0 block h-full w-full scale-[1.08] object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.14]"
                         />
                       </div>
 
-                      <div className="bg-black px-4 py-3.5 text-center text-[13px] font-medium text-white">
+                      <div className="relative z-10 -mt-3 flex min-h-[60px] w-full items-center justify-center bg-black px-4 py-3.5 text-center text-[12.5px] font-medium text-white sm:min-h-[76px] sm:px-5 sm:py-4 sm:text-[13px] md:min-h-[78px] md:text-[13.5px] lg:min-h-[80px] lg:text-[14px] xl:text-[15px] 2xl:min-h-[88px] 2xl:px-6 2xl:py-5 2xl:text-[17px]">
                         <span>{item.title}</span>
                       </div>
                     </button>

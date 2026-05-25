@@ -1,7 +1,7 @@
 // Navbar section
 import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 
 const navigationItems = [
   { label: 'Home', href: '/' },
@@ -250,7 +250,7 @@ function LogoBlock({ logoSrc, onNavigate }) {
         />
       ) : (
         <div className="site-header__logo-placeholder flex items-center justify-center rounded-xl border border-border bg-white px-3 lg:h-14 lg:w-[172px]">
-          <span className="text-[12px] font-semibold tracking-[0.16em] text-text-muted uppercase md:text-[12px] lg:text-[13px] xl:text-[13px] 2xl:text-[16px]">
+          <span className="site-header__logo-placeholder-label text-text-muted uppercase font-semibold">
             Logo Placeholder
           </span>
         </div>
@@ -266,7 +266,7 @@ function NavLinks({ onNavigate, mobile = false }) {
         mobile
           ? 'flex flex-col gap-2'
           // MANUAL KEEP: desktop nav sizing is intentionally custom to balance the enlarged CTA/logo at 2xl.
-          : 'site-nav--desktop hidden items-center justify-center lg:flex'
+          : 'site-nav--desktop hidden min-w-0 flex-1 items-center justify-center lg:flex lg:gap-1 lg:px-3 xl:gap-2 xl:px-4 2xl:gap-3 2xl:px-6 3xl:gap-4 3xl:px-10'
       }
       aria-label="Primary"
     >
@@ -279,7 +279,7 @@ function NavLinks({ onNavigate, mobile = false }) {
             [
               mobile
                 ? 'site-nav__link site-nav__link--mobile site-nav__mobile-link w-full rounded-full px-4 py-3 text-left font-medium transition-colors duration-200'
-                : 'site-nav__link nav-link px-3 py-2 font-medium transition-colors duration-300 lg:px-3 xl:px-4',
+                : 'site-nav__link nav-link px-3 py-2 font-medium transition-colors duration-300 lg:px-3 xl:px-4 2xl:px-5 3xl:px-6',
               isActive
                 ? mobile
                   ? 'site-nav__mobile-link--active bg-[#2B1CC1]/10 text-[#2B1CC1]'
@@ -314,6 +314,7 @@ export default function Header({ logoSrc }) {
 
   const startProjectIconSrc = '/icons/start-project.svg'
   const lastScrollYRef = useRef(0)
+  const location = useLocation()
   const navigate = useNavigate()
 
   const closeMenu = () => setIsMenuOpen(false)
@@ -325,20 +326,20 @@ export default function Header({ logoSrc }) {
 
     event.preventDefault()
 
-    const root = document.documentElement
-    const previousScrollBehavior = root.style.scrollBehavior
-
     closeMenu()
-    root.style.scrollBehavior = 'auto'
-    window.history.scrollRestoration = 'manual'
-    root.scrollTop = 0
-    document.body.scrollTop = 0
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    setIsHeaderVisible(true)
 
-    navigate(targetPath)
+    if (targetPath === location.pathname) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+      return
+    }
 
-    requestAnimationFrame(() => {
-      root.style.scrollBehavior = previousScrollBehavior
+    lastScrollYRef.current = 0
+    navigate(targetPath, {
+      state: {
+        scrollMode: 'smooth-top',
+        scrollSource: 'header-nav',
+      },
     })
   }
 
@@ -365,6 +366,12 @@ export default function Header({ logoSrc }) {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  useEffect(() => {
+    setIsMenuOpen(false)
+    setIsHeaderVisible(true)
+    lastScrollYRef.current = window.scrollY
+  }, [location.pathname])
 
   // Keep the production header behavior stable:
   // - transparent at the top
@@ -413,7 +420,7 @@ export default function Header({ logoSrc }) {
         // Shared responsive shell:
         // laptop spacing stays visually close to the current layout,
         // while desktop and large-desktop gain the approved horizontal breathing room.
-        'site-header sticky top-0 z-50 mx-auto w-full max-w-[1720px] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]',
+        'site-header sticky top-0 z-50 mx-auto w-full max-w-[1720px] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] 3xl:max-w-[1880px]',
         isHeaderVisible ? 'translate-y-0' : '-translate-y-full',
         isScrolled ? 'bg-transparent' : 'bg-transparent',
       ].join(' ')}
@@ -427,7 +434,7 @@ export default function Header({ logoSrc }) {
             : 'border border-transparent bg-transparent',
         ].join(' ')}
       >
-        <div className="site-header__pill flex items-center justify-between gap-2 md:gap-3 lg:gap-4 xl:gap-6 2xl:gap-8">
+        <div className="site-header__pill flex items-center justify-between gap-2 md:gap-3 lg:gap-4 xl:gap-6 2xl:gap-8 3xl:gap-10">
           <LogoBlock logoSrc={logoSrc} onNavigate={handleRouteNavigation} />
 
           {/* Promote the inline nav only when there is enough horizontal room for every link and CTA. */}
@@ -438,7 +445,7 @@ export default function Header({ logoSrc }) {
             <Link
               to="/contact"
               onClick={handleRouteNavigation('/contact')}
-              className="site-header__cta header-cta w-[200px] justify-center whitespace-nowrap rounded-full font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] 2xl:w-[232px] 2xl:px-7 2xl:py-4"
+              className="site-header__cta header-cta w-[200px] shrink-0 justify-center whitespace-nowrap rounded-full font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2B1CC1] 2xl:w-[232px] 2xl:px-7 2xl:py-4 3xl:w-[252px] 3xl:px-8"
             >
               <img
                 src={startProjectIconSrc}

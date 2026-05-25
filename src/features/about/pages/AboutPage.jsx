@@ -29,7 +29,7 @@ export function AboutPage() {
         title={
           <span className="inline-flex flex-col items-center text-center">
             <span className="block whitespace-nowrap">LET&apos;S BUILD SOMETHING</span>
-            <span className="block whitespace-nowrap pb-4">THAT WORKS</span>
+            <span className="block whitespace-nowrap ">THAT WORKS</span>
           </span>
         }
         description="If you’re looking for more than just execution 

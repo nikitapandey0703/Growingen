@@ -135,7 +135,7 @@ export default function ProblemsGridSection({
             style={{ fontSize: 'clamp(32px, 1.55rem + 1.65vw, var(--fs-section-title))' }}
           >
             {title}{' '}
-            <br />
+          
             <CurvedUnderlineText className="hero-highlight pb-[0.16em] inline-block" lineClassName="h-[0.22em] w-full left-[0%] -bottom-[8px] sm:-bottom-[10px] md:-bottom-[12px] lg:-bottom-[14px] xl:-bottom-[16px] 2xl:-bottom-[18px]">
               {highlight}
             </CurvedUnderlineText>

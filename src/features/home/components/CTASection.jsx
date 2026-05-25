@@ -292,9 +292,11 @@ export default function CTASection() {
 
       <div className="site-container relative lg:pt-12">
         <div className="section-content">
-          <div className="mx-auto max-w-[520px] text-center">
+          
+          {/* UPDATED WRAPPER: Increased max-w for lg/xl/2xl so the large text doesn't overflow the container and push off-center */}
+          <div className="mx-auto max-w-[520px] lg:max-w-[960px] xl:max-w-[1100px] 2xl:max-w-full px-4 text-center">
             <h2
-              className="text-[32px] font-semibold leading-[1.08] tracking-[-0.05em] "
+              className="text-[32px] font-semibold leading-[1.08] tracking-[-0.05em]"
               style={{ fontSize: 'var(--fs-section-title)' }}
             >
               <span className="block sm:whitespace-nowrap">

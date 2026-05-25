@@ -47,7 +47,11 @@
   --fs-nav-link: 13px;
   --fs-nav-mobile-link: 13px;
   --fs-nav-cta: 14px;
+  --fs-nav-logo-label: 12px;
   --fs-nav-toggle-icon: 20px;
+  --lh-nav-link: 1.2;
+  --lh-nav-cta: 1.2;
+  --ls-nav-logo-label: 0.16em;
 
   /* Navigation Layout */
   --nav-shell-px: 16px;
@@ -64,6 +68,7 @@
   --breakpoint-lg: 64rem;   /* 1024px */
   --breakpoint-xl: 80rem;   /* 1280px */
   --breakpoint-2xl: 96rem;  /* 1536px */
+  --breakpoint-3xl: 120rem; /* 1920px */
 
   /* Shared Tokens */
   --radius-card: 1.5rem;
@@ -96,6 +101,7 @@
     --fs-nav-link: 14px;
     --fs-nav-mobile-link: 14px;
     --fs-nav-cta: 14px;
+    --fs-nav-logo-label: 12px;
 
     /* Layout */
     --nav-pill-px: 24px;
@@ -129,6 +135,7 @@
     --fs-nav-link: 14px;
     --fs-nav-mobile-link: 14px;
     --fs-nav-cta: 15px;
+    --fs-nav-logo-label: 12px;
 
     /* Layout */
     --nav-shell-px: 24px;
@@ -158,9 +165,10 @@
     --fs-button: 14px;
 
     /* Navigation */
-    --fs-nav-link: 15px;
+    --fs-nav-link: 16px;
     --fs-nav-mobile-link: 15px;
     --fs-nav-cta: 15px;
+    --fs-nav-logo-label: 13px;
 
     /* Layout */
     --nav-shell-px: 40px;
@@ -194,6 +202,7 @@
     --fs-nav-link: 15px;
     --fs-nav-mobile-link: 15px;
     --fs-nav-cta: 15px;
+    --fs-nav-logo-label: 13px;
 
     /* Layout */
     --nav-shell-px: 48px;
@@ -225,14 +234,42 @@
     --fs-button: 16px;
 
     /* Navigation */
-    --fs-nav-link: 17px;
+    --fs-nav-link: 22px;
     --fs-nav-mobile-link: 17px;
     --fs-nav-cta: 18px;
+    --fs-nav-logo-label: 16px;
+    --lh-nav-link: 1.25;
+    --lh-nav-cta: 1.25;
 
     /* Layout */
     --nav-shell-px: 96px;
     --nav-shell-pt: 24px;
     --nav-pill-px: 96px;
     --nav-logo-height: 72px;
+  }
+}
+
+/* =====================================================
+   3XL DESKTOPS (>= 1920px)
+   ===================================================== */
+@media (min-width: 1920px) {
+  :root {
+    --fs-hero-title: 80px;
+    --fs-hero-subtitle: 26px;
+    --fs-section-title: 80px;
+    --fs-section-subtitle: 26px;
+    --fs-card-title: 44px;
+    --fs-card-body: 19px;
+    --fs-button: 17px;
+    --fs-nav-link: 22px;
+    --fs-nav-mobile-link: 18px;
+    --fs-nav-cta: 19px;
+    --fs-nav-logo-label: 18px;
+    --lh-nav-link: 1.25;
+    --lh-nav-cta: 1.25;
+    --nav-shell-px: 140px;
+    --nav-shell-pt: 28px;
+    --nav-pill-px: 130px;
+    --nav-logo-height: 80px;
   }
 }
