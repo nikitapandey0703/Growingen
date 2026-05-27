@@ -19,7 +19,9 @@ export function AboutPage() {
   return (
     <main className="bg-transparent ">
       <AboutHeroSection />
-      <CounterStatsBanner items={aboutStats} className="mt-2 w-full" />
+      {/* <CounterStatsBanner items={aboutStats} className="mt-2 w-full" /> */}
+            <CounterStatsBanner items={aboutStats} fullBleed />
+      
       <PhilosophySystemsAbout />
       <PreCompanyTimelineAbout />
       {/* <WhatWeDeliverAbout/> */}

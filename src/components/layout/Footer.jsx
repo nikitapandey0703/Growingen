@@ -148,7 +148,7 @@ const Footer = ({
                 <ul className="flex flex-col gap-3">
                   {['Website Optimization', 'Business Growth', 'Social Media Management', 'SEO Development'].map((item) => (
                     <li key={item}>
-                      <a href="#" className="footer-link relative inline-flex w-fit pr-5">
+                      <a href="#" className=" relative inline-flex w-fit pr-5">
                         <span
                           className="footer-link__text font-medium leading-relaxed tracking-normal text-[#6B7280]"
                           style={{ fontSize: 'var(--fs-card-body)' }}

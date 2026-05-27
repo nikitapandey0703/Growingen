@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import OrangeButtonLabel from "../../../components/common/OrangeButtonLabel";
 import SectionWrapper from "../../../components/common/SectionWrapper";
 
 const defaultTitle = (
@@ -114,7 +115,7 @@ export default function PortfolioCTASection({
                     .join(" ")}
                   style={{ fontSize: "var(--fs-button)" }}
                 >
-                  {primaryButtonLabel}
+                  <OrangeButtonLabel>{primaryButtonLabel}</OrangeButtonLabel>
                 </Link>
               ) : (
                 <button
@@ -126,7 +127,7 @@ export default function PortfolioCTASection({
                     .join(" ")}
                   style={{ fontSize: "var(--fs-button)" }}
                 >
-                  {primaryButtonLabel}
+                  <OrangeButtonLabel>{primaryButtonLabel}</OrangeButtonLabel>
                 </button>
               )}
 

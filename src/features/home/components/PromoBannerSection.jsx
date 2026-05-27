@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useTransform } from 'motion/react'
 import { Link } from 'react-router-dom'
+import OrangeButtonLabel from '../../../components/common/OrangeButtonLabel'
 import SectionWrapper from '../../../components/common/SectionWrapper'
 
 const stackedPromoCards = [
@@ -373,7 +374,7 @@ export default function PromoBannerSection({ variant = 'default' }) {
                     to="/contact"
                     className="mt-6 flex h-[44px] w-[200px] items-center justify-center rounded-full bg-[#ff5b2e] text-[15px] font-medium text-white transition-transform duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 sm:h-[48px] sm:w-[220px] sm:text-[16px] lg:h-[50px] lg:w-[240px]"
                   >
-                    Book A Demo
+                    <OrangeButtonLabel>Book A Demo</OrangeButtonLabel>
                   </Link>
                 </div>
               </div>

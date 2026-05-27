@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
+import OrangeButtonLabel from '../../../components/common/OrangeButtonLabel'
 import { portfolioCaseStudies } from '../data/portfolioCaseStudies'
-
 import PortfolioCaseStudyPopup from './PortfolioCaseStudyPopup'
 
 export default function PortfolioCarousel() {
@@ -131,8 +131,10 @@ export default function PortfolioCarousel() {
           <div className="mb-10 text-center sm:mb-12 md:mb-[3.25rem] lg:mb-14 xl:mb-[3.75rem] 2xl:mb-16">
             <h2 className="text-[32px] font-semibold leading-[1.08] tracking-[-0.04em] text-[#111827] sm:text-[40px] md:text-[42px] lg:text-[46px] xl:text-[50px] 2xl:text-[70px]">
               Build a{' '}
-              <CurvedUnderlineText className="hero-highlight pb-[0.16em]"  lineClassName="left-[0%] w-[120%] h-[0.18em] -bottom-[6px] sm:-bottom-[8px] md:-bottom-[10px] lg:-bottom-[12px] xl:-bottom-[14px] 2xl:-bottom-[16px]"
-                            >
+              <CurvedUnderlineText 
+                className="hero-highlight pb-[0.16em]"  
+                lineClassName="left-[0%] w-[120%] h-[0.18em] -bottom-[6px] sm:-bottom-[8px] md:-bottom-[10px] lg:-bottom-[12px] xl:-bottom-[14px] 2xl:-bottom-[16px]"
+              >
                  Brand
               </CurvedUnderlineText>{' '}
               People Recognize
@@ -159,7 +161,7 @@ export default function PortfolioCarousel() {
               onTouchMove={handlePointerMove}
               onTouchEnd={handlePointerUpOrLeave}
               onTouchCancel={handlePointerUpOrLeave}
-              className="flex w-full cursor-grab select-none overflow-hidden active:cursor-grabbing"
+              className={`flex w-full cursor-grab select-none overflow-hidden ${isDragging ? 'active:cursor-grabbing' : ''}`}
               style={{ touchAction: 'pan-y' }}
             >
               {[1, 2, 3].map((setIndex) => (
@@ -168,26 +170,33 @@ export default function PortfolioCarousel() {
                     <button
                       key={`${setIndex}-${item.id}-${index}`}
                       type="button"
+                      draggable="false"
                       onClick={() => handleCardClick(item)}
                       className="
-                        group flex w-[78vw] max-w-[250px] min-w-[212px] flex-shrink-0 flex-col appearance-none overflow-hidden rounded-t-[18px] rounded-b-none border-0 bg-white/70 p-0 text-left shadow-[0_12px_34px_rgba(15,23,42,0.08)] backdrop-blur-sm
-                        transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
-                        hover:-translate-y-1 hover:scale-[1.03]
+                        group flex w-[78vw] max-w-[250px] min-w-[212px] flex-shrink-0 flex-col appearance-none overflow-hidden rounded-t-[clamp(16px,3vw,32px)] rounded-b-none border-0 bg-black p-0 text-left shadow-[0_12px_34px_rgba(15,23,42,0.08)]
+                        transition-transform duration-300 ease-out active:scale-[0.98]
                         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F45328] focus-visible:ring-offset-2
                         sm:w-[240px] sm:min-w-[240px] md:w-[248px] md:min-w-[248px] lg:w-[250px] lg:min-w-[250px] xl:w-[258px] xl:min-w-[258px] 2xl:w-[292px] 2xl:min-w-[292px]
                       "
                     >
-                      <div className="relative h-[250px] w-full shrink-0 overflow-hidden rounded-t-[18px] rounded-b-none sm:h-[270px] md:h-[280px] lg:h-[290px] xl:h-[300px] 2xl:h-[340px]">
+                      {/* Top Image Section */}
+                      <div className="relative h-[250px] w-full shrink-0 overflow-hidden rounded-t-[clamp(16px,3vw,32px)] rounded-b-none sm:h-[270px] md:h-[280px] lg:h-[290px] xl:h-[300px] 2xl:h-[340px]">
                         <img
                           src={item.img}
                           alt={item.title}
                           draggable="false"
-                          className="absolute inset-0 block h-full w-full scale-[1.08] object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.14]"
+                          className="pointer-events-none absolute inset-0 block h-full w-full object-cover object-center"
                         />
                       </div>
 
-                      <div className="relative z-10 -mt-3 flex min-h-[60px] w-full items-center justify-center bg-black px-4 py-3.5 text-center text-[12.5px] font-medium text-white sm:min-h-[76px] sm:px-5 sm:py-4 sm:text-[13px] md:min-h-[78px] md:text-[13.5px] lg:min-h-[80px] lg:text-[14px] xl:text-[15px] 2xl:min-h-[88px] 2xl:px-6 2xl:py-5 2xl:text-[17px]">
-                        <span>{item.title}</span>
+                      {/* Bottom Black Details Section */}
+                      <div className="relative z-10 flex flex-1 w-full flex-col items-center justify-center gap-1.5 bg-black px-2 py-3 sm:gap-2 sm:px-3 sm:py-3.5 md:gap-2 md:py-3.5 lg:py-3.5 xl:py-4 2xl:gap-2.5 2xl:py-4">
+                        <span className="pointer-events-none text-center text-[12.5px] font-semibold leading-[1.2] text-white sm:text-[13px] md:text-[13.5px] lg:text-[14px] xl:text-[14.5px] 2xl:text-[16px] pb-2">
+                          {item.title}
+                        </span>
+                        <span className="pointer-events-none inline-flex min-h-[26px] w-auto items-center justify-center rounded-full bg-[#F45328] px-3.5 py-1 text-[10.5px] font-medium text-white transition-colors group-hover:bg-[#e24a21] sm:min-h-[28px] sm:px-4 sm:text-[11px] md:min-h-[30px] md:text-[11.5px] lg:min-h-[32px] lg:text-[12px] xl:min-h-[34px] 2xl:min-h-[38px] 2xl:px-5 2xl:text-[13px]">
+                          <OrangeButtonLabel>View Case study</OrangeButtonLabel>
+                        </span>
                       </div>
                     </button>
                   ))}

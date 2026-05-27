@@ -14,7 +14,8 @@ const solutionCards = [
     buttonLabel: "Let's Explore",
     ctaHref: 'https://www.instagram.com/growin.gen?igsh=MWZiemU5cHZwa3VoYQ==',
     previewImageSrc: '/images/hero/social-seo-thumbnail.webp',
-    videoSrc: '/videos/human-glitch-video.mp4',
+   
+    videoSrc: '/videos/saves-matter-video.webm',
   },
   {
     id: 2,
@@ -36,7 +37,7 @@ const solutionCards = [
     buttonLabel: "Let's Explore",
     ctaHref: 'https://www.instagram.com/growin.gen?igsh=MWZiemU5cHZwa3VoYQ==',
     previewImageSrc: '/images/hero/human-glitch-thumbnail.webp',
-    videoSrc: '/videos/saves-matter-video.webm',
+    videoSrc: '/videos/human-glitch-video.mp4',
   },
 ]
 

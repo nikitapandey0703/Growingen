@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
+import OrangeButtonLabel from '../../../components/common/OrangeButtonLabel'
 import SectionWrapper from '../../../components/common/SectionWrapper'
 
 function FeatureBullet() {
@@ -28,18 +29,15 @@ export default function WhatSetsUsApartSection() {
       
       <style>
         {`
-          @keyframes drawFullCircleLoop {
-            0% { stroke-dashoffset: 100; opacity: 0; }
-            5% { opacity: 1; }
-            50% { stroke-dashoffset: 0; opacity: 1; }
-            85% { stroke-dashoffset: 0; opacity: 1; }
-            100% { stroke-dashoffset: 0; opacity: 0; }
+          @keyframes drawEllipseLoop {
+            0% { stroke-dashoffset: 100; }
+            50% { stroke-dashoffset: 0; }
+            100% { stroke-dashoffset: -100; }
           }
 
-          .animate-draw-full-circle {
+          .animate-draw-ellipse-loop {
             stroke-dasharray: 100;
-            stroke-dashoffset: 100;
-            animation: drawFullCircleLoop 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            animation: drawEllipseLoop 3s linear infinite;
           }
         `}
       </style>
@@ -143,7 +141,7 @@ export default function WhatSetsUsApartSection() {
                 <span className="relative z-10 inline-block whitespace-nowrap">
                   <span className="relative z-10">Growingen</span>
                   
-                  {/* ORGANIC FULL-CIRCLE SVG PATH */}
+                  {/* ORGANIC ELLIPSE SVG PATH (Imported from BrandBanner & applied in Orange) */}
                   <svg
                     className="absolute -bottom-2 -left-3 -right-3 -top-1 z-0 h-[130%] w-[120%] text-[#F45328] 2xl:-bottom-3 2xl:-left-4 2xl:-right-4"
                     viewBox="0 0 100 40"
@@ -152,14 +150,14 @@ export default function WhatSetsUsApartSection() {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M 20,20 C 20,5 90,5 90,20 C 90,38 15,35 25,18"
+                      d="M 15 24 C 5 12 18 3 50 3 C 82 3 96 14 96 22 C 96 32 75 38 50 38 C 22 38 7 30 14 20"
                       stroke="currentColor"
-                      strokeWidth="1.8"
+                      strokeWidth="2"
                       vectorEffect="non-scaling-stroke"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       pathLength="100"
-                      className="animate-draw-full-circle"
+                      className="animate-draw-ellipse-loop"
                     />
                   </svg>
                 </span>
@@ -191,7 +189,7 @@ export default function WhatSetsUsApartSection() {
                   to="/contact"
                   className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-[#F45328] px-6 py-[14px] text-center text-[13px] font-semibold tracking-[0.04em] text-white shadow-[0_8px_20px_rgba(244,83,40,0.3)] transition-transform hover:scale-105 active:scale-95 sm:w-auto sm:px-8 sm:text-[13px] d:text-[14px] lg:text-[15px] xl:min-w-[280px] xl:min-h-[48px] 2xl:min-h-[54px]  2xl:px-10 2xl:text-[17px]"
                 >
-                  Schedule A Strategy Call
+                  <OrangeButtonLabel>Schedule A Strategy Call</OrangeButtonLabel>
                 </Link>
               </div>
 

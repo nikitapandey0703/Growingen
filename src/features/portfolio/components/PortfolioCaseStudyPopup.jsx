@@ -1,6 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { X } from 'lucide-react'
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import OrangeButtonLabel from '../../../components/common/OrangeButtonLabel'
 import { portfolioCaseStudies } from '../data/portfolioCaseStudies'
 
 const defaultInfoCards = [
@@ -97,7 +99,7 @@ function DetailCard({ title, body, icon, tone, hasBorder }) {
 function MetricCard({ value, label, icon, tone, iconBg, valueColor, labelColor }) {
   return (
     <article
-      className={`${tone} flex items-center gap-3 rounded-[10px] px-3.5 py-2.5 sm:gap-3.5 sm:px-4 sm:py-3 md:px-4 md:py-3 lg:px-[1.05rem] lg:py-[0.9rem] xl:px-[1.1rem] xl:py-3 2xl:rounded-[12px] 2xl:px-5 2xl:py-4`}
+      className={`${tone} flex items-center gap-3 rounded-[10px] px-3.5 py-3 sm:gap-3.5 sm:px-4 sm:py-4 md:px-4 md:py-[1.1rem] lg:px-[1.05rem] lg:py-[1.15rem] xl:px-[1.1rem] xl:py-[1.2rem] 2xl:rounded-[12px] 2xl:px-5 2xl:py-[1.35rem]`}
     >
       <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full ${iconBg} sm:h-10 sm:w-10 md:h-10 md:w-10 2xl:h-11 2xl:w-11`}>
         <img
@@ -126,7 +128,14 @@ function MetricCard({ value, label, icon, tone, iconBg, valueColor, labelColor }
 }
 
 function SectionLabel({ children }) {
-  return <h3 className="mb-2 text-[15px] font-bold sm:text-[15px] md:text-[16px] lg:text-[16px] xl:text-[17px] 2xl:text-[21px]">{children}</h3>
+  return (
+    <div className="mb-2.5 flex items-center gap-3 xl:mb-3">
+      <h3 className="whitespace-nowrap text-[14px] font-bold text-black sm:text-[15px] md:text-[16px] lg:text-[16px] xl:text-[17px] 2xl:text-[20px]">
+        {children}
+      </h3>
+      <div className="h-px flex-1 bg-gray-200" />
+    </div>
+  )
 }
 
 export default function PortfolioCaseStudyPopup({ isOpen, onClose, study }) {
@@ -161,7 +170,7 @@ export default function PortfolioCaseStudyPopup({ isOpen, onClose, study }) {
     <AnimatePresence>
       {isOpen ? (
         <motion.div
-          className="scrollbar-hidden fixed inset-0 z-[120] flex items-start justify-center overflow-y-auto bg-black/60 px-3 py-4 backdrop-blur-sm sm:px-4 sm:py-6 md:px-6 lg:items-center xl:px-8 2xl:px-10"
+          className="fixed inset-0 z-[120] flex items-start justify-center overflow-y-auto bg-black/60 px-3 py-4 backdrop-blur-sm sm:px-4 sm:py-6 md:px-6 lg:items-center xl:px-8 2xl:px-10 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -171,7 +180,7 @@ export default function PortfolioCaseStudyPopup({ isOpen, onClose, study }) {
             role="dialog"
             aria-modal="true"
             aria-labelledby="portfolio-case-study-title"
-            className="relative my-auto flex w-full max-w-[1080px] max-h-[calc(100dvh-2rem)] flex-col overflow-hidden rounded-[20px] bg-white p-4 shadow-[0_32px_80px_rgba(0,0,0,0.4)] sm:max-h-[calc(100dvh-3rem)] sm:p-5 md:max-w-[1120px] md:p-5 lg:max-w-[1180px] lg:p-6 xl:max-w-[1260px] xl:rounded-[24px] xl:p-7 2xl:max-w-[1440px] 2xl:max-h-[calc(100dvh-4rem)] 2xl:rounded-[28px] 2xl:p-8"
+            className="relative my-auto flex w-[95%] max-w-[1400px] flex-col overflow-hidden rounded-[20px] bg-white p-4 shadow-[0_32px_80px_rgba(0,0,0,0.4)] sm:w-[90%] sm:max-h-[calc(100dvh-3rem)] sm:p-5 md:w-[85%] md:p-5 lg:w-[75vw] lg:p-6 xl:rounded-[24px] xl:p-7 2xl:max-h-[calc(100dvh-4rem)] 2xl:rounded-[28px] 2xl:p-8"
             initial={{ opacity: 0, y: 20, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.985 }}
@@ -187,9 +196,10 @@ export default function PortfolioCaseStudyPopup({ isOpen, onClose, study }) {
               <X className="h-4 w-4 2xl:h-5 2xl:w-5" strokeWidth={2.5} />
             </button>
 
-            <div className="scrollbar-hidden min-h-0 overflow-y-auto pr-1 md:pr-1.5 xl:pr-2 2xl:pr-3">
+            {/* Content Container */}
+            <div className="min-h-0 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
               
-              {/* 1. Moved Top Header up here */}
+              {/* 1. Header */}
               <div className="mb-4 shrink-0 xl:mb-5">
                 <span className="inline-flex rounded-full bg-[#eef2ff] px-2.5 py-1 text-[10px] font-bold text-[#4f46e5] sm:text-[10px] md:text-[10.5px] lg:text-[10.5px] xl:text-[11px] 2xl:px-3 2xl:py-1.5 2xl:text-[12px]">
                   Case Study
@@ -205,7 +215,7 @@ export default function PortfolioCaseStudyPopup({ isOpen, onClose, study }) {
                 </p>
               </div>
 
-              {/* 2. Moved Detail Cards Right below Header */}
+              {/* 2. Detail Cards */}
               <div className="mb-5 grid gap-3 sm:grid-cols-2 md:gap-3.5 lg:grid-cols-4 lg:gap-4 xl:mb-6 xl:gap-4 2xl:gap-5">
                 {details.map((card) => (
                   <DetailCard key={card.title} {...card} />
@@ -213,53 +223,47 @@ export default function PortfolioCaseStudyPopup({ isOpen, onClose, study }) {
               </div>
 
               {/* 3. Image and Metrics Grid Section */}
-              <div className="grid gap-4 sm:gap-4 md:gap-5 lg:grid-cols-[1fr_0.85fr] lg:gap-6 xl:gap-7 2xl:gap-8">
+              <div className="grid grid-cols-1 gap-4 sm:gap-5 md:gap-5 lg:grid-cols-2 lg:items-stretch lg:gap-6 xl:gap-7 2xl:gap-8">
                 
-                {/* Left Side: Preview Image Only */}
-                <div className="flex h-full min-w-0 flex-col">
-                  <div className="relative flex w-full flex-1 items-center justify-center overflow-hidden rounded-[14px] bg-[#d1e6ff] p-3 min-h-[140px] max-h-[180px] sm:max-h-[220px] md:min-h-[180px] md:max-h-[250px] lg:min-h-[200px] lg:max-h-[280px] xl:min-h-[220px] xl:max-h-[320px] 2xl:min-h-[260px] 2xl:max-h-[380px]">
-                    <div
-                      className="absolute inset-0 opacity-40"
-                      style={{
-                        backgroundImage: 'radial-gradient(#90bbed 2.5px, transparent 2.5px)',
-                        backgroundSize: '16px 16px',
-                      }}
-                    />
-                    <img
-                      src={previewSrc}
-                      alt={`${title} case study preview`}
-                      className="relative z-10 mx-auto h-full max-h-[160px] w-full object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.1)] sm:max-h-[200px] md:max-h-[230px] lg:max-h-[250px] xl:max-h-[290px] 2xl:max-h-[340px]"
-                    />
-                  </div>
+                {/* Left Side: Preview Image */}
+                <div className="flex w-full items-center justify-center rounded-[14px] 2xl:rounded-[16px]">
+                  <img
+                    src={previewSrc}
+                    alt={`${title} case study preview`}
+                    // REMOVED: drop-shadow-[0_4px_12px_rgba(0,0,0,0.05)]
+                    className="h-auto w-full max-h-[300px] sm:max-h-[380px] md:max-h-[420px] lg:h-full lg:max-h-none object-contain"
+                  />
                 </div>
 
-                {/* Right Side: Impact (Top) and Results (Bottom) */}
-                <div className="flex min-w-0 flex-col pt-0.5">
+                {/* Right Side: Impact and Results */}
+                {/* ADDED: h-full to ensure it spans full height */}
+                <div className="flex h-full flex-col gap-5 xl:gap-6">
                   
-                  {/* Impact switched to top */}
-                  <div className="mb-4 flex flex-col xl:mb-[1.1rem] 2xl:mb-5">
+                  {/* Impact section */}
+                  {/* ADDED: flex-1 so it takes remaining space above Results */}
+                  <div className="flex flex-1 flex-col">
                     <SectionLabel>Impact</SectionLabel>
-                    <article className="flex flex-1 rounded-[12px] bg-[#faeefe] px-3.5 py-2.5 sm:px-4 sm:py-3 md:px-4 md:py-3 xl:px-[1.15rem] xl:py-[0.95rem] 2xl:rounded-[14px] 2xl:px-5 2xl:py-4">
+                    <article className="flex flex-1  rounded-[12px] bg-[#faeefe] px-3.5 py-4 sm:px-4 sm:py-4 md:px-4 md:py-5 xl:px-5 xl:py-[1.4rem] 2xl:rounded-[14px] 2xl:px-6 2xl:py-7">
                       <div className="flex items-start gap-3">
-                        <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-[#f3d9ff] sm:h-10 sm:w-10 md:h-10 md:w-10 2xl:h-11 2xl:w-11">
+                        <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-[#f3d9ff] sm:h-10 sm:w-10 md:h-10 md:w-10 xl:h-10 xl:w-10 2xl:h-11 2xl:w-11">
                           <img
                             src="/images/portfolio/pop-up/system.webp"
                             alt=""
                             aria-hidden="true"
-                            className="h-6 w-6 object-contain sm:h-[17px] sm:w-[17px] md:h-[18px] md:w-[18px] xl:h-7 xl:w-7 2xl:h-8 2xl:w-8"
+                            className="h-6 w-6 object-contain sm:h-[17px] sm:w-[17px] md:h-[18px] md:w-[18px] xl:h-[1.4rem] xl:w-[1.4rem] 2xl:h-8 2xl:w-8"
                           />
                         </div>
-                        <p className="pt-0.5 text-[11.5px] leading-[1.4] text-black sm:text-[11.5px] md:text-[12px] lg:text-[12px] xl:text-[12.5px] 2xl:text-[15px]">
+                        <p className="pt-0.5 text-[11.5px] leading-[1.4] text-black sm:text-[11.5px] md:text-[12px] lg:text-[12px] xl:text-[13px] 2xl:text-[15px]">
                           {impactText}
                         </p>
                       </div>
                     </article>
                   </div>
 
-                  {/* Results switched to bottom */}
+                  {/* Results section */}
                   <div className="flex flex-col">
                     <SectionLabel>Results</SectionLabel>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-3 xl:gap-3.5 2xl:gap-4">
                       {metrics.map((metric) => (
                         <MetricCard key={metric.label} {...metric} />
                       ))}
@@ -269,8 +273,8 @@ export default function PortfolioCaseStudyPopup({ isOpen, onClose, study }) {
                 </div>
               </div>
 
-              {/* 4. CTA untouched at the bottom */}
-              <div className="mt-4 flex flex-col gap-3 rounded-[12px] bg-[#FFDCCE] px-4 py-2.5 sm:px-4 sm:py-3 md:px-5 md:py-3 lg:flex-row lg:items-center lg:justify-between xl:px-6 xl:py-4 2xl:mt-5 2xl:rounded-[14px] 2xl:px-7 2xl:py-5">
+              {/* 4. CTA */}
+              <div className="mt-5 flex flex-col gap-3 rounded-[12px] bg-[#FFDCCE] px-4 py-2.5 sm:px-4 sm:py-3 md:px-5 md:py-3 lg:flex-row lg:items-center lg:justify-between xl:mt-6 xl:px-6 xl:py-4 2xl:mt-7 2xl:rounded-[14px] 2xl:px-7 2xl:py-5">
                 <div className="flex items-center gap-3">
                   <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-white shadow-[0_4px_8px_rgba(0,0,0,0.04)] sm:h-10 sm:w-10 md:h-10 md:w-10 2xl:h-11 2xl:w-11">
                     <img
@@ -290,12 +294,13 @@ export default function PortfolioCaseStudyPopup({ isOpen, onClose, study }) {
                   </div>
                 </div>
 
-                <button
-                  type="button"
+                <Link
+                  to="/contact"
+                  onClick={onClose}
                   className="inline-flex min-h-[38px] items-center justify-center rounded-full bg-[#F45328] px-5 text-[12.5px] font-bold text-white transition hover:bg-[#e24a21] sm:min-h-10 sm:text-[12.5px] md:min-h-[42px] md:text-[13px] lg:min-w-[190px] lg:text-[13px] xl:min-w-[210px] xl:text-[13.5px] 2xl:min-h-[48px] 2xl:min-w-[240px] 2xl:px-6 2xl:text-[15px]"
                 >
-                  {activeCta.buttonLabel}
-                </button>
+                  <OrangeButtonLabel>{activeCta.buttonLabel}</OrangeButtonLabel>
+                </Link>
               </div>
             </div>
           </motion.section>

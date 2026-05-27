@@ -4,6 +4,7 @@ const solutionIcon = '/images/portfolio/pop-up/solution.webp'
 const executionIcon = '/images/portfolio/pop-up/execution.webp'
 const leadGrowthIcon = '/images/portfolio/pop-up/lead-growth.webp'
 const lowerCplIcon = '/images/portfolio/pop-up/lower-cpl.webp'
+const popupImageBase = '/images/portfolio/pop-up'
 
 const detailTones = {
   goal: 'bg-[#F1F9F5]',
@@ -81,8 +82,8 @@ export const portfolioCaseStudies = [
     id: 'financial-consulting',
     title: 'Financial-Services',
     industry: 'Financial Consulting',
-    img: '/images/portfolio/Financal-Services.webp',
-    previewImg: '/images/portfolio/Financal-Services.webp',
+    img: `${popupImageBase}/financial-service-1.webp`,
+    previewImg: `${popupImageBase}/finance-service-preview.webp`,
     impact:
       'The website helped establish a more authentic and approachable online identity for the business. By aligning the digital experience with the client’s personality, the brand created better trust, stronger connection, and a more professional first impression for potential clients.',
     metrics: createMetrics(
@@ -109,8 +110,8 @@ export const portfolioCaseStudies = [
     id: 'cloud-kitchen',
     title: 'Cloud Kitchen',
     industry: 'Food & Beverage',
-    img: '/images/portfolio/Cloud Kitchen.webp',
-    previewImg: '/images/portfolio/Cloud Kitchen.webp',
+    img: `${popupImageBase}/cloud-kitchen-1.webp`,
+    previewImg: `${popupImageBase}/cloud-kitchen-1-preview.webp`,
     impact:
       'Established a professional and recognizable cloud kitchen brand presence, helping the business build trust and improve customer visibility from the early stage of launch.',
     metrics: createMetrics(
@@ -137,8 +138,8 @@ export const portfolioCaseStudies = [
     id: 'fintech-saas-product-website',
     title: 'FinTech SaaS Product Website',
     industry: 'FinTech SaaS',
-    img: '/images/portfolio/Financial Investment Firm.webp',
-    previewImg: '/images/portfolio/Financial Investment Firm.webp',
+    img: `${popupImageBase}/fintech-saas-product.webp`,
+    previewImg: `${popupImageBase}/finetech-saas-preview.webp`,
     impact:
       'The website helped establish a professional digital identity for the SaaS product, making it easier to communicate its value, support marketing efforts, and build trust with potential users and businesses.',
     metrics: createMetrics(
@@ -165,8 +166,8 @@ export const portfolioCaseStudies = [
   id: 'finance-saas',
   title: 'Finance SaaS Platform',
   industry: 'Finance Technology',
-  img: '/images/portfolio/Finance SaaS Platform.webp',
-  previewImg: '/images/portfolio/Finance SaaS Platform.webp',
+  img: `${popupImageBase}/financial-service.webp`,
+  previewImg: `${popupImageBase}/finance-Saas-preview.webp`,
   impact:
     'The platform evolved from a technically strong system into a polished and presentation-ready SaaS product. The improved UX helped build confidence for market launch, enhanced user experience, and strengthened the platform’s professional positioning in the tech space.',
 
@@ -200,8 +201,8 @@ export const portfolioCaseStudies = [
   id: 'electrical-engineering-services',
   title: 'Electrical Engineering Services',
   industry: 'Electrical Contracting & Industrial Solutions',
-  img: '/images/portfolio/Electrical Engineering Services.webp',
-  previewImg: '/images/portfolio/Electrical Engineering Services.webp',
+  img: `${popupImageBase}/electrical-engineering-service.webp`,
+  previewImg: `${popupImageBase}/electrical-engineering-service-preview.webp`,
   impact:
     'The platform transformed into a polished and professionally designed SaaS product that better reflected its capabilities. The improved UI/UX enhanced usability, strengthened client confidence, and helped position the software more effectively for business presentations and future growth.',
   metrics: createMetrics(
@@ -228,8 +229,8 @@ export const portfolioCaseStudies = [
     id: 'vision-inspection-automation',
     title: 'Manufacturing Automation',
     industry: 'Industrial Automation & Vision Inspection Systems',
-    img: '/images/portfolio/Manufacturing Automation.webp',
-    previewImg: '/images/portfolio/Manufacturing Automation.webp',
+    img: `${popupImageBase}/manufacturing-automation.webp`,
+    previewImg: `${popupImageBase}/manufacturing-automation-preview.webp`,
     impact:
       'The brand established a professional online presence with visually engaging content that simplified complex machine operations and improved product understanding for potential clients and industrial audiences.',
     metrics: createMetrics(
@@ -256,8 +257,8 @@ export const portfolioCaseStudies = [
     id: 'interior-solutions',
     title: 'Interior',
     industry: 'Interior Solutions',
-    img: '/images/portfolio/Interior Solutions.webp',
-    previewImg: '/images/portfolio/Interior Solutions.webp',
+    img: `${popupImageBase}/interior-solution.webp`,
+    previewImg: `${popupImageBase}/interior-solution-preview.webp`,
     impact:
       'The brand established a more active and professional online presence through consistent social media communication and strategic content execution. Improved visibility across social media and LinkedIn helped strengthen brand credibility and create better digital recognition in the industry.',
     metrics: createMetrics(
@@ -284,8 +285,8 @@ export const portfolioCaseStudies = [
     id: 'it-services',
     title: 'IT Services',
     industry: 'Project Management & Business Consulting Solutions',
-    img: '/images/portfolio/IT Services-1.webp',
-    previewImg: '/images/portfolio/IT Services-1.webp',
+    img: `${popupImageBase}/it-service.webp`,
+    previewImg: `${popupImageBase}/it-service-preview.webp`,
     impact:
       'The company established a stronger and more modern corporate image that aligned with its industry reputation and large-scale operations. The redesigned branding and company profile helped improve presentation quality, strengthened business credibility, and created a more impressive experience during client interactions and proposals.',
     metrics: createMetrics(
@@ -312,8 +313,8 @@ export const portfolioCaseStudies = [
     id: 'tea-franchise',
     title: 'Tea Franchise Brand',
     industry: 'Food & Beverage',
-    img: '/images/portfolio/FMCG.webp',
-    previewImg: '/images/portfolio/FMCG.webp',
+    img: `${popupImageBase}/tea-franchise-brand.webp`,
+    previewImg: `${popupImageBase}/tea-franchise-brand-preview.webp`,
     impact:
       'The website helped transform the brand from a locally popular tea business into a professionally presented franchise-ready brand. It strengthened business authenticity, supported franchise inquiries, and created better opportunities for corporate collaborations and vendor partnerships.',
     metrics: createMetrics(
@@ -340,8 +341,8 @@ export const portfolioCaseStudies = [
     id: 'industrial-engineering-solutions',
     title: 'Industrial & Engineering Solutions',
     industry: 'Industrial Solutions',
-    img: '/images/portfolio/IT Services-2.webp',
-    previewImg: '/images/portfolio/IT Services-2.webp',
+    img: `${popupImageBase}/industrial-engineering-solutions.webp`,
+    previewImg: `${popupImageBase}/industrial-engineering-preview.webp`,
     impact:
       'The website helped position the company as a professionally established business ready for international expansion. It strengthened digital credibility, supported offshore business development efforts, and created a more trustworthy presence for potential global clients and partners.',
     metrics: createMetrics(
@@ -368,8 +369,8 @@ export const portfolioCaseStudies = [
     id: 'document-management-saas',
     title: 'Document Management SaaS',
     industry: 'Food & Beverage',
-    img: '/images/portfolio/Document Management SaaS.webp',
-    previewImg: '/images/portfolio/Document Management SaaS.webp',
+    img: `${popupImageBase}/document-management-system.webp`,
+    previewImg: `${popupImageBase}/document-management-system-preview.webp`,
     impact:
       'The platform transformed into a polished and professionally designed SaaS product that better reflected its capabilities. The improved UI/UX enhanced usability, strengthened client confidence, and helped position the software more effectively for business presentations and future growth.',
     metrics: createMetrics(
@@ -396,8 +397,8 @@ export const portfolioCaseStudies = [
     id: 'cloud-kitchen-pro',
     title: 'Cloud Kitchen',
     industry: 'Food & Beverage',
-    img: '/images/portfolio/Cloud Kitchen.webp',
-    previewImg: '/images/portfolio/Cloud Kitchen.webp',
+    img: `${popupImageBase}/cloud-kitchen-2.webp`,
+    previewImg: `${popupImageBase}/cloud-kitchen-2-preview.webp`,
     impact:
       'The business established a professional digital presence that supported QR code functionality, improved customer trust, and enabled smoother onboarding on food delivery and third-party platforms. The website created a scalable foundation for future business growth and online visibility.',
     metrics: createMetrics(
@@ -424,8 +425,8 @@ export const portfolioCaseStudies = [
     id: 'manufacturing-automation',
     title: 'Industrial Automation Brand',
     industry: 'Industrial Automation',
-    img: '/images/portfolio/Manufacturing Automation-1.webp',
-    previewImg: '/images/portfolio/Manufacturing Automation-1.webp',
+    img: `${popupImageBase}/industrial-automation.webp`,
+    previewImg: `${popupImageBase}/industrial-automation-preview.webp`,
     impact:
       'The website helped establish a verified and professional corporate identity for the business, making it easier to participate in tenders, support official documentation requirements, and strengthen trust with industrial clients and partners.',
     metrics: createMetrics(
@@ -449,37 +450,37 @@ export const portfolioCaseStudies = [
     cta,
   },
 {
-  id: 'it-growth-solutions',
-  title: 'IT Services',
-  industry: 'Project Management & Business Consulting Solutions',
+  id: 'it-digital-solutions',
+  title: 'IT & Digital Solutions',
+  industry: 'IT Services',
 
-  img: '/images/portfolio/IT Services.webp',
-  previewImg: '/images/portfolio/IT Services.webp',
+  img: `${popupImageBase}/it-digital-solutions.webp`,
+  previewImg: `${popupImageBase}/it-digital-solutions-preview.webp`,
 
   impact:
-    'The company established a stronger and more modern corporate image that aligned with its industry reputation and large-scale operations. The redesigned branding and company profile helped improve presentation quality, strengthened business credibility, and created a more impressive experience during client interactions and proposals.',
+    "The revamped website transformed TechSierra's digital identity from a generic IT provider into a polished, client-ready brand. It improved lead conversion, strengthened corporate credibility, and created a platform to showcase success stories and partnerships.",
 
   metrics: createMetrics(
-    { value: '3X', label: 'More Professional Brand Presentation' },
-    { value: '60%', label: 'Improved Client Engagement During Meetings' }
+    { value: 'Stronger', label: 'Professional Brand Presence Digitally Established' },
+    { value: 'Improved', label: 'Client Trust & Lead Generation' }
   ),
 
   details: createDetails({
     goal:
-      'Modernize the company’s brand presentation and create professional business assets that matched the scale and credibility of the organization.',
+      'Establish a modern, credible digital presence for TechSierra to showcase its IT services, attract enterprise clients, and position the brand as a trusted technology partner.',
 
     challenge:
-      'Despite being a well-established company with strong industry expertise and international partnerships, the business was still using an outdated company profile and inconsistent branding materials during client presentations, which reduced the overall impact in high-value meetings.',
+      'Despite strong technical expertise and service offerings, TechSierra lacked a professional website that reflected its capabilities. This made it harder to build trust with corporate clients, differentiate from competitors, and convert leads in a digital-first market.',
 
     solution:
-      'Redesigned the brand identity system and created modern corporate communication assets that reflected the company’s professionalism and market positioning.',
+      "Designed and developed a sleek, business-focused website that communicates TechSierra's value proposition, highlights service verticals, and builds credibility with enterprise audiences.",
 
     execution: [
-      'Logo Redesign',
-      'Professional Company Profile Design',
-      'Corporate Brand Styling',
-      'Modern Presentation Layout System',
-      'Improved Visual Communication for Client Meetings',
+      'Responsive Website Design & Development',
+      'Service-Centric Information Architecture',
+      'Brand Storytelling & Value Proposition Messaging',
+      'Case Study & Portfolio Integration',
+      'Mobile-Optimized User Experience',
     ],
   }),
 
@@ -490,8 +491,8 @@ export const portfolioCaseStudies = [
   title: 'AI-Powered Design Template Platform',
   industry: 'Graphic Design & Creative Technology',
 
-  img: '/images/portfolio/SaaS.webp',
-  previewImg: '/images/portfolio/SaaS.webp',
+  img: `${popupImageBase}/ai-powered-design.webp`,
+  previewImg: `${popupImageBase}/ai-powered-design-preview.webp`,
 
   impact:
     'The application successfully maintained a strong competitive edge with consistently high-quality design templates that became one of its biggest value propositions. The streamlined workflow enabled smooth large-scale production while ensuring zero compromise on creative standards, helping the platform deliver a premium user experience consistently.',
@@ -521,5 +522,5 @@ export const portfolioCaseStudies = [
   }),
 
   cta,
-},
+}
 ]

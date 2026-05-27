@@ -36,8 +36,8 @@ const philosophyData = [
 function PhilosophyCard({ item, index, isActive, onEnter, onLeave }) {
   const shapeClass =
     index % 2 === 0
-      ? 'rounded-tl-[90px] rounded-tr-[0px] rounded-bl-[0px] rounded-br-[90px]'
-      : 'rounded-tl-[90px] rounded-tr-[0px] rounded-bl-[0px] rounded-br-[90px]'
+      ? 'rounded-tl-[64px] rounded-tr-[0px] rounded-bl-[0px] rounded-br-[64px]'
+      : 'rounded-tl-[64px] rounded-tr-[0px] rounded-bl-[0px] rounded-br-[64px]'
 
   const cardStateClass = isActive
     ? 'border-transparent bg-[#F45328] shadow-[0_20px_35px_rgba(244,83,40,0.18)]'

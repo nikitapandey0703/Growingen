@@ -17,7 +17,7 @@ export function PortfolioPage() {
   return (
     <main className="bg-transparent ">
       <PortfolioHero />
-      <CounterStatsBanner items={portfolioStats} className=" w-full" />
+      <CounterStatsBanner items={portfolioStats} fullBleed />
       <PortfolioCarousel/>
       <PortfolioProblemsSection/>
       <PortfolioShowcase/>

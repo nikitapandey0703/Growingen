@@ -161,6 +161,19 @@ function getFieldClassName(baseClassName, state) {
   return [baseClassName, stateClasses[state] || stateClasses.default].join(' ')
 }
 
+function FieldError({ children }) {
+  return (
+    <motion.span
+      initial={{ opacity: 0, y: -2 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -2 }}
+      className="absolute left-0 top-[calc(100%+2px)] text-[10.5px] font-semibold leading-tight tracking-tight text-[#ef4444]"
+    >
+      {children}
+    </motion.span>
+  )
+}
+
 const MotionDiv = motion.div
 const MotionForm = motion.form
 
@@ -274,7 +287,7 @@ export default function AnimatedContactForm() {
   }
 
   const baseInputClass = "w-full rounded-[5px] bg-[#f6f5f8] px-3 text-[13px] font-medium text-[#101828] outline-none transition placeholder:text-[13px] placeholder:font-medium placeholder:text-[#8D8D90] h-[34px] sm:h-[36px] lg:h-[38px]"
-  const baseTextareaClass = "w-full leading-[1.45] resize-none rounded-[5px] bg-[#f6f5f8] px-3 px-3 py-2.5 text-[13px] font-medium text-[#101828] outline-none transition placeholder:text-[13px] placeholder:font-medium placeholder:text-[#8D8D90] h-[66px] sm:h-[70px] lg:h-[76px]"
+  const baseTextareaClass = "w-full leading-[1.45] resize-none rounded-[5px] bg-[#f6f5f8] px-3 py-2.5 text-[13px] font-medium text-[#101828] outline-none transition placeholder:text-[13px] placeholder:font-medium placeholder:text-[#8D8D90] h-[66px] sm:h-[70px] lg:h-[76px]"
 
   return (
     <section className="section-spacing relative w-full overflow-hidden bg-transparent">
@@ -356,8 +369,7 @@ export default function AnimatedContactForm() {
                     className="mx-auto mt-6 w-full max-w-[740px] sm:mt-7 lg:flex lg:h-full lg:flex-col 2xl:max-w-[800px]"
                     noValidate
                   >
-                    {/* Increased vertical gaps to leave room for absolute error messages */}
-                    <div className="grid gap-x-4 gap-y-6 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-7 lg:mt-1 2xl:gap-x-6 2xl:gap-y-8">
+                    <div className="grid gap-x-4 gap-y-5 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-6 lg:mt-1 2xl:gap-x-6 2xl:gap-y-7">
                       <div className="relative">
                         <label htmlFor="contact-name" className="mb-1.5 block text-[14px] font-semibold leading-none text-[#101828]">
                           Full Name
@@ -378,14 +390,7 @@ export default function AnimatedContactForm() {
                         />
                         <AnimatePresence>
                           {fieldErrors.name && (
-                            <motion.span
-                              initial={{ opacity: 0, y: -2 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: -2 }}
-                              className="absolute left-0 top-[calc(100%+4px)] text-[10.5px] font-semibold leading-tight tracking-tight text-[#ef4444]"
-                            >
-                              {fieldErrors.name}
-                            </motion.span>
+                            <FieldError>{fieldErrors.name}</FieldError>
                           )}
                         </AnimatePresence>
                       </div>
@@ -410,14 +415,7 @@ export default function AnimatedContactForm() {
                         />
                         <AnimatePresence>
                           {fieldErrors.phone && (
-                            <motion.span
-                              initial={{ opacity: 0, y: -2 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: -2 }}
-                              className="absolute left-0 top-[calc(100%+4px)] text-[10.5px] font-semibold leading-tight tracking-tight text-[#ef4444]"
-                            >
-                              {fieldErrors.phone}
-                            </motion.span>
+                            <FieldError>{fieldErrors.phone}</FieldError>
                           )}
                         </AnimatePresence>
                       </div>
@@ -442,14 +440,7 @@ export default function AnimatedContactForm() {
                         />
                         <AnimatePresence>
                           {fieldErrors.email && (
-                            <motion.span
-                              initial={{ opacity: 0, y: -2 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: -2 }}
-                              className="absolute left-0 top-[calc(100%+4px)] text-[10.5px] font-semibold leading-tight tracking-tight text-[#ef4444]"
-                            >
-                              {fieldErrors.email}
-                            </motion.span>
+                            <FieldError>{fieldErrors.email}</FieldError>
                           )}
                         </AnimatePresence>
                       </div>
@@ -488,14 +479,7 @@ export default function AnimatedContactForm() {
                         </div>
                         <AnimatePresence>
                           {fieldErrors.service && (
-                            <motion.span
-                              initial={{ opacity: 0, y: -2 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: -2 }}
-                              className="absolute left-0 top-[calc(100%+4px)] text-[10.5px] font-semibold leading-tight tracking-tight text-[#ef4444]"
-                            >
-                              {fieldErrors.service}
-                            </motion.span>
+                            <FieldError>{fieldErrors.service}</FieldError>
                           )}
                         </AnimatePresence>
                       </div>
@@ -520,14 +504,7 @@ export default function AnimatedContactForm() {
                         />
                         <AnimatePresence>
                           {fieldErrors.message && (
-                            <motion.span
-                              initial={{ opacity: 0, y: -2 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: -2 }}
-                              className="absolute left-0 top-[calc(100%+4px)] text-[10.5px] font-semibold leading-tight tracking-tight text-[#ef4444]"
-                            >
-                              {fieldErrors.message}
-                            </motion.span>
+                            <FieldError>{fieldErrors.message}</FieldError>
                           )}
                         </AnimatePresence>
                       </div>

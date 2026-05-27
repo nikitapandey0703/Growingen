@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import CurvedUnderlineText from '../../../components/common/CurvedUnderlineText'
+import OrangeButtonLabel from '../../../components/common/OrangeButtonLabel'
 
 const businessWhatsappLink = 'https://wa.me/918625912593'
 
@@ -200,7 +201,7 @@ function PlanCard({ card, onAdvance, isActive }) {
               }}
               className="mt-5 inline-flex h-[40px] w-full items-center justify-center self-start rounded-full bg-[linear-gradient(180deg,#ff6a33_0%,#F45328_100%)] px-8 text-[13px] font-medium tracking-[-0.01em] !text-white shadow-[0_12px_24px_rgba(244,83,40,0.24),inset_0_1px_0_rgba(255,255,255,0.18)] transition-all duration-300 ease-out max-[399px]:mt-4 max-[399px]:h-[36px] max-[399px]:px-5 max-[399px]:text-[12px] sm:mt-6 sm:h-[44px] sm:text-[14px] md:h-[45px] lg:w-[96%]"
             >
-              Get Started
+              <OrangeButtonLabel>Get Started</OrangeButtonLabel>
             </a>
           </div>
         </div>
