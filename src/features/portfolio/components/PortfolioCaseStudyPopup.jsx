@@ -188,24 +188,36 @@ export default function PortfolioCaseStudyPopup({ isOpen, onClose, study }) {
             </button>
 
             <div className="scrollbar-hidden min-h-0 overflow-y-auto pr-1 md:pr-1.5 xl:pr-2 2xl:pr-3">
-              <div className="grid gap-4 sm:gap-4 md:gap-5 lg:grid-cols-[1fr_0.85fr] lg:gap-6 xl:gap-7 2xl:gap-8">
-                <div className="flex h-full min-w-0 flex-col">
-                  <div className="shrink-0">
-                    <span className="inline-flex rounded-full bg-[#eef2ff] px-2.5 py-1 text-[10px] font-bold text-[#4f46e5] sm:text-[10px] md:text-[10.5px] lg:text-[10.5px] xl:text-[11px] 2xl:px-3 2xl:py-1.5 2xl:text-[12px]">
-                      Case Study
-                    </span>
-                    <h2
-                      id="portfolio-case-study-title"
-                      className="mt-2 text-[26px] font-bold leading-[1] tracking-[-0.04em] sm:text-[30px] md:text-[32px] lg:text-[34px] xl:text-[38px] 2xl:text-[46px]"
-                    >
-                      {title}
-                    </h2>
-                    <p className="mt-1.5 text-[12px] font-bold text-[#111827] sm:text-[12px] md:text-[13px] lg:text-[13px] xl:text-[13.5px] 2xl:text-[16px]">
-                      Client&apos;s Industry: <span className="text-[#f45328]">{industry}</span>
-                    </p>
-                  </div>
+              
+              {/* 1. Moved Top Header up here */}
+              <div className="mb-4 shrink-0 xl:mb-5">
+                <span className="inline-flex rounded-full bg-[#eef2ff] px-2.5 py-1 text-[10px] font-bold text-[#4f46e5] sm:text-[10px] md:text-[10.5px] lg:text-[10.5px] xl:text-[11px] 2xl:px-3 2xl:py-1.5 2xl:text-[12px]">
+                  Case Study
+                </span>
+                <h2
+                  id="portfolio-case-study-title"
+                  className="mt-2 text-[26px] font-bold leading-[1] tracking-[-0.04em] sm:text-[30px] md:text-[32px] lg:text-[34px] xl:text-[38px] 2xl:text-[46px]"
+                >
+                  {title}
+                </h2>
+                <p className="mt-1.5 text-[12px] font-bold text-[#111827] sm:text-[12px] md:text-[13px] lg:text-[13px] xl:text-[13.5px] 2xl:text-[16px]">
+                  Client&apos;s Industry: <span className="text-[#f45328]">{industry}</span>
+                </p>
+              </div>
 
-                  <div className="relative mt-3 flex w-full flex-1 items-center justify-center overflow-hidden rounded-[14px] bg-[#d1e6ff] p-3 min-h-[140px] max-h-[180px] sm:max-h-[220px] md:min-h-[180px] md:max-h-[250px] lg:min-h-[200px] lg:max-h-[280px] xl:min-h-[220px] xl:max-h-[320px] 2xl:min-h-[260px] 2xl:max-h-[380px]">
+              {/* 2. Moved Detail Cards Right below Header */}
+              <div className="mb-5 grid gap-3 sm:grid-cols-2 md:gap-3.5 lg:grid-cols-4 lg:gap-4 xl:mb-6 xl:gap-4 2xl:gap-5">
+                {details.map((card) => (
+                  <DetailCard key={card.title} {...card} />
+                ))}
+              </div>
+
+              {/* 3. Image and Metrics Grid Section */}
+              <div className="grid gap-4 sm:gap-4 md:gap-5 lg:grid-cols-[1fr_0.85fr] lg:gap-6 xl:gap-7 2xl:gap-8">
+                
+                {/* Left Side: Preview Image Only */}
+                <div className="flex h-full min-w-0 flex-col">
+                  <div className="relative flex w-full flex-1 items-center justify-center overflow-hidden rounded-[14px] bg-[#d1e6ff] p-3 min-h-[140px] max-h-[180px] sm:max-h-[220px] md:min-h-[180px] md:max-h-[250px] lg:min-h-[200px] lg:max-h-[280px] xl:min-h-[220px] xl:max-h-[320px] 2xl:min-h-[260px] 2xl:max-h-[380px]">
                     <div
                       className="absolute inset-0 opacity-40"
                       style={{
@@ -221,15 +233,11 @@ export default function PortfolioCaseStudyPopup({ isOpen, onClose, study }) {
                   </div>
                 </div>
 
+                {/* Right Side: Impact (Top) and Results (Bottom) */}
                 <div className="flex min-w-0 flex-col pt-0.5">
-                  <SectionLabel>Results</SectionLabel>
-                  <div className="flex flex-col gap-2">
-                    {metrics.map((metric) => (
-                      <MetricCard key={metric.label} {...metric} />
-                    ))}
-                  </div>
-
-                  <div className="mt-4 flex flex-1 flex-col xl:mt-[1.1rem] 2xl:mt-5">
+                  
+                  {/* Impact switched to top */}
+                  <div className="mb-4 flex flex-col xl:mb-[1.1rem] 2xl:mb-5">
                     <SectionLabel>Impact</SectionLabel>
                     <article className="flex flex-1 rounded-[12px] bg-[#faeefe] px-3.5 py-2.5 sm:px-4 sm:py-3 md:px-4 md:py-3 xl:px-[1.15rem] xl:py-[0.95rem] 2xl:rounded-[14px] 2xl:px-5 2xl:py-4">
                       <div className="flex items-start gap-3">
@@ -247,15 +255,21 @@ export default function PortfolioCaseStudyPopup({ isOpen, onClose, study }) {
                       </div>
                     </article>
                   </div>
+
+                  {/* Results switched to bottom */}
+                  <div className="flex flex-col">
+                    <SectionLabel>Results</SectionLabel>
+                    <div className="flex flex-col gap-2">
+                      {metrics.map((metric) => (
+                        <MetricCard key={metric.label} {...metric} />
+                      ))}
+                    </div>
+                  </div>
+
                 </div>
               </div>
 
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 md:gap-3.5 lg:grid-cols-4 lg:gap-4 xl:gap-4 2xl:mt-5 2xl:gap-5">
-                {details.map((card) => (
-                  <DetailCard key={card.title} {...card} />
-                ))}
-              </div>
-
+              {/* 4. CTA untouched at the bottom */}
               <div className="mt-4 flex flex-col gap-3 rounded-[12px] bg-[#FFDCCE] px-4 py-2.5 sm:px-4 sm:py-3 md:px-5 md:py-3 lg:flex-row lg:items-center lg:justify-between xl:px-6 xl:py-4 2xl:mt-5 2xl:rounded-[14px] 2xl:px-7 2xl:py-5">
                 <div className="flex items-center gap-3">
                   <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-white shadow-[0_4px_8px_rgba(0,0,0,0.04)] sm:h-10 sm:w-10 md:h-10 md:w-10 2xl:h-11 2xl:w-11">

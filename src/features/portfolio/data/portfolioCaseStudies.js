@@ -133,34 +133,34 @@ export const portfolioCaseStudies = [
     }),
     cta,
   },
-  {
-    id: 'investment-platform',
-    title: 'Investment Platform',
-    industry: 'Investment & Wealth Management',
+ {
+    id: 'fintech-saas-product-website',
+    title: 'FinTech SaaS Product Website',
+    industry: 'FinTech SaaS',
     img: '/images/portfolio/Financial Investment Firm.webp',
     previewImg: '/images/portfolio/Financial Investment Firm.webp',
     impact:
-      'Improved the platform’s financial storytelling and helped the brand present investment products with greater confidence, clarity, and perceived credibility.',
+      'The website helped establish a professional digital identity for the SaaS product, making it easier to communicate its value, support marketing efforts, and build trust with potential users and businesses.',
     metrics: createMetrics(
-      { value: '2.3X', label: 'Better Investor Attention' },
-      { value: '88%', label: 'Clearer Offer Communication\nAcross Awareness Campaigns' }
+      { value: 'Stronger', label: 'Product Authentication & Brand Credibility' },
+      { value: 'Improved', label: 'Marketing Readiness & Product Communication' }
     ),
     details: createDetails({
-      goal: 'Make investment services easier to understand and more attractive to modern users.',
+      goal: 'Build a professional product website to establish market credibility, support marketing activities, and clearly communicate the product’s value proposition.',
       challenge:
-        'Dense messaging and formal financial presentation made the product feel intimidating for new prospects.',
+        'The product lacked a dedicated digital presence to explain its features, positioning, and capabilities effectively. Without a professional website, building trust and running marketing campaigns for the SaaS product became difficult.',
       solution:
-        'Reworked the communication system around simpler messaging, stronger value framing, and more engaging campaign visuals.',
+        'Designed and developed a modern product-focused website that balanced brand authenticity, product communication, and marketing readiness.',
       execution: [
-        'Campaign Narrative Design',
-        'Financial Offer Structuring',
-        'Social Visual Direction',
-        'Lead Journey Improvement',
-        'Conversion Messaging Support',
+        'SaaS Product Website Design',
+        'Product Positioning & Messaging',
+        'Feature-Focused Content Structure',
+        'Professional UI/UX Design',
+        'Marketing-Oriented Landing Experience',
       ],
     }),
     cta,
-  },
+},
 {
   id: 'finance-saas',
   title: 'Finance SaaS Platform',
@@ -196,34 +196,34 @@ export const portfolioCaseStudies = [
 
   cta,
 },
-  {
-    id: 'electrical-engineering',
-    title: 'Electrical Engineering Services',
-    industry: 'Engineering & Industrial Services',
-    img: '/images/portfolio/Electrical Engineering Services.webp',
-    previewImg: '/images/portfolio/Electrical Engineering Services.webp',
-    impact:
-      'Helped the engineering brand communicate with more authority, making complex services easier to scan and improving buyer confidence across core pages.',
-    metrics: createMetrics(
-      { value: '41%', label: 'Higher Service Inquiry Quality' },
-      { value: '90%', label: 'Stronger Technical Brand Clarity\nAcross Key Assets' }
-    ),
-    details: createDetails({
-      goal: 'Build a more professional and conversion-ready service presentation.',
-      challenge:
-        'Technical services were difficult to explain visually, and the brand lacked a clear structure for communicating expertise.',
-      solution:
-        'Created a more strategic layout system that balanced authority, clarity, and simplified service messaging.',
-      execution: [
-        'Service Page Structuring',
-        'Technical Messaging Cleanup',
-        'Visual Hierarchy Redesign',
-        'Proof-Based Content Blocks',
-        'Conversion Path Refinement',
-      ],
-    }),
-    cta,
-  },
+{
+  id: 'electrical-engineering-services',
+  title: 'Electrical Engineering Services',
+  industry: 'Electrical Contracting & Industrial Solutions',
+  img: '/images/portfolio/Electrical Engineering Services.webp',
+  previewImg: '/images/portfolio/Electrical Engineering Services.webp',
+  impact:
+    'The platform transformed into a polished and professionally designed SaaS product that better reflected its capabilities. The improved UI/UX enhanced usability, strengthened client confidence, and helped position the software more effectively for business presentations and future growth.',
+  metrics: createMetrics(
+    { value: '3X', label: 'Better Client Presentation Experience' },
+    { value: '40%', label: 'Improvement in Meeting-to-Conversion Confidence' }
+  ),
+  details: createDetails({
+    goal: 'Strengthen brand presentation and create a professional company image for high-value client meetings and business expansion.',
+    challenge:
+      'Despite having a strong market presence and crores in turnover, the company lacked a professional brand presentation system, making it difficult to communicate credibility and capabilities effectively during client discussions.',
+    solution:
+      'Built a complete corporate branding ecosystem to improve brand perception, presentation quality, and online authenticity.',
+    execution: [
+      'Brand Guideline Creation',
+      'Professional Company Profile Design',
+      'Corporate Video Production',
+      'Business Website Development',
+      'Structured Brand Communication System',
+    ],
+  }),
+  cta,
+},
 {
     id: 'vision-inspection-automation',
     title: 'Manufacturing Automation',
@@ -252,40 +252,40 @@ export const portfolioCaseStudies = [
     }),
     cta,
   },
-   {
+  {
     id: 'interior-solutions',
-    title: 'Interior Solutions',
-    industry: 'Interior Design & Furnishing',
+    title: 'Interior',
+    industry: 'Interior Solutions',
     img: '/images/portfolio/Interior Solutions.webp',
     previewImg: '/images/portfolio/Interior Solutions.webp',
     impact:
-      'Strengthened the premium feel of the brand and made its service offering more aspirational, helping improve customer trust during discovery.',
+      'The brand established a more active and professional online presence through consistent social media communication and strategic content execution. Improved visibility across social media and LinkedIn helped strengthen brand credibility and create better digital recognition in the industry.',
     metrics: createMetrics(
-      { value: '2.0X', label: 'Higher Design Inquiry Interest' },
-      { value: '93%', label: 'More Consistent Visual Identity\nAcross Brand Assets' }
+      { value: '4X', label: 'Increase in Digital Visibility' },
+      { value: 'Consistent', label: 'Professional Brand Presence Across Platforms' }
     ),
     details: createDetails({
-      goal: 'Position the brand as a premium interior solutions provider.',
+      goal: 'Build a stronger digital presence and improve online visibility across social media platforms and professional networks.',
       challenge:
-        'The brand lacked a cohesive visual language and did not reflect the quality of the actual work delivered.',
+        'The brand lacked consistency in content creation and social media posting, resulting in low digital visibility and limited online engagement despite offering premium interior and architectural solutions.',
       solution:
-        'Created a cleaner premium brand system with stronger mood direction, elevated layouts, and more polished customer-facing assets.',
+        'Developed a structured social media management strategy focused on consistent content creation, professional brand positioning, and audience engagement across social platforms and LinkedIn.',
       execution: [
-        'Premium Brand Styling',
-        'Service Storytelling',
-        'Moodboard-Led Direction',
-        'Portfolio Presentation Cleanup',
-        'Sales Asset Refinement',
+        'Social Media Management',
+        'LinkedIn Profile Management',
+        'Consistent Content Planning',
+        'Brand-Focused Creative Design',
+        'Professional Online Positioning Strategy',
       ],
     }),
     cta,
-  },
+},
  {
     id: 'it-services',
     title: 'IT Services',
     industry: 'Project Management & Business Consulting Solutions',
-    img: '/images/portfolio/IT Services.webp',
-    previewImg: '/images/portfolio/IT Services.webp',
+    img: '/images/portfolio/IT Services-1.webp',
+    previewImg: '/images/portfolio/IT Services-1.webp',
     impact:
       'The company established a stronger and more modern corporate image that aligned with its industry reputation and large-scale operations. The redesigned branding and company profile helped improve presentation quality, strengthened business credibility, and created a more impressive experience during client interactions and proposals.',
     metrics: createMetrics(
@@ -340,8 +340,8 @@ export const portfolioCaseStudies = [
     id: 'industrial-engineering-solutions',
     title: 'Industrial & Engineering Solutions',
     industry: 'Industrial Solutions',
-    img: '/images/portfolio/IT Services-1.webp',
-    previewImg: '/images/portfolio/IT Services-1.webp',
+    img: '/images/portfolio/IT Services-2.webp',
+    previewImg: '/images/portfolio/IT Services-2.webp',
     impact:
       'The website helped position the company as a professionally established business ready for international expansion. It strengthened digital credibility, supported offshore business development efforts, and created a more trustworthy presence for potential global clients and partners.',
     metrics: createMetrics(
@@ -453,8 +453,8 @@ export const portfolioCaseStudies = [
   title: 'IT Services',
   industry: 'Project Management & Business Consulting Solutions',
 
-  img: '/images/portfolio/IT Services-2.webp',
-  previewImg: '/images/portfolio/IT Services-2.webp',
+  img: '/images/portfolio/IT Services.webp',
+  previewImg: '/images/portfolio/IT Services.webp',
 
   impact:
     'The company established a stronger and more modern corporate image that aligned with its industry reputation and large-scale operations. The redesigned branding and company profile helped improve presentation quality, strengthened business credibility, and created a more impressive experience during client interactions and proposals.',
